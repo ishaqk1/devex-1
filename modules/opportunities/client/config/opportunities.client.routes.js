@@ -16,8 +16,11 @@
 		// -------------------------------------------------------------------------
 		.state('opportunities', {
 			abstract: true,
-			url: '/opportunities',
-			template: '<ui-view/>'
+			url: '/{lang:(?:fr|en)}/opportunities',
+			template: '<ui-view/>',
+	        params: {
+	          lang: 'en'
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//
@@ -29,10 +32,10 @@
 			url: '',
 			templateUrl: '/modules/opportunities/client/views/list-opportunities.client.view.html',
 			data: {
-				pageTitle: 'Opportunities List'
+				pageTitle: '{{ "OPP_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'All opportunities'
+				label: '{{ "OPP_ALL" | translate }}'
 			},
 			resolve: {
 				opportunities: function ($stateParams, OpportunitiesService) {
@@ -78,8 +81,11 @@
 		// -------------------------------------------------------------------------
 		.state('opportunityadmin', {
 			abstract: true,
-			url: '/opportunityadmin',
-			template: '<ui-view/>'
+			url: '/{lang:(?:fr|en)}/opportunityadmin',
+			template: '<ui-view/>',
+	        params: {
+	          lang: 'en'
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//

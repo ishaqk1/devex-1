@@ -13,12 +13,15 @@
     $stateProvider
       .state('settings', {
         abstract: true,
-        url: '/settings',
+        url: '/{lang:(?:fr|en)}/settings',
         templateUrl: '/modules/users/client/views/settings/settings.client.view.html',
         controller: 'SettingsController',
         controllerAs: 'vm',
         data: {
           roles: ['user', 'admin', 'gov-request', 'gov']
+        },
+        params: {
+          lang: 'en'
         }
       })
       .state('settings.profile', {
@@ -59,7 +62,7 @@
       })
       .state('authentication', {
         abstract: true,
-        url: '/authentication',
+        url: '/{lang:(?:fr|en)}/authentication',
         templateUrl: '/modules/users/client/views/authentication/authentication.client.view.html',
         controller: 'AuthenticationController',
         controllerAs: 'vm',
@@ -67,6 +70,12 @@
           usercount: function (UsersService) {
             return UsersService.countUsers ().then (function (o) {return o.count});
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Authentication'
+        },
+        params: {
+          lang: 'en'
         }
       })
       .state('authentication.gov', {
@@ -76,6 +85,9 @@
         controllerAs: 'vm',
         data: {
           pageTitle: 'Government'
+        },
+        ncyBreadcrumb: {
+          label: 'Government'
         }
       })
       .state('authentication.signinadmin', {
@@ -85,6 +97,9 @@
         controllerAs: 'vm',
         data: {
           pageTitle: 'Signin'
+        },
+        ncyBreadcrumb: {
+          label: 'Signin'
         }
       })
      .state('signup', {
@@ -94,6 +109,9 @@
         controllerAs: 'vm',
         data: {
           pageTitle: 'Signup'
+        },
+        ncyBreadcrumb: {
+          label: 'Signup'
         }
       })
       .state('authentication.signin', {
@@ -103,12 +121,18 @@
         controllerAs: 'vm',
         data: {
           pageTitle: 'Signin'
+        },
+        ncyBreadcrumb: {
+          label: 'Signin'
         }
       })
       .state('password', {
         abstract: true,
-        url: '/password',
-        template: '<ui-view autoscroll="true"/>'
+        url: '/{lang:(?:fr|en)}/password',
+        template: '<ui-view autoscroll="true"/>',
+        params: {
+          lang: 'en'
+        }
       })
       .state('password.forgot', {
         url: '/forgot',
@@ -121,8 +145,11 @@
       })
       .state('password.reset', {
         abstract: true,
-        url: '/reset',
-        template: '<ui-view autoscroll="true"/>'
+        url: '/{lang:(?:fr|en)}/reset',
+        template: '<ui-view autoscroll="true"/>',
+        params: {
+          lang: 'en'
+        }
       })
       .state('password.reset.invalid', {
         url: '/invalid',

@@ -5,9 +5,9 @@
     .module('core')
     .run(routeFilter);
 
-  routeFilter.$inject = ['$rootScope', '$state', 'Authentication'];
+  routeFilter.$inject = ['$rootScope', '$state', 'Authentication', '$translate', '$location'];
 
-  function routeFilter($rootScope, $state, Authentication) {
+  function routeFilter($rootScope, $state, Authentication, $translate, $location) {
     $rootScope.$on('$stateChangeStart', stateChangeStart);
     $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
 
@@ -40,6 +40,25 @@
     function stateChangeSuccess(event, toState, toParams, fromState, fromParams) {
       // Record previous state
       storePreviousState(fromState, fromParams);
+
+      var currentLang = '';
+      var otherLang = '';
+
+      if( $state.params.lang !== undefined ){
+        currentLang = $state.params.lang;
+        otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
+      } else {
+        currentLang = 'en';
+        otherLang = 'fr';
+      }
+
+      $translate.use(currentLang);
+      document.documentElement.lang = currentLang;
+
+      // set root vars
+      $rootScope.currentLang = currentLang;
+      $rootScope.otherLang = otherLang;
+      $rootScope.otherLangURL = $location.path().replace('/' + currentLang, '/' + otherLang);
     }
 
     // Store previous state

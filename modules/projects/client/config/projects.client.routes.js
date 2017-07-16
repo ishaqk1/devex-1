@@ -16,8 +16,11 @@
 		// -------------------------------------------------------------------------
 		.state('projects', {
 			abstract: true,
-			url: '/projects',
-			template: '<ui-view/>'
+			url: '/{lang:(?:fr|en)}/projects',
+			template: '<ui-view/>',
+	        params: {
+	          lang: 'en'
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//
@@ -29,10 +32,10 @@
 			url: '',
 			templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
 			data: {
-				pageTitle: 'Projects List'
+				pageTitle: '{{ "PROJ_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'All projects'
+				label: '{{ "PROJ_ALL" | translate }}'
 			},
 			resolve: {
 				projects: function ($stateParams, ProjectsService) {
@@ -77,8 +80,11 @@
 		// -------------------------------------------------------------------------
 		.state('projectadmin', {
 			abstract: true,
-			url: '/projectadmin',
-			template: '<ui-view/>'
+			url: '/{lang:(?:fr|en)}/projectadmin',
+			template: '<ui-view/>',
+	        params: {
+	          lang: 'en'
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//

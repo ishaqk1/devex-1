@@ -5,9 +5,9 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$state', '$location', 'Authentication', 'menuService'];
+  HeaderController.$inject = ['$scope', '$state', '$translate', '$location', 'Authentication', 'menuService'];
 
-  function HeaderController($scope, $state, $location, Authentication, menuService) {
+  function HeaderController($scope, $state, $translate, $location, Authentication, menuService) {
     var vm = this;
 
     vm.accountMenu = menuService.getMenu('account').items[0];
@@ -18,7 +18,7 @@
     $scope.$on('$stateChangeSuccess', stateChangeSuccess);
     $scope.isHomePage = function() {
         var path = $location.path();
-        return (! path) || path === '/';
+        return (! path) || path === '/' || path === '/en' || path === '/fr';
     };
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',

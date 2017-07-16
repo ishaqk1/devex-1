@@ -16,8 +16,11 @@
 		// -------------------------------------------------------------------------
 		.state('programs', {
 			abstract: true,
-			url: '/programs',
-			template: '<ui-view/>'
+			url: '/{lang:(?:fr|en)}/teams',
+			template: '<ui-view/>',
+	        params: {
+	          lang: 'en'
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//
@@ -29,10 +32,10 @@
 			url: '',
 			templateUrl: '/modules/programs/client/views/list-programs.client.view.html',
 			data: {
-				pageTitle: 'Programs List'
+				pageTitle: '{{ "PROG_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'All programs'
+				label: '{{ "PROG_ALL" | translate }}'
 			},
 			resolve: {
 				programs: function ($stateParams, ProgramsService) {
@@ -74,8 +77,11 @@
 		// -------------------------------------------------------------------------
 		.state('programadmin', {
 			abstract: true,
-			url: '/programadmin',
-			template: '<ui-view/>'
+			url: '/{lang:(?:fr|en)}/programadmin',
+			template: '<ui-view/>',
+	        params: {
+	          lang: 'en'
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//

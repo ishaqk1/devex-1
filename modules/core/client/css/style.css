@@ -1,0 +1,164 @@
+.container {
+  max-width: none !important;
+}
+
+.img-responsive {
+  max-width: 100% !important;
+}
+
+.padding {
+  padding: 30px 0;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.nomargintop {
+  margin-top: 0 !important;
+}
+
+.themenav li:nth-of-type(1) .nav-link:hover,
+.themenav li:nth-of-type(1) .nav-link:focus,
+.themenav li:nth-of-type(1) .nav-link:active {
+  background-color: #010101 !important;
+}
+.themenav li:nth-of-type(2) .nav-link:hover,
+.themenav li:nth-of-type(2) .nav-link:focus,
+.themenav li:nth-of-type(2) .nav-link:active {
+  background-color: #5a230c !important;
+}
+.themenav li:nth-of-type(3) .nav-link:hover,
+.themenav li:nth-of-type(3) .nav-link:focus,
+.themenav li:nth-of-type(3) .nav-link:active {
+  background-color: #890743 !important;
+}
+.themenav li:nth-of-type(4) .nav-link:hover,
+.themenav li:nth-of-type(4) .nav-link:focus,
+.themenav li:nth-of-type(4) .nav-link:active {
+  background-color: #1d2f21 !important;
+}
+.themenav li:nth-of-type(5) .nav-link:hover,
+.themenav li:nth-of-type(5) .nav-link:focus,
+.themenav li:nth-of-type(5) .nav-link:active {
+  background-color: #251e1e !important;
+}
+
+.themenav {
+  min-height: 70px;
+}
+.themenav .nav-link {
+  font-size: 14px;
+}
+.themenav .nav-link,
+.themenav .vertical-align-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+@media (max-width: 767px) {
+  .themenav {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+.themenav .nav:after, .themenav .nav:before {
+  content: none;
+}
+.themenav .nav > li, .themenav .nav > li > a {
+  display: block;
+  position: relative;
+}
+.themenav .nav > li > a {
+  color: inherit;
+}
+.themenav .nav > li > a:hover, .themenav .nav > li > a:focus {
+  background-color: inherit;
+  text-decoration: none;
+}
+.themenav .nav > li > a:active, .themenav .nav > li > a:visited {
+  color: inherit;
+}
+.themenav nav::-webkit-scrollbar {
+  display: none !important;
+}
+.themenav .scroll {
+  user-select: none;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow: -moz-scrollbars-none;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.themenav .scroll.secondary {
+  background-color: #1d344b;
+  color: #fff;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .themenav .scroll.secondary {
+    -webkit-box-shadow: inset 0px 0px 31px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px 0px 31px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 0px 31px 1px rgba(0, 0, 0, 0.75);
+  }
+  .themenav .scroll.secondary:before, .themenav .scroll.secondary:after {
+    top: 90px;
+    height: 75px;
+  }
+}
+.themenav .scroll.secondary a {
+  color: #fff;
+}
+.themenav .scroll.secondary.affix {
+  background-color: #333;
+}
+.themenav .scroll.secondary li {
+  display: inline-block;
+}
+.themenav .scroll.secondary li a {
+  display: inline-block;
+  padding: 0 1.54%;
+}
+.themenav .scroll.secondary li.active a {
+  color: #dedede !important;
+}
+.themenav .scroll.secondary .nav-link {
+  padding: 15px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  transition: background-color 0.2s;
+  transition-timing-function: ease;
+}
+@media (min-width: 1200px) {
+  .themenav .scroll.secondary .nav-link {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .themenav .scroll.secondary .nav-link {
+    padding: 20px 20px;
+    font-size: 16px;
+    padding-bottom: 17px;
+    line-height: 20px;
+    letter-spacing: 0.07em;
+  }
+}
+.themenav .scroll.secondary .nav-link:hover {
+  background-color: transparent;
+  color: #dedede !important;
+}
+.themenav .scroll::-webkit-scrollbar, .themenav .scroll::-webkit-scrollbar-track {
+  display: none;
+}
+.themenav .affix {
+  background-color: #3d3d3d;
+  box-shadow: 0px 9px 9px -5px rgba(0, 0, 0, 0.56);
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999 !important;
+  -webkit-box-shadow: 0px 9px 9px -5px rgba(0, 0, 0, 0.56);
+  -moz-box-shadow: 0px 9px 9px -5px rgba(0, 0, 0, 0.56);
+}

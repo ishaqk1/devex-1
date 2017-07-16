@@ -17,6 +17,7 @@
     'ngImgCrop',
     'ui-notification',
     'ncy-angular-breadcrumb'
+    'pascalprecht.translate'
     ],
     registerModule: registerModule
   };
