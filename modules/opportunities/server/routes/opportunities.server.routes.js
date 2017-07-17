@@ -38,6 +38,10 @@ module.exports = function(app) {
   app.route('/api/opportunities/requests/:opportunityId')
     .all(opportunitiesPolicy.isAllowed)
     .get(opportunities.listRequests);
+  app.route('/api/opportunities/publish/:opportunityId')
+    .all(opportunitiesPolicy.isAllowed)
+    .get(opportunities.publish)
+    .delete(opportunities.unpublish);
 
   //
   // modify users
@@ -56,10 +60,10 @@ module.exports = function(app) {
   app.route('/api/request/opportunity/:opportunityId')
     .get(opportunities.request)
 
-  app.route('/api/opp').get (function (req, res) {
-    // console.log (req.query);
-    res.json ({ok:true});
-  });
+  // app.route('/api/opp').get (function (req, res) {
+  //   return opportunities.ttt(req,res);
+  //   // res.json ({ok:true});
+  // });
 
   // Finish by binding the Opportunity middleware
   app.param('opportunityId', opportunities.opportunityByID);

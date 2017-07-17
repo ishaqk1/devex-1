@@ -6,7 +6,7 @@
 	// Controller for the master list of programs
 	//
 	// =========================================================================
-	.controller('OpportunitiesListController', function (OpportunitiesService, Authentication) {
+	.controller('OpportunitiesListController', function (OpportunitiesService, Authentication, subscriptions) {
 		var vm      = this;
 		vm.opportunities = OpportunitiesService.query();
 		var isUser = Authentication.user;
@@ -17,9 +17,15 @@
 	// Controller the view of the opportunity page
 	//
 	// =========================================================================
-	.controller('OpportunityViewController', function ($scope, $state, $stateParams, $sce, opportunity, Authentication, OpportunitiesService, Notification, modalService, $q) {
+	.controller('OpportunityViewController', function ($scope, $state, $stateParams, $sce, opportunity, Authentication, OpportunitiesService, Notification, modalService, $q, ask, subscriptions, myproposal, NotificationsService) {
 		var vm                    = this;
+		//
+		// set the notification code for updates to this opp, and set the vm flag to current state
+		//
+		var notificationCode = 'not-update-'+opportunity.code;
+		vm.notifyMe = subscriptions.map (function (s) {return (s.notificationCode === notificationCode);}).reduce (function (a, c) {return (a || c);}, false);
 
+		vm.myproposal             = myproposal;
 		vm.projectId              = $stateParams.projectId;
 		vm.opportunity            = opportunity;
 		vm.pageViews              = opportunity.views;
@@ -39,6 +45,8 @@
 		var isUser                 = Authentication.user;
 		var isAdmin                = isUser && !!~Authentication.user.roles.indexOf ('admin');
 		var isGov                  = isUser && !!~Authentication.user.roles.indexOf ('gov');
+		vm.isGov = isGov;
+		vm.hasEmail                = isUser && Authentication.user.email !== '';
 		var isMemberOrWaiting      = opportunity.userIs.member || opportunity.userIs.request;
 		vm.loggedIn                = isUser;
 		vm.canRequestMembership    = isGov && !isMemberOrWaiting;
@@ -81,59 +89,48 @@
 		// publish or un publish the opportunity
 		//
 		// -------------------------------------------------------------------------
-		vm.publish = function (state) {
-			var publishedState = opportunity.isPublished;
-			var t = state ? 'Published' : 'Un-Published'
-			opportunity.isPublished = state;
-			opportunity.doNotNotify = false;
-			var modalOptions = {
-	        closeButtonText: 'Do Not Send Notification',
-	        actionButtonText: 'Send Notification',
-	        headerText: 'Publish Opportunity',
-	        bodyText: 'You are re-publishing this opportunity. Would you like to re-notify all subscribed users?'
-	    };
-	    var promise;
-	    //
-	    // Bypass the modal if first time publishing OR if unpublishing
-	    //
-	    if ((opportunity.isPublished && !opportunity.lastPublished) ||
-	    			!opportunity.isPublished) {
-	    	promise = $q.resolve();
-	    }
-	    else {
-	    	promise = modalService.showModal({}, modalOptions)
-        .then(function sendNotification (result) {
-        		opportunity.doNotNotify = false;
-        },
-        function doNotSendNotificaiton (result) {
-        	opportunity.doNotNotify = true;
-        })
-	    }
+		vm.publish = function (opportunity, state) {
+			var publishedState      = opportunity.isPublished;
+			var t = state ? 'Published' : 'Unpublished';
 
-      //
-			// success, notify and return to list
-			//
-      promise.then(function() {
-      	return opportunity.createOrUpdate();
-      })
-			//
-			// success, notify and return to list
-			//
-			.then (function (res) {
-				Notification.success ({
-					message : '<i class="glyphicon glyphicon-ok"></i> Opportunity '+t+' Successfully!'
+			var savemeSeymour = true;
+			var promise = Promise.resolve ();
+			if (state) {
+				var question = opportunity.wasPublished ?
+					'When you publish this opportunity, we\'ll notify all our subscribed users. Are you sure you\'ve got it just the way you want it?' :
+					'When you publish this opportunity, we\'ll notify all our subscribed users. Are you sure you\'ve got it just the way you want it?';
+				promise = ask.yesNo (question).then (function (result) {
+					savemeSeymour = result;
 				});
-			})
-			//
-			// fail, notify and stay put
-			//
-			.catch (function (res) {
-				opportunity.isPublished = publishedState;
-				Notification.error ({
-					message : res.data.message,
-					title   : '<i class=\'glyphicon glyphicon-remove\'></i> Opportunity '+t+' Error!'
+			}
+				promise.then(function() {
+					if (savemeSeymour) {
+						opportunity.isPublished = state;
+						if (state) return OpportunitiesService.publish ({opportunityId:opportunity._id}).$promise;
+						else return OpportunitiesService.unpublish ({opportunityId:opportunity._id}).$promise;
+						// return opportunity.createOrUpdate();
+					}
+					else return Promise.reject ({data:{message:'Publish Cancelled'}});
+				})
+				.then (function (res) {
+					//
+					// success, notify
+					//
+					var m = state ? 'Your opportunity has been published and we\'ve notified subscribers!' : 'Your opportunity has been unpublished!'
+					Notification.success ({
+						message : '<i class="glyphicon glyphicon-ok"></i> '+m
+					});
+				})
+				.catch (function (res) {
+					//
+					// fail, notify and stay put
+					//
+					opportunity.isPublished = publishedState;
+					Notification.error ({
+						message : res.data.message,
+						title   : '<i class=\'glyphicon glyphicon-remove\'></i> Opportunity '+t+' Error!'
+					});
 				});
-			});
 		};
 		// -------------------------------------------------------------------------
 		//
@@ -148,17 +145,53 @@
 					href: $state.href('opportunities.view', {opportunityId:opportunity.code})
 				};
             });
-		}
+		};
+		// -------------------------------------------------------------------------
+		//
+		// subscribe to changes
+		//
+		// -------------------------------------------------------------------------
+		vm.subscribe = function (state) {
+			if (state) {
+				NotificationsService.subscribeNotification ({notificationId: notificationCode}).$promise
+				.then (function () {
+					vm.notifyMe = true;
+					Notification.success ({
+						message : '<i class="glyphicon glyphicon-ok"></i> You have been successfully subscribed!'
+					});
+				}).catch (function (res) {
+					Notification.error ({
+						message : res.data.message,
+						title   : '<i class=\'glyphicon glyphicon-remove\'></i> Subscription Error!'
+					});
+				});
+			}
+			else {
+				NotificationsService.unsubscribeNotification ({notificationId: notificationCode}).$promise
+				.then (function () {
+					vm.notifyMe = false;
+					Notification.success ({
+						message : '<i class="glyphicon glyphicon-ok"></i> You have been successfully un-subscribed!'
+					});
+				}).catch (function (res) {
+					Notification.error ({
+						message : res.data.message,
+						title   : '<i class=\'glyphicon glyphicon-remove\'></i> Un-Subsciption Error!'
+					});
+				});
+			}
+		};
 	})
 	// =========================================================================
 	//
 	// Controller the view of the opportunity page
 	//
 	// =========================================================================
-	.controller('OpportunityEditController', function ($scope, $state, $stateParams, $window, $sce, opportunity, editing, projects, Authentication, Notification, previousState, dataService, modalService, $q) {
+	.controller('OpportunityEditController', function ($scope, $state, $stateParams, $window, $sce, opportunity, editing, projects, Authentication, Notification, previousState, dataService, modalService, $q, ask) {
 		var rightNow                          = new Date();
 		var vm                                = this;
 		vm.previousState                      = previousState;
+		var originalPublishedState             = opportunity.isPublished;
 		//
 		// what can the user do here?
 		//
@@ -228,6 +261,12 @@
 				vm.opportunity.project = vm.projectId;
 				vm.opportunity.program = vm.programId;
 			}
+			//
+			// if not editing, set some conveinient default dates
+			//
+			vm.opportunity.deadline   = new Date ();
+			vm.opportunity.assignment = new Date ();
+			vm.opportunity.start      = new Date ();
 		}
 		//
 		// if there are no available projects then post a warning and kick the user back to
@@ -249,11 +288,12 @@
 			vm.programTitle        = vm.projects[0].program.title;
 			vm.opportunity.program = vm.programId;
 		}
+
 		vm.tinymceOptions = {
 			resize      : true,
 			width       : '100%',  // I *think* its a number and not '400' string
 			height      : 100,
-			menubar     :'',
+			menubar     : '',
 			elementpath : false,
 			plugins     : 'textcolor lists advlist link',
 			toolbar     : 'undo redo | styleselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | forecolor backcolor'
@@ -288,11 +328,17 @@
 		//
 		// save the opportunity, could be added or edited (post or put)
 		//
+		// CC: changes to questions about notifications - we decided to simply warn
+		// about publishing and not link it to notifying, but only to saving
+		// so the question is really "do you want to publish"?
+		// and also remove all doNotNotify stuff
+		//
 		// -------------------------------------------------------------------------
 		vm.saveme = function () {
 			this.save (true);
 		};
 		vm.save = function (isValid) {
+			console.log (vm);
 			vm.form.opportunityForm.$setPristine ();
 			// console.log ('saving form', vm.opportunity);
 			if (!isValid) {
@@ -318,8 +364,8 @@
 			//
 			if (!vm.editing) {
 				if (vm.context === 'allopportunities') {
-					vm.opportunity.project = vm.projectobj._id;
-					vm.opportunity.program = vm.projectobj.program._id;
+					vm.opportunity.project = vm.projectId;
+					vm.opportunity.program = vm.programId;
 				}
 				else if (vm.context === 'program') {
 					vm.opportunity.project = vm.projectId;
@@ -331,65 +377,58 @@
 			vm.opportunity.deadline.setHours(16);
 			vm.opportunity.assignment.setHours(16);
 
-			vm.opportunity.doNotNotify = false;
-			var modalOptions = {
-	        closeButtonText: 'Do Not Send Notification',
-	        actionButtonText: 'Send Notification',
-	        headerText: 'Update Opportunity',
-	        bodyText: 'You are updating the properties of a published opportunity. Would you like to re-notify all subscribed users?'
-	    };
-	    var promise;
-	    //
-	    // Bypass the modal if first time publishing OR if unpublishing
-	    //
-	    if ((vm.opportunity.isPublished && !vm.opportunity.lastPublished) ||
-	    			!vm.opportunity.isPublished) {
-	    	promise = $q.resolve();
-	    }
-	    else {
-	    	promise = modalService.showModal({}, modalOptions)
-        .then(function sendNotification (result) {
-        		vm.opportunity.doNotNotify = false;
-        },
-        function doNotSendNotificaiton (result) {
-        	vm.opportunity.doNotNotify = true;
-        })
-	    }
+	    	//
+	    	// confirm save only if the user is also publishing
+	    	//
+	    	var savemeSeymour = true;
+			var promise = Promise.resolve ();
+			if (!originalPublishedState && vm.opportunity.isPublished) {
+				var question = 'You are publishing this opportunity. This will also notify all subscribed users.  Do you wish to continue?'
+				promise = ask.yesNo (question).then (function (result) {
+					savemeSeymour = result;
+				});
+			}
+				//
+				// Create a new opportunity, or update the current instance
+				//
+	      		promise.then(function() {
+					if (savemeSeymour) {
+						console.log ('saving');
+						// vm.opportunity.deadline   = new Date (vm.opportunity.deadline);
+						// vm.opportunity.assignment = new Date (vm.opportunity.assignment);
+						// vm.opportunity.start      = new Date (vm.opportunity.start);
+						return vm.opportunity.createOrUpdate();
+					}
+					else return Promise.reject ({data:{message:'Publish Cancelled'}});
+				})
+				//
+				// success, notify and return to list
+				//
+				.then (function (res) {
+					console.log ('saved');
+					vm.form.opportunityForm.$setPristine ();
+					// console.log ('now saved the new opportunity, redirect user');
+					Notification.success ({
+						message : '<i class="glyphicon glyphicon-ok"></i> opportunity saved successfully!'
+					});
+					if (editing) {
+						$state.go('opportunities.view', {opportunityId:opportunity.code});
+					} else {
+						$state.go('opportunities.view', {opportunityId:opportunity.code});
+						// $state.go('opportunities.list');
+					}
+				})
+				//
+				// fail, notify and stay put
+				//
+				.catch (function (res) {
+					console.log ('caught');
+					Notification.error ({
+						message : res.data.message,
+						title   : '<i class=\'glyphicon glyphicon-remove\'></i> opportunity save error!'
+					});
+				});
 
-      //
-			// Create a new opportunity, or update the current instance
-			//
-      promise.then(function() {
-      	return vm.opportunity.createOrUpdate();
-      })
-			//
-			// success, notify and return to list
-			//
-			.then (function (res) {
-				vm.form.opportunityForm.$setPristine ();
-				// console.log ('now saved the new opportunity, redirect user');
-				vm.opportunity.deadline   = new Date (vm.opportunity.deadline);
-				vm.opportunity.assignment = new Date (vm.opportunity.assignment);
-				vm.opportunity.start      = new Date (vm.opportunity.start);
-				Notification.success ({
-					message : '<i class="glyphicon glyphicon-ok"></i> opportunity saved successfully!'
-				});
-				if (editing) {
-					$state.go('opportunities.view', {opportunityId:opportunity.code});
-				} else {
-					$state.go('opportunities.view', {opportunityId:opportunity.code});
-					// $state.go('opportunities.list');
-				}
-			})
-			//
-			// fail, notify and stay put
-			//
-			.catch (function (res) {
-				Notification.error ({
-					message : res.data.message,
-					title   : '<i class=\'glyphicon glyphicon-remove\'></i> opportunity save error!'
-				});
-			});
 		};
 		vm.popoverCache = {};
 		vm.displayHelp = {};
