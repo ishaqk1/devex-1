@@ -29,8 +29,22 @@
         templateUrl: '/modules/users/client/views/settings/edit-profile.client.view.html',
         controller: 'EditProfileController',
         controllerAs: 'vm',
+        resolve: {
+          subscriptions: function (NotificationsService) {
+            return NotificationsService.subscriptions().$promise;
+          }
+        },
         data: {
           pageTitle: 'Settings'
+        }
+      })
+      .state('settings.payment', {
+        url: '/payment',
+        templateUrl: '/modules/users/client/views/settings/payment-settings.client.view.html',
+        controller: 'EditProfileController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Payment Details'
         }
       })
       .state('settings.password', {

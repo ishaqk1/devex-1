@@ -73,6 +73,7 @@ var UserSchema = new Schema({
   isDisplayEmail           : {type: Boolean, default:true},
   notifyOpportunities      : {type: Boolean, default:false},
   subscribeOpportunitiesId : {type: String, default: null},
+  convertedNotifications   : {type: Boolean, default:false},
   notifyEvents             : {type: Boolean, default:false},
   notifyBlogs              : {type: Boolean, default:false},
   userTitle                : {type: String, default: ''},
@@ -83,7 +84,30 @@ var UserSchema = new Schema({
   created                  : {type: Date, default: Date.now },
   /* For reset password */
   resetPasswordToken       : {type: String },
-  resetPasswordExpires     : {type: Date }
+  resetPasswordExpires     : {type: Date },
+  //
+  // this is where we put the payment preferences for users who are developers
+  // all of these need to be added to the field whitelists
+  //
+  isDeveloper      : {type: Boolean, default: false},
+  paymentMethod    : {type: String, default:'Cheque', enum:['Cheque', 'Direct Deposit', 'PayPal']},
+  businessName     : {type: String, default: ''},
+  businessAddress  : {type: String, default: ''},
+  businessAddress2 : {type: String, default: ''},
+  businessCity     : {type: String, default: ''},
+  businessProvince : {type: String, default: 'BC', enum: ['AB', 'BC', 'MB', 'NB', 'NL', 'NT', 'NS', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT']},
+  businessCode     : {type: String, default: ''},
+  businessContactName     : {type: String, default: ''},
+  businessContactEmail     : {type: String, default: '', trim:true, lowercase:true, validate: [validateLocalStrategyEmail, 'Please fill a valid email address']},
+  businessContactPhone     : {type: String, default: ''},
+  address  : {type: String, default: ''},
+  phone  : {type: String, default: ''},
+  //
+  // notifications based upon events
+  //
+  notifications: {
+    update : { type: Schema.ObjectId, ref: 'Notification' }
+  }
 });
 
 /**

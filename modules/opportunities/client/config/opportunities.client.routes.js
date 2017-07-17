@@ -40,6 +40,9 @@
 			resolve: {
 				opportunities: function ($stateParams, OpportunitiesService) {
 					return OpportunitiesService.query ();
+				},
+				subscriptions: function (NotificationsService) {
+					return NotificationsService.subscriptions().$promise;
 				}
 			},
 			controller: 'OpportunitiesListController',
@@ -61,7 +64,16 @@
 			controllerAs: 'vm',
 			resolve: {
 				opportunity: function ($stateParams, OpportunitiesService) {
-					return OpportunitiesService.get({
+					return OpportunitiesService.get ({
+						opportunityId: $stateParams.opportunityId
+					}).$promise;
+				},
+				subscriptions: function (NotificationsService) {
+					return NotificationsService.subscriptions().$promise;
+				},
+				myproposal: function ($stateParams, ProposalsService, Authentication) {
+					if (!Authentication.user) return {};
+					return ProposalsService.myopp ({
 						opportunityId: $stateParams.opportunityId
 					}).$promise;
 				}

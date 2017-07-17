@@ -1,31 +1,16 @@
-<section class="static-page"><div class="container" role="main">
+
+<section class="static"><div class="container" role="main">
 <div class="row">
 	<!-- <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4"> -->
 
-	<div class="col-xs-2 col-sm-2" style="text-align: center;">
-   		<img width="70" height="70" style="margin: 10px 5px 10px 5px;" src="{{((vm.user.profileImageURL.substr(0,1) == '/' || vm.user.profileImageURL.substr(0,4) == 'http') ? '' : '/') + vm.user.profileImageURL}}"/>
-	</div>
+	<!--<div class="col-xs-2 col-sm-2" style="text-align: center;">
+   		<img class="img-circle" width="70" height="70" style="margin: 10px 5px 10px 5px;" src="{{((vm.user.profileImageURL.substr(0,1) == '/' || vm.user.profileImageURL.substr(0,4) == 'http') ? '' : '/') + vm.user.profileImageURL}}"/>
+	</div>-->
 
 
-	<div class="col-xs-12 col-sm-6">
+	<div class="col-xs-12 col-sm-7">
 		<form name="vm.userForm" ng-submit="vm.updateUserProfile(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
-
 			<fieldset>
-				<div class="form-group" show-errors>
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" ng-model="vm.user.email" placeholder="Email" lowercase autofocus>
-					<div ng-messages="vm.userForm.email.$error" role="alert">
-						<p class="help-block error-text" ng-message="email">Email address is invalid.</p>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label>
-					<input type="checkbox" ng-model="vm.user.isDisplayEmail" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					Allow my email to be displayed on the site &nbsp; &nbsp;
-					</label>
-				</div>
-
 				<div class="form-group" show-errors>
 					<label for="firstName">First Name</label>
 					<input type="text" id="firstName" name="firstName" class="form-control" ng-model="vm.user.firstName" placeholder="First Name">
@@ -47,17 +32,45 @@
 					</div>
 				</div>
 				<br>
-				<h4>Do any of these sound like you?</h4>
-				<div ng-show='vm.user.email === "" || vm.user.email == null' role="alert">
-					<p>
-					Email address required for these fields.
-					</p>
+				<div class="form-group" show-errors>
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" class="form-control" ng-model="vm.user.email" placeholder="Email" lowercase autofocus>
+					<div ng-messages="vm.userForm.email.$error" role="alert">
+						<p class="help-block error-text" ng-message="email">Email address is invalid.</p>
+					</div>
 				</div>
+				<div class="form-group">
+					<label>
+					<input type="checkbox" ng-model="vm.user.isDisplayEmail" ng-disabled='vm.user.email === "" || vm.user.email == null'>
+					Allow my email to be displayed on the site
+					</label>
+				</div>
+				<br>
+				<div class="form-group">
+					<label>
+					<input type="checkbox" ng-model="vm.user.notifyOpportunities" ng-disabled='vm.user.email === "" || vm.user.email == null'>
+					Notify me when new opportunities are posted
+					</label>
+				</div>
+				<div ng-show='vm.user.email === "" || vm.user.email == null' role="alert">
+					<p style="font-family: Lato; font-size: 14px; color: red; margin-top: -15px; margin-left: 16px;"><i class="fa fa-exclamation-triangle"></i>&nbsp; We need your email address for this</p>
+				</div>
+				<br>
 				<div class="form-group">
 					<label>
 					<input ng-if="!vm.goveditable" type="checkbox"  ng-model="vm.isgov" disabled>
 					<input ng-if="vm.goveditable" type="checkbox"  ng-model="vm.isgov" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					I work in the Public Sector &nbsp; &nbsp;
+					Verify me as a Government of Canada public sector employee so I can publish content on the BCDevExchange
+					</label>			
+				</div>
+				<div ng-show='vm.user.email === "" || vm.user.email == null' role="alert">
+					<p style="font-family: Lato; font-size: 14px; color: red; margin-top: -15px; margin-left: 16px;"><i class="fa fa-exclamation-triangle"></i>&nbsp; We need your email address for this</p>
+				</div>
+				<div class="form-group" ng-if="0">>
+					<label ng-disabled="vm.isgov" >
+						<input ng-disabled="vm.isgov" type="checkbox" ng-model="vm.user.isDeveloper">
+						I am looking for Opportunities
+						</input>
 					</label>
 				</div>
 
@@ -69,17 +82,10 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label>
-					<input type="checkbox" ng-model="vm.user.notifyOpportunities" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					Notify me when new Opportunities are posted &nbsp; &nbsp;
-					</label>
-				</div>
-
-				<div class="form-group">
+				<div class="form-group" ng-if="0">
 					<label>
 					<input type="checkbox"  ng-model="vm.user.notifyEvents" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					Tell me about meet-ups and events &nbsp; &nbsp;
+					Tell me about meet-ups and events
 					</label>
 				</div>
 
@@ -91,12 +97,12 @@
 				</div>-->
 				<br>
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-lg btn-solo btn-warning">Save</button>
 				</div>
 				<br>
-				<div class="panel" style="padding: 12px; background-color: #f2f2f2;">
-				<p style="font-size: 11px; padding: 0px;"><b>Privacy Notice</b></p>
-				<p style="font-size: 11px"><i>The information is being collected for the purpose of creating an account with GCDevEx. Personal information that you provide is protected under the federal Privacy Act. Please do not include sensitive personal information in the message, such as your Social Insurance Number, personal finance data, medical or work history, or the personal information of other individuals.<i></p>
+				<div class="alert alert-grey">
+					<p style="font-size: 11px;"><b>Collection Notice</b></p>
+					<p style="font-size: 11px;"><i>This personal information is collected by the Ministry of Technology, Innovation and Citizens’ Services under s.26(c) of the Freedom of Information and Protection of Privacy Act (FOIPPA) for the purposes of communications with registered users. Should you have any questions about the collection of this personal information please contact: Peter Watkins, Executive Director, BC Developers’ Exchange and DevOps, Ministry of Technology, Innovation and Citizens’ Services, 250-514-2739.<i></p>
 				</div>
 				<br>
 			</fieldset>

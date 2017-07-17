@@ -25,7 +25,9 @@ var path = require('path'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
 	helpers = require(path.resolve('./modules/core/server/controllers/core.server.helpers')),
 	Opportunities = require(path.resolve('./modules/opportunities/server/controllers/opportunities.server.controller')),
-	_ = require('lodash');
+	_ = require('lodash'),
+	Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller'))
+	;
 
 // -------------------------------------------------------------------------
 //
@@ -202,56 +204,18 @@ exports.create = function(req, res) {
 			} else {
 				setProjectAdmin (project, req.user);
 				req.user.save ();
+				Notifications.addNotification ({
+					code: 'not-update-'+project.code,
+					name: 'Update of Project '+project.name,
+					// description: 'Update of Project '+project.name,
+					target: 'Project',
+					event: 'Update'
+				});
 				res.json(project);
 			}
 		});
 	});
 
-/*
-
-GITHUB related stuff
-
-	var project = new Project(req.body);
-	project.user = req.user;
-
-	var http = require('http');
-	var github = require('octonode');
-	var config = require('/config/config.js');
-
-	// curl -u "[github account]:[secret]" https://api.github.com/user/repos -d '{"name":"'helloGit'"}'
-
-	var url = 'https://api.github.com/user/repos';
-	var user = config.github.clientID;  // tested with 'dewolfe001';
-	var secret = config.github.clientSecret; // tested  with '39c1cffc1008ed43189ecd27448bd903a75778eb' (since revoked);
-
-	var client = github.client({
-	id: user,
-		secret: secret
-	});
-
- //  project.github = client.repo({
-	// 'name': project.name,
-	// 'description' : project.description
-	// },  function (err, data) {
-	// 	if (err) {
-	// 		return console.error(err);
-	// 	}
-	// 	else {
-	// 		return data.html_url;
-	// 	}
-	// }
-	// );
-
-	project.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(project);
-		}
-	});
-	*/
 };
 
 // -------------------------------------------------------------------------
@@ -284,7 +248,27 @@ exports.update = function (req, res) {
 		// audit fields, but they get updated in the following step
 		//
 		var project = _.assign (req.project, req.body);
-		project.wasPublished = project.isPublished;
+		//
+		// determine what notify actions we want to send out, if any
+		// if not published, then we send nothing
+		//
+		var notificationCodes = [];
+		var doNotNotify = _.isNil(req.body.doNotNotify) ? true : req.body.doNotNotify;
+		if (isPublished && !doNotNotify) {
+			if (wasPublished) {
+				//
+				// this is an update, we send both specific and general
+				//
+				notificationCodes = ['not-updateany-project', 'not-update-'+project.code];
+			} else {
+				//
+				// this is an add as it is the first time being published
+				//
+				notificationCodes = ['not-add-project'];
+			}
+		}
+
+		project.wasPublished = (project.isPublished || project.wasPublished);
 
 		//
 		// set the audit fields so we know who did what when
@@ -299,8 +283,18 @@ exports.update = function (req, res) {
 					message: errorHandler.getErrorMessage(err)
 				});
 			} else {
-				// res.json(project);
-				res.json (decorate (project, req.user ? req.user.roles : []));
+				project.link = 'https://'+(process.env.DOMAIN || 'localhost')+'/projects/'+project.code;
+				Promise.all (notificationCodes.map (function (code) {
+					return Notifications.notifyObject (code, project);
+				}))
+				.catch (function (err) {
+					console.log (err);
+				})
+				.then (function () {
+					res.json (decorate (project, req.user ? req.user.roles : []));
+				});
+				// // res.json(project);
+				// res.json (decorate (project, req.user ? req.user.roles : []));
 			}
 		});
 	}

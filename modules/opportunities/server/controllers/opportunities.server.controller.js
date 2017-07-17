@@ -25,19 +25,22 @@ var path = require('path'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
 	helpers = require(path.resolve('./modules/core/server/controllers/core.server.helpers')),
 	_ = require('lodash'),
-	notifier = require(path.resolve('./modules/core/server/controllers/core.server.notifier.js')).notifier,
-	fs = require('fs'),
-	markdown = require('helper-markdown'),
-	// HandlebarsIntl = require('handlebars-intl'),
-	Handlebars = require('handlebars'),
-	htmlToText = require('html-to-text');
+	// notifier = require(path.resolve('./modules/core/server/controllers/core.server.notifier.js')).notifier,
+	// fs = require('fs'),
+	// markdown = require('helper-markdown'),
+	// // HandlebarsIntl = require('handlebars-intl'),
+	// Handlebars = require('handlebars'),
+	// htmlToText = require('html-to-text')
+	Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller'))
+	;
 
-var oppEmailNotifier = notifier('opportunities', 'email');
 
-Handlebars.registerHelper('markdown', markdown({ breaks: true, xhtmlOut: false}));
-// HandlebarsIntl.registerWith(Handlebars);
-var emailBodyTemplateHtml = Handlebars.compile(fs.readFileSync(path.resolve('./modules/opportunities/server/email_templates/message_body.hbs.md'), 'utf8'));
-var emailSubjectTemplate = Handlebars.compile(fs.readFileSync(path.resolve('./modules/opportunities/server/email_templates/subject.hbs.md'), 'utf8'));
+// var oppEmailNotifier = notifier('opportunities', 'email');
+
+// Handlebars.registerHelper('markdown', markdown({ breaks: true, xhtmlOut: false}));
+// // HandlebarsIntl.registerWith(Handlebars);
+// var emailBodyTemplateHtml = Handlebars.compile(fs.readFileSync(path.resolve('./modules/opportunities/server/email_templates/message_body.hbs.md'), 'utf8'));
+// var emailSubjectTemplate = Handlebars.compile(fs.readFileSync(path.resolve('./modules/opportunities/server/email_templates/subject.hbs.md'), 'utf8'));
 
 // -------------------------------------------------------------------------
 //
@@ -155,6 +158,85 @@ var incrementViews = function (id) {
 };
 // -------------------------------------------------------------------------
 //
+// all the info we need for notification merging
+//
+// -------------------------------------------------------------------------
+var setNotificationData = function (opportunity) {
+	return {
+		name                 : opportunity.name,
+		short                : opportunity.short,
+		description          : opportunity.description,
+		earn_format_mnoney   : helpers.formatMoney (opportunity.earn, 2),
+		earn                 : helpers.formatMoney (opportunity.earn, 2),
+		dateDeadline         : helpers.formatDate (new Date(opportunity.deadline)),
+		timeDeadline         : helpers.formatTime (new Date(opportunity.deadline)),
+		dateAssignment       : helpers.formatDate (new Date(opportunity.assignment)),
+		dateStart            : helpers.formatDate (new Date(opportunity.start)),
+		datePublished        : helpers.formatDate (new Date(opportunity.lastPublished)),
+		deadline_format_date : helpers.formatDate (new Date(opportunity.deadline)),
+		deadline_format_time : helpers.formatTime (new Date(opportunity.deadline)),
+		updatenotification   : 'not-update-'+opportunity.code,
+		code                 : opportunity.code,
+		skills               : opportunity.skills.join (', ')
+	};
+};
+// -------------------------------------------------------------------------
+//
+// create an issue in the opportunity repo using the secret from our repos or
+// from the users'
+//
+// -------------------------------------------------------------------------
+var createIssue = function (opportunity, user) {
+	return new Promise (function (resolve, reject) {
+
+		var callbackf = function (err, status, body, headers) {
+			console.log ('err', err);
+			console.log ('status', status);
+			console.log ('body', body);
+			console.log ('headers', headers);
+			resolve ({
+				err: err,
+				status: status,
+				body: body,
+				headers: headers
+			});
+		};
+		var github = require('octonode');
+		console.log ('octonode', github);
+		var accessToken = user.providerData.accessToken;
+		var login = user.providerData.login;
+
+		var client = github.client (accessToken);
+		var ghme = client.me();
+		var repo = 'BCDevExchange-app';
+		var ghrepo = client.repo('BCDevExchange/BCDevExchange-app');
+
+
+		console.log ('ghrepo', ghrepo);
+
+		ghme.orgs (callbackf);
+
+		// ghrepo.issues (callbackf);
+
+		// ghrepo.issue({
+		// 'title': 'Test Auto Issue',
+		// 'body': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+		// 'assignee': login,
+		// 'labels': ['Label1', 'Label2']
+		// }, callbackf);
+
+	});
+
+};
+exports.ttt = function (req, res) {
+	createIssue (req.opportunity, req.user)
+	.then (function (r) {
+		res.json (r);
+	});
+
+}
+// -------------------------------------------------------------------------
+//
 // get a list of all my opportunities, but only ones I have access to as a normal
 // member or admin, just not as request
 //
@@ -232,6 +314,27 @@ exports.create = function(req, res) {
 			} else {
 				setOpportunityAdmin (opportunity, req.user);
 				req.user.save ();
+				Notifications.addNotification ({
+					code: 'not-update-'+opportunity.code,
+					name: 'Update of Opportunity '+opportunity.name,
+					// description: 'Update of Opportunity '+opportunity.name,
+					target: 'Opportunity',
+					event: 'Update'
+				});
+				// Notifications.addNotification ({
+				// 	code: 'not-unpublish-'+opportunity.code,
+				// 	name: 'Suspension of Opportunity '+opportunity.name,
+				// 	// description: 'Update of Opportunity '+opportunity.name,
+				// 	target: 'Opportunity',
+				// 	event: 'unpublish'
+				// });
+				// Notifications.addNotification ({
+				// 	code: 'not-republish-'+opportunity.code,
+				// 	name: 'Re-Posting of Opportunity '+opportunity.name,
+				// 	// description: 'Update of Opportunity '+opportunity.name,
+				// 	target: 'Opportunity',
+				// 	event: 'republish'
+				// });
 				res.json(opportunity);
 			}
 		});
@@ -248,7 +351,7 @@ GITHUB related stuff
 	var github = require('octonode');
 	var config = require('/config/config.js');
 
-	// curl -u "dewolfe001:39c1cffc1008ed43189ecd27448bd903a75778eb" https://api.github.com/user/repos -d '{"name":"'helloGit'"}'
+	// curl -u 'dewolfe001:39c1cffc1008ed43189ecd27448bd903a75778eb' https://api.github.com/user/repos -d '{'name':''helloGit''}'
 
 	var url = 'https://api.github.com/user/repos';
 	var user = config.github.clientID;  // 'dewolfe001';
@@ -294,70 +397,118 @@ exports.read = function (req, res) {
 	incrementViews (req.opportunity._id);
 };
 
+
+var updateSave = function (opportunity) {
+	return new Promise (function (resolve, reject) {
+		opportunity.save (function (err) {
+			if (err) reject (err);
+			else resolve (opportunity);
+		});
+	});
+};
 // -------------------------------------------------------------------------
 //
 // update the document, make sure to apply audit. We don't mess with the
 // code if they change the name as that would mean reworking all the roles
 //
+// CC: remove the doNotNotify confusion
+//
 // -------------------------------------------------------------------------
 exports.update = function (req, res) {
-	if (ensureAdmin (req.opportunity, req.user, res)) {
-		//
-		// doNotNotify is a non persistent flag from the UI. If not explicity
-		// set we take the safer option set it to true.
-		//
-		var doNotNotify = _.isNil(req.body.doNotNotify) ? true : req.body.doNotNotify;
-		//
-		// copy over everything passed in. This will overwrite the
-		// audit fields, but they get updated in the following step
-		//
-		var opportunity = _.assign (req.opportunity, req.body);
 
-		opportunity.wasPublished = opportunity.isPublished;
-		//
-		// set the lastPublished date so we can later determine if the
-		// opportunity have been published at least once before
-		//
-		if (opportunity.isPublished) {
-			opportunity.lastPublished = Date();
-		}
-		//
-		// set the audit fields so we know who did what when
-		//
-		helpers.applyAudit (opportunity, req.user)
-		//
-		// save
-		//
-		opportunity.save(function (err) {
-			if (err) {
-				return res.status(422).send({
-					message: errorHandler.getErrorMessage(err)
-				});
-			} else {
-				if (opportunity.isPublished && !doNotNotify) {
-					var htmlBody = emailBodyTemplateHtml({opportunity: opportunity});
-					var textBody = htmlToText.fromString(htmlBody, { wordwrap: 130 });
-					oppEmailNotifier.notify({
-						from: process.env.MAILER_FROM || '"BC Developers Exchange" <noreply@bcdevexchange.org>',
-						subject: emailSubjectTemplate({opportunity: opportunity}),
-						textBody: textBody,
-						htmlBody: htmlBody
-					})
-					.catch(function(err) {
-						console.log (err);
-					})
-					.then(function() {
-						// res.json(opportunity);
-						res.json (decorate (opportunity, req.user ? req.user.roles : []));
-					});
-				}
-				else {
-					res.json (decorate (opportunity, req.user ? req.user.roles : []));
-				}
-			}
-		});
+	//
+	// if we dont have permission to do this just return as a no-op
+	//
+	if (!ensureAdmin (req.opportunity, req.user, res)) {
+		console.log ('NOT ALLOWED');
+		return res.json (decorate (req.opportunity, req.user ? req.user.roles : []));
 	}
+	//
+	// copy over everything passed in. This will overwrite the
+	// audit fields, but they get updated in the following step
+	//
+	var opportunity = _.assign (req.opportunity, req.body);
+	//
+	// set the audit fields so we know who did what when
+	//
+	helpers.applyAudit (opportunity, req.user);
+	console.log ('got here with opp', req.opportunity);
+
+	//
+	// save
+	//
+	updateSave (opportunity)
+	.then (function () {
+		var data = setNotificationData (opportunity);
+		// console.log ('++ update notification data', data);
+		if (opportunity.isPublished) {
+			Notifications.notifyObject ('not-updateany-opportunity', data);
+			Notifications.notifyObject ('not-update-'+opportunity.code, data);
+		}
+		res.json (decorate (opportunity, req.user ? req.user.roles : []));
+	})
+	.catch (function (err) {
+		return res.status(422).send({
+			message: errorHandler.getErrorMessage(err)
+		});
+	});
 };
+// -------------------------------------------------------------------------
+//
+// publish or unpublish
+//
+// -------------------------------------------------------------------------
+var pub = function (req, res, isToBePublished) {
+	var opportunity = req.opportunity;
+	//
+	// if no change or we dont have permission to do this just return as a no-op
+	//
+	if (req.opportunity.isPublished === isToBePublished || !ensureAdmin (req.opportunity, req.user, res)) {
+		console.log ('NOT ALLOWED');
+		return res.json (decorate (req.opportunity, req.user ? req.user.roles : []));
+	}
+	//
+	// determine first time or not
+	//
+	var firstTime = (isToBePublished && !opportunity.wasPublished);
+	//
+	// set the correct new state and set the publish date if being published
+	//
+	opportunity.isPublished = isToBePublished;
+	if (isToBePublished) {
+		opportunity.lastPublished = new Date ();
+		opportunity.wasPublished = true;
+	}
+	// console.log ('opportunity.ispublished', opportunity.isPublished);
+	// console.log ('firstTime', firstTime);
+	// console.log ('isToBePublished', isToBePublished);
+
+	//
+	// save and notify
+	//
+	updateSave (opportunity)
+	.then (function () {
+		var data = setNotificationData (opportunity);
+		// console.log ('++ publish notification data', data);
+		if (firstTime)   Notifications.notifyObject ('not-add-opportunity'             , data);
+		else if (isToBePublished) {
+			Notifications.notifyObject ('not-update-'+opportunity.code, data);
+			Notifications.notifyObject ('not-updateany-opportunity', data);
+		}
+		// if (!isToBePublished) Notifications.notifyObject ('not-unpublish-'+opportunity.code , data);
+		// else if (firstTime)   Notifications.notifyObject ('not-add-opportunity'             , data);
+		// else                  Notifications.notifyObject ('not-republish-'+opportunity.code , data);
+		res.json (decorate (opportunity, req.user ? req.user.roles : []));
+	})
+	.catch (function (err) {
+		return res.status(422).send({
+			message: errorHandler.getErrorMessage(err)
+		});
+	});
+}
+exports.publish = function (req, res) { return pub (req, res, true); }
+exports.unpublish = function (req, res) { return pub (req, res, false); }
+
 
 // -------------------------------------------------------------------------
 //
