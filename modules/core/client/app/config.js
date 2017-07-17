@@ -16,7 +16,7 @@
     'ngFileUpload',
     'ngImgCrop',
     'ui-notification',
-    'ncy-angular-breadcrumb'
+    'ncy-angular-breadcrumb',
     'pascalprecht.translate'
     ],
     registerModule: registerModule
