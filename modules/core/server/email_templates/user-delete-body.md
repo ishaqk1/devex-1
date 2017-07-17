@@ -1,7 +1,7 @@
 {{#markdown this}}
 Good day!
 
-Just wanted to alert you to a new {{ opportunity.earn_format_money }} Code With Us opportunity on the BCDevExchange. It is open for proposals until {{ opportunity.deadline_format_date }}:
+Just wanted to alert you to a new {{ opportunity.earn_format_money }} Code With Us opportunity on the GCDevExchange. It is open for proposals until {{ opportunity.deadline_format_date }}:
 
 [{{ opportunity.name }}]({{ opportunity.link }})
 
@@ -10,7 +10,6 @@ You are receiving this email because you've either signed up on our app, or we h
 Thanks for your interest!
 
 -----------------------------
-BC Developers' Exchange and DevOps
-Ministry of Technology, Innovation and Citizens' Services
-[BCDevExchange.org](http://bcdevexchange.org)
+GC Developers' Exchange and DevOps
+[beta.gcdevexchange.org](https://beta.gcdevexchange.org)
 {{/markdown}}
