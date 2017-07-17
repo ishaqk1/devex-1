@@ -44,7 +44,7 @@
       var currentLang = '';
       var otherLang = '';
 
-      if( $state.params.lang !== undefined ){
+      if ($state.params.lang !== undefined) {
         currentLang = $state.params.lang;
         otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
       } else {

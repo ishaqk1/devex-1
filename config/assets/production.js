@@ -29,10 +29,15 @@ module.exports = {
         'public/lib/ng-file-upload/ng-file-upload.min.js',
         'public/lib/ng-img-crop/compile/minified/ng-img-crop.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/angular-translate/angular-translate.min.js',
         // endbower
       ]
     },
-    css: 'public/dist/application*.min.css',
+    css: [
+        'public/dist/application*.min.css',
+        'public/dist/theme.min.css',
+        'modules/core/client/css/style.css'
+    ],
     js: 'public/dist/application*.min.js'
   }
 };
