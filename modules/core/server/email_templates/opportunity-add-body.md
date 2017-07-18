@@ -12,7 +12,7 @@ We've just posted a new *Code With Us* opportunity:
 - Required Skills: **{{ data.skills }}**
 - Closes on: **{{ data.deadline_format_date }}**
 
-### [See the details]({{ data.domain }}/opportunities/{{ data.code }})
+### [See the details]({{ data.domain }}/en/opportunities/{{ data.code }})
 
 
 [Follow this opportunity]({{ data.domain }}/api/subscribe/{{ data.subscriptionId }}/{{ data.updatenotification }}) to get alerts.
