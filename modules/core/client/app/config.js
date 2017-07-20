@@ -7,17 +7,17 @@
     applicationEnvironment: window.env,
     applicationModuleName: applicationModuleName,
     applicationModuleVendorDependencies: [
-    'ngResource',
-    'ngAnimate',
-    'ngMessages',
-    'ui.router',
-    'ui.bootstrap',
-    'ui.tinymce',
-    'ngFileUpload',
-    'ngImgCrop',
-    'ui-notification',
-    'ncy-angular-breadcrumb',
-    'pascalprecht.translate'
+      'ngResource',
+      'ngAnimate',
+      'ngMessages',
+      'ui.router',
+      'ui.bootstrap',
+      'ui.tinymce',
+      'ngFileUpload',
+      'ngImgCrop',
+      'ui-notification',
+      'ncy-angular-breadcrumb',
+      'pascalprecht.translate'
     ],
     registerModule: registerModule
   };
@@ -32,12 +32,6 @@
     // Add the module to the AngularJS configuration file
     angular.module(applicationModuleName).requires.push(moduleName);
   }
-
-
-
-
-
-
 
   // Angular-ui-notification configuration
   angular.module('ui-notification').config(function(NotificationProvider) {

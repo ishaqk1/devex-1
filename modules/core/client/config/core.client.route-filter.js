@@ -8,8 +8,20 @@
 	routeFilter.$inject = ['$rootScope', '$state', 'Authentication', '$translate', '$location'];
 
 	function routeFilter($rootScope, $state, Authentication, $translate, $location) {
-	    $rootScope.$on('$stateChangeStart', stateChangeStart);
-	    $rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
+		$rootScope.$on('$stateChangeStart', stateChangeStart);
+		$rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
+		$rootScope.$on('$translateChangeSuccess', function(){
+			$rootScope.currentLang = $translate.use();
+		});
+
+		var currentLang = ($location.path().indexOf('/fr') > -1) ? 'fr' : 'en';
+		var otherLang = (currentLang === 'fr') ? 'en' : 'fr';
+
+		$rootScope.currentLang = currentLang;
+		$rootScope.otherLang = otherLang;
+		$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
+		$translate.use(currentLang);
+		document.documentElement.lang = currentLang;
 
 		function stateChangeStart(event, toState, toParams, fromState, fromParams) {
 			// Check authentication before changing state
@@ -62,14 +74,11 @@
 				otherLang = 'fr';
 			}
 
-			$translate.use(currentLang);
-			document.documentElement.lang = currentLang;
-
-			// set root vars
 			$rootScope.currentLang = currentLang;
 			$rootScope.otherLang = otherLang;
-
 			$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
+			$translate.use(currentLang);
+			document.documentElement.lang = currentLang;
     	}
 
 	    // Store previous state

@@ -11,11 +11,11 @@ module.exports = function (app) {
   app.route('/:url(api|modules|lib)/*').get(core.renderNotFound);
 
   app.route ('/home').get(function (req, res) {
-	res.set ('location', 'https://bcdevexchange.org');
+	res.set ('location', 'https://beta.gcdevexchange.org');
 	res.status(301).send();
   });
   app.route ('/developers').get(function (req, res) {
-	res.set ('location', 'https://bcdevexchange.org/codewithus');
+	res.set ('location', 'https://beta.gcdevexchange.org/codewithus');
 	res.status(301).send();
   });
 
