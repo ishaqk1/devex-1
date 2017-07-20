@@ -69,8 +69,7 @@
 			$rootScope.currentLang = currentLang;
 			$rootScope.otherLang = otherLang;
 
-			var found = ($location.path()).indexOf('/' + currentLang) > -1;
-			$rootScope.otherLangURL = (found ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + '/' + otherLang);
+			$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
     	}
 
 	    // Store previous state
