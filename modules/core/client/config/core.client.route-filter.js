@@ -68,7 +68,9 @@
 			// set root vars
 			$rootScope.currentLang = currentLang;
 			$rootScope.otherLang = otherLang;
-			$rootScope.otherLangURL = $location.path().replace('/' + currentLang, '/' + otherLang);
+
+			var found = ($location.path()).indexOf('/' + currentLang) > -1;
+			$rootScope.otherLangURL = (found ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + '/' + otherLang);
     	}
 
 	    // Store previous state
