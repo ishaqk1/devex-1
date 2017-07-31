@@ -55,7 +55,7 @@
 					vm.programTitle = null;
 					vm.projectId    = null;
 					vm.projectTitle = null;
-					vm.title         = 'All Opportunities';
+					vm.title         = '{{ "OPP_ALL" | translate }}';
 					vm.userCanAdd    = (vm.isAdmin || vm.isGov);
 					vm.opportunities = OpportunitiesService.query ();
 					vm.columnCount   = 1;

@@ -90,7 +90,7 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .themenav .scroll.secondary {
-  background-color: #1d344b;
+  background-color: #335075;
   color: #fff;
   text-align: center;
 }
@@ -107,9 +107,6 @@
 }
 .themenav .scroll.secondary a {
   color: #fff;
-}
-.themenav .scroll.secondary.affix {
-  background-color: #333;
 }
 .themenav .scroll.secondary li {
   display: inline-block;
