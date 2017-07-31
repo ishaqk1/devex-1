@@ -5,15 +5,17 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$state', '$location', 'Authentication', 'menuService'];
+  HeaderController.$inject = ['$scope', '$state', '$translate', '$location', 'Authentication', 'menuService'];
 
-  function HeaderController($scope, $state, $location, Authentication, menuService) {
+  function HeaderController($scope, $state, $translate, $location, Authentication, menuService) {
     var vm = this;
 
     vm.accountMenu = menuService.getMenu('account').items[0];
     vm.authentication = Authentication;
     vm.isCollapsed = false;
     vm.menu = menuService.getMenu('topbar');
+    vm.isEnglish = ($translate.use() == 'en');
+    vm.isFrench = ($translate.use() == 'fr');
 
     $scope.$on('$stateChangeSuccess', stateChangeSuccess);
     $scope.isHomePage = function() {
