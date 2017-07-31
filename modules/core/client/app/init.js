@@ -92,7 +92,8 @@
       PROJ_ALL: 'All projects',
       OPP_TITLE: 'Opportunities List',
       OPP_ALL: 'All opportunities',
-      OPP_CTA: 'Want to get notified when new opportunities are posted?'
+      OPP_CTA: 'Want to get notified when new opportunities are posted?',
+      OPP_FOR: 'Opportunities for ',
     })
     .translations('fr', {
       TEAMS: 'Équipes',
@@ -159,7 +160,8 @@
       PROJ_ALL: 'Toutes les projets',
       OPP_TITLE: 'Liste des possibilités',
       OPP_ALL: 'Toutes les possibilités',
-      OPP_CTA: 'Voulez-vous recevoir un avis quand de nouvelles possibilités sont affichées?'
+      OPP_CTA: 'Voulez-vous recevoir un avis quand de nouvelles possibilités sont affichées?',
+      OPP_FOR: 'Possibilités pour ',
     })
     .preferredLanguage('en');
   }
