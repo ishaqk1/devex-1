@@ -17,7 +17,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/opportunities/client/views/list.opportunities.directive.html',
-			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $translate) {
+			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $filter) {
 				var rightNow = new Date ();
 				var vm     = this;
 				var isUser = Authentication.user;
@@ -55,7 +55,7 @@
 					vm.programTitle = null;
 					vm.projectId    = null;
 					vm.projectTitle = null;
-					vm.title         = '{{ "OPP_ALL" | translate }}';
+					vm.title         = $filter('translate')('OPP_ALL');
 					vm.userCanAdd    = (vm.isAdmin || vm.isGov);
 					vm.opportunities = OpportunitiesService.query ();
 					vm.columnCount   = 1;
