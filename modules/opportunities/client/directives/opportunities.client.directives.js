@@ -17,7 +17,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/opportunities/client/views/list.opportunities.directive.html',
-			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask) {
+			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $translate) {
 				var rightNow = new Date ();
 				var vm     = this;
 				var isUser = Authentication.user;

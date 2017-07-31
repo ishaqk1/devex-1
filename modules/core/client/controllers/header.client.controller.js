@@ -5,9 +5,9 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$state', '$translate', '$location', 'Authentication', 'menuService'];
+  HeaderController.$inject = ['$scope', '$state', '$location', 'Authentication', 'menuService'];
 
-  function HeaderController($scope, $state, $translate, $location, Authentication, menuService) {
+  function HeaderController($scope, $state, $location, Authentication, menuService) {
     var vm = this;
 
     vm.accountMenu = menuService.getMenu('account').items[0];
