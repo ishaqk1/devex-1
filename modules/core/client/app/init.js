@@ -94,6 +94,21 @@
       OPP_ALL: 'All opportunities',
       OPP_CTA: 'Want to get notified when new opportunities are posted?',
       OPP_FOR: 'Opportunities for ',
+      OPP_GET_NOTIFIED: 'Want to get notified<span class="hidden-sm hidden-xs"> when new opportunities are posted</span>? &nbsp; <a href ui-sref="authentication.signin"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a> or &nbsp;<a href ui-sref="authentication.gov"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Sign Up</a>',
+      SIGNUP_P1: 'Join a community of developers, entrepreneurs, and public service innovators who are making public services better.',
+      SIGNUP_GITHUB: 'Sign in with your GitHub account',
+      SIGNUP_P2: 'Don\'t have one yet? It only takes a minute.',
+      SIGNUP_PUBLIC_SECTOR: '<i class="fa fa-university"></i> &nbsp; Public Sector Employees',
+      SIGNUP_P3: 'Raise your profile with developers and build a community around your open source project. <br>Hire talent fast.',
+      SIGNUP_DEVELOPERS: 'Developers',
+      SIGNUP_P4: 'Get notified about new opportunities and events in your area.',
+      SIGNIN_HEADER: 'Or with your account',
+      SIGNIN_EMAIL: 'Username or Email',
+      SIGNIN_EMAIL_REQUIRED: 'Username or Email is required',
+      SIGNIN_PASSWORD: 'Password',
+      SIGNIN_PASSWORD_REQUIRED: 'Password is required',
+      SIGNIN_OR: '&nbsp; or&nbsp;',
+      SIGNIN_FORGOT_PASSWORD: 'Forgot your password?'
     })
     .translations('fr', {
       TEAMS: 'Équipes',
@@ -162,6 +177,21 @@
       OPP_ALL: 'Toutes les possibilités',
       OPP_CTA: 'Voulez-vous recevoir un avis quand de nouvelles possibilités sont affichées?',
       OPP_FOR: 'Possibilités pour ',
+      OPP_GET_NOTIFIED: 'Aimeriez-vous recevoir des mises à jour<span class="hidden-sm hidden-xs"> lorsque de nouvelles opportunités sont affichées</span>? &nbsp; <a href ui-sref="authentication.signin"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a> or &nbsp;<a href ui-sref="authentication.gov"><i class="fa fa-user-circle-o" aria-hidden="true"></i> S\'inscrire</a>',
+      SIGNUP_P1: 'Rejoignez une communauté de développeurs, entrepreneurs et innovateurs de services publics qui améliorent les services publics.',
+      SIGNUP_GITHUB: 'Connectez-vous avec votre compte GitHub',
+      SIGNUP_P2: 'Vous n\'en avez pas encore? Ca prend juste une minute.',
+      SIGNUP_PUBLIC_SECTOR: '<i class="fa fa-university"></i> &nbsp; Employés du secteur public',
+      SIGNUP_P3: 'Augmentez votre profil avec les développeurs et créez une communauté autour de votre projet open source. <br>Embaucher des talents rapidement.',
+      SIGNUP_DEVELOPERS: 'Développeurs',
+      SIGNUP_P4: 'Informez-vous des nouvelles opportunités et événements dans votre région.',
+      SIGNIN_HEADER: 'Ou avec votre compte',
+      SIGNIN_EMAIL: 'Nom d\'utilisateur ou courriel',
+      SIGNIN_EMAIL_REQUIRED: 'Nom d\'utilisateur ou courriel requis',
+      SIGNIN_PASSWORD: 'Mot de passe',
+      SIGNIN_PASSWORD_REQUIRED: 'Mot de passe requis',
+      SIGNIN_OR: '&nbsp; ou&nbsp;',
+      SIGNIN_FORGOT_PASSWORD: 'Mot de passe oublié?'
     })
     .preferredLanguage('en');
   }
