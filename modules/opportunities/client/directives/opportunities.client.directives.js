@@ -17,7 +17,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/opportunities/client/views/list.opportunities.directive.html',
-			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask) {
+			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $filter) {
 				var rightNow = new Date ();
 				var vm     = this;
 				var isUser = Authentication.user;
@@ -33,7 +33,7 @@
 					vm.programTitle = vm.program.title;
 					vm.projectId    = vm.project._id;
 					vm.projectTitle = vm.project.name;
-					vm.title         = 'Opportunities for '+vm.projectTitle;
+					vm.title         = $filter('translate')('OPP_FOR') + vm.projectTitle;
 					vm.userCanAdd    = vm.project.userIs.admin || vm.isAdmin;
 					vm.opportunities = OpportunitiesService.forProject ({
 						projectId: vm.projectId
@@ -44,7 +44,7 @@
 					vm.programTitle = vm.program.title;
 					vm.projectId    = null;
 					vm.projectTitle = null;
-					vm.title         = 'Opportunities for '+vm.programTitle;
+					vm.title         = $filter('translate')('OPP_FOR') + vm.programTitle;
 					vm.userCanAdd    = (vm.isAdmin || vm.isGov);
 					vm.opportunities = OpportunitiesService.forProgram ({
 						programId: vm.programId
@@ -55,7 +55,7 @@
 					vm.programTitle = null;
 					vm.projectId    = null;
 					vm.projectTitle = null;
-					vm.title         = 'All Opportunities';
+					vm.title         = $filter('translate')('OPP_ALL');
 					vm.userCanAdd    = (vm.isAdmin || vm.isGov);
 					vm.opportunities = OpportunitiesService.query ();
 					vm.columnCount   = 1;

@@ -250,9 +250,9 @@ section.signup {
   width: 100%;
   min-height: auto;
   overflow-y: hidden;
-  background-color: #0a4d8d;
+  background-color: #335075;
   background-size: cover;
-  margin-top: -20px;
+  /*margin-top: -20px;*/
   padding-top: 20px;
   padding-bottom: 40px;
   color: #fff;

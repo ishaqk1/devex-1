@@ -20,6 +20,12 @@
         var path = $location.path();
         return (! path) || path === '/' || path === '/en' || path === '/fr';
     };
+    $scope.isEnglish = function() {
+        return ($translate.use() === 'en');
+    };
+    $scope.isFrench = function() {
+        return ($translate.use() === 'fr');
+    };
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',
             active = $state.current.name || '',

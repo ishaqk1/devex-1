@@ -1,6 +1,6 @@
-# BCDevExchange Application
+# GCDevExchange Application
 
-The [BCDevExchange](https://bcdevexchange.org) is a platform for providing new ways for British Columbia's public sector to connect with developers and other IT professionals.
+The [GCDevExchange](https://beta.gcdevexchange.org) is a platform for providing new ways for British Columbia's public sector to connect with developers and other IT professionals.
 
 The latest version is a mean.js application running in OpenShift using Docker.
 
@@ -8,15 +8,15 @@ The latest version is a mean.js application running in OpenShift using Docker.
 
 ## Table of Contents
 
-* [Contributing](https://github.com/BCDevExchange/devex#contribute)
-* [Development](https://github.com/BCDevExchange/devex#development)
-* [Copyright and License](https://github.com/BCDevExchange/devex#copyright-and-license)
+* [Contributing](https://github.com/canada-ca/devex#contribute)
+* [Development](https://github.com/canada-ca/devex#development)
+* [Copyright and License](https://canada-ca/BCDevExchange/devex#copyright-and-license)
 
 ***
 
 ## Contribute
 
-We are open to pull requests. Please read our [contributing guidelines](https://github.com/BCDevExchange/devex/blob/master/CONTRIBUTING.md). 
+We are open to pull requests. Please read our [contributing guidelines](https://github.com/canada-ca/devex/blob/master/CONTRIBUTING.md). 
 
 ## Development
 
