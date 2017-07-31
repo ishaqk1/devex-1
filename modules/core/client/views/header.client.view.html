@@ -10,10 +10,10 @@
 <header role="banner" ng-controller="HeaderController as vm">
   <div id="wb-bnr" class="container">
     <div class="row">
-      <div class="brand col-xs-6" ng-if="vm.isEnglish">
+      <div class="brand col-xs-6" ng-if="isEnglish()">
         <object type="image/svg+xml" tabindex="-1" data="/modules/core/client/img/wet/sig-blk-en.svg"></object><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
       </div>
-      <div class="brand col-xs-6" ng-if="vm.isFrench">
+      <div class="brand col-xs-6" ng-if="isFrench()">
         <object type="image/svg+xml" tabindex="-1" data="/modules/core/client/img/wet/sig-blk-fr.svg"></object><span class="wb-inv"> Gouvernement du Canada / <span lang="en">Government of Canada</span></span>
       </div>
       <div class="brand col-xs-6 text-right">

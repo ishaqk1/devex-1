@@ -14,13 +14,17 @@
     vm.authentication = Authentication;
     vm.isCollapsed = false;
     vm.menu = menuService.getMenu('topbar');
-    vm.isEnglish = ($translate.use() == 'en');
-    vm.isFrench = ($translate.use() == 'fr');
 
     $scope.$on('$stateChangeSuccess', stateChangeSuccess);
     $scope.isHomePage = function() {
         var path = $location.path();
         return (! path) || path === '/' || path === '/en' || path === '/fr';
+    };
+    $scope.isEnglish = function() {
+        return ($translate.use() === 'en');
+    };
+    $scope.isFrench = function() {
+        return ($translate.use() === 'fr');
     };
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',
