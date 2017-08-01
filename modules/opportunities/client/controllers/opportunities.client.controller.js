@@ -53,7 +53,7 @@
 		vm.canApply                = isUser && !isAdmin && !isGov && !isMemberOrWaiting;
 		vm.canEdit                 = isAdmin || opportunity.userIs.admin;
 		var rightNow               = new Date ();
-		vm.closing = 'CLOSED';
+		vm.closing = $filter('translate')('CLOSED');
 		var d                      = vm.opportunity.deadline - rightNow;
 		if (d > 0) {
 			var dd = Math.floor(d / 86400000); // days

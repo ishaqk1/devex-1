@@ -121,7 +121,7 @@
 					});
 				};
 				vm.closing = function (opportunity) {
-					var ret = 'CLOSED';
+					var ret = $filter('translate')('CLOSED');
 					var d = (new Date(opportunity.deadline)) - rightNow;
 					if (d > 0) {
 						var dd = Math.floor(d / 86400000); // days
