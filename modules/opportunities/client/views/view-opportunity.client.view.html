@@ -93,26 +93,26 @@
 
 				<div class="col-sm-7">
 					<dl class="dl-horizontal">
-					<dt>Posted by:</dt>
+					<dt translate="OPP_POSTED_BY">Posted by:</dt>
 					<dd>
 						<i class="fa fa-user-circle-o"></i>
 						<span ng-if="vm.opportunity.createdBy" ng-bind="vm.opportunity.createdBy.displayName"></span>
 						<span ng-if="!vm.opportunity.createdBy">Deleted User</span>
 					</dd>
-					<dt>Program:</dt>
+					<dt translate="OPP_TEAM">Team:</dt>
 					<dd>
 						<a ng-if="vm.opportunity.program" ui-sref="programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title}}</a>
 						<span ng-if="!vm.opportunity.program" class="text-muted">No program</span>
 					</dd>
-					<dt>Project:</dt>
+					<dt translate="OPP_PROJECT">Project:</dt>
 					<dd>
 						<a ng-if="vm.opportunity.project" ui-sref="projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name}}</a>
 						<span ng-if="!vm.opportunity.project" class="text-muted">No project</span>
 					</dd>
 					<!-- github link -->
-					<dt>Code:</dt>
+					<dt translate="OPP_CODE">Code:</dt>
 					<dd>
-					<a ng-if="vm.opportunity.github && vm.opportunity.github.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> View Issue on Github</a>
+					<a ng-if="vm.opportunity.github && vm.opportunity.github.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> <span translate="OPP_GITHUB_ISSUE">View Issue on GitHub</span></a>
 					<!--<dt>Assigned to:</dt>
 					<dd>
 						<span ng-if="vm.opportunity.assignedTo" ng-bind="vm.opportunity.assignedTo.displayName"></span>

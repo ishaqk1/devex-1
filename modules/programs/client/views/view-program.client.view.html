@@ -96,10 +96,10 @@
 	-->
 
 	<div class="container">
-		<core-member-list model="vm.program" idstring="vm.idString" service="vm.ProgramsService" title="Program Members"></core-member-list>
+		<core-member-list model="vm.program" idstring="vm.idString" service="vm.ProgramsService" title="{{ 'TEAM_MEMBERS' | translate }}"></core-member-list>
 		<core-member-requests model="vm.program" idstring="vm.idString" service="vm.ProgramsService" ng-if="vm.canEdit"></core-member-requests>
-		<project-list program="vm.program" title="Projects" context="program"></project-list>
-		<opportunity-list program="vm.program" context="program" title="Program Opportunities"></opportunity-list>
+		<project-list program="vm.program" title="{{ 'TEAM_PROJECTS' | translate }}" context="program"></project-list>
+		<opportunity-list program="vm.program" context="program" title="{{ 'TEAM_OPPORTUNITIES' | translate }}"></opportunity-list>
 	</div>
 
 <div class="container">
