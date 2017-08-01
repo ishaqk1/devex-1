@@ -144,14 +144,6 @@
           pageTitle: 'Code With Us'
         }
       })
-      .state('app.about', {
-        url: '/about',
-        templateUrl: '/modules/core/client/views/about.view.html',
-        data: {
-          ignoreState: true,
-          pageTitle: 'About Us'
-        }
-      })
       .state('app.copyright', {
         url: '/copyright',
         templateUrl: '/modules/core/client/views/copyright.client.view.html',
