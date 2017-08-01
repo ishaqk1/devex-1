@@ -5,7 +5,7 @@
   </div>
   <div class="col-sm-5 col-form-buttons text-right">
     <button ng-if="vm.userCanAdd" class="btn" ng-class="{'btn-default': !vm.project && !vm.program, 'btn-link': vm.project || vm.program}" ui-sref="opportunityadmin.create({programId:vm.programId, projectId:vm.projectId, programTitle:vm.programTitle, projectTitle:vm.projectTitle, context:vm.context})" title="New">
-    <i class="glyphicon glyphicon-plus"></i> Post an Opportunity
+    <i class="glyphicon glyphicon-plus"></i> <span translate="OPP_NEW">Post an Opportunity</span>
     </button>
   </div>
 </div>
@@ -56,9 +56,9 @@
           <h4><i class="fa fa-map-marker"></i>&nbsp;{{opportunity.location}}</h4>
         </div>
         <div class="col-xs-12 col-sm-5" style="padding: 0px; margin: 0px;">
-          <h4 ng-if="opportunity.onsite == 'offsite'"><i class="fa fa-user">&nbsp;</i><i class="fa fa-cloud">&nbsp;</i>In-person work NOT required &nbsp; &nbsp;</h4>
-          <h4 ng-if="opportunity.onsite == 'onsite'" ><i class="fa fa-user">&nbsp;</i><i class="fa fa-building">&nbsp;</i>In-person work required &nbsp; &nbsp;</h4>
-          <h4 ng-if="opportunity.onsite == 'mixed'"  ><i class="fa fa-user"></i>&nbsp;<i class="fa fa-cloud">&nbsp;</i><i class="fa fa-building">&nbsp;</i>Some in-person work required</h4>
+          <h4 ng-if="opportunity.onsite == 'offsite'"><i class="fa fa-user">&nbsp;</i><i class="fa fa-cloud">&nbsp;</i><span translate="IN_PERSON_NO">In-person work NOT required</span> &nbsp; &nbsp;</h4>
+          <h4 ng-if="opportunity.onsite == 'onsite'" ><i class="fa fa-user">&nbsp;</i><i class="fa fa-building">&nbsp;</i><span translate="IN_PERSON_YES">In-person work required</span> &nbsp; &nbsp;</h4>
+          <h4 ng-if="opportunity.onsite == 'mixed'"  ><i class="fa fa-user"></i>&nbsp;<i class="fa fa-cloud">&nbsp;</i><i class="fa fa-building">&nbsp;</i><span translate="IN_PERSON_SOME">Some in-person work required</span></h4>
         </div>
 
         <div class="label-list" style="padding-top: 4px; padding-bottom: 10px;">
