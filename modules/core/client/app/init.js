@@ -124,9 +124,7 @@
       OPP_GITHUB_LINK: 'Visit the GitHub issue for this opportunity and post a comment.',
       OPP_CREATED_ON: 'Created on',
       OPP_CREATED_BY: 'by',
-      OPP_UPDATED_ON: 'Updated on',
-      OPP_CREATED_ON: '',
-      OPP_CREATED_ON: ''
+      OPP_UPDATED_ON: 'Updated on'
     })
     .translations('fr', {
       TEAMS: 'Équipes',
@@ -225,9 +223,7 @@
       OPP_GITHUB_LINK: 'Visitez la publication dans GitHub pour voir cette possibilité et publier un commentaire.',
       OPP_CREATED_ON: 'Créé le',
       OPP_BY: 'par',
-      OPP_UPDATED_ON: 'Mis à jour le',
-      OPP_CREATED_ON: '',
-      OPP_CREATED_ON: ''
+      OPP_UPDATED_ON: 'Mis à jour le'
     })
     .preferredLanguage('en');
   }
