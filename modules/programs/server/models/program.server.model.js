@@ -17,7 +17,7 @@ var ProgramSchema = new Schema({
 	description : {type: String, default: ''},
 	owner       : {type: String, default: ''},
 	website     : {type: String, default: ''},
-	logo        : {type: String, default: 'modules/core/client/img/logo/avatar-2.png'},
+	logo        : {type: String, default: 'modules/core/client/img/logo/canada.png'},
 	tags        : [String],
 	isPublished : {type: Boolean, default: false},
 	created     : {type: Date, default: null},
