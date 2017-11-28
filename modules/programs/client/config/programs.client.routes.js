@@ -32,10 +32,10 @@
 			url: '',
 			templateUrl: '/modules/programs/client/views/list-programs.client.view.html',
 			data: {
-				pageTitle: '{{ "PROG_TITLE" | translate }}'
+				pageTitle: '{{ "TEAMS_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROG_ALL" | translate }}'
+				label: '{{ "TEAMS_TITLE" | translate }}'
 			},
 			resolve: {
 				programs: function ($stateParams, ProgramsService) {

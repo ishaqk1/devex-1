@@ -35,7 +35,7 @@
 				pageTitle: '{{ "OPP_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_ALL" | translate }}'
+				label: '{{ "OPP_TITLE" | translate }}'
 			},
 			resolve: {
 				opportunities: function ($stateParams, OpportunitiesService) {

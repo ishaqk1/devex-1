@@ -55,7 +55,7 @@
 					vm.programTitle = null;
 					vm.projectId    = null;
 					vm.projectTitle = null;
-					vm.title         = $filter('translate')('OPP_ALL');
+					vm.title         = $filter('translate')('OPP_TITLE');
 					vm.userCanAdd    = (vm.isAdmin || vm.isGov);
 					vm.opportunities = OpportunitiesService.query ();
 					vm.columnCount   = 1;

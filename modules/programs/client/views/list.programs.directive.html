@@ -3,13 +3,13 @@
     <h2 class="list-page-hide">Government Partners</h2>
   </div>
   <div class="col-sm-5 col-form-buttons text-right">
-    <button ng-if="vm.userCanAdd" class="btn btn-default " ui-sref="programadmin.create()" title="New">
+    <button ng-if="vm.userCanAdd" class="btn btn-default" ui-sref="programadmin.create()" title="New">
       <i class="glyphicon glyphicon-plus"></i> <span translate="TEAM_NEW">New Team</span>
     </button>
   </div>
 </div>
 
-<h1 property="name" id="wb-cont" translate="TEAMS_TITLE">All Teams</h1>
+<h1 property="name" id="wb-cont" translate="TEAMS_TITLE">Teams List</h1>
 <div>
     <p translate="TEAMS_P1">The following table contains a list of all programs participating in GC DevEx beta. Filter the list by typing the name of a team or organization or sort a column using the arrows.</p>
     <p translate="TEAMS_P2">This is not a full list of all GC programs. A full list of all GC services or information is available on <a href="https://www.canada.ca/en/services.html">canada.ca</a>.</p>
@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody id="tbodyMain">
-        <tr role="row" ng-repeat="program in vm.programs">
+        <tr role="row" ng-class="{'card-greyed': !program.isPublished}" ng-repeat="program in vm.programs">
             <td><a ui-sref="programs.view({ programId: program.code })" ng-bind="program.title"></a></td>
             <td><p ng-bind="program.short"></p></td>
             <td><p ng-bind="program.department"></p></td>

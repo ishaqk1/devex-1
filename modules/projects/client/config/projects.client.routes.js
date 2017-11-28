@@ -35,7 +35,7 @@
 				pageTitle: '{{ "PROJ_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROJ_ALL" | translate }}'
+				label: '{{ "PROJ_TITLE" | translate }}'
 			},
 			resolve: {
 				projects: function ($stateParams, ProjectsService) {

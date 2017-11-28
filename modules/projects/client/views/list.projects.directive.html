@@ -3,9 +3,9 @@
   <div class="col-sm-7">
   <h3 ng-bind="vm.title" class="list-page-hide"></h3>
   </div>
-  <div class="col-sm-12 col-form-buttons text-left">
+  <div class="col-sm-5 col-form-buttons text-right">
   <button ng-if="vm.userCanAdd" class="btn btn-default" ng-class="{'btn-default': !vm.program, 'btn-link': vm.program}" ui-sref="projectadmin.create({programId:vm.programId, programTitle:vm.programTitle, context:vm.context})" title="New">
-    <i class="glyphicon glyphicon-plus"></i> <span translate="PROJECT_NEW">New Project</span>
+    <i class="glyphicon glyphicon-plus"></i> <span translate="PROJECT_NEW">List a new project</span>
   </button>
   </div>
 </div>
@@ -13,7 +13,7 @@
 <div class="row">
 <div ng-class="'col-md-'+(12 / vm.columnCount)" ng-repeat="column in vm.projects | columnRanges:vm.columnCount">
 
-<h1 property="name" id="wb-cont" translate="PROJ_TITLE">All Projects</h1>
+<h1 property="name" id="wb-cont" translate="PROJ_TITLE">Projects List</h1>
 
 <table class="wb-tables table table-striped table-hover">
     <thead>
