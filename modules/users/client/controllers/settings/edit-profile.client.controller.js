@@ -5,9 +5,9 @@
     .module('users')
     .controller('EditProfileController', EditProfileController);
 
-  EditProfileController.$inject = ['$scope', '$http', '$location', '$state', 'modalService', 'UsersService', 'Authentication', 'Notification', 'subscriptions'];
+  EditProfileController.$inject = ['$scope', '$http', '$location', '$state', 'modalService', 'UsersService', 'Authentication', 'Notification', 'subscriptions', 'filter'];
 
-  function EditProfileController($scope, $http, $location, $state, modalService, UsersService, Authentication, Notification, subscriptions) {
+  function EditProfileController($scope, $http, $location, $state, modalService, UsersService, Authentication, Notification, subscriptions, $filter) {
     var vm               = this;
     var isUser           = Authentication.user;
     var wasGov           = isUser && !!~Authentication.user.roles.indexOf ('gov');
@@ -99,18 +99,18 @@
         vm.user.isDeveloper = false;
       }
       var govRequest = vm.user.addRequest;
-      var successMessage = '<h4>Edit profile successful</h4>';
+      var successMessage = '<h4>' + $filter('translate')('EDIT_PROFILE_SUCCESS') + '</h4>';
       if (govRequest) {
-        successMessage += '<p>You have requested government user access, the request is now posted for review. You will receive the goverment access and be able to access gov user functionality as soon as the admin verifies you as government user.</p>';
+        successMessage += '<p>' + $filter('translate')('EDIT_PROFILE_SUCCESS_TEXT') + '</p>';
       }
       if (vm.user.notifyOpportunities) {
-        successMessage += '<p>We will send you notifications of new Code With Us Opportunities.</p>';
+        successMessage += '<p>' + $filter('translate')('EDIT_PROFILE_OPPORTUNITIES') + '</p>';
       }
       if (vm.user.notifyEvents) {
-        successMessage += '<p>We will notify you of upcoming events.</p>';
+        successMessage += '<p>' + $filter('translate')('EDIT_PROFILE_EVENTS') + '</p>';
       }
       if (vm.user.notifyBlogs) {
-        successMessage += '<p>We will notify you of new blog posts.</p>';
+        successMessage += '<p>' + $filter('translate')('EDIT_PROFILE_BLOGS') + '</p>';
       }
       var user = new UsersService(vm.user);
       user.$update(function (response) {
@@ -121,7 +121,8 @@
         vm.user = angular.copy(Authentication.user);
         pristineUser = angular.toJson(Authentication.user);
       }, function (response) {
-        Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Edit profile failed!' });
+        var failMessage = $filter('translate')('EDIT_PROFILE_FAILURE');
+        Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> '+failMessage });
       });
     }
   }
