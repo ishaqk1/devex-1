@@ -18,8 +18,11 @@
   width: 100%;
 }
 
-.well-info {
+.well {
   max-width: none;
+}
+
+.well-info {
   margin-top: 15px;
 }
 
