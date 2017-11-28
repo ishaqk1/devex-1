@@ -285,5 +285,5 @@ section.signup h5 {
 .vcenter {
 	display: inline-block;
     vertical-align: middle;
-    float: none;
+    float: none !important;
 }
