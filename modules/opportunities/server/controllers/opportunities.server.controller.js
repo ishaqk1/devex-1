@@ -25,22 +25,12 @@ var path = require('path'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
 	helpers = require(path.resolve('./modules/core/server/controllers/core.server.helpers')),
 	_ = require('lodash'),
-	// notifier = require(path.resolve('./modules/core/server/controllers/core.server.notifier.js')).notifier,
-	// fs = require('fs'),
-	// markdown = require('helper-markdown'),
-	// // HandlebarsIntl = require('handlebars-intl'),
-	// Handlebars = require('handlebars'),
-	// htmlToText = require('html-to-text')
-	Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller'))
+	Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller')),
+	Proposals = require(path.resolve('./modules/proposals/server/controllers/proposals.server.controller')),
+	github = require(path.resolve('./modules/core/server/controllers/core.server.github'))
 	;
 
 
-// var oppEmailNotifier = notifier('opportunities', 'email');
-
-// Handlebars.registerHelper('markdown', markdown({ breaks: true, xhtmlOut: false}));
-// // HandlebarsIntl.registerWith(Handlebars);
-// var emailBodyTemplateHtml = Handlebars.compile(fs.readFileSync(path.resolve('./modules/opportunities/server/email_templates/message_body.hbs.md'), 'utf8'));
-// var emailSubjectTemplate = Handlebars.compile(fs.readFileSync(path.resolve('./modules/opportunities/server/email_templates/subject.hbs.md'), 'utf8'));
 
 // -------------------------------------------------------------------------
 //
@@ -72,18 +62,15 @@ var unsetOpportunityAdmin = function (opportunity, user) {
 	user.removeRoles ([memberRole(opportunity), adminRole(opportunity)]);
 };
 var unsetOpportunityRequest = function (opportunity, user) {
-	// console.log ('remove role ', requestRole(opportunity));
 	user.removeRoles ([requestRole(opportunity)]);
 };
 var ensureAdmin = function (opportunity, user, res) {
 	if (!~user.roles.indexOf (adminRole(opportunity)) && !~user.roles.indexOf ('admin')) {
-		// console.log ('NOT admin');
 		res.status(422).send({
 			message: 'User Not Authorized'
 		});
 		return false;
 	} else {
-		// console.log ('Is admin');
 		return true;
 	}
 };
@@ -93,8 +80,6 @@ var searchTerm = function (req, opts) {
 	if (!me.isAdmin) {
 		opts['$or'] = [{isPublished:true}, {code: {$in: me.opportunities.admin}}];
 	}
-	// console.log ('me = ', me);
-	// console.log ('opts = ', opts);
 	return opts;
 };
 // -------------------------------------------------------------------------
@@ -182,68 +167,11 @@ var setNotificationData = function (opportunity) {
 };
 // -------------------------------------------------------------------------
 //
-// create an issue in the opportunity repo using the secret from our repos or
-// from the users'
-//
-// -------------------------------------------------------------------------
-var createIssue = function (opportunity, user) {
-	return new Promise (function (resolve, reject) {
-
-		var callbackf = function (err, status, body, headers) {
-			console.log ('err', err);
-			console.log ('status', status);
-			console.log ('body', body);
-			console.log ('headers', headers);
-			resolve ({
-				err: err,
-				status: status,
-				body: body,
-				headers: headers
-			});
-		};
-		var github = require('octonode');
-		console.log ('octonode', github);
-		var accessToken = user.providerData.accessToken;
-		var login = user.providerData.login;
-
-		var client = github.client (accessToken);
-		var ghme = client.me();
-		var repo = 'BCDevExchange-app';
-		var ghrepo = client.repo('BCDevExchange/BCDevExchange-app');
-
-
-		console.log ('ghrepo', ghrepo);
-
-		ghme.orgs (callbackf);
-
-		// ghrepo.issues (callbackf);
-
-		// ghrepo.issue({
-		// 'title': 'Test Auto Issue',
-		// 'body': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		// 'assignee': login,
-		// 'labels': ['Label1', 'Label2']
-		// }, callbackf);
-
-	});
-
-};
-exports.ttt = function (req, res) {
-	createIssue (req.opportunity, req.user)
-	.then (function (r) {
-		res.json (r);
-	});
-
-}
-// -------------------------------------------------------------------------
-//
 // get a list of all my opportunities, but only ones I have access to as a normal
 // member or admin, just not as request
 //
 // -------------------------------------------------------------------------
 exports.my = function (req, res) {
-	// var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
-	// var search = me.isAdmin ? {} : { code: { $in: me.opportunities.member } };
 	Opportunity.find (searchTerm (req))
 	.select ('code name short')
 	.exec (function (err, opportunities) {
@@ -282,6 +210,37 @@ exports.requests = function (opportunity, cb) {
 	.exec (cb);
 };
 
+var oppBody = function (opp) {
+	var dt = opp.deadline;
+	var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	var deadline = dt.getHours()+':00 PST, '+dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+	dt = opp.assignment;
+	var assignment = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+	dt = opp.start;
+	var start = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+	var earn = helpers.formatMoney (opp.earn, 2);
+	var locs = {
+		offsite : 'In-person work NOT required',
+		onsite  : 'In-person work required',
+		mixed   : 'Some in-person work required'
+	}
+	var ret = '';
+	ret += 'Value: '+earn;
+	ret += 'Closes: '+deadline;
+	ret += 'Location: '+opp.location+' '+locs[opp.onsite];
+	ret += '<h2>Opportunity Description</h2>';
+	ret += opp.description;
+	ret += '<h2>Acceptance Criteria</h2>';
+	ret += opp.criteria;
+	ret += '<h2>How to Apply</h2>';
+	ret += '<p>Go to the <a href="https://bcdevexchange.org/opportunities/'+opp.code+'">Opportunity Page</a>, click the Apply button above and submit your proposal by 16:00 PST on '+deadline+'</b>.</p>';
+	ret += '<p>We plan to assign this opportunity by <b>'+assignment+'</b> with work to start on <b>'+start+'</b>.</p>';
+	ret += '<p>If your proposal is accepted and you are assigned to the opportunity, you will be notified by email and asked to confirm your agreement to the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf"><i>Code With Us</i> terms and contract.</a></p>';
+	ret += '<h2>Proposal Evaluation Criteria</h2>';
+	ret += opp.evaluation;
+	return ret;
+};
 /**
  * Create a Opportunity
  */
@@ -292,7 +251,6 @@ exports.requests = function (opportunity, cb) {
 //
 // -------------------------------------------------------------------------
 exports.create = function(req, res) {
-	// console.log ('Creating a new opportunity');
 	var opportunity = new Opportunity(req.body);
 	//
 	// set the code, this is used setting roles and other stuff
@@ -321,70 +279,10 @@ exports.create = function(req, res) {
 					target: 'Opportunity',
 					event: 'Update'
 				});
-				// Notifications.addNotification ({
-				// 	code: 'not-unpublish-'+opportunity.code,
-				// 	name: 'Suspension of Opportunity '+opportunity.name,
-				// 	// description: 'Update of Opportunity '+opportunity.name,
-				// 	target: 'Opportunity',
-				// 	event: 'unpublish'
-				// });
-				// Notifications.addNotification ({
-				// 	code: 'not-republish-'+opportunity.code,
-				// 	name: 'Re-Posting of Opportunity '+opportunity.name,
-				// 	// description: 'Update of Opportunity '+opportunity.name,
-				// 	target: 'Opportunity',
-				// 	event: 'republish'
-				// });
 				res.json(opportunity);
 			}
 		});
 	});
-
-/*
-
-GITHUB related stuff
-
-	var opportunity = new Opportunity(req.body);
-	opportunity.user = req.user;
-
-	var http = require('http');
-	var github = require('octonode');
-	var config = require('/config/config.js');
-
-	// curl -u 'dewolfe001:39c1cffc1008ed43189ecd27448bd903a75778eb' https://api.github.com/user/repos -d '{'name':''helloGit''}'
-
-	var url = 'https://api.github.com/user/repos';
-	var user = config.github.clientID;  // 'dewolfe001';
-	var secret = config.github.clientSecret; // '39c1cffc1008ed43189ecd27448bd903a75778eb';
-
-	var client = github.client({
-	id: user,
-		secret: secret
-	});
-
- //  opportunity.github = client.repo({
-	// 'name': opportunity.name,
-	// 'description' : opportunity.description
-	// },  function (err, data) {
-	// 	if (err) {
-	// 		return console.error(err);
-	// 	}
-	// 	else {
-	// 		return data.html_url;
-	// 	}
-	// }
-	// );
-
-	opportunity.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(opportunity);
-		}
-	});
-	*/
 };
 
 // -------------------------------------------------------------------------
@@ -420,7 +318,6 @@ exports.update = function (req, res) {
 	// if we dont have permission to do this just return as a no-op
 	//
 	if (!ensureAdmin (req.opportunity, req.user, res)) {
-		console.log ('NOT ALLOWED');
 		return res.json (decorate (req.opportunity, req.user ? req.user.roles : []));
 	}
 	//
@@ -432,7 +329,6 @@ exports.update = function (req, res) {
 	// set the audit fields so we know who did what when
 	//
 	helpers.applyAudit (opportunity, req.user);
-	console.log ('got here with opp', req.opportunity);
 
 	//
 	// save
@@ -440,12 +336,28 @@ exports.update = function (req, res) {
 	updateSave (opportunity)
 	.then (function () {
 		var data = setNotificationData (opportunity);
-		// console.log ('++ update notification data', data);
 		if (opportunity.isPublished) {
 			Notifications.notifyObject ('not-updateany-opportunity', data);
 			Notifications.notifyObject ('not-update-'+opportunity.code, data);
+			github.createOrUpdateIssue ({
+				title  : opportunity.name,
+				body   : oppBody (opportunity),
+				repo   : opportunity.github,
+				number : opportunity.issueNumber
+			})
+			.then (function (result) {
+				opportunity.issueUrl    = result.html_url;
+				opportunity.issueNumber = result.number;
+				opportunity.save ();
+				res.json (decorate (opportunity, req.user ? req.user.roles : []));
+			})
+			.catch (function () {
+				res.status(422).send({
+					message: 'Opportunity saved, but there was an error creating the github issue. Please check your repo url and try again.'
+				});
+			});
 		}
-		res.json (decorate (opportunity, req.user ? req.user.roles : []));
+		else res.json (decorate (opportunity, req.user ? req.user.roles : []));
 	})
 	.catch (function (err) {
 		return res.status(422).send({
@@ -464,7 +376,6 @@ var pub = function (req, res, isToBePublished) {
 	// if no change or we dont have permission to do this just return as a no-op
 	//
 	if (req.opportunity.isPublished === isToBePublished || !ensureAdmin (req.opportunity, req.user, res)) {
-		console.log ('NOT ALLOWED');
 		return res.json (decorate (req.opportunity, req.user ? req.user.roles : []));
 	}
 	//
@@ -479,9 +390,6 @@ var pub = function (req, res, isToBePublished) {
 		opportunity.lastPublished = new Date ();
 		opportunity.wasPublished = true;
 	}
-	// console.log ('opportunity.ispublished', opportunity.isPublished);
-	// console.log ('firstTime', firstTime);
-	// console.log ('isToBePublished', isToBePublished);
 
 	//
 	// save and notify
@@ -489,15 +397,11 @@ var pub = function (req, res, isToBePublished) {
 	updateSave (opportunity)
 	.then (function () {
 		var data = setNotificationData (opportunity);
-		// console.log ('++ publish notification data', data);
-		if (firstTime)   Notifications.notifyObject ('not-add-opportunity'             , data);
+		if (firstTime) Notifications.notifyObject ('not-add-opportunity', data);
 		else if (isToBePublished) {
 			Notifications.notifyObject ('not-update-'+opportunity.code, data);
 			Notifications.notifyObject ('not-updateany-opportunity', data);
 		}
-		// if (!isToBePublished) Notifications.notifyObject ('not-unpublish-'+opportunity.code , data);
-		// else if (firstTime)   Notifications.notifyObject ('not-add-opportunity'             , data);
-		// else                  Notifications.notifyObject ('not-republish-'+opportunity.code , data);
 		res.json (decorate (opportunity, req.user ? req.user.roles : []));
 	})
 	.catch (function (err) {
@@ -509,16 +413,110 @@ var pub = function (req, res, isToBePublished) {
 exports.publish = function (req, res) { return pub (req, res, true); }
 exports.unpublish = function (req, res) { return pub (req, res, false); }
 
-
+// -------------------------------------------------------------------------
+//
+// unasasign the assigned proposal
+//
+// -------------------------------------------------------------------------
+exports.unassign = function (req, res) {
+	var opportunity;
+	//
+	// unassign the proposal
+	//
+	Proposals.unassign (req.opportunity.proposal, req.user)
+	//
+	// update the opportunity into pending status with no proposal
+	//
+	.then (function () {
+		req.opportunity.status = 'Pending';
+		req.opportunity.proposal = null;
+		return updateSave (req.opportunity);
+	})
+	//
+	// notify of changes
+	// update the issue on github
+	//
+	.then (function (opp) {
+		opportunity = opp;
+		var data = setNotificationData (opportunity);
+		Notifications.notifyObject ('not-updateany-opportunity', data);
+		Notifications.notifyObject ('not-update-'+opportunity.code, data);
+		return github.unlockIssue ({
+			repo   : opportunity.github,
+			number : opportunity.issueNumber
+		})
+		.then (function () {
+			return github.addCommentToIssue ({
+				comment : 'This opportunity has been un-assigned',
+				repo    : opportunity.github,
+				number  : opportunity.issueNumber
+			});
+		});
+	})
+	//
+	// return the new opportunity or fail
+	//
+	.then (function () {res.json (decorate (opportunity, req.user ? req.user.roles : [])); })
+	.catch (function (err) {res.status(422).send ({message: errorHandler.getErrorMessage(err)}); });
+};
+// -------------------------------------------------------------------------
+//
+// assign the passed in proposal
+//
+// -------------------------------------------------------------------------
+exports.assign = function (opportunityId, proposalId, proposalUser, user) {
+	return new Promise (function (resolve, reject) {
+		Opportunity.findById (opportunityId)
+		.exec (function (err, opportunity) {
+			if (err) {
+				reject (err);
+			}
+			else if (!opportunity) {
+				reject (new Error ({
+					message: 'No opportunity with that identifier has been found'
+				}));
+			}
+			else {
+				opportunity.status = 'Assigned';
+				opportunity.proposal = proposalId;
+				updateSave (opportunity)
+				.then (function (opp) {
+					opportunity = opp;
+					var data = setNotificationData (opportunity);
+					Notifications.notifyObject ('not-updateany-opportunity', data);
+					Notifications.notifyObject ('not-update-'+opportunity.code, data);
+					data.username = proposalUser.displayName;
+					data.useremail = proposalUser.email;
+					//
+					// in future, if we want to attach we can: data.filename = 'cwuterms.pdf';
+					//
+					data.assignor = user.displayName;
+					data.assignoremail = opportunity.proposalEmail;
+					Notifications.notifyUserAdHoc ('assignopp', data);
+					return github.addCommentToIssue ({
+						comment : 'This opportunity has been assigned',
+						repo    : opportunity.github,
+						number  : opportunity.issueNumber
+					})
+					.then (function () {
+						return github.lockIssue ({
+							repo   : opportunity.github,
+							number : opportunity.issueNumber
+						});
+					});
+				})
+				.then (resolve, reject);
+			}
+		});
+	});
+};
 // -------------------------------------------------------------------------
 //
 // delete the opportunity
 //
 // -------------------------------------------------------------------------
 exports.delete = function (req, res) {
-	// console.log ('Deleting');
 	if (ensureAdmin (req.opportunity, req.user, res)) {
-		// console.log ('Deleting');
 
 		var opportunity = req.opportunity;
 		opportunity.remove(function (err) {
@@ -547,22 +545,6 @@ exports.list = function (req, res) {
 			res.json (opportunities);
 		}
 	});
-	// Opportunity.find (searchTerm (req))
-	// .sort([['deadline', -1],['name', 1]])
-	// .populate('createdBy', 'displayName')
-	// .populate('updatedBy', 'displayName')
-	// .populate('project', 'code name _id isPublished')
-	// .populate('program', 'code title _id logo isPublished')
-	// .exec(function (err, opportunities) {
-	// 	if (err) {
-	// 		return res.status(422).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.json (decorateList (opportunities, req.user ? req.user.roles : []));
-	// 		// res.json(opportunities);
-	// 	}
-	// });
 };
 
 // -------------------------------------------------------------------------
@@ -632,9 +614,10 @@ var unassignMember = function (opportunity, user) {
 		user.save ().then (resolve, reject);
 	});
 };
+exports.assignMember = assignMember;
+exports.unassignMember = unassignMember;
 exports.confirmMember = function (req, res) {
 	var user = req.model;
-	// console.log ('++++ confirm member ', user.username, user._id);
 	var assignedMember;
 	//
 	// assign the member
@@ -673,7 +656,6 @@ exports.confirmMember = function (req, res) {
 };
 exports.denyMember = function (req, res) {
 	var user = req.model;
-	// console.log ('++++ deny member ', user.username, user._id);
 	unassignMember (req.opportunity, user)
 	.then (function (result) {
 		res.json (result);
@@ -700,19 +682,6 @@ exports.forProject = function (req, res) {
 			res.json (opportunities);
 		}
 	});
-	// Opportunity.find(searchTerm (req, {project:req.project._id})).sort('name')
-	// .populate('createdBy', 'displayName')
-	// .populate('updatedBy', 'displayName')
-	// .exec(function (err, opportunities) {
-	// 	if (err) {
-	// 		return res.status(422).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.json (decorateList (opportunities, req.user ? req.user.roles : []));
-	// 		// res.json(opportunities);
-	// 	}
-	// });
 };
 // -------------------------------------------------------------------------
 //
@@ -729,19 +698,6 @@ exports.forProgram = function (req, res) {
 			res.json (opportunities);
 		}
 	});
-	// Opportunity.find(searchTerm (req, {program:req.program._id})).sort('name')
-	// .populate('createdBy', 'displayName')
-	// .populate('updatedBy', 'displayName')
-	// .exec(function (err, opportunities) {
-	// 	if (err) {
-	// 		return res.status(422).send({
-	// 			message: errorHandler.getErrorMessage(err)
-	// 		});
-	// 	} else {
-	// 		res.json (decorateList (opportunities, req.user ? req.user.roles : []));
-	// 		// res.json(opportunities);
-	// 	}
-	// });
 };
 
 // -------------------------------------------------------------------------
@@ -750,7 +706,6 @@ exports.forProgram = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.new = function (req, res) {
-	// console.log ('get a new opportunity set up and return it');
 	var p = new Opportunity ();
 	res.json(p);
 };
@@ -767,6 +722,15 @@ exports.opportunityByID = function (req, res, next, id) {
 		.populate('updatedBy', 'displayName')
 		.populate('project', 'code name _id isPublished')
 		.populate('program', 'code title _id logo isPublished')
+		.populate({
+			path: 'proposal',
+			model: 'Proposal',
+			populate : {
+				path: 'user',
+				model: 'User'
+			}
+		})
+		// .populate({path:'proposal.user', model:'User'}) //'displayName firstName lastName email phone address username profileImageURL businessName businessAddress businessContactName businessContactPhone businessContactEmail')
 		.exec(function (err, opportunity) {
 			if (err) {
 				return next(err);
@@ -791,6 +755,14 @@ exports.opportunityByID = function (req, res, next, id) {
 		.populate('updatedBy', 'displayName')
 		.populate('project', 'code name _id isPublished')
 		.populate('program', 'code title _id logo isPublished')
+		.populate({
+			path: 'proposal',
+			model: 'Proposal',
+			populate : {
+				path: 'user',
+				model: 'User'
+			}
+		})
 		.exec(function (err, opportunity) {
 			if (err) {
 				return next(err);

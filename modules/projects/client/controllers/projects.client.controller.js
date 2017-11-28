@@ -35,7 +35,6 @@
 		vm.loggedIn                = isUser;
 		vm.canRequestMembership    = isGov && !isMemberOrWaiting;
 		vm.canEdit                 = isAdmin || project.userIs.admin;
-		// console.log ('vm = ', vm);
 		// -------------------------------------------------------------------------
 		//
 		// issue a request for membership
@@ -61,7 +60,7 @@
 			//
 			// success, notify and return to list
 			//
-			.then (function (res) {
+			.then (function () {
 				Notification.success ({
 					message : '<i class="glyphicon glyphicon-ok"></i> Project '+t+' Successfully!'
 				});
@@ -145,7 +144,6 @@
 			else if (vm.context === 'program') {
 				vm.project.program = vm.programId;
 			}
-			// vm.form.projectForm.$setPristine ();
 		}
 		// -------------------------------------------------------------------------
 		//
@@ -170,7 +168,6 @@
 		};
 		vm.save = function (isValid) {
 			vm.form.projectForm.$setPristine ();
-			// console.log ('saving form', vm.project);
 			if (!isValid) {
 				$scope.$broadcast('show-errors-check-validity', 'vm.form.projectForm');
 				return false;
@@ -194,18 +191,12 @@
 			//
 			// success, notify and return to list
 			//
-			.then (function (res) {
+			.then (function () {
 				vm.form.projectForm.$setPristine ();
-				// console.log ('now saved the new project, redirect user');
 				Notification.success ({
 					message : '<i class="glyphicon glyphicon-ok"></i> project saved successfully!'
 				});
-				if (editing) {
-					$state.go('projects.view', {projectId:project.code});
-				} else {
-					// $state.go('projects.list');
-					$state.go('projects.view', {projectId:project.code});
-				}
+				$state.go('projects.view', {projectId:project.code});
 			})
 			//
 			// fail, notify and stay put
@@ -220,55 +211,3 @@
 	})
 	;
 }());
-// (function () {
-// 	'use strict';
-
-// 	// Projects controller
-// 	angular.module('projects')
-// 		.controller('ProjectsController', ProjectsController);
-
-// 	ProjectsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'projectResolve'];
-
-// 	function ProjectsController ($scope, $state, $window, Authentication, project) {
-// 		var vm = this;
-
-// 		vm.authentication = Authentication;
-// 		vm.project = project;
-// 		vm.error = null;
-// 		vm.form = {};
-// 		vm.remove = remove;
-// 		vm.save = save;
-
-// 		// Remove existing Project
-// 		function remove() {
-// 			if ($window.confirm('Are you sure you want to delete?')) {
-// 				vm.project.$remove($state.go('projects.list'));
-// 			}
-// 		}
-
-// 		// Save Project
-// 		function save(isValid) {
-// 			if (!isValid) {
-// 				$scope.$broadcast('show-errors-check-validity', 'vm.form.projectForm');
-// 				return false;
-// 			}
-
-// 			// TODO: move create/update logic to service
-// 			if (vm.project._id) {
-// 				vm.project.$update(successCallback, errorCallback);
-// 			} else {
-// 				vm.project.$save(successCallback, errorCallback);
-// 			}
-
-// 			function successCallback(res) {
-// 				$state.go('projects.view', {
-// 					projectId: res._id
-// 				});
-// 			}
-
-// 			function errorCallback(res) {
-// 				vm.error = res.data.message;
-// 			}
-// 		}
-// 	}
-// });

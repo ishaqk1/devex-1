@@ -28,6 +28,7 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/angular-breadcrumb/dist/angular-breadcrumb.js',
         'public/lib/angular-translate/angular-translate.js',
+        'public/lib/lodash/dist/lodash.min.js',
         'public/lib/tinymce/tinymce.js',
         'public/lib/angular-ui-tinymce/src/tinymce.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',

@@ -91,7 +91,7 @@
       PROJ_ALL: 'All projects',
       OPP_TITLE: 'Opportunities List',
       OPP_ALL: 'All opportunities',
-      OPP_CTA: 'Want to get notified when new opportunities are posted?',
+      OPP_CTA: 'To get notified when new opportunities are posted, or post an opportunity yourself',
       OPP_FOR: 'Opportunities for ',
       OPP_GET_NOTIFIED: 'Want to get notified<span class="hidden-sm hidden-xs"> when new opportunities are posted</span>?',
       SIGNUP_P1: 'Join a community of developers, entrepreneurs, and public service innovators who are making public services better.',
@@ -128,7 +128,7 @@
       TEAM_MEMBERS: 'Team Members',
       TEAM_PROJECTS: 'Projects',
       TEAM_OPPORTUNITIES: 'Team Opportunities',
-      PROJECT_NEW: 'New Project',
+      PROJECT_NEW: 'List a new project',
       PROJECT_GITHUB_REPO: 'View Code Repository on GitHub',
       PROJECT_MEMBERS: 'Project Members',
       PROJECT_OPPORTUNITIES: 'Project Opportunities',
@@ -136,14 +136,16 @@
       OPP_CLOSING: 'Closing in:',
       OPP_UPDATES: 'Want <span class="hidden-sm hidden-xs">to get </span>updates<span class="hidden-sm hidden-xs"> about this opportunity</span>?',
       OPP_FIXED_PRICE: 'This is a <strong>fixed-price</strong> opportunity governed by the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf">terms</a> of our lightweight procurement model, <i><a href="/codewithus">Code With Us</a></i>.',
+      OPP_BACKGROUND: 'Background',
       OPP_ACC_CRIT: 'Acceptance Criteria',
-      OPP_HOW_TO_APPLY: 'How to Apply',
-      OPP_SEND_PROPOSAL: 'Please send a proposal to',
-      OPP_BEFORE: 'by',
-      OPP_ACCEPTANCE: 'With your email, to indicate your acceptance of the <i>Code With Us</i> terms, you must attach a copy of the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf">terms</a> with the required information asked for in the "Acceptance" section of the document.',
-      OPP_SATISFIED: 'If we are satisfied with the proposals we receive, we will assign this opportunity by',
-      OPP_SATISFIED2: 'with work proposed to start on',
+      OPP_PAID: 'To be paid the fixed price for this opportunity, you need to meet all of the following criteria:',
       OPP_PROPOSAL_EVAL: 'Proposal Evaluation Criteria',
+      OPP_SCORED: 'Your proposal will be scored by this criteria:',
+      OPP_HOW_TO_APPLY: 'How to Apply',
+      OPP_SUBMIT_BEFORE: 'Submit your proposal before',
+      OPP_INSTRUCTIONS: 'With your proposal, you must upload a copy of the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf">Code With Us terms,</a> to indicate your acceptance of the terms.',
+      OPP_PLAN: 'We plan to assign this opportunity by',
+      OPP_PLAN2: 'with work to start on',
       OPP_GITHUB_LINK: 'Visit the GitHub issue for this opportunity and post a comment.',
       OPP_POSTED_BY: 'Posted by:',
       OPP_TEAM: 'Team:',
@@ -152,7 +154,7 @@
       OPP_GITHUB_ISSUE: 'View Issue on GitHub',
       OPP_CREATED_ON: 'Created on',
       OPP_BY: 'by',
-      OPP_UPDATED_ON: 'Updated on'
+      OPP_UPDATED_ON: 'Last updated on'
     })
     .translations('fr', {
       TEAMS: 'Équipes',
@@ -218,7 +220,7 @@
       PROJ_ALL: 'Toutes les projets',
       OPP_TITLE: 'Liste des possibilités',
       OPP_ALL: 'Toutes les possibilités',
-      OPP_CTA: 'Voulez-vous recevoir un avis quand de nouvelles possibilités sont affichées?',
+      OPP_CTA: 'Pour être averti lorsque de nouvelles opportunités sont publiées ou pour poster une opportunité',
       OPP_FOR: 'Possibilités pour ',
       OPP_GET_NOTIFIED: 'Aimeriez-vous recevoir des mises à jour<span class="hidden-sm hidden-xs"> lorsque de nouvelles opportunités sont affichées</span>?',
       SIGNUP_P1: 'Rejoignez une communauté de développeurs, entrepreneurs et innovateurs de services publics qui améliorent les services publics.',
@@ -255,7 +257,7 @@
       TEAM_MEMBERS: 'Membres de l\'équipe',
       TEAM_PROJECTS: 'Projets',
       TEAM_OPPORTUNITIES: 'Possibilités liées au l\'equipe',
-      PROJECT_NEW: 'Nouveau projet',
+      PROJECT_NEW: 'Lister un nouveau projet',
       PROJECT_GITHUB_REPO: 'Afficher le dépôt de code sur GitHub',
       PROJECT_MEMBERS: 'Membres du projet',
       PROJECT_OPPORTUNITIES: 'Possibilités liées au projet',
@@ -263,14 +265,16 @@
       OPP_CLOSING: 'Date de clôture :',
       OPP_UPDATES: 'Aimeriez-vous <span class="hidden-sm hidden-xs">recevoir </span>des mises à jour<span class="hidden-sm hidden-xs"> sur cette possibilité</span>?',
       OPP_FIXED_PRICE: 'Il s\'agit d\'une possibilité à <strong>prix fixe</strong> régie par les modalités de notre <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf">modèle</a> d\'approvisionnement allégé, <i><a href="/codewithus">Programmez avec nous</a></i>.',
+      OPP_BACKGROUND: 'Contexte',
       OPP_ACC_CRIT: 'Critères d\'acceptation',
-      OPP_HOW_TO_APPLY: 'Comment présenter une proposition',
-      OPP_SEND_PROPOSAL: 'Veuillez envoyer une proposition à',
-      OPP_BEFORE: 'au plus tard à',
-      OPP_ACCEPTANCE: 'Pour confirmer que vous acceptez les modalités de <i>Programmez avec nous</i>, vous devez joindre à votre courriel une copie des <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf">modalités</a> en prenant soin de fournir les renseignements requis dans la section d\'acceptation du document.',
-      OPP_SATISFIED: 'Si les propositions que nous recevons répondent à nos besoins, nous attribuerons cette possibilité au plus tard à',
-      OPP_SATISFIED2: 'et les travaux proposés commenceront',
+      OPP_PAID: 'Pour être payé le prix fixe pour cette opportunité, vous devez répondre à tous les critères suivants :',
       OPP_PROPOSAL_EVAL: 'Critères d’évaluation de la proposition',
+      OPP_SCORED: 'Votre proposition sera notée selon ce critère :',
+      OPP_HOW_TO_APPLY: 'Comment présenter une proposition',
+      OPP_SUBMIT_BEFORE: 'Soumettez votre proposition avant',
+      OPP_INSTRUCTIONS: 'Avec votre proposition, vous devez télécharger une copie des <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf">termes Code With Us,</a> pour indiquer votre acceptation des termes.',
+      OPP_PLAN: 'Nous prévoyons d\'attribuer cette opportunité par',
+      OPP_PLAN2: 'avec le travail pour commencer',
       OPP_GITHUB_LINK: 'Visitez la publication dans GitHub pour voir cette possibilité et publier un commentaire.',
       OPP_POSTED_BY: 'Publié par :',
       OPP_TEAM: 'Équipe :',
@@ -290,20 +294,8 @@
 
   function init() {
     // Fixing facebook bug with redirect
-    if (window.location.hash && window.location.hash === '#_=_') {
-      if (window.history && history.pushState) {
+    if ((window.location.hash && window.location.hash === '#_=_') && (window.history && history.pushState)) {
         window.history.pushState('', document.title, window.location.pathname);
-      } else {
-        // Prevent scrolling by storing the page's current scroll offset
-        // var scroll = {
-        //   top: document.body.scrollTop,
-        //   left: document.body.scrollLeft
-        // };
-        // window.location.hash = '';
-        // // Restore the scroll offset, should be flicker free
-        // document.body.scrollTop = scroll.top;
-        // document.body.scrollLeft = scroll.left;
-      }
     }
 
     // Then init the app

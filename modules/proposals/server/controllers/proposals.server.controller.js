@@ -22,99 +22,101 @@ request : <code>-request
 var path = require('path'),
 	mongoose = require('mongoose'),
 	Proposal = mongoose.model('Proposal'),
+	User = mongoose.model('User'),
+	Opportunity = mongoose.model('Opportunity'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
 	helpers = require(path.resolve('./modules/core/server/controllers/core.server.helpers')),
 	Opportunities = require(path.resolve('./modules/opportunities/server/controllers/opportunities.server.controller')),
 	_ = require('lodash'),
 	multer = require('multer'),
 	config = require(path.resolve('./config/config')),
-	Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller'))
+	Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller')),
+	github = require(path.resolve('./modules/core/server/controllers/core.server.github'))
 	;
 
+var userfields = 'displayName firstName lastName email phone address username profileImageURL businessName businessAddress businessContactName businessContactPhone businessContactEmail roles provider';
+var streamFile = function (res, file, name, mime) {
+	var fs = require ('fs');
+	fs.exists (file, function (yes) {
+		if (!yes) {
+			return res.status(404).send ({
+				message: 'Not Found'
+			});
+		}
+		else {
+			res.setHeader ('Content-Type', mime);
+			res.setHeader ('Content-Type', 'application/octet-stream');
+			res.setHeader ('Content-Description', 'File Transfer');
+			res.setHeader ('Content-Transfer-Encoding', 'binary');
+			res.setHeader ('Content-Disposition', 'attachment; inline=false; filename="'+name+'"');
+			fs.createReadStream (file).pipe (res);
+		}
+	});
+};
 // -------------------------------------------------------------------------
 //
 // set a proposal role on a user
 //
 // -------------------------------------------------------------------------
-var adminRole = function (proposal) {
-	return proposal.code+'-admin';
+var adminRole = function (opportunity) {
+	return opportunity.code+'-admin';
 };
-var memberRole = function (proposal) {
-	return proposal.code;
+var memberRole = function (opportunity) {
+	return opportunity.code;
 };
-var requestRole = function (proposal) {
-	return proposal.code+'-request';
+var requestRole = function (opportunity) {
+	return opportunity.code+'-request';
 };
-var setProposalMember = function (proposal, user) {
-	user.addRoles ([memberRole(proposal)]);
+var ensureAdmin = function (opportunity, user) {
+	return !(!~user.roles.indexOf (adminRole(opportunity)) && !~user.roles.indexOf ('admin'));
 };
-var setProposalAdmin = function (proposal, user) {
-	user.addRoles ([memberRole(proposal), adminRole(proposal)]);
-};
-var setProposalRequest = function (proposal, user) {
-	user.addRoles ([requestRole(proposal)]);
-};
-var unsetProposalMember = function (proposal, user) {
-	user.removeRoles ([memberRole(proposal)]);
-};
-var unsetProposalAdmin = function (proposal, user) {
-	user.removeRoles ([memberRole(proposal), adminRole(proposal)]);
-};
-var unsetProposalRequest = function (proposal, user) {
-	// console.log ('remove role ', requestRole(proposal));
-	user.removeRoles ([requestRole(proposal)]);
-};
-var ensureAdmin = function (proposal, user, res) {
-	if (!~user.roles.indexOf (adminRole(proposal)) && !~user.roles.indexOf ('admin')) {
-		// console.log ('NOT admin');
-		res.status(422).send({
-			message: 'User Not Authorized'
-		});
-		return false;
-	} else {
-		// console.log ('Is admin');
-		return true;
-	}
-};
-var forOpportunity = function (id) {
+var countStatus = function (id) {
 	return new Promise (function (resolve, reject) {
-		Proposal.find ({opportunity:id}).exec ().then (resolve, reject);
+		Proposal.aggregate ([
+			{
+				$match: {
+					opportunity: id
+				}
+			},
+			{
+				$group: {
+					_id: '$status',
+					count: {$sum: 1}
+				}
+			}
+		], function (err, result) {
+			if (err) reject (err);
+			else resolve (result);
+		});
 	});
 };
-var searchTerm = function (req, opts) {
-	opts = opts || {};
-	var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
-	if (!me.isAdmin) {
-		opts['$or'] = [{isPublished:true}, {code: {$in: me.proposals.admin}}];
-	}
-	// console.log ('me = ', me);
-	// console.log ('opts = ', opts);
-	return opts;
-};
 // -------------------------------------------------------------------------
 //
-// this takes a proposal model, serializes it, and decorates it with what
-// relationship the user has to the proposal, and returns the JSON
+// stats
 //
 // -------------------------------------------------------------------------
-var decorate = function (proposalModel, roles) {
-	var proposal = proposalModel ? proposalModel.toJSON () : {};
-	proposal.userIs = {
-		admin   : !!~roles.indexOf (adminRole(proposal)),
-		member  : !!~roles.indexOf (memberRole(proposal)),
-		request : !!~roles.indexOf (requestRole(proposal)),
-		gov     : !!~roles.indexOf ('gov')
+exports.stats = function (req, res) {
+	var op = req.opportunity;
+	var ret = {
+		following: 0
 	};
-	return proposal;
-};
-// -------------------------------------------------------------------------
-//
-// decorate an entire list of proposals
-//
-// -------------------------------------------------------------------------
-var decorateList = function (proposalModels, roles) {
-	return proposalModels.map (function (proposalModel) {
-		return decorate (proposalModel, roles);
+	Notifications.countFollowingOpportunity (op.code)
+	.then (function (result) {
+		ret.following = result;
+		return countStatus (op._id);
+	})
+	.then (function (result) {
+		for (var i=0; i<result.length; i++) {
+			ret[result[i]._id.toLowerCase()] = result[i].count;
+		}
+	})
+	.then (function () {
+		res.json (ret);
+	})
+	.catch (function (err) {
+		res.status(422).send ({
+			message: errorHandler.getErrorMessage(err)
+		});
 	});
 };
 // -------------------------------------------------------------------------
@@ -140,13 +142,11 @@ exports.my = function (req, res) {
 };
 exports.myopp = function (req, res) {
 	if (!req.user) return res.json ({});
-	// var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
-	// var search = me.isAdmin ? {} : { code: { $in: me.proposals.admin } };
 	Proposal.findOne ({user:req.user._id, opportunity:req.opportunity._id})
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
 	.populate('opportunity', 'code name')
-	.populate('user', 'displayName email phone address username')
+	.populate('user', userfields)
 	.exec (function (err, proposals) {
 		if (err) {
 			return res.status(422).send ({
@@ -157,26 +157,6 @@ exports.myopp = function (req, res) {
 		}
 	});
 };
-// -------------------------------------------------------------------------
-//
-// return a list of all proposal members. this means all members NOT
-// including users who have requested access and are currently waiting
-//
-// -------------------------------------------------------------------------
-exports.members = function (proposal, cb) {
-	mongoose.model ('User').find ({roles: memberRole(proposal)}).select ('isDisplayEmail username displayName updated created roles government profileImageURL email lastName firstName userTitle').exec (cb);
-};
-
-// -------------------------------------------------------------------------
-//
-// return a list of all users who are currently waiting to be added to the
-// proposal member list
-//
-// -------------------------------------------------------------------------
-exports.requests = function (proposal, cb) {
-	mongoose.model ('User').find ({roles: requestRole(proposal)}).select ('isDisplayEmail username displayName updated created roles government profileImageURL email lastName firstName userTitle').exec (cb);
-};
-
 var saveProposal = function (proposal) {
 	return new Promise (function (resolve, reject) {
 		proposal.save(function (err, doc) {
@@ -187,7 +167,7 @@ var saveProposal = function (proposal) {
 };
 var saveProposalRequest = function (req, res, proposal) {
 	return saveProposal (proposal)
-	.then (function (p) { res.json (proposal); })
+	.then (function () { res.json (proposal); })
 	.catch (function (e) { res.status(422).send ({ message: errorHandler.getErrorMessage(e) }); });
 };
 /**
@@ -243,10 +223,77 @@ exports.update = function (req, res) {
 	//
 	saveProposalRequest (req, res, proposal);
 };
+// -------------------------------------------------------------------------
+//
+// updatyes a proposal into submitted status
+//
+// -------------------------------------------------------------------------
 exports.submit = function (req, res) {
 	req.body.status = 'Submitted';
 	return exports.update (req, res);
-}
+};
+var updateUserRole = function (userid, oppcode) {
+	return new Promise (function (resolve, reject) {
+		User.findByIdAndUpdate (userid,
+		    { '$push': { 'roles':  oppcode} },
+		    { 'new': true, 'upsert': true },
+		    function (err, m) {
+		        if (err) reject (err);
+		        else resolve (m);
+		    }
+		);
+	});
+};
+var removeUserRole = function (userid, oppcode) {
+	return new Promise (function (resolve, reject) {
+		User.findByIdAndUpdate (userid,
+		    { '$pop': { 'roles':  oppcode} },
+		    { 'new': true, 'upsert': true },
+		    function (err, m) {
+		        if (err) reject (err);
+		        else resolve (m);
+		    }
+		);
+	});
+};
+// -------------------------------------------------------------------------
+//
+// assigns a proposal to the opportunity
+//
+// -------------------------------------------------------------------------
+exports.assign = function (req, res) {
+	var proposal = req.proposal;
+	proposal.status = 'Assigned';
+	helpers.applyAudit (proposal, req.user);
+	saveProposal (proposal)
+	.then (function (p) {
+		proposal = p;
+		return updateUserRole (proposal.user._id, proposal.opportunity.code);
+	})
+	.then (function () {
+		return Opportunities.assign (proposal.opportunity._id, proposal._id, proposal.user, req.user);
+	})
+	.then (function () {res.json (proposal); })
+	.catch (function (e) {res.status(422).send ({ message: errorHandler.getErrorMessage(e) }); });
+};
+// -------------------------------------------------------------------------
+//
+// unassign gets called from the opportunity side, so jusy do the work
+// and return a promise
+//
+// -------------------------------------------------------------------------
+exports.unassign = function (proposal, user) {
+	return new Promise (function (resolve, reject) {
+		proposal.status = 'Submitted';
+		helpers.applyAudit (proposal, user);
+		saveProposal (proposal)
+		.then (function (p) {
+			proposal = p;
+			return removeUserRole (proposal.user._id, proposal.opportunity.code);
+		})
+		.then (resolve, reject);
+	});
+};
 // -------------------------------------------------------------------------
 //
 // delete the proposal
@@ -271,127 +318,43 @@ exports.delete = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.list = function (req, res) {
-	// var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
-	// var search = me.isAdmin ? {} : {$or: [{isPublished:true}, {code: {$in: me.proposals.admin}}]}
-	Proposal.find(searchTerm (req)).sort('name')
+	Proposal.find({}).sort('name')
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
 	.populate('opportunity', 'code name')
-	.populate('user', 'displayName email phone address username')
+	.populate('user', userfields)
 	.exec(function (err, proposals) {
 		if (err) {
 			return res.status(422).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json (decorateList (proposals, req.user ? req.user.roles : []));
-			// res.json(proposals);
+			res.json(proposals);
 		}
 	});
 };
 
 // -------------------------------------------------------------------------
 //
-// this is the service front to the members call
-//
-// -------------------------------------------------------------------------
-exports.listMembers = function (req, res) {
-	exports.members (req.proposal, function (err, users) {
-		if (err) {
-			return res.status (422).send ({
-				message: errorHandler.getErrorMessage (err)
-			});
-		} else {
-			res.json (users);
-		}
-	});
-};
-
-// -------------------------------------------------------------------------
-//
-// this is the service front to the members call
-//
-// -------------------------------------------------------------------------
-exports.listRequests = function (req, res) {
-	exports.requests (req.proposal, function (err, users) {
-		if (err) {
-			return res.status (422).send ({
-				message: errorHandler.getErrorMessage (err)
-			});
-		} else {
-			res.json (users);
-		}
-	});
-};
-
-// -------------------------------------------------------------------------
-//
-// have the current user request access
-//
-// -------------------------------------------------------------------------
-exports.request = function (req, res) {
-	setProposalRequest (req.proposal, req.user);
-	req.user.save ();
-	res.json ({ok:true});
-}
-
-// -------------------------------------------------------------------------
-//
-// deal with members
-//
-// -------------------------------------------------------------------------
-exports.confirmMember = function (req, res) {
-	var user = req.model;
-	// console.log ('++++ confirm member ', user.username, user._id);
-	unsetProposalRequest (req.proposal, user);
-	setProposalMember (req.proposal, user);
-	user.save (function (err, result) {
-		if (err) {
-			return res.status (422).send ({
-				message: errorHandler.getErrorMessage (err)
-			});
-		} else {
-			// console.log ('---- member roles ', result.roles);
-			res.json (result);
-		}
-	});
-};
-exports.denyMember = function (req, res) {
-	var user = req.model;
-	// console.log ('++++ deny member ', user.username, user._id);
-	unsetProposalRequest (req.proposal, user);
-	unsetProposalMember (req.proposal, user);
-	user.save (function (err, result) {
-		if (err) {
-			return res.status (422).send ({
-				message: errorHandler.getErrorMessage (err)
-			});
-		} else {
-			// console.log ('---- member roles ', result.roles);
-			res.json (result);
-		}
-	});
-};
-
-// -------------------------------------------------------------------------
-//
-// get proposals under opportunity
+// get proposals under opportunity, but only submitted ones
 //
 // -------------------------------------------------------------------------
 exports.forOpportunity = function (req, res) {
-	Proposal.find(searchTerm (req, {opportunity:req.opportunity._id})).sort('name')
+	if (!ensureAdmin (req.opportunity, req.user)) {
+		return res.json ([]);
+	}
+	Proposal.find({opportunity:req.opportunity._id, status:'Submitted'}).sort('created')
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
 	.populate('opportunity', 'code name')
-	.populate('user', 'displayName email phone address username')
+	.populate('user', userfields)
 	.exec(function (err, proposals) {
 		if (err) {
 			return res.status(422).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json (decorateList (proposals, req.user ? req.user.roles : []));
-			// res.json(proposals);
+			res.json(proposals);
 		}
 	});
 };
@@ -402,7 +365,6 @@ exports.forOpportunity = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.new = function (req, res) {
-	// console.log ('get a new proposal set up and return it');
 	var p = new Proposal ();
 	res.json(p);
 };
@@ -422,8 +384,8 @@ exports.proposalByID = function (req, res, next, id) {
 	Proposal.findById(id)
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('opportunity', 'code name')
-	.populate('user', 'displayName email phone address username')
+	.populate('opportunity', 'code name issueNumber github')
+	.populate('user', userfields)
 	.exec(function (err, proposal) {
 		if (err) {
 			return next(err);
@@ -437,30 +399,6 @@ exports.proposalByID = function (req, res, next, id) {
 	});
 };
 
-// -------------------------------------------------------------------------
-//
-// publish or unpublish whole sets of proposals by opportunity id
-//
-// -------------------------------------------------------------------------
-exports.rePublishProposals = function (programId) {
-	return forOpportunity (programId)
-	.then (function (proposals) {
-		return Promise.all (proposals.map (function (proposal) {
-			proposal.isPublished = proposal.wasPublished;
-			return proposal.save ();
-		}));
-	});
-};
-exports.unPublishProposals = function (programId) {
-	return forOpportunity (programId)
-	.then (function (proposals) {
-		return Promise.all (proposals.map (function (proposal) {
-			proposal.wasPublished = proposal.isPublished;
-			proposal.isPublished = false;
-			return proposal.save ();
-		}));
-	});
-};
 var addAttachment = function (req, res, proposal, name, path, type) {
 	proposal.attachments.push ({
 		name : name,
@@ -485,7 +423,7 @@ exports.uploaddoc = function (req, res) {
 			if (uploadError) {
 				res.status(422).send(uploadError);
 			} else {
-				var storedname = config.uploads.fileUpload.dest ;
+				var storedname = req.file.path ;
 				var originalname = req.file.originalname;
 				addAttachment (req, res, proposal, originalname, storedname, req.file.mimetype)
 			}
@@ -500,4 +438,100 @@ exports.uploaddoc = function (req, res) {
 exports.removedoc = function (req, res) {
 	req.proposal.attachments.id(req.params.documentId).remove();
 	saveProposalRequest (req, res, req.proposal);
+};
+exports.downloaddoc = function (req, res) {
+	var fileobj = req.proposal.attachments.id(req.params.documentId);
+	return streamFile (res, fileobj.path, fileobj.name, fileobj.type);
+};
+// -------------------------------------------------------------------------
+//
+// create the archive format and stream it back to the user
+//
+// -------------------------------------------------------------------------
+exports.downloadArchive = function (req, res) {
+	var zip = new (require ('jszip')) ();
+	var fs  = require('fs');
+	//
+	// make sure we are allowed to do this at all
+	//
+	if (!ensureAdmin (req.opportunity, req.user)) {
+		return res.json ([]);
+	}
+	//
+	// make the zip name from the opportunity name
+	//
+	var opportunityName = req.opportunity.name.replace(/\W/g,'-').replace(/-+/,'-');
+	var proponentName;
+	var email;
+	var files;
+	var links;
+	var proposalHtml;
+	var header;
+	var content;
+	//
+	// start the zip file;
+	//
+	zip.folder (opportunityName);
+	//
+	// get all submitted and assigned proposals
+	//
+	Proposal.find({opportunity:req.opportunity._id, status:{$in:['Submitted','Assigned']}}).sort('status created')
+	.populate('user', userfields)
+	.exec(function (err, proposals) {
+		if (err) {
+			return res.status(422).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			proposals.forEach (function (proposal) {
+				proponentName = proposal.user.displayName.replace(/\W/g,'-').replace(/-+/,'-');
+				if (proposal.status === 'Assigned') proponentName += '-ASSIGNED';
+				files = proposal.attachments;
+				email = proposal.user.email;
+				proposalHtml = proposal.detail;
+				//
+				// go through the files and build the internal links (reset links first)
+				// also build the index.html content
+				//
+				links = [];
+				files.forEach (function (file) {
+					links.push ('<a href="docs/'+encodeURIComponent(file.name)+'" target="_blank">'+file.name+'</a>');
+				});
+				header = '<h2>Proponent</h2>'+proposal.user.displayName+'<br/>';
+				header += email+'<br/>';
+				if (!proposal.isCompany) {
+					header += proposal.user.address+'<br/>';
+					header += proposal.user.phone+'<br/>';
+				}
+				else {
+					header += '<b><i>Company:</i></b>'+'<br/>';
+					header += proposal.user.businessName+'<br/>';
+					header += proposal.user.businessAddress+'<br/>';
+					header += '<b><i>Contact:</i></b>'+'<br/>';
+					header += proposal.user.businessContactName+'<br/>';
+					header += proposal.user.businessContactPhone+'<br/>';
+					header += proposal.user.businessContactEmail+'<br/>';
+				}
+				header += '<h2>Documents</h2><ul><li>'+links.join('</li><li>')+'</li></ul>';
+				content = '<html><body>'+header+'<h2>Proposal</h2>'+proposalHtml+'</body></html>';
+				//
+				// add the directory, content and documents for this proposal
+				//
+				zip.folder (opportunityName).folder (proponentName);
+				zip.folder (opportunityName).folder (proponentName).file ('index.html', content);
+				files.forEach (function (file) {
+					zip.folder (opportunityName).folder (proponentName).folder ('docs').file (file.name, fs.readFileSync (file.path), {binary:true});
+				});
+			});
+
+			res.setHeader ('Content-Type', 'application/zip');
+			res.setHeader ('Content-Type', 'application/octet-stream');
+			res.setHeader ('Content-Description', 'File Transfer');
+			res.setHeader ('Content-Transfer-Encoding', 'binary');
+			res.setHeader ('Content-Disposition', 'attachment; inline=false; filename="'+opportunityName+'.zip'+'"');
+
+			zip.generateNodeStream({base64:false, compression:'DEFLATE',streamFiles:true}).pipe (res);
+		}
+	});
+
 };

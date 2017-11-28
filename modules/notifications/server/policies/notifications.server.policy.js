@@ -41,6 +41,9 @@ exports.invokeRolesPolicies = function () {
 		}, {
 			resources: '/api/fix/subscriptions',
 			permissions: '*'
+		}, {
+			resources: '/api/check/subscriptions',
+			permissions: '*'
 		}
 		]
 	}, {
@@ -74,13 +77,6 @@ exports.invokeRolesPolicies = function () {
 			resources: '/api/my/subscriptions',
 			permissions: ['get']
 		},
-		// {
-		// 	resources: '/api/cc/tryme',
-		// 	permissions: ['get']
-		// }, {
-		// 	resources: '/api/cc/tryme2',
-		// 	permissions: ['get']
-		// },
 		{
 			resources: '/api/subscribe/:externalSubscriptionId/:notificationId',
 			permissions: ['get']
@@ -93,7 +89,6 @@ exports.invokeRolesPolicies = function () {
  */
 exports.isAllowed = function (req, res, next) {
 	var roles = (req.user) ? req.user.roles : ['guest'];
-	// console.log (roles);
 	// If an Notification is being processed and the current user created it then allow any manipulation
 	if (req.notification && req.user && req.notification.user && req.notification.user.id === req.user.id) {
 		return next();

@@ -10,7 +10,6 @@
   function AuthenticationController($scope, $rootScope, $state, usercount, UsersService, $location, $window, Authentication, PasswordValidator, Notification) {
     var vm = this;
     vm.usercount = usercount;
-    // console.log ('usercount',usercount);
     vm.authentication = Authentication;
     vm.getPopoverMsg = PasswordValidator.getPopoverMsg;
     vm.non_gov = non_gov;
@@ -31,18 +30,14 @@
     function governmentSelected() {
       return ($location.search().role === 'non_gov');
     }
-    function governmentSelected1() {
-      return ($location.search().role === 'non_gov');
-    }
-	function non_gov(isValid) {
+	function non_gov() {
       $window.location.href = '/authentication/government?role=non_gov';
     }
-    	function gov(isValid) {
+    	function gov() {
 
 $window.location.href = '/authentication/government?role=gov';
     }
     function signup(isValid) {
-// alert($location.search().role);
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.userForm');
 

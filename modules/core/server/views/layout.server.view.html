@@ -34,8 +34,7 @@
   {{#each cssFiles}}<link rel="stylesheet" href="/{{this}}">{{/each}}
 
   <!-- Custom Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Yantramanav:300,400,500,700" rel="stylesheet">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
   <script>
@@ -73,6 +72,7 @@
   <script type="text/javascript">
     var user = {{{ user }}};
     var env = "{{ env }}";
+    window.features = {{{ features }}};
   </script>
 
   <!--Load The Socket.io File-->

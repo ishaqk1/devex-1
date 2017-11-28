@@ -33,7 +33,6 @@ module.exports = function(app) {
   // get lists of users
   //
   app.route('/api/opportunities/members/:opportunityId')
-    // .all(opportunitiesPolicy.isAllowed)
     .get(opportunities.listMembers);
   app.route('/api/opportunities/requests/:opportunityId')
     .all(opportunitiesPolicy.isAllowed)
@@ -42,6 +41,12 @@ module.exports = function(app) {
     .all(opportunitiesPolicy.isAllowed)
     .get(opportunities.publish)
     .delete(opportunities.unpublish);
+  //
+  // unassign the assigned proposal
+  //
+  app.route('/api/opportunities/unassign/:opportunityId')
+    .all(opportunitiesPolicy.isAllowed)
+    .put(opportunities.unassign);
 
   //
   // modify users
@@ -54,16 +59,11 @@ module.exports = function(app) {
     .get(opportunities.denyMember);
 
   app.route('/api/new/opportunity')
-    // .all(opportunitiesPolicy.isAllowed)
     .get(opportunities.new);
 
   app.route('/api/request/opportunity/:opportunityId')
     .get(opportunities.request)
 
-  // app.route('/api/opp').get (function (req, res) {
-  //   return opportunities.ttt(req,res);
-  //   // res.json ({ok:true});
-  // });
 
   // Finish by binding the Opportunity middleware
   app.param('opportunityId', opportunities.opportunityByID);

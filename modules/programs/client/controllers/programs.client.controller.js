@@ -58,7 +58,7 @@
 			//
 			// success, notify and return to list
 			//
-			.then (function (res) {
+			.then (function () {
 				Notification.success ({
 					message : '<i class="glyphicon glyphicon-ok"></i> Program '+t+' Successfully!'
 				});
@@ -89,7 +89,6 @@
 		vm.picFile = null;
 
 		vm.previousState = previousState;
-		// console.log ('program',program);
 		vm.isAdmin                 = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
 		vm.isGov                   = Authentication.user && !!~Authentication.user.roles.indexOf ('gov');
 		vm.editing        = editing;
@@ -134,17 +133,10 @@
 		};
 		vm.save = function (isValid) {
 			vm.form.programForm.$setPristine ();
-			// console.log ('saving form');
 			if (!isValid) {
 				$scope.$broadcast('show-errors-check-validity', 'vm.form.programForm');
 				return false;
 			}
-			// vm.program.tags = vm.program.taglist.split(/ *, */);
-			// if (vm.program.taglist !== '') {
-			// 	vm.program.tags = vm.program.taglist.split(/ *, */);
-			// } else {
-			// 	vm.program.tags = [];
-			// }
 			//
 			// Create a new program, or update the current instance
 			//
@@ -152,23 +144,17 @@
 			//
 			// success, notify and return to list
 			//
-			.then (function (res) {
+			.then (function () {
 				vm.form.programForm.$setPristine ();
 				Notification.success ({
 					message : '<i class="glyphicon glyphicon-ok"></i> program saved successfully!'
 				});
-				// console.log ('now saved the new program, redirect user');
 				//
 				// saved the record, now we can upload the logo if it was changed at all
 				//
 				((vm.fileSelected) ? vm.upload (vm.croppedDataUrl, vm.picFile, vm.program._id) : Promise.resolve ())
 				.then (function () {
-					if (editing) {
 						$state.go('programs.view', {programId:program.code});
-					} else {
-						$state.go('programs.view', {programId:program.code});
-						// $state.go('programs.list');
-					}
 				});
 			})
 			//
@@ -187,7 +173,6 @@
 		//
 		// -------------------------------------------------------------------------
 		vm.upload = function (url, name, programId) {
-			// console.log ('name = ', name);
 			return new Promise (function (resolve, reject) {
 				Upload.upload ({
 					url: '/api/upload/logo/program/'+programId,
@@ -196,7 +181,7 @@
 					}
 				})
 				.then (
-					function (response) {
+					function () {
 						$timeout (function () {
 							Notification.success ({ message: '<i class="glyphicon glyphicon-ok"></i> Update of logo successful!' });
 							vm.fileSelected = false;

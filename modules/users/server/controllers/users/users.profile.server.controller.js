@@ -18,6 +18,7 @@ var _ = require('lodash'),
 
  // CC:  USERFIELDS
 var whitelistedFields = [
+	'_id',
 	'firstName',
 	'lastName',
 	'email',
@@ -41,27 +42,35 @@ var whitelistedFields = [
 	'businessAddress2' ,
 	'businessCity'     ,
 	'businessProvince' ,
-	'businessCode'
+	'businessCode',
+	'location',
+	'description',
+	'website',
+	'skills',
+	'badges',
+	'capabilities',
+	'endorsements',
+	'github',
+	'stackOverflow',
+	'stackExchange',
+	'linkedIn',
+	'isPublicProfile',
+	'isAutoAdd'
+
 ];
-// var oppEmailNotifier = notifier('opportunities', 'email');
 
 /**
  * Update user details
  */
 exports.update = function (req, res) {
 	// Init Variables
-	console.log ('updaint guser');
 	var user = req.user;
-	var prevState = _.cloneDeep(req.user);
 	if (user) {
 		// Update whitelisted fields only
-		console.log ('old user', req.user);
 
 		user = _.extend(user, _.pick(req.body, whitelistedFields));
 
-		console.log ('new user', user);
 		// Previous state of user
-		var oldUser = User.find({_id: user._id});
 		//
 		// this deals with marking the user as government or not
 		//
@@ -75,7 +84,7 @@ exports.update = function (req, res) {
 		user.updated = Date.now();
 		user.displayName = user.firstName + ' ' + user.lastName;
 
-		subscriptionHandler(user, prevState)
+		subscriptionHandler(user)
 		.then(function() {
 			return user.save(function (err) {
 				if (err) {
@@ -103,18 +112,14 @@ exports.update = function (req, res) {
 };
 
 
-function subscriptionHandler(user, oldUser) {
-	console.log ('++subscriptionHandler');
+function subscriptionHandler(user) {
 	var promise = Promise.resolve();
 	if (user.email == null || user.email === '') {
-		console.log ('user email is either null or blank, cannot subscribe');
 		return promise;
 	}
 	if (user.notifyOpportunities) {
-		// promise = oppEmailNotifier.subscribe(user.email)
 		promise = Notifications.subscribe ('not-add-opportunity', user)
 			.then(function(json) {
-				console.log ('subscribe json:', json);
 				// we save the id for the subscription so that was can unsubscribe at
 				// a later point.
 				user.subscribeOpportunitiesId = json.id;
@@ -126,27 +131,13 @@ function subscriptionHandler(user, oldUser) {
 				user.notifyOpportunites = false;
 			});
 	}
-	// else if (emailChanged && user.notifyOpportunities && user.subscribeOpportunitiesId !== null ) {
-	//
-	// CC: depricated as we are no longer maintaining a seperate database
-	//
-	// else if (emailChanged && user.notifyOpportunities) {
-	// 	// we need to update the subscription
-	// 	// promise = oppEmailNotifier.subscribeUpdate(user.subscribeOpportunitiesId, user.email)
-	// 	promise = Notifications.subscribeUpdateUserNotification ('not-add-opportunity', user)
-	// 		.catch(function(err) {
-	// 			// if there was an error, reset the notifyOpportunites flag
-	// 			console.error('Could not update subscription for user due to error from notification ' +
-	// 				'service:' + err);
-	// 		});
-	// }
 	else if (!user.notifyOpportunities ) {
 		// promise = oppEmailNotifier.unsubscribe(user.subscribeOpportunitiesId)
 		promise = Notifications.unsubscribeUserNotification ('not-add-opportunity', user)
 			.then(function() {
 				user.subscribeOpportunitiesId = null;
 			})
-			.catch(function(err) {
+			.catch(function() {
 				// if there was an error, reset the notifyOpportunites flag
 			})
 	}
@@ -162,7 +153,6 @@ exports.changeProfilePicture = function (req, res) {
 	var user = req.user;
 	var storage = multer.diskStorage (config.uploads.diskStorage);
 	var upload = multer({storage: storage}).single('newProfilePicture');
-	// var upload = multer(config.uploads.profileUpload).single('newProfilePicture');
 	var profileUploadFileFilter = require(path.resolve('./config/lib/multer')).profileUploadFileFilter;
 	var existingImageUrl;
 
@@ -192,10 +182,8 @@ exports.changeProfilePicture = function (req, res) {
 
 			upload(req, res, function (uploadError) {
 				if (uploadError) {
-					console.log ('error uploading',uploadError);
 					reject(errorHandler.getErrorMessage(uploadError));
 				} else {
-					// console.log ('uploaded');
 					resolve();
 				}
 			});
@@ -204,11 +192,8 @@ exports.changeProfilePicture = function (req, res) {
 
 	function updateUser () {
 		return new Promise(function (resolve, reject) {
-			// console.log ('req.file.filename', req.file);
 			user.profileImageURL = '/'+config.uploads.profileUpload.display + req.file.filename;
-			// console.log ('new profile = ', user.profileImageURL);
-			user.save(function (err, theuser) {
-				// console.log ('the user', theuser);
+			user.save(function (err) {
 				if (err) {
 					reject(err);
 				} else {
@@ -223,7 +208,6 @@ exports.changeProfilePicture = function (req, res) {
 			if (existingImageUrl !== User.schema.path('profileImageURL').defaultValue) {
 				fs.unlink(existingImageUrl, function (unlinkError) {
 					if (unlinkError) {
-						// console.log(unlinkError);
 						reject({
 							message: 'Error occurred while deleting old profile picture'
 						});
@@ -255,7 +239,6 @@ exports.changeProfilePicture = function (req, res) {
  */
 exports.me = function (req, res) {
 	// Sanitize the user - short term solution. Copied from core.server.controller.js
-	// TODO create proper passport mock: See https://gist.github.com/mweibel/5219403
 	 // CC:  USERFIELDS
 	var safeUserObject = null;
 	if (req.user) {
@@ -288,7 +271,20 @@ exports.me = function (req, res) {
 			businessAddress2        : validator.escape(req.user.businessAddress2),
 			businessCity            : validator.escape(req.user.businessCity),
 			businessProvince        : req.user.businessProvince,
-			businessCode            : validator.escape(req.user.businessCode)
+			businessCode            : validator.escape(req.user.businessCode),
+			location                : req.user.location,
+			description             : validator.escape(req.user.description),
+			website                 : req.user.website,
+			skills                  : req.user.skills,
+			badges                  : req.user.badges,
+			capabilities            : req.user.capabilities,
+			endorsements            : req.user.endorsements,
+			github                  : req.user.github,
+			stackOverflow           : req.user.stackOverflow,
+			stackExchange           : req.user.stackExchange,
+			linkedIn                : req.user.linkedIn,
+			isPublicProfile         : req.user.isPublicProfile,
+			isAutoAdd               : req.user.isAutoAdd
 
 		};
 	}
@@ -308,8 +304,7 @@ exports.removeSelf = function (req, res) {
 		var id = req.user._id;
 		req.logout();
 		res.redirect('/');
-		User.remove({_id: id}, function (err, user) {
-		});
+		User.remove({_id: id}, function () {});
 
 	}
 };
