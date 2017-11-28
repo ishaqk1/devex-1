@@ -5,7 +5,7 @@
     .module('users')
     .controller('EditProfileController', EditProfileController);
 
-  EditProfileController.$inject = ['$scope', '$http', '$location', '$state', 'modalService', 'UsersService', 'Authentication', 'Notification', 'subscriptions', 'filter'];
+  EditProfileController.$inject = ['$scope', '$http', '$location', '$state', 'modalService', 'UsersService', 'Authentication', 'Notification', 'subscriptions', '$filter'];
 
   function EditProfileController($scope, $http, $location, $state, modalService, UsersService, Authentication, Notification, subscriptions, $filter) {
     var vm               = this;
