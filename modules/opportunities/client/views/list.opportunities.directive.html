@@ -4,7 +4,7 @@
   </div>
   <div class="col-sm-5 col-form-buttons text-right">
     <button ng-if="vm.userCanAdd" class="btn" ng-class="{'btn-default': !vm.project && !vm.program, 'btn-link': vm.project || vm.program}" ui-sref="opportunityadmin.create({programId:vm.programId, projectId:vm.projectId, programTitle:vm.programTitle, projectTitle:vm.projectTitle, context:vm.context})" title="New">
-    <i class="glyphicon glyphicon-plus"></i> <span translate="OPP_NEW">Post an Opportunity</span>
+      <i class="glyphicon glyphicon-plus"></i> <span translate="OPP_NEW">Post an Opportunity</span>
     </button>
   </div>
 </div>
@@ -12,38 +12,38 @@
 <h1 property="name" id="wb-cont" translate="OPP_TITLE">Opportunities List</h1>
 
 <table class="wb-tables table table-striped table-hover">
-    <thead>
-        <tr class="active">
-            <th translate="OPP_TH1">Opportunity Title</th>
-            <th translate="OPP_TH2">Description</th>
-            <th translate="OPP_TH3">Project</th>
-            <th translate="OPP_TH4">Fixed-Price Reward</th>
-            <th translate="OPP_TH5">Closing Date</th>
-            <th translate="OPP_TH6">Tags</th>
-            <th ng-if="vm.isAdmin || opportunity.userIs.admin">Actions</th>
-        </tr>
-    </thead>
-    <tbody id="tbodyMain">
-        <tr role="row" ng-class="{'card-greyed': !opportunity.isPublished}" ng-repeat="opportunity in vm.opportunities | slice:column.start:column.end">
-            <td><a ui-sref="opportunities.view({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-bind="opportunity.name"></a></td>
-            <td ng-bind="opportunity.short"></td>
-            <td><i class="fa fa-pie-chart"></i> {{opportunity.project.name}}</a></td>
-            <td><span class="label label-price">{{opportunity.earn|currency}}</span></td>
-            <td><span class="label label-deadline"><i class="fa fa-hourglass-half"></i> <span style="font-weight:300;" translate="OPP_CLOSING">Closing in:</span> {{vm.closing(opportunity)}}</span></td>
-            <td><span class="label label-warning" ng-repeat="code in opportunity.skills">{{code}}</span></td>
-            <td ng-if="vm.isAdmin || opportunity.userIs.admin">
-              <span class="label label-danger" ng-if="!opportunity.isPublished"><i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED</span>
-              &nbsp;
-              <a ng-if="opportunity.project.isPublished && (vm.isAdmin || opportunity.userIs.admin) && opportunity.isPublished" href="javascript:void(0);" ng-click="vm.publish(opportunity, false); $event.stopPropagation()" uib-tooltip="Unpublish"><i class="glyphicon glyphicon-ban-circle"></i></a>
-              &nbsp;
-              <a ng-if="opportunity.project.isPublished && (vm.isAdmin || opportunity.userIs.admin) && !opportunity.isPublished" href="javascript:void(0);" ng-click="vm.publish(opportunity, true); $event.stopPropagation()" uib-tooltip="Publish"><i class="glyphicon glyphicon-check"></i>
-              </a>
-              &nbsp;
-              <a ng-if="vm.isAdmin || opportunity.userIs.admin" href="javascript:void(0);"  id="opportunityadmin.edit" ui-sref="opportunityadmin.edit({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-click="$event.stopPropagation()" uib-tooltip="Edit"><i class="glyphicon glyphicon-edit"></i></a>
-              <button ng-if="vm.canApplyGeneral && !opportunity.userIs.member && !opportunity.userIs.request" class="btn btn-default btn-sm">Apply</button>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr class="active">
+      <th translate="OPP_TH1">Opportunity Title</th>
+      <th translate="OPP_TH2">Description</th>
+      <th translate="OPP_TH3">Project</th>
+      <th translate="OPP_TH4">Fixed-Price Reward</th>
+      <th translate="OPP_TH5">Closing Date</th>
+      <th translate="OPP_TH6">Tags</th>
+      <th ng-if="vm.isAdmin || opportunity.userIs.admin">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="tbodyMain">
+    <tr role="row" ng-class="{'card-greyed': !opportunity.isPublished}" ng-repeat="opportunity in vm.opportunities | slice:column.start:column.end">
+      <td><a ui-sref="opportunities.view({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-bind="opportunity.name"></a></td>
+      <td ng-bind="opportunity.short"></td>
+      <td><i class="fa fa-pie-chart"></i> {{opportunity.project.name}}</a></td>
+      <td><span class="label label-price">{{opportunity.earn|currency}}</span></td>
+      <td><span class="label label-deadline"><i class="fa fa-hourglass-half"></i> <span style="font-weight:300;" translate="OPP_CLOSING">Closing in:</span> {{vm.closing(opportunity)}}</span></td>
+      <td><span class="label label-warning" ng-repeat="code in opportunity.skills">{{code}}</span></td>
+      <td ng-if="vm.isAdmin || opportunity.userIs.admin">
+        <span class="label label-danger" ng-if="!opportunity.isPublished"><i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED</span>
+        &nbsp;
+        <a ng-if="opportunity.project.isPublished && (vm.isAdmin || opportunity.userIs.admin) && opportunity.isPublished" href="javascript:void(0);" ng-click="vm.publish(opportunity, false); $event.stopPropagation()" uib-tooltip="Unpublish"><i class="glyphicon glyphicon-ban-circle"></i></a>
+        &nbsp;
+        <a ng-if="opportunity.project.isPublished && (vm.isAdmin || opportunity.userIs.admin) && !opportunity.isPublished" href="javascript:void(0);" ng-click="vm.publish(opportunity, true); $event.stopPropagation()" uib-tooltip="Publish"><i class="glyphicon glyphicon-check"></i>
+        </a>
+        &nbsp;
+        <a ng-if="vm.isAdmin || opportunity.userIs.admin" href="javascript:void(0);"  id="opportunityadmin.edit" ui-sref="opportunityadmin.edit({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-click="$event.stopPropagation()" uib-tooltip="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+        <button ng-if="vm.canApplyGeneral && !opportunity.userIs.member && !opportunity.userIs.request" class="btn btn-default btn-sm">Apply</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <div class="row">
