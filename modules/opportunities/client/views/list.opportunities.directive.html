@@ -11,7 +11,7 @@
 
 <h1 property="name" id="wb-cont" translate="OPP_TITLE">Opportunities List</h1>
 
-<table class="wb-tables table table-striped table-hover">
+<table class="wb-tables table table-striped table-hover" ng-if="vm.opportunities.length">
   <thead>
     <tr class="active">
       <th translate="OPP_TH1">Opportunity Title</th>
@@ -46,10 +46,10 @@
   </tbody>
 </table>
 
-<div class="row">
-  <div class="col-md-6" ng-if="! vm.opportunities.length">
+<div class="row" ng-if="!vm.opportunities.length">
+  <div class="col-md-6">
     <div class="panel panel-default panel-body">
-      <span class="text-muted">No open opportunities right now. Check back soon!</span>
+      <span class="text-muted" translate="OPP_NONE">No open opportunities right now. Check back soon!</span>
     </div>
   </div>
 </div>
