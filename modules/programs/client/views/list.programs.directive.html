@@ -28,8 +28,6 @@
       <td><p ng-bind="program.short"></p></td>
       <td><p ng-bind="program.department"></p></td>
       <td ng-if="vm.isAdmin || program.userIs.admin">
-        <span ng-if="vm.isAdmin || program.userIs.admin" class="label label-primary">Admin</span>
-        &nbsp;
         <span ng-if="program.userIs.member && !program.userIs.admin" class="label label-primary">Member</span>
         &nbsp;
         <span ng-if="program.userIs.request" class="label label-primary" uib-tooltip="Your membership request is pending approval">Pending Member</span>
