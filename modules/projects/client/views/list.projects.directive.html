@@ -39,11 +39,11 @@
         <i class="glyphicon glyphicon-edit"></i>
         </a>
         &nbsp;
-        <a ng-if="project.program.isPublished && (vm.isAdmin || project.userIs.admin) && project.isPublished" href="javascript:void(0);" ng-click="vm.publish(project, false)" ng-click="$event.stopPropagation()" title="UnPublish" uib-tooltip="Unpublish">
+        <a ng-if="project.isPublished && (vm.isAdmin || project.userIs.admin) && project.isPublished" href="javascript:void(0);" ng-click="vm.publish(project, false)" ng-click="$event.stopPropagation()" title="UnPublish" uib-tooltip="Unpublish">
         <i class="glyphicon glyphicon-ban-circle"></i>
         </a>
         &nbsp;
-        <a ng-if="project.program.isPublished && (vm.isAdmin || project.userIs.admin) && !project.isPublished" href="javascript:void(0);" ng-click="vm.publish(project, true)" ng-click="$event.stopPropagation()" title="Publish" uib-tooltip="Publish">
+        <a ng-if="project.isPublished && (vm.isAdmin || project.userIs.admin) && !project.isPublished" href="javascript:void(0);" ng-click="vm.publish(project, true)" ng-click="$event.stopPropagation()" title="Publish" uib-tooltip="Publish">
         <i class="glyphicon glyphicon-check"></i>
         </a>
         &nbsp;
