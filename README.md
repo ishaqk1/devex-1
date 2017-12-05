@@ -1,6 +1,6 @@
 # GCDevExchange Application
 
-The [GCDevExchange](https://beta.gcdevexchange.org) is a platform for providing new ways for British Columbia's public sector to connect with developers and other IT professionals.
+The [GCDevExchange](https://beta.gcdevexchange.org) is a platform for providing new ways for the Government of Canada to connect with developers and other IT professionals.
 
 The latest version is a mean.js application running in OpenShift using Docker.
 
