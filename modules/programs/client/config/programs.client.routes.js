@@ -145,7 +145,7 @@
 				pageTitle: '{{ "TEAM_NEW" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "TEAM_NEW" | translate }}'
+				label: '{{ "TEAM_NEW" | translate }}',
 				parent: 'programs.list'
 			}
 		})
