@@ -142,10 +142,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'New Program'
+				pageTitle: '{{ "TEAM_NEW" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'New Program',
+				label: '{{ "TEAM_NEW" | translate }}'
 				parent: 'programs.list'
 			}
 		})
