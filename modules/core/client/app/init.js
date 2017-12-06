@@ -164,7 +164,9 @@
       OPP_GITHUB_ISSUE: 'View Issue on GitHub',
       OPP_CREATED_ON: 'Created on',
       OPP_BY: 'by',
-      OPP_UPDATED_ON: 'Last updated on'
+      OPP_UPDATED_ON: 'Last updated on',
+      PROFILE_SETTINGS: 'Settings',
+      PROFILE_PRIVACY: 'Privacy & Notifications',
     })
     .translations('fr', {
       TEAMS: 'Équipes',
@@ -303,7 +305,9 @@
       OPP_GITHUB_ISSUE: 'Afficher le problème sur GitHub',
       OPP_CREATED_ON: 'Créé le',
       OPP_BY: 'par',
-      OPP_UPDATED_ON: 'Mis à jour le'
+      OPP_UPDATED_ON: 'Mis à jour le',
+      PROFILE_SETTINGS: 'Paramètres',
+      PROFILE_PRIVACY: 'Confidentialité et notifications',
     })
     .preferredLanguage('en');
   }

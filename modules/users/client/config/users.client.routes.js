@@ -44,7 +44,10 @@
 					}
 				},
 				data: {
-					pageTitle: 'Privacy'
+					pageTitle: '{{ "PROFILE_PRIVACY" | translate }}'
+				}, 
+				ncyBreadcrumb: {
+					label: '{{ "PROFILE_PRIVACY" | translate }}'
 				}
 			})
 			.state ('settings.messages', {
@@ -62,7 +65,10 @@
 				controller: 'EditProfileController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: 'Settings'
+					pageTitle: '{{ "PROFILE_SETTINGS" | translate }'
+				}, 
+				ncyBreadcrumb: {
+					label: '{{ "PROFILE_SETTINGS" | translate }}'
 				}
 			})
 			.state('settings.payment', {
