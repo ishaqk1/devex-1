@@ -45,7 +45,7 @@
 				},
 				data: {
 					pageTitle: '{{ "PROFILE_PRIVACY" | translate }}'
-				}, 
+				},
 				ncyBreadcrumb: {
 					label: '{{ "PROFILE_PRIVACY" | translate }}'
 				}
@@ -66,7 +66,7 @@
 				controllerAs: 'vm',
 				data: {
 					pageTitle: '{{ "PROFILE_SETTINGS" | translate }'
-				}, 
+				},
 				ncyBreadcrumb: {
 					label: '{{ "PROFILE_SETTINGS" | translate }}'
 				}

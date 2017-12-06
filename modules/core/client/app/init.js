@@ -166,7 +166,7 @@
       OPP_BY: 'by',
       OPP_UPDATED_ON: 'Last updated on',
       PROFILE_SETTINGS: 'Settings',
-      PROFILE_PRIVACY: 'Privacy & Notifications',
+      PROFILE_PRIVACY: 'Privacy & Notifications'
     })
     .translations('fr', {
       TEAMS: 'Équipes',
@@ -307,7 +307,7 @@
       OPP_BY: 'par',
       OPP_UPDATED_ON: 'Mis à jour le',
       PROFILE_SETTINGS: 'Paramètres',
-      PROFILE_PRIVACY: 'Confidentialité et notifications',
+      PROFILE_PRIVACY: 'Confidentialité et notifications'
     })
     .preferredLanguage('en');
   }
