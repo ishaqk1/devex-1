@@ -80,7 +80,7 @@
 		// -------------------------------------------------------------------------
 		var o = vm.opportunity;
 
-		vm.canPublish = (o.name && o.short && o.description && o.github && o.location && o.criteria && o.earn && o.evaluation && o.proposalEmail && o.deadline && o.assignment && o.start);
+		vm.canPublish = (o.name && o.short && o.description && o.github && o.criteria && o.earn && o.evaluation && o.proposalEmail && o.deadline && o.assignment && o.start);
 		// -------------------------------------------------------------------------
 		//
 		// issue a request for membership

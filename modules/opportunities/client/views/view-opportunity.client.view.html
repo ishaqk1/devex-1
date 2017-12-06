@@ -87,10 +87,10 @@
           <div class="label-list" style="padding-top: 4px; padding-bottom: 10px;">
 	          <span class="label label-price">{{vm.opportunity.earn|currency}}</span>
 	          <span ng-if="vm.opportunity.isPublished && vm.opportunity.status === 'Pending'" class="label label-deadline"><i class="fa fa-hourglass-half"></i>&nbsp;<span style="font-weight:300;" translate="OPP_CLOSING">Closing in:</span> {{vm.closing}}</span>
-	          <span class="label label-location"><i class="fa fa-map-marker"></i>&nbsp;{{vm.opportunity.location}}</span>
+	          <!-- <span class="label label-location"><i class="fa fa-map-marker"></i>&nbsp;{{vm.opportunity.location}}</span>
 	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'offsite'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_NO">In-person work NOT required</span></span>
 	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'onsite'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_YES">In-person work required</span></span>
-	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'mixed'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_SOME">Some in-person work required</span></span>
+	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'mixed'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_SOME">Some in-person work required</span></span> -->
 	          <span class="label label-warning" ng-repeat="code in vm.opportunity.skills">{{code}}</span>
 			  </div>
 		</div>
