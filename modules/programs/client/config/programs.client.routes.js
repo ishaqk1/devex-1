@@ -21,8 +21,6 @@
 	        params: {
 	        	lang: {
                 	value: function($translate){
-                		console.log($translate);
-                		console.log($translate.use());
                     	return $translate.use();
                 	}
             	}
@@ -57,7 +55,7 @@
 		//
 		// -------------------------------------------------------------------------
 		.state('programs.view', {
-			url: '/:programId',
+			url: '/{lang}/:programId',
 			templateUrl: '/modules/programs/client/views/view-program.client.view.html',
 			controller: 'ProgramViewController',
 			controllerAs: 'vm',
@@ -83,7 +81,7 @@
 		// -------------------------------------------------------------------------
 		.state('programadmin', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/programadmin',
+			url: '/{lang}/programadmin',
 			template: '<ui-view/>',
 	        params: {
 	          lang: 'en'
@@ -95,7 +93,7 @@
 		//
 		// -------------------------------------------------------------------------
 		.state('programadmin.edit', {
-			url: '/:programId/edit',
+			url: '/{lang}/:programId/edit',
 			templateUrl: '/modules/programs/client/views/edit-program.client.view.html',
 			controller: 'ProgramEditController',
 			controllerAs: 'vm',
@@ -129,7 +127,7 @@
 		//
 		// -------------------------------------------------------------------------
 		.state('programadmin.create', {
-			url: '/create',
+			url: '/{lang}/create',
 			templateUrl: '/modules/programs/client/views/edit-program.client.view.html',
 			controller: 'ProgramEditController',
 			controllerAs: 'vm',
@@ -153,16 +151,7 @@
 			ncyBreadcrumb: {
 				label: '{{ "TEAM_NEW" | translate }}',
 				parent: 'programs.list'
-			},
-	        params: {
-	        	lang: {
-                	value: function($translate){
-                		console.log($translate);
-                		console.log($translate.use());
-                    	return $translate.use();
-                	}
-            	}
-	        }
+			}
 		})
 		;
 	}]);
