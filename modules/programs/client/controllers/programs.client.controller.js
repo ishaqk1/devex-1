@@ -60,7 +60,7 @@
 			//
 			.then (function () {
 				Notification.success ({
-					message : '<i class="glyphicon glyphicon-ok"></i> Program '+t+' Successfully!'
+					message : '<i class="glyphicon glyphicon-ok"></i> {{ "TEAM_TEAM" | translate }} '+t+' Successfully!'
 				});
 			})
 			//
@@ -70,7 +70,7 @@
 				program.isPublished = publishedState;
 				Notification.error ({
 					message : res.data.message,
-					title   : '<i class=\'glyphicon glyphicon-remove\'></i> Program '+t+' Error!'
+					title   : '<i class=\'glyphicon glyphicon-remove\'></i> {{ "TEAM_TEAM" | translate }} '+t+' Error!'
 				});
 			});
 		};
@@ -119,7 +119,7 @@
 			if ($window.confirm('Are you sure you want to delete?')) {
 				vm.program.$remove(function() {
 					$state.go('programs.list');
-					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> program deleted successfully!' });
+					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> {{ "TEAM_TEAM" | translate }} deleted successfully!' });
 				});
 			}
 		};
@@ -147,7 +147,7 @@
 			.then (function () {
 				vm.form.programForm.$setPristine ();
 				Notification.success ({
-					message : '<i class="glyphicon glyphicon-ok"></i> program saved successfully!'
+					message : '<i class="glyphicon glyphicon-ok"></i> {{ "TEAM_TEAM" | translate }} saved successfully!'
 				});
 				//
 				// saved the record, now we can upload the logo if it was changed at all
@@ -163,7 +163,7 @@
 			.catch (function (res) {
 				Notification.error ({
 					message : res.data.message,
-					title   : '<i class=\'glyphicon glyphicon-remove\'></i> program save error!'
+					title   : '<i class=\'glyphicon glyphicon-remove\'></i> {{ "TEAM_TEAM" | translate }} save error!'
 				});
 			});
 		};
