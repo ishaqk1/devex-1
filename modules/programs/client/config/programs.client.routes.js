@@ -55,7 +55,7 @@
 		//
 		// -------------------------------------------------------------------------
 		.state('programs.view', {
-			url: '/{lang}/:programId',
+			url: '/:programId',
 			templateUrl: '/modules/programs/client/views/view-program.client.view.html',
 			controller: 'ProgramViewController',
 			controllerAs: 'vm',
@@ -84,7 +84,11 @@
 			url: '/{lang}/programadmin',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -93,7 +97,7 @@
 		//
 		// -------------------------------------------------------------------------
 		.state('programadmin.edit', {
-			url: '/{lang}/:programId/edit',
+			url: '/:programId/edit',
 			templateUrl: '/modules/programs/client/views/edit-program.client.view.html',
 			controller: 'ProgramEditController',
 			controllerAs: 'vm',
@@ -127,7 +131,7 @@
 		//
 		// -------------------------------------------------------------------------
 		.state('programadmin.create', {
-			url: '/{lang}/create',
+			url: '/create',
 			templateUrl: '/modules/programs/client/views/edit-program.client.view.html',
 			controller: 'ProgramEditController',
 			controllerAs: 'vm',
