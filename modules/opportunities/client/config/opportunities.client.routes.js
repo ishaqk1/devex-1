@@ -16,10 +16,14 @@
 		// -------------------------------------------------------------------------
 		.state('opportunities', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/opportunities',
+			url: '/{lang}/opportunities',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+            		value: function($translate){
+                		return $translate.use();
+            		}
+        		}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -93,10 +97,14 @@
 		// -------------------------------------------------------------------------
 		.state('opportunityadmin', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/opportunityadmin',
+			url: '/{lang}/opportunityadmin',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------

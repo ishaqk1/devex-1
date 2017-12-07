@@ -29,10 +29,14 @@
     $stateProvider
       .state('app', {
         abstract: true,
-        url: '/{lang:(?:fr|en)}',
+        url: '/{lang}',
         template: '<ui-view/>',
         params: {
-          lang: 'en'
+          lang: {
+            value: function($translate){
+              return $translate.use();
+            }
+          }
         }
       })
       .state('app.home', {

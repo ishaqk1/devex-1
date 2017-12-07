@@ -16,10 +16,14 @@
 		// -------------------------------------------------------------------------
 		.state('projects', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/projects',
+			url: '/{lang}/projects',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -80,10 +84,14 @@
 		// -------------------------------------------------------------------------
 		.state('projectadmin', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/projectadmin',
+			url: '/{lang}/projectadmin',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------

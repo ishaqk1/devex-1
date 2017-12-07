@@ -13,16 +13,20 @@
 		$stateProvider
 			.state('settings', {
 				abstract: true,
-				url: '/{lang:(?:fr|en)}/settings',
+				url: '/{lang}/settings',
 				templateUrl: '/modules/users/client/views/settings/settings.client.view.html',
 				controller: 'SettingsController',
 				controllerAs: 'vm',
 				data: {
 					roles: ['user', 'admin', 'gov-request', 'gov']
 				},
-        params: {
-          lang: 'en'
-        }
+        		params: {
+          			lang: {
+                		value: function($translate){
+                    		return $translate.use();
+                		}
+            		}
+        		}
 			})
 			.state ('settings.skills', {
 				url: '/skills',
@@ -100,7 +104,7 @@
 			// })
 			.state('authentication', {
 				abstract: true,
-				url: '/{lang:(?:fr|en)}/authentication',
+				url: '/{lang}/authentication',
 				templateUrl: '/modules/users/client/views/authentication/authentication.client.view.html',
 				controller: 'AuthenticationController',
 				controllerAs: 'vm',
@@ -109,12 +113,16 @@
 						return UsersService.countUsers ().then (function (o) {return o.count});
 					}
 				},
-        ncyBreadcrumb: {
-          label: 'Authentication'
-        },
-        params: {
-          lang: 'en'
-        }
+		        ncyBreadcrumb: {
+		          label: 'Authentication'
+		        },
+		        params: {
+		        	lang: {
+	                	value: function($translate){
+	                    	return $translate.use();
+	                	}
+	            	}
+		        }
 			})
 			.state('authentication.gov', {
 				url: '/government',
@@ -166,11 +174,15 @@
 			})
 			.state('password', {
 				abstract: true,
-				url: '/{lang:(?:fr|en)}/password',
+				url: '/{lang}/password',
 				template: '<ui-view autoscroll="true"/>',
-        params: {
-          lang: 'en'
-        }
+		        params: {
+		        	lang: {
+		            	value: function($translate){
+		                    return $translate.use();
+		                }
+		            }
+		        }
 			})
 			.state('password.forgot', {
 				url: '/forgot',
@@ -183,11 +195,15 @@
 			})
 			.state('password.reset', {
 				abstract: true,
-				url: '/{lang:(?:fr|en)}/reset',
+				url: '/{lang}/reset',
 				template: '<ui-view autoscroll="true"/>',
-        params: {
-          lang: 'en'
-        }
+        		params: {
+	          		lang: {
+	                	value: function($translate){
+	                    	return $translate.use();
+	                	}
+	            	}
+        		}
 			})
 			.state('password.reset.invalid', {
 				url: '/invalid',
