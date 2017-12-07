@@ -19,7 +19,7 @@
 			url: '/{lang:(?:fr|en)}/teams',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	          lang: $translate.use()
 	        }
 		})
 		// -------------------------------------------------------------------------
