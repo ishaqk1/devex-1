@@ -15,7 +15,7 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification) {
+	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate) {
 		var vm                 = this;
 		vm.program             = program;
 		vm.display             = {};
@@ -60,7 +60,7 @@
 			//
 			.then (function () {
 				Notification.success ({
-					message : '<i class="glyphicon glyphicon-ok"></i> {{ "TEAM_TEAM" | translate }} '+t+' Successfully!'
+					message : '<i class="glyphicon glyphicon-ok"></i> ' + $translate.instant('TEAM_TEAM') + ' '+t+' Successfully!'
 				});
 			})
 			//
@@ -70,7 +70,7 @@
 				program.isPublished = publishedState;
 				Notification.error ({
 					message : res.data.message,
-					title   : '<i class=\'glyphicon glyphicon-remove\'></i> {{ "TEAM_TEAM" | translate }} '+t+' Error!'
+					title   : '<i class=\'glyphicon glyphicon-remove\'></i> ' + $translate.instant('TEAM_TEAM') + ' '+t+' Error!'
 				});
 			});
 		};
@@ -80,7 +80,7 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState) {
+	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, $translate) {
 		var vm            = this;
 		vm.user = Authentication.user;
 		vm.fileSelected = false;
@@ -119,7 +119,7 @@
 			if ($window.confirm('Are you sure you want to delete?')) {
 				vm.program.$remove(function() {
 					$state.go('programs.list');
-					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> {{ "TEAM_TEAM" | translate }} deleted successfully!' });
+					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $translate.instant('TEAM_TEAM') + ' deleted successfully!' });
 				});
 			}
 		};
@@ -147,7 +147,7 @@
 			.then (function () {
 				vm.form.programForm.$setPristine ();
 				Notification.success ({
-					message : '<i class="glyphicon glyphicon-ok"></i> {{ "TEAM_TEAM" | translate }} saved successfully!'
+					message : '<i class="glyphicon glyphicon-ok"></i> ' + $translate.instant('TEAM_TEAM') + ' saved successfully!'
 				});
 				//
 				// saved the record, now we can upload the logo if it was changed at all
@@ -163,7 +163,7 @@
 			.catch (function (res) {
 				Notification.error ({
 					message : res.data.message,
-					title   : '<i class=\'glyphicon glyphicon-remove\'></i> {{ "TEAM_TEAM" | translate }} save error!'
+					title   : '<i class=\'glyphicon glyphicon-remove\'></i> ' + $translate.instant('TEAM_TEAM') + ' save error!'
 				});
 			});
 		};
