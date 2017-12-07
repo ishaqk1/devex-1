@@ -21,6 +21,8 @@
 	        params: {
 	        	lang: {
                 	value: function($translate){
+                		console.log($translate);
+                		console.log($translate.use());
                     	return $translate.use();
                 	}
             	}
@@ -151,7 +153,16 @@
 			ncyBreadcrumb: {
 				label: '{{ "TEAM_NEW" | translate }}',
 				parent: 'programs.list'
-			}
+			},
+	        params: {
+	        	lang: {
+                	value: function($translate){
+                		console.log($translate);
+                		console.log($translate.use());
+                    	return $translate.use();
+                	}
+            	}
+	        }
 		})
 		;
 	}]);
