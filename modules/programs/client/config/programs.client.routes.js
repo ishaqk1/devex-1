@@ -6,7 +6,7 @@
 (function () {
 	'use strict';
 
-	angular.module('programs.routes').config(['$stateProvider', '$translate', function ($stateProvider, $translate) {
+	angular.module('programs.routes').config(['$stateProvider', '$translateProvider', function ($stateProvider, $translateProvider) {
 		$stateProvider
 		// -------------------------------------------------------------------------
 		//
@@ -19,7 +19,7 @@
 			url: '/{lang:(?:fr|en)}/teams',
 			template: '<ui-view/>',
 	        params: {
-	          lang: $translate.use()
+	          lang: $translateProvider.use()
 	        }
 		})
 		// -------------------------------------------------------------------------
