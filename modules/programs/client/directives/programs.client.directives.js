@@ -30,7 +30,7 @@
 					//
 					.then (function () {
 						Notification.success ({
-							message : '<i class="glyphicon glyphicon-ok"></i> Program '+t+' Successfully!'
+							message : '<i class="glyphicon glyphicon-ok"></i> {{ "TEAM_TEAM" | translate }} '+t+' Successfully!'
 						});
 					})
 					//
@@ -40,7 +40,7 @@
 						program.isPublished = publishedState;
 						Notification.error ({
 							message : res.data.message,
-							title   : '<i class=\'glyphicon glyphicon-remove\'></i> Program '+t+' Error!'
+							title   : '<i class=\'glyphicon glyphicon-remove\'></i> {{ "TEAM_TEAM" | translate }} '+t+' Error!'
 						});
 					});
 				};
