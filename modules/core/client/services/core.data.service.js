@@ -126,7 +126,6 @@
 		{id:'writer-content-designer-content-strategist', text:'Writer / Content Designer / Content Strategist'}
 	];
 	var departments = [
-		'Empty_Department',
 		'Aboriginal_Business_Canada',
 		'Administrative_Tribunals_Support_Service_of_Canada',
 		'Agriculture_and_Agri_Food_Canada',
