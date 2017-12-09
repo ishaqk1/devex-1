@@ -15,7 +15,7 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate) {
+	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate, dataService) {
 		var vm                 = this;
 		vm.program             = program;
 		vm.display             = {};
@@ -23,6 +23,10 @@
 		vm.authentication      = Authentication;
 		vm.ProgramsService     = ProgramsService;
 		vm.idString            = 'programId';
+		//
+		// departments list
+		//
+		vm.departments = dataService.departments;
 		//
 		// what can the user do here?
 		//
@@ -80,13 +84,17 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, $translate) {
+	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, $translate, dataService) {
 		var vm            = this;
 		vm.user = Authentication.user;
 		vm.fileSelected = false;
 		vm.progress = 0;
 		vm.croppedDataUrl = '';
 		vm.picFile = null;
+		//
+		// departments list
+		//
+		vm.departments = dataService.departments;
 
 		vm.previousState = previousState;
 		vm.isAdmin                 = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
