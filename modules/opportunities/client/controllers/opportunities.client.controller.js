@@ -243,6 +243,10 @@
 		vm.opportunity.skilllist              = vm.opportunity.skills ? vm.opportunity.skills.join (', ') : '';
 		vm.opportunity.taglist                = vm.opportunity.tags   ? vm.opportunity.tags.join (', ')   : '';
 		//
+		// prices list
+		//
+		vm.prices = dataService.prices;
+		//
 		// if the user doesn't have the right access then kick them out
 		//
 		if (editing && !vm.isAdmin && !opportunity.userIs.admin) $state.go('forbidden');
