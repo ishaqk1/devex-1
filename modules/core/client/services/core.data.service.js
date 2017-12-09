@@ -1,6 +1,5 @@
 (function () {
 	'use strict';
-	
 	var citylist = [
 		'Victoria',
 		'Vancouver',
@@ -111,7 +110,6 @@
 		'White Rock',
 		'Williams Lake'
 	];
-
 	var capabilities = [
 		{id:'agile-coach', text:'Agile Coach'},
 		{id:'backend-web-developer', text:'Backend Web Developer'},
@@ -127,12 +125,11 @@
 		{id:'visual-designer', text:'Visual Designer'},
 		{id:'writer-content-designer-content-strategist', text:'Writer / Content Designer / Content Strategist'}
 	];
-
 	var departments = [
 		'Empty_Department',
 		'Aboriginal_Business_Canada',
 		'Administrative_Tribunals_Support_Service_of_Canada',
-		'Agriculture_and_Agri-Food_Canada',
+		'Agriculture_and_Agri_Food_Canada',
 		'Atlantic_Canada_Opportunities_Agency',
 		'Atlantic_Pilotage_Authority_Canada',
 		'Atomic_Energy_of_Canada_Limited',
@@ -191,10 +188,10 @@
 		'Canadian_Museum_of_Nature',
 		'Canadian_Northern_Economic_Development_Agency',
 		'Canadian_Nuclear_Safety_Commission',
-		'Canadian_Pari-Mutuel_Agency',
+		'Canadian_Pari_Mutuel_Agency',
 		'Canadian_Police_College',
 		'Canadian_Race_Relations_Foundation',
-		'Canadian_Radio-Television_and_Telecommunications_Commission',
+		'Canadian_Radio_Television_and_Telecommunications_Commission',
 		'Canadian_Security_Intelligence_Service',
 		'Canadian_Space_Agency',
 		'Canadian_Tourism_Commission',
@@ -318,7 +315,7 @@
 		'Royal_Canadian_Mounted_Police',
 		'Royal_Canadian_Mounted_Police_External_Review_Committee',
 		'Royal_Canadian_Navy',
-		'Royal_Military_College_Saint-Jean',
+		'Royal_Military_College_Saint_Jean',
 		'Royal_Military_College_of_Canada',
 		'Secretary_to_the_Governor_General',
 		'Security_Intelligence_Review_Committee',
@@ -326,7 +323,7 @@
 		'Seniors',
 		'Service_Canada',
 		'Shared_Services_Canada',
-		'Ship-Source_Oil_Pollution_Fund',
+		'Ship_Source_Oil_Pollution_Fund',
 		'Social_Sciences_and_Humanities_Research_Council_of_Canada',
 		'Social_Security_Tribunal_of_Canada',
 		'Sport_Canada',
