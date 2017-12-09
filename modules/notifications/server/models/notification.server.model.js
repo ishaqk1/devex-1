@@ -25,7 +25,7 @@ var NotificationSchema = new Schema({
 
 var SubscriptionSchema = new Schema({
 	subscriptionId   : {type: String, unique: true, required: 'A subscription Id is a requirement'},
-	notification     : {type: Schema.ObjectId, ref: 'Notification', required: 'Please select a program'},
+	notification     : {type: Schema.ObjectId, ref: 'Notification', required: 'Please select a team'},
 	notificationCode : {type: String},   // notification code
 	user             : {type: Schema.ObjectId, ref: 'User', required: 'Please select a user', index: true}
 });

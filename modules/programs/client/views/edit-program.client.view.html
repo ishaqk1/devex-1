@@ -23,27 +23,27 @@
 	<div class="col-sm-12">
 			<fieldset>
 				<div class="form-group" show-errors>
-					<label class="control-label" for="title">Title</label>
+					<label class="control-label required" for="title" aria-required="true">Title <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stitle = !stitle"></i>
 					<div class="input-help alert alert-info" ng-show="stitle">
 						Help Text
 					</div>
 
-					<input name="title" type="text" ng-model="vm.program.title" id="title" class="form-control" placeholder="Title" required>
+					<input name="title" type="text" ng-model="vm.program.title" id="title" class="form-control" placeholder="Title" required aria-required="true">
 					<div ng-messages="vm.form.programForm.title.$error" role="alert">
 						<p class="help-block error-text" ng-message="required">Team title is required.</p>
 					</div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label" for="department">Department</label>
+					<label class="control-label required" for="department" aria-required="true">Department <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdepartment = !sdepartment"></i>
 					<div class="input-help alert alert-info" ng-show="sdepartment">
 						Help Text
 					</div>
 
-					<select name="department" ng-model="vm.program.department" id="department" class="form-control" required ng-options="v as v | translate for v in vm.departments | orderBy: 'toString() | translate'">
+					<select name="department" ng-model="vm.program.department" id="department" class="form-control" required aria-required="true" ng-options="v as v | translate for v in vm.departments | orderBy: 'toString() | translate'">
 						<option value="">{{ "Empty_Department" | translate }}</option>
 					</select>
 					<div ng-messages="vm.form.programForm.department.$error" role="alert">
@@ -51,14 +51,14 @@
 					</div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label" for="short">Short Description</label>
+					<label class="control-label required" for="short" aria-required="true">Short Description <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc = !ssdesc"></i>
 					<div class="input-help alert alert-info" ng-show="ssdesc">
 						Help Text
 					</div>
 
-					<textarea name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required></textarea>
+					<textarea name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required aria-required="true"></textarea>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="description">Description</label>

@@ -40,7 +40,7 @@
 				<a  id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
 			</div>
 			<div class="form-group" >
-				<label class="control-label" for="project">Project</label>
+				<label class="control-label required" for="project" aria-required="true">Project <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('project')"></i>
 				<div class="input-help alert alert-info" data-field="project" ng-show="vm.displayHelp.project">
 					Select the project that this opportunity falls under. If you don't see the project in the dropdown list, you'll need to go to the Projects tab and create a new project page first.
@@ -66,7 +66,7 @@
 
 			<br><br>
 			<div class="form-group" show-errors>
-				<label class="control-label" for="title">Title</label>
+				<label class="control-label required" for="title" aria-required="true">Title <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('title')"></i>
 				<div class="input-help alert alert-info" data-field="title" ng-show="vm.displayHelp.title">
 					Create a short title for the opportunity that conveys the core of the work you need done.
@@ -78,7 +78,7 @@
 			</div>
 
 			<div class="form-group" show-errors>
-				<label class="control-label" for="short">Teaser</label>
+				<label class="control-label required" for="short" aria-required="true">Teaser <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('short')"></i>
 				<div class="input-help alert alert-info" data-field="short" ng-show="vm.displayHelp.short">
 					Enter a 1-2 sentence description that will entice readers to apply on this opportunity. Describe what you are inviting them to do.
@@ -89,7 +89,7 @@
 				</div>
 			</div>
 			<div class="form-group" show-errors>
-				<label class="control-label" for="description">Description</label>
+				<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('description')"></i>
 				<div class="input-help alert alert-info" data-field="description" ng-show="vm.displayHelp.description">
 					Here's where you can fully describe any useful background, and what you're trying to accomplish by offering this paid opportunity.
@@ -111,7 +111,7 @@
 
 			<br><br>
 			<div class="form-group" ng-if="vm.isAdmin|| (!vm.editing && vm.isGov) ||vm.opportunity.userIs.admin" show-errors>
-				<label class="control-label" for="github">Github Repository</label>
+				<label class="control-label required" for="github" aria-required="true">Github Repository <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('github')"></i>
 				<div class="input-help alert alert-info" data-field="github" ng-show="vm.displayHelp.github">
 					Paste the link to your project's GitHub repository.<br/>
@@ -178,7 +178,7 @@
 				<input type="text" name="skilllist" ng-model="vm.opportunity.skilllist" id="skilllist" class="form-control" placeholder="e.g. JavaScript, WordPress, CSS"></input>
 			</div>
 			<div class="form-group" show-errors>
-				<label class="control-label" for="description" translate="OPP_ACC_CRIT">Acceptance Criteria</label>
+				<label class="control-label required" for="description" aria-required="true"><span translate="OPP_ACC_CRIT">Acceptance Criteria</span> <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('criteria')"></i>
 				<div class="input-help alert alert-info" data-field="criteria" ng-show="vm.displayHelp.criteria">
 					In this section, you need to clearly define everything that must be delivered and all criteria that must be met in order for you to be satisfied and ready to pay the developer.
@@ -201,7 +201,7 @@
 			<div class="row">
 				<div class="col-sm-4 col-md-3">
 					<div class="form-group" show-errors>
-						<label class="control-label" for="earn">Fixed-Price Reward</label>
+						<label class="control-label required" for="earn" aria-required="true">Fixed-Price Reward <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('reward')"></i>
 						<div class="input-help alert alert-info" data-field="reward" ng-show="vm.displayHelp.reward">
 							<p>To the best of your ability, estimate a fair price for the amount of work you think it should take a qualified developer to meet the acceptance criteria. It's best to over-estimate.</p>
@@ -219,7 +219,7 @@
 
 			<br><br>
 			<div class="form-group" show-errors>
-				<label class="control-label" for="description">Proposal Evaluation Criteria</label>
+				<label class="control-label required" for="description" aria-required="true">Proposal Evaluation Criteria <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('evaluation')"></i>
 				<div class="input-help alert alert-info" data-field="evaluation" ng-show="vm.displayHelp.evaluation">
 					In this section, you must explicitly describe the criteria you will use to score the proposals you receive. State the weight or points you will give to each criteria (e.g. "Experience contributing Java code to any public code repositories with more than 5 contributors: (10 points)".<br/>
@@ -241,7 +241,7 @@
 			</div>
 
 			<div class="form-group" show-errors>
-				<label class="control-label" for="proposalEmail">Email to Receive Acceptance of Terms and Contract</label>
+				<label class="control-label required" for="proposalEmail" aria-required="true">Email to Receive Acceptance of Terms and Contract <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('proposalEmail')"></i>
 				<div class="input-help alert alert-info" data-field="proposalEmail" ng-show="vm.displayHelp.proposalEmail">
 					Enter the email address where you would like the assigned applicant to send their acceptance of the Code With Us Terms and Contract for this opportunity.

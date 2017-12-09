@@ -57,7 +57,7 @@ var ProjectSchema = new Schema({
   program: {
     type: Schema.ObjectId,
     ref: 'Program',
-    required: 'Please select a program'
+    required: 'Please select a team'
   },
   user: {
     type: Schema.ObjectId,
