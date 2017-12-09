@@ -309,7 +309,7 @@
 		'Public_Services_and_Procurement_Canada',
 		'Receiver_General_for_Canada',
 		'Registry_of_the_Specific_Claims_Tribunal_of_Canada',
-		'Ridley_Terminals_Inc.',
+		'Ridley_Terminals_Inc',
 		'Royal_Canadian_Air_Force',
 		'Royal_Canadian_Mint',
 		'Royal_Canadian_Mounted_Police',
