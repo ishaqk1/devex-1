@@ -257,7 +257,7 @@
 		'Innovation,_Science_and_Economic_Development_Canada',
 		'Intergovernmental_Affairs',
 		'International_Development_Research_Centre',
-		'Jacques_Cartier_and_Champlain_Bridges_Inc.',
+		'Jacques_Cartier_and_Champlain_Bridges_Inc',
 		'Justice_Canada',
 		'Labour_Program',
 		'Laurentian_Pilotage_Authority_Canada',
