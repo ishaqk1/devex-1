@@ -31,9 +31,7 @@
 					</div>
 
 					<input name="title" type="text" ng-model="vm.program.title" id="title" class="form-control" placeholder="Title" required aria-required="true">
-					<div ng-messages="vm.form.programForm.title.$error" role="alert">
-						<p class="help-block error-text" ng-message="required">Team title is required.</p>
-					</div>
+					<div ng-messages="vm.form.programForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
 					<label class="control-label required" for="department" aria-required="true">Department <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
@@ -46,9 +44,7 @@
 					<select name="department" ng-model="vm.program.department" id="department" class="form-control" required aria-required="true" ng-options="v as v | translate for v in vm.departments | orderBy: 'toString() | translate'">
 						<option value="">{{ "Empty_Department" | translate }}</option>
 					</select>
-					<div ng-messages="vm.form.programForm.department.$error" role="alert">
-						<p class="help-block error-text" ng-message="required">Team department is required.</p>
-					</div>
+					<div ng-messages="vm.form.programForm.department.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
 					<label class="control-label required" for="short" aria-required="true">Short Description <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
