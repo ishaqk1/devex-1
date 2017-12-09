@@ -388,7 +388,27 @@
       Veterans_Review_and_Appeal_Board_Canada: "Veterans Review and Appeal Board Canada",
       Veterans_Ombudsman: "Veterans\' Ombudsman (Office of the)",
       Virtual_Museum_of_Canada: "Virtual Museum of Canada",
-      Western_Economic_Diversification_Canada: "Western Economic Diversification Canada"
+      Western_Economic_Diversification_Canada: "Western Economic Diversification Canada",
+      500: '$500',
+      1000: '$1,000',
+      1500: '$1,500',
+      2000: '$2,000',
+      2500: '$2,500',
+      3000: '$3,000',
+      3500: '$3,500',
+      4000: '$4,000',
+      4500: '$4,500',
+      5000: '$5,000',
+      5500: '$5,500',
+      6000: '$6,000',
+      6500: '$6,500',
+      7000: '$7,000',
+      7500: '$7,500',
+      8000: '$8,000',
+      8500: '$8,500',
+      9000: '$9,000',
+      9500: '$9,500',
+      10000: '$10,000'
     })
     .translations('fr', {
       TEAMS: 'Équipes',
@@ -751,7 +771,27 @@
       VIA_Rail_Canada_Inc: "VIA Rail Canada Inc.",
       Canada_School_of_Public_Service: "École de la fonction publique du Canada",
       Elections_Canada: "Élections Canada",
-      Atomic_Energy_of_Canada_Limited: "Énergie atomique du Canada, Limitée"
+      Atomic_Energy_of_Canada_Limited: "Énergie atomique du Canada, Limitée",
+      500: '500 $',
+      1000: '1 000 $',
+      1500: '1 500 $',
+      2000: '2 000 $',
+      2500: '2 500 $',
+      3000: '3 000 $',
+      3500: '3 500 $',
+      4000: '4 000 $',
+      4500: '4 500 $',
+      5000: '5 000 $',
+      5500: '5 500 $',
+      6000: '6 000 $',
+      6500: '6 500 $',
+      7000: '7 000 $',
+      7500: '7 500 $',
+      8000: '8 000 $',
+      8500: '8 500 $',
+      9000: '9 000 $',
+      9500: '9 500 $',
+      10000: '10 000 $'
     })
     .preferredLanguage('en');
   }

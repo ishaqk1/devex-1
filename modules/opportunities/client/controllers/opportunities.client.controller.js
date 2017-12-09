@@ -40,6 +40,10 @@
 		vm.display.evaluation     = $sce.trustAsHtml(vm.opportunity.evaluation);
 		vm.display.criteria       = $sce.trustAsHtml(vm.opportunity.criteria);
 		//
+		// prices list
+		//
+		vm.prices = dataService.prices;
+		//
 		// what can the user do here?
 		//
 		var isUser                 = Authentication.user;
