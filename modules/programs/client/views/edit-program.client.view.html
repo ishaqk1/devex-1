@@ -43,7 +43,7 @@
 						Help Text
 					</div>
 
-					<select name="department" ng-model="vm.program.department" id="department" class="form-control" required ng-options="v as v | translate for v in vm.departments"></select>
+					<select name="department" ng-model="vm.program.department" id="department" class="form-control" required ng-options="v as v | translate for v in vm.departments | orderBy: 'v'"></select>
 					<div ng-messages="vm.form.programForm.department.$error" role="alert">
 						<p class="help-block error-text" ng-message="required">Team department is required.</p>
 					</div>
