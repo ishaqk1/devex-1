@@ -30,7 +30,7 @@
       <td><a ng-if="opportunity.project" id="projects.view" ui-sref="projects.view({projectId:opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{opportunity.project.name}}</a></td>
       <td><span class="label label-price">{{opportunity.earn | translate}}</span></td>
       <td><span class="label label-deadline"><i class="fa fa-hourglass-half"></i> <span style="font-weight:300;" translate="OPP_CLOSING">Closing in:</span> {{vm.closing(opportunity)}}</span></td>
-      <td><span class="label label-warning" ng-repeat="code in opportunity.skills">{{code}}</span></td>
+      <td><div class="label-list"><span class="label label-warning" ng-repeat="code in opportunity.skills">{{code}}</span></div></td>
       <td ng-if="vm.isAdmin || opportunity.userIs.admin">
         <span class="label label-danger" ng-if="!opportunity.isPublished"><i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED</span>
         &nbsp;
