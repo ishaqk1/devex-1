@@ -32,7 +32,7 @@
         &nbsp;
         <span ng-if="project.userIs.request" class="label label-primary">Pending Member</span>
         &nbsp;
-        <span ng-if="!project.isPublished" class="label-danger">
+        <span ng-if="!project.isPublished" class="label label-danger">
               <i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED</span>
         &nbsp;
         <a ng-if="vm.isAdmin || project.userIs.admin" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="Edit">

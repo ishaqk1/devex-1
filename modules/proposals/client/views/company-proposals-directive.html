@@ -23,7 +23,7 @@
     &nbsp;
     <span ng-if="proposal.userIs.request" class="label label-primary">Pending Member</span>
     &nbsp;
-    <span ng-if="!proposal.isPublished" class="label-danger">
+    <span ng-if="!proposal.isPublished" class="label label-danger">
           <i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED</span>
     &nbsp;
     <a ng-if="vm.isAdmin || proposal.userIs.admin" href="javascript:void(0);"  id="proposaladmin.edit" ui-sref="proposaladmin.edit({ proposalId: proposal._id, programId: proposal.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="Edit">
