@@ -108,10 +108,9 @@
 				<label class="control-label required" for="github" aria-required="true">Github Repository <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('github')"></i>
 				<div class="input-help alert alert-info" data-field="github" ng-show="vm.displayHelp.github">
-					Paste the link to your project's GitHub repository.<br/>
-					When you publish this opportunity, a new Issue will be generated in your repository, and people can ask questions in the comments section.
+					Paste the link to your project's GitHub repository.
 				</div>
-				<input name="github" type="text" ng-model="vm.opportunity.github" id="github" class="form-control" placeholder="Paste link to GitHub Issue" ng-required="true">
+				<input name="github" type="text" ng-model="vm.opportunity.github" id="github" class="form-control" placeholder="Paste link to GitHub repository" ng-required="true">
 				<div ng-messages="vm.opportunityForm.github.$error" role="alert"></div>
 			</div>
 			<br><br>
