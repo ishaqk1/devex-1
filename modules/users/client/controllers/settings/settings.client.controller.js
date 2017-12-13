@@ -32,7 +32,7 @@
 			}
 			var successMessage = '<h4>Edit profile successful</h4>';
 			if (vm.user.notifyOpportunities) {
-				successMessage += '<p>We will send you notifications of new Code With Us Opportunities.</p>';
+				successMessage += '<p>We will send you notifications of new GCDevExchange Opportunities.</p>';
 			}
 			if (vm.user.isPublicProfile) {
 				successMessage += '<p>Your profile will be made public.</p>';

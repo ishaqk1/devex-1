@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="well well-lg well-info">
-		      <h4>Managing a Code With Us opportunity</h4>
+		      <h4>Managing a GCDevExchange opportunity</h4>
 		      <p style="text-align: left;">By posting an opportunity on the GCDevExchange, you are agreeing to the following <a href="https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf">Terms</a>. Make sure you are familiar with the process and understand your responsibilities for managing an opportunity.</p>
 		      <br>
 		      <a class="btn btn-default" href="https://github.com/canada-ca/devex/wiki/1.-Introduction-%7C-Introduction" target="_blank">Read the guide</a>
@@ -194,7 +194,7 @@
 						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('reward')"></i>
 						<div class="input-help alert alert-info" data-field="reward" ng-show="vm.displayHelp.reward">
 							<p>To the best of your ability, estimate a fair price for the amount of work you think it should take a qualified developer to meet the acceptance criteria. It's best to over-estimate.</p>
-							<p>Right now, Code With Us opportunities may be offered to a maximum of $10,000.</p>
+							<p>Right now, GCDevExchange opportunities may be offered to a maximum of $10,000.</p>
 						</div>
 						<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-required="true" required ng-options="v as v | translate for v in vm.prices">
 							<option value="">Select reward amount</option>
@@ -229,7 +229,7 @@
 				<label class="control-label required" for="proposalEmail" aria-required="true">Email to Receive Acceptance of Terms and Contract <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('proposalEmail')"></i>
 				<div class="input-help alert alert-info" data-field="proposalEmail" ng-show="vm.displayHelp.proposalEmail">
-					Enter the email address where you would like the assigned applicant to send their acceptance of the Code With Us Terms and Contract for this opportunity.
+					Enter the email address where you would like the assigned applicant to send their acceptance of the GCDevExchange Terms and Contract for this opportunity.
 				</div>
 				<input name="proposalEmail" type="text" ng-model="vm.opportunity.proposalEmail" id="proposalEmail" class="form-control" placeholder="Enter email address" required>
 				<div ng-messages="vm.opportunityForm.proposalEmail.$error" role="alert"></div>
