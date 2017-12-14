@@ -5,10 +5,10 @@
 			<div class="col-xs-12 text-right">
 				<div class="btn-group">
 					<button type="button" class="btn btn-default" ui-sref="notificationadmin.edit({notificationId:vm.notification.code})" uib-tooltip="Edit this page">
-						<i class="glyphicon glyphicon-edit"></i> Edit
+						<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 					</button>
-				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">
-					<i class="glyphicon glyphicon-fast-backward"></i> Cancel
+				<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}">
+					<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 				</a>
 				</div>
 				<div class="col-xs-12 col-sm-12 text-center">
@@ -61,10 +61,10 @@
 			<div class="col-sm-12 col-form-buttons text-right">
 				<div class="btn-group">
 					<button type="button" class="btn btn-default" ui-sref="notificationadmin.edit({notificationId:vm.notification.code})" uib-tooltip="Edit this page">
-						<i class="glyphicon glyphicon-edit"></i> Edit
+						<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 					</button>
-				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">
-					<i class="glyphicon glyphicon-fast-backward"></i> Cancel
+				<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}">
+					<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 				</a>
 				</div>
 			</div>
