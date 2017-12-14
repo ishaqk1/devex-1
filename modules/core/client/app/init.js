@@ -650,7 +650,7 @@
       OPP_TEASER_PLACEHOLDER: '1 ou 2 phrases qui incitent le lecteur à postuler...',
       OPP_DESCRIPTION: 'C\'est ici que vous pouvez inscrire tous renseignements utiles et ce que vous souhaitez accomplir grâce à cette possibilité de travail rémunérée.',
       OPP_GITHUB_LABEL: 'Répertoire GitHub',
-      OPP_GITHUB: 'Coller l\'hyperlien du répertoire GitHub de votre projet.  Lorsque vous publierez cette possibilité de travail, une nouvelle publication sera créée dans votre répertoire. Les gens pourront poser des questions dans la section commentaire.',
+      OPP_GITHUB: 'Coller l\'hyperlien du répertoire GitHub de votre projet. Lorsque vous publierez cette possibilité de travail, une nouvelle publication sera créée dans votre répertoire. Les gens pourront poser des questions dans la section commentaire.',
       OPP_GITHUB_PLACEHOLDER: 'Coller le lien « Enjeu » de GitHub',
       OPP_SKILLS_LABEL: 'Compétences requises (séparer chaque compétence par une virgule)',
       OPP_SKILLS: 'Présentez une liste des compétences requises pour travailler sur cette possibilité de travail (p. ex. JavaScript, CSS, WordPress et UX Design).',
