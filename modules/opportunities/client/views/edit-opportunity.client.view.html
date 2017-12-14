@@ -4,10 +4,10 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="well well-lg well-info">
-		      <h4>Managing a GCDevExchange opportunity</h4>
-		      <p style="text-align: left;">By posting an opportunity on the GCDevExchange, you are agreeing to the following <a href="https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf">Terms</a>. Make sure you are familiar with the process and understand your responsibilities for managing an opportunity.</p>
+		      <h4 translate="OPP_EDIT_P1">Managing a GCDevExchange opportunity</h4>
+		      <p translate="OPP_EDIT_P2" style="text-align: left;">By posting an opportunity on the GCDevExchange, you are agreeing to the following <a href="https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf">Terms</a>. Make sure you are familiar with the process and understand your responsibilities for managing an opportunity.</p>
 		      <br>
-		      <a class="btn btn-default" href="https://github.com/canada-ca/devex/wiki/1.-Introduction-%7C-Introduction" target="_blank">Read the guide</a>
+		      <a class="btn btn-default" href="https://github.com/canada-ca/devex/wiki/1.-Introduction-%7C-Introduction" target="_blank" translate="OPP_EDIT_P3">Read the guide</a>
 			</div>
 		</div>
 	</div>
@@ -16,15 +16,15 @@
 	<div class="row form-head">
 		<div class="col-md-6">
 			<h2 ng-if="vm.editing">Editing: {{::vm.opportunity.name}}</h2>
-			<h2 ng-if="!vm.editing">New Opportunity</h2>
+			<h2 ng-if="!vm.editing" translate="OPP_NEW">New Opportunity</h2>
 		</div>
 		<div class="col-md-6 col-form-buttons text-right">
 				
-				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="Save changes">Save changes</button>
+				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="{{ 'SAVE_CHANGES' | translate }}" translate="SAVE_CHANGES">Save Changes</button>
  				
 				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Delete opportunity">Delete opportunity</a>
 
- 				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">Cancel</a>
+ 				<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}" translate="CANCEL">Cancel</a>
 		</div>
 	</div>
 	
@@ -40,9 +40,9 @@
 				<a  id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
 			</div>
 			<div class="form-group" >
-				<label class="control-label required" for="project" aria-required="true">Project <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="project" aria-required="true">Project <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('project')"></i>
-				<div class="input-help alert alert-info" data-field="project" ng-show="vm.displayHelp.project">
+				<div class="input-help alert alert-info" data-field="project" ng-show="vm.displayHelp.project" translate="OPP_SELECT_PROJECT">
 					Select the project that this opportunity falls under. If you don't see the project in the dropdown list, you'll need to go to the Projects tab and create a new project page first.
 				</div>
 				<select ng-if="!vm.projectLink && vm.context === 'program'"
@@ -51,7 +51,7 @@
 					id="project"
 					class="form-control"
 					ng-options="obj._id as obj.name for obj in vm.projects"
-				><option value="">Select Project</option>
+				><option value="" translate="PROJECT_SELECT">Select Project</option>
 				</select>
 				<select ng-if="!vm.projectLink && vm.context === 'allopportunities'"
 					name="project"
@@ -60,15 +60,15 @@
 					id="project"
 					class="form-control"
 					ng-options="obj as obj.name group by obj.program.title for obj in vm.projects"
-				><option value="">Select Project</option>
+				><option value="" translate="PROJECT_SELECT">Select Project</option>
 				</select>
 			</div>
 
 			<br><br>
 			<div class="form-group" show-errors>
-				<label class="control-label required" for="title" aria-required="true">Title <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="title" aria-required="true"><span translate="OPP_SHORT_TITLE_LABEL">Title</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('title')"></i>
-				<div class="input-help alert alert-info" data-field="title" ng-show="vm.displayHelp.title">
+				<div class="input-help alert alert-info" data-field="title" ng-show="vm.displayHelp.title" translate="OPP_SHORT_TITLE">
 					Create a short title for the opportunity that conveys the core of the work you need done.
 				</div>
 				<input name="title" type="text" ng-model="vm.opportunity.name" id="title" class="form-control" placeholder="Title" required>
@@ -76,18 +76,18 @@
 			</div>
 
 			<div class="form-group" show-errors>
-				<label class="control-label required" for="short" aria-required="true">Teaser <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="short" aria-required="true"><span translate="OPP_TEASER_LABEL">Teaser</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('short')"></i>
-				<div class="input-help alert alert-info" data-field="short" ng-show="vm.displayHelp.short">
+				<div class="input-help alert alert-info" data-field="short" ng-show="vm.displayHelp.short" translate="OPP_TEASER">
 					Enter a 1-2 sentence description that will entice readers to apply on this opportunity. Describe what you are inviting them to do.
 				</div>
-				<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..." required></textarea>
+				<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'OPP_TEASER_PLACEHOLDER' | translate }}" required></textarea>
 				<div ng-messages="vm.opportunityForm.short.$error" role="alert"></div>
 			</div>
 			<div class="form-group" show-errors>
-				<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('description')"></i>
-				<div class="input-help alert alert-info" data-field="description" ng-show="vm.displayHelp.description">
+				<div class="input-help alert alert-info" data-field="description" ng-show="vm.displayHelp.description" translate="OPP_DESCRIPTION">
 					Here's where you can fully describe any useful background, and what you're trying to accomplish by offering this paid opportunity.
 				</div>
 				<!-- <textarea name="description" data-ng-model="vm.opportunity.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the opportunity"></textarea> -->
@@ -105,12 +105,12 @@
 
 			<br><br>
 			<div class="form-group" ng-if="vm.isAdmin|| (!vm.editing && vm.isGov) ||vm.opportunity.userIs.admin" show-errors>
-				<label class="control-label required" for="github" aria-required="true">Github Repository <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="github" aria-required="true"><span translate="OPP_GITHUB_LABEL">Github Repository</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('github')"></i>
-				<div class="input-help alert alert-info" data-field="github" ng-show="vm.displayHelp.github">
-					Paste the link to your project's GitHub repository.
+				<div class="input-help alert alert-info" data-field="github" ng-show="vm.displayHelp.github" translate="OPP_GITHUB">
+					Paste the link to your project's GitHub repository. When you publish this opportunity, a new Issue will be generated in your repository, and people can ask questions in the comments section.
 				</div>
-				<input name="github" type="text" ng-model="vm.opportunity.github" id="github" class="form-control" placeholder="Paste link to GitHub repository" ng-required="true">
+				<input name="github" type="text" ng-model="vm.opportunity.github" id="github" class="form-control" placeholder="{{ 'OPP_GITHUB_PLACEHOLDER' | translate }}" ng-required="true">
 				<div ng-messages="vm.opportunityForm.github.$error" role="alert"></div>
 			</div>
 			<br><br>
@@ -161,17 +161,17 @@
 			<br><br> -->
 
 			<div class="form-group">
-				<label class="control-label" for="skilllist">Required Skills (seperate each skill with a comma)</label>
+				<label class="control-label" for="skilllist" translate="OPP_SKILLS_LABEL">Required Skills (seperate each skill with a comma)</label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('skilllist')"></i>
-				<div class="input-help alert alert-info" data-field="skilllist" ng-show="vm.displayHelp.skilllist">
+				<div class="input-help alert alert-info" data-field="skilllist" ng-show="vm.displayHelp.skilllist" translate="OPP_SKILLS">
 					List the skills that are necessary for the person working on this opportunity to have. (e.g. JavaScript, CSS, WordPress, UX Design)
 				</div>
-				<input type="text" name="skilllist" ng-model="vm.opportunity.skilllist" id="skilllist" class="form-control" placeholder="e.g. JavaScript, WordPress, CSS"></input>
+				<input type="text" name="skilllist" ng-model="vm.opportunity.skilllist" id="skilllist" class="form-control" placeholder="{{ 'OPP_SKILLS_PLACEHOLDER' | translate }}"></input>
 			</div>
 			<div class="form-group" show-errors>
-				<label class="control-label required" for="description" aria-required="true"><span translate="OPP_ACC_CRIT">Acceptance Criteria</span> <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="description" aria-required="true"><span translate="OPP_ACC_CRIT">Acceptance Criteria</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('criteria')"></i>
-				<div class="input-help alert alert-info" data-field="criteria" ng-show="vm.displayHelp.criteria">
+				<div class="input-help alert alert-info" data-field="criteria" ng-show="vm.displayHelp.criteria" translate="OPP_ACCEPTANCE_CRITERIA">
 					In this section, you need to clearly define everything that must be delivered and all criteria that must be met in order for you to be satisfied and ready to pay the developer.
 				</div>
 				<!-- <textarea name="criteria" data-ng-model="vm.opportunity.criteria" id="criteria" class="form-control" cols="30" rows="10" placeholder="Opportunity acceptance criteria"></textarea> -->
@@ -190,14 +190,14 @@
 			<div class="row">
 				<div class="col-sm-4 col-md-3">
 					<div class="form-group" show-errors>
-						<label class="control-label required" for="earn" aria-required="true">Fixed-Price Reward <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+						<label class="control-label required" for="earn" aria-required="true"><span translate="OPP_REWARD_LABEL">Fixed-Price Reward</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('reward')"></i>
-						<div class="input-help alert alert-info" data-field="reward" ng-show="vm.displayHelp.reward">
+						<div class="input-help alert alert-info" data-field="reward" ng-show="vm.displayHelp.reward" translate="OPP_REWARD">
 							<p>To the best of your ability, estimate a fair price for the amount of work you think it should take a qualified developer to meet the acceptance criteria. It's best to over-estimate.</p>
 							<p>Right now, GCDevExchange opportunities may be offered to a maximum of $10,000.</p>
 						</div>
 						<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-required="true" required ng-options="v as v | translate for v in vm.prices">
-							<option value="">Select reward amount</option>
+							<option value="" translate="OPP_REWARD_AMOUNT">Select reward amount</option>
 						</select>
 						<div ng-messages="vm.opportunityForm.earn.$error" role="alert"></div>
 					</div>
@@ -206,9 +206,9 @@
 
 			<br><br>
 			<div class="form-group" show-errors>
-				<label class="control-label required" for="description" aria-required="true">Proposal Evaluation Criteria <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="description" aria-required="true"><span translate="OPP_EVALUATION_CRITERIA_LABEL">Proposal Evaluation Criteria</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('evaluation')"></i>
-				<div class="input-help alert alert-info" data-field="evaluation" ng-show="vm.displayHelp.evaluation">
+				<div class="input-help alert alert-info" data-field="evaluation" ng-show="vm.displayHelp.evaluation" translate="OPP_EVALUATION_CRITERIA">
 					In this section, you must explicitly describe the criteria you will use to score the proposals you receive. State the weight or points you will give to each criteria (e.g. "Experience contributing Java code to any public code repositories with more than 5 contributors: (10 points)".<br/>
 					It is at your discretion which mandatory and weighted criteria you wish to use. Refer to the <a target="_blank" href="http://www2.gov.bc.ca/gov/content/governments/services-for-government/bc-bid-resources/how-to-buy-services/procurement-process/pre-award/prepare-solicitation-documents/mandatory-and-weighted-criteria">Government of B.C.'s information on procurement</a> for guidance.
 				</div>
@@ -226,12 +226,12 @@
 			</div>
 
 			<div class="form-group" show-errors>
-				<label class="control-label required" for="proposalEmail" aria-required="true">Email to Receive Acceptance of Terms and Contract <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+				<label class="control-label required" for="proposalEmail" aria-required="true"><span translate="OPP_EMAIL_ADDRESS_LABEL">Email to Receive Acceptance of Terms and Contract</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('proposalEmail')"></i>
-				<div class="input-help alert alert-info" data-field="proposalEmail" ng-show="vm.displayHelp.proposalEmail">
+				<div class="input-help alert alert-info" data-field="proposalEmail" ng-show="vm.displayHelp.proposalEmail" translate="OPP_EMAIL_ADDRESS">
 					Enter the email address where you would like the assigned applicant to send their acceptance of the GCDevExchange Terms and Contract for this opportunity.
 				</div>
-				<input name="proposalEmail" type="text" ng-model="vm.opportunity.proposalEmail" id="proposalEmail" class="form-control" placeholder="Enter email address" required>
+				<input name="proposalEmail" type="text" ng-model="vm.opportunity.proposalEmail" id="proposalEmail" class="form-control" placeholder="{{ 'OPP_EMAIL_ADDRESS_PLACEHOLDER' | translate }}" required>
 				<div ng-messages="vm.opportunityForm.proposalEmail.$error" role="alert"></div>
 			</div>
 
@@ -239,12 +239,12 @@
 
 				<div class="col-sm-4">
 					<div class="form-group" show-errors>
-						<label class="control-label" for="deadline">Proposal Deadline</label>
+						<label class="control-label" for="deadline" translate="OPP_PROPOSAL_LABEL">Proposal Deadline</label>
 						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('deadline')"></i>
 						<div class="input-help alert alert-info" data-field="deadline" ng-show="vm.displayHelp.deadline">
-	              			<p>Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Pacific Time.)</p>
-	              			<p>The longer lead time you give, the more proposals you are likely to get. A deadline at least <b>5 days</b> from when you publish is a good aim.</p>
-							<p>Make sure you have your <b>opportunity contact</b> lined up to respond to questions on the GitHub Issue in a timely manner, from the time you publish the opportunity right up to the cutoff time.</p>
+	              			<p translate="OPP_PROPOSAL_P1">Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Pacific Time.)</p>
+	              			<p translate="OPP_PROPOSAL_P2">The longer lead time you give, the more proposals you are likely to get. A deadline at least <b>5 days</b> from when you publish is a good aim.</p>
+							<p translate="OPP_PROPOSAL_P3">Make sure you have your <b>opportunity contact</b> lined up to respond to questions on the GitHub Issue in a timely manner, from the time you publish the opportunity right up to the cutoff time.</p>
 						</div>
 						<div>
 						<input type="date" name="deadline" required ng-model="vm.opportunity.deadline"/>
@@ -254,9 +254,9 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="form-group" show-errors>
-						<label class="control-label" for="assignment">Assignment Date</label>
+						<label class="control-label" for="assignment" translate="OPP_ASSIGNMENT_DATE_LABEL">Assignment Date</label>
 						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('assignment')"></i>
-						<div class="input-help alert alert-info" data-field="assignment" ng-show="vm.displayHelp.assignment">
+						<div class="input-help alert alert-info" data-field="assignment" ng-show="vm.displayHelp.assignment" translate="OPP_ASSIGNMENT_DATE">
 							Choose a date that you will commit to assigning someone to this opportunity (dependent, of course, on at least one of the proposals meeting your minimum requirements). (Time of day is fixed at 16:00 Pacific Time.)
 						</div>
 						<div>
@@ -267,9 +267,9 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="form-group" show-errors>
-						<label class="control-label" for="start">Proposed Start Date</label>
+						<label class="control-label" for="start" translate="OPP_START_DATE_LABEL">Proposed Start Date</label>
 						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('start')"></i>
-						<div class="input-help alert alert-info" data-field="start" ng-show="vm.displayHelp.start">
+						<div class="input-help alert alert-info" data-field="start" ng-show="vm.displayHelp.start" translate="OPP_START_DATE">
 							When do you want the person to begin working?
 						</div>
 						<div>
@@ -319,11 +319,11 @@
 			<a href="javascript:void(0);" uib-tooltip="Save your work anytime. You can always come back later." class="btn btn-primary" ng-click="vm.saveme()"><i class="glyphicon glyphicon-save"></i> Save
 			</a>-->
  				
-			<button type="submit" href="javascript:void(0);" class="btn btn-success">Save changes</button>
+			<button type="submit" href="javascript:void(0);" class="btn btn-success" title="{{ 'SAVE_CHANGES' | translate }}" translate="SAVE_CHANGES">Save Changes</button>
 			
 			<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Remove">Delete opportunity</a>
 
-			<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">Cancel</a>
+			<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}" translate="CANCEL">Cancel</a>
 
 		</div>
 	</div>

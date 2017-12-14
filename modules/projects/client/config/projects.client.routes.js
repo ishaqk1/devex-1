@@ -36,10 +36,10 @@
 			url: '',
 			templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
 			data: {
-				pageTitle: '{{ "PROJ_TITLE" | translate }}'
+				pageTitle: '{{ "PROJECT_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROJ_TITLE" | translate }}'
+				label: '{{ "PROJECT_TITLE" | translate }}'
 			},
 			resolve: {
 				projects: function ($stateParams, ProjectsService) {
@@ -167,10 +167,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'New Project'
+				pageTitle: '{{ "PROJECT_NEW" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'New Project',
+				label: '{{ "PROJECT_NEW" | translate }}',
 				parent: 'projects.list'
 			}
 		})

@@ -10,12 +10,12 @@
 	</div>
 	<div class="col-sm-5 col-form-buttons text-right">
 	<div class="btn-group">
-	  	<a class="btn btn-primary" ng-click="vm.saveme()" title="Save">
+	  	<a class="btn btn-primary" ng-click="vm.saveme()" title="{{ 'SAVE' | translate }}">
 			<i class="glyphicon glyphicon-save"></i> Save Me</a>
-		<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">
-			<i class="glyphicon glyphicon-fast-backward"></i> Cancel</a>
-		<a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="Remove">
-			<i class="glyphicon glyphicon-trash"></i> Remove</a>
+		<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}">
+			<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span></a>
+		<a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">
+			<i class="glyphicon glyphicon-trash"></i> <span translate="REMOVE">Remove</span></a>
 	</div>
 	</div>
 	</div>

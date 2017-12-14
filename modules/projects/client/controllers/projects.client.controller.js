@@ -82,7 +82,7 @@
 	// Controller the view of the project page
 	//
 	// =========================================================================
-	.controller('ProjectEditController', function ($scope, $state, $sce, $stateParams, $window, project, editing, programs, Authentication, Notification, previousState) {
+	.controller('ProjectEditController', function ($scope, $state, $sce, $stateParams, $window, project, editing, programs, Authentication, Notification, previousState, $filter) {
 		var vm             = this;
 		vm.previousState   = previousState;
 		vm.isAdmin         = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
@@ -151,10 +151,10 @@
 		//
 		// -------------------------------------------------------------------------
 		vm.remove = function () {
-			if ($window.confirm('Are you sure you want to delete?')) {
+			if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
 				vm.project.$remove(function() {
 					$state.go('projects.list');
-					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> project deleted successfully!' });
+					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('PROJECT_DELETED') });
 				});
 			}
 		};

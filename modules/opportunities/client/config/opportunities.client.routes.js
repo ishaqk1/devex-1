@@ -186,10 +186,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'New Opportunity'
+				pageTitle: '{{ "OPP_NEW" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'New Opportunity',
+				label: '{{ "OPP_NEW" | translate }}',
 				parent: 'opportunities.list'
 			}
 		})

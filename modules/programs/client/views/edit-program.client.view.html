@@ -10,12 +10,12 @@
 	</div>
 	<div class="col-sm-5 col-form-buttons text-right">
 	<div class="btn-group">
-	  	<a class="btn btn-primary" ng-click="vm.saveme(vm.form.programForm.$valid)" title="Save">
-			<i class="glyphicon glyphicon-save"></i> Save</a>
-		<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">
-			<i class="glyphicon glyphicon-fast-backward"></i> Cancel</a>
-		<a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="Remove">
-			<i class="glyphicon glyphicon-trash"></i> Remove</a>
+	  	<a class="btn btn-primary" ng-click="vm.saveme(vm.form.programForm.$valid)" title="{{ 'SAVE' | translate }}">
+			<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span></a>
+		<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}">
+			<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span></a>
+		<a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">
+			<i class="glyphicon glyphicon-trash"></i> <span translate="REMOVE">Remove</span></a>
 	</div>
 	</div>
 	</div>
@@ -23,18 +23,18 @@
 	<div class="col-sm-12">
 			<fieldset>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="title" aria-required="true">Title <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+					<label class="control-label required" for="title" aria-required="true"><span translate="OPP_SHORT_TITLE_LABEL">Title</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stitle = !stitle"></i>
 					<div class="input-help alert alert-info" ng-show="stitle">
 						Help Text
 					</div>
 
-					<input name="title" type="text" ng-model="vm.program.title" id="title" class="form-control" placeholder="Title" required aria-required="true">
+					<input name="title" type="text" ng-model="vm.program.title" id="title" class="form-control" placeholder="{{ 'OPP_SHORT_TITLE_LABEL' | translate }}" required aria-required="true">
 					<div ng-messages="vm.form.programForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="department" aria-required="true">Department <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+					<label class="control-label required" for="department" aria-required="true"><span translate="TEAM_DEPARTMENT">Department</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdepartment = !sdepartment"></i>
 					<div class="input-help alert alert-info" ng-show="sdepartment">
@@ -42,12 +42,12 @@
 					</div>
 
 					<select name="department" ng-model="vm.program.department" id="department" class="form-control" required aria-required="true" ng-options="v as v | translate for v in vm.departments | orderBy: 'toString() | translate'">
-						<option value="">{{ "Empty_Department" | translate }}</option>
+						<option value="" translate="Empty_Department">Please make a selection</option>
 					</select>
 					<div ng-messages="vm.form.programForm.department.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="short" aria-required="true">Short Description <strong class="required" aria-required="true">{{ "FORM_REQUIRED" | translate }}</strong></label>
+					<label class="control-label required" for="short" aria-required="true"><span translate="TEAM_SHORT_DESCRIPTION">Short Description</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc = !ssdesc"></i>
 					<div class="input-help alert alert-info" ng-show="ssdesc">
@@ -85,17 +85,17 @@
 				</div>
 -->
 				<div class="form-group">
-					<label class="control-label" for="website">Website</label>
+					<label class="control-label" for="website" translate="TEAM_WEBSITE">Website</label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="swebsite = !swebsite"></i>
 					<div class="input-help alert alert-info" ng-show="swebsite">
 						Help Text
 					</div>
 
-					<input name="website" type="text" ng-model="vm.program.website" id="website" class="form-control" placeholder="Website" required>
+					<input name="website" type="text" ng-model="vm.program.website" id="website" class="form-control" placeholder="{{ 'TEAM_WEBSITE' | translate }}" required>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="logo">Logo</label>
+					<label class="control-label" for="logo" translate="TEAM_LOGO">Team Logo</label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="slogo = !slogo"></i>
 					<div class="input-help alert alert-info" ng-show="slogo">
@@ -112,14 +112,14 @@
 							</div>
 						</div>
 						<div class="form-group text-center">
-							<img ng-src="{{vm.fileSelected ? vm.croppedDataUrl : '/' + vm.program.logo}}" alt="Team Logo" class="img-thumbnail user-profile-picture" ngf-drop>
+							<img ng-src="{{vm.fileSelected ? vm.croppedDataUrl : '/' + vm.program.logo}}" alt="{{ 'TEAM_LOGO' | translate }}" class="img-thumbnail user-profile-picture" ngf-drop>
 						</div>
 						<div ng-show="!vm.fileSelected" class="text-center form-group">
-							<button type="button" class="btn btn-default btn-file" ngf-select="vm.fileSelected = true" ng-model="vm.picFile" accept="image/*">Select Picture</button>
+							<button type="button" class="btn btn-default btn-file" ngf-select="vm.fileSelected = true" ng-model="vm.picFile" accept="image/*" translate="TEAM_PICTURE">Select Picture</button>
 						</div>
 						<div ng-show="0 && vm.fileSelected" class="text-center form-group">
 							<button  type="button" class="btn btn-primary" ng-click="vm.upload(vm.croppedDataUrl, vm.picFile.name)">Upload</button>
-							<button  type="button" class="btn btn-default" ng-click="vm.fileSelected = false">Cancel</button>
+							<button  type="button" class="btn btn-default" ng-click="vm.fileSelected = false" translate="CANCEL">Cancel</button>
 						</div>
 						<div ng-show="vm.fileSelected" class="progress text-center">
 							<div class="progress-bar" role="progressbar" aria-valuenow="{{vm.progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{vm.progress}}%" ng-bind="vm.progress + '%'">
@@ -134,17 +134,17 @@
 	<div class="row form-foot">
 	<div class="col-sm-12 col-form-buttons text-right">
 	<div class="btn-group">
-	  <a class="btn btn-primary" ng-click="vm.saveme(vm.form.programForm.$valid)" title="Save">
-		<i class="glyphicon glyphicon-save"></i> Save
+	  <a class="btn btn-primary" ng-click="vm.saveme(vm.form.programForm.$valid)" title="{{ 'SAVE' | translate }}">
+		<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default"  id="programs.view" ui-sref="programs.view({programId:vm.program.code})" title="Cancel">
-		<i class="glyphicon glyphicon-fast-backward"></i> Cancel
+	  <a ng-if="vm.editing" class="btn btn-default"  id="programs.view" ui-sref="programs.view({programId:vm.program.code})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="!vm.editing" class="btn btn-default"  id="programs.list" ui-sref="programs.list" title="Cancel">
-		<i class="glyphicon glyphicon-fast-backward"></i> Cancel
+	  <a ng-if="!vm.editing" class="btn btn-default"  id="programs.list" ui-sref="programs.list" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="Remove">
-		<i class="glyphicon glyphicon-trash"></i> Remove
+	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">
+		<i class="glyphicon glyphicon-trash"></i> <span translate="REMOVE">Remove</span>
 	  </a>
 	</div>
 	</div>

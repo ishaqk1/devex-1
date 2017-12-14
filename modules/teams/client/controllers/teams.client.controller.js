@@ -82,7 +82,7 @@
 	// Controller the view of the team page
 	//
 	// =========================================================================
-	.controller('TeamEditController', function ($scope, $window, $state, $uibModalInstance, team, org, allusers, Authentication, Notification) {
+	.controller('TeamEditController', function ($scope, $window, $state, $uibModalInstance, team, org, allusers, Authentication, Notification, $filter) {
 		var qqq             = this;
 		qqq.team         = team;
 		if (!qqq.team.org) qqq.team.org = org._id;
@@ -134,10 +134,10 @@
 		//
 		// -------------------------------------------------------------------------
 		qqq.remove = function () {
-			if ($window.confirm('Are you sure you want to delete?')) {
+			if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
 				qqq.team.$remove(function() {
 					$state.go('teams.list');
-					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> team deleted successfully!' });
+					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('TEAM_DELETED') });
 				});
 			}
 		};

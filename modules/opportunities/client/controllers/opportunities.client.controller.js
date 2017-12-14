@@ -346,10 +346,10 @@
 		//
 		// -------------------------------------------------------------------------
 		vm.remove = function () {
-			if ($window.confirm('Are you sure you want to delete?')) {
+			if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
 				vm.opportunity.$remove(function() {
 					$state.go('opportunities.list');
-					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> opportunity deleted successfully!' });
+					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('OPP_DELETED') });
 				});
 			}
 		};
