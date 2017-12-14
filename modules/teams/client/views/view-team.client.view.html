@@ -10,7 +10,7 @@
 				</div>
 				<div class="btn-group">
 					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="teamadmin.edit({teamId:vm.team.code})" uib-tooltip="Edit this page">
-						<i class="glyphicon glyphicon-edit"></i> Edit
+						<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 					</button>
 					<button type="button" class="btn btn-default" ng-if="vm.canRequestMembership" href="javascript:void(0);" ng-click="vm.request()" uib-tooltip="Want to be listed as a member of this team? Click here to send a request to the team admin.">
 						<i class="glyphicon glyphicon-user"></i> Request Membership
@@ -95,7 +95,7 @@
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="teamadmin.edit({teamId:vm.team.code})" uib-tooltip="Edit this page">
-				<i class="glyphicon glyphicon-edit"></i> Edit
+				<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 			</button>
 			<button type="button" class="btn btn-default" ng-if="vm.canRequestMembership" href="javascript:void(0);" ng-click="vm.request()" uib-tooltip="Want to be listed as a member of this team? Click here to send a request to the team admin.">
 				<i class="glyphicon glyphicon-user"></i> Request Membership

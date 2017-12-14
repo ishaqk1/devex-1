@@ -26,7 +26,7 @@
 					<label class="label label-lg label-danger-o"><i class="fa fa-exclamation-triangle"></i></label>You can't publish this opportunity until all fields have been filled out.
 				</span>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})">Edit</button>
+					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 				</div>				
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 				</label>No one can see this opportunity until you publish it.
 			</span> 
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.canPublish && vm.opportunity.project.isPublished && vm.canEdit && !vm.opportunity.isPublished" class="btn btn-success" ng-click="vm.publish(vm.opportunity, true)">Publish</a>
 		</div>
 	</div>
@@ -55,7 +55,7 @@
 				</label>
 			</span> 
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.opportunity.project.isPublished && vm.canEdit && vm.opportunity.isPublished" class="btn btn-danger" ng-click="vm.publish(vm.opportunity, false)">Unpublish</a>
 		</div>
 	</div>
@@ -116,7 +116,7 @@
 			<!-- github link -->
 			<dt translate="OPP_CODE">Code:</dt>
 			<dd>
-			<a ng-if="vm.opportunity.issueUrl && vm.opportunity.issueUrl.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> GitHub Repository</a>
+			<a ng-if="vm.opportunity.github && vm.opportunity.github.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> GitHub Repository</a>
 			<!--<dt>Assigned to:</dt>
 			<dd>
 				<span ng-if="vm.opportunity.assignedTo" ng-bind="vm.opportunity.assignedTo.displayName"></span>
@@ -153,7 +153,7 @@
 			<p translate="OPP_INSTRUCTIONS">With your proposal, you must upload a copy of the <a href="https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf">terms,</a> to indicate your acceptance of the terms.</p>
 			<p><span translate="OPP_PLAN">We plan to assign this opportunity by</span> <b>{{vm.assignment}}</b> <span translate="OPP_PLAN2">with work to start on</span> <b>{{vm.start}}</b>.</p>
 			<br>
-			<div class="text-center">
+			<div class="text-center" ng-if="vm.opportunity.issueUrl">
 				<div class="well well-info">
 					<h3 style="margin-top: 0px"><i class="fa fa-comments"></i>&nbsp; Questions?</h3>
 					<p><a href="{{vm.opportunity.issueUrl}}" rel="nofollow" target="_blank" translate="OPP_GITHUB_LINK">Visit the GitHub issue for this opportunity and post a comment.</a></p>
@@ -193,7 +193,7 @@
 					<label class="label label-danger"><i class="fa fa-exclamation-triangle"></i></label>You can't publish this opportunity until all fields have been properly filled out.
 				</span>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})">Edit</button>
+					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 				</div>				
 			</div>
 		</div>
@@ -208,7 +208,7 @@
 				</label>No one can see this opportunity until you publish it.
 			</span> 
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.canPublish && vm.opportunity.project.isPublished && vm.canEdit && !vm.opportunity.isPublished" class="btn btn-success" ng-click="vm.publish(vm.opportunity, true)">Publish</a>
 		</div>
 	</div>
@@ -222,7 +222,7 @@
 				</label>
 			</span> 
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.opportunity.project.isPublished && vm.canEdit && vm.opportunity.isPublished" class="btn btn-danger" ng-click="vm.publish(vm.opportunity, false)">Unpublish</a>
 		</div>
 	</div>

@@ -12,7 +12,7 @@
 					<div class="col-xs-9 col-sm-9">
 						<h2>{{vm.profile.user.displayName}}</h2>
 						<button type="button" class="btn btn-default" ng-if="vm.isOwner || vm.isAdmin" ui-sref="profileadmin.edit({profileId:vm.profile.user._id})" uib-tooltip="Edit your Profile">
-							<i class="glyphicon glyphicon-edit"></i> Edit
+							<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 						</button>
 					</div>
 				</div>
