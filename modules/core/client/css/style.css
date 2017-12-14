@@ -14,6 +14,14 @@
   width: 100%;
 }
 
+.well {
+  max-width: none;
+}
+
+.well-info {
+  margin-top: 15px;
+}
+
 .nomargintop {
   margin-top: 0 !important;
 }

@@ -16,10 +16,14 @@
 		// -------------------------------------------------------------------------
 		.state('projects', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/projects',
+			url: '/{lang}/projects',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -32,10 +36,10 @@
 			url: '',
 			templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
 			data: {
-				pageTitle: '{{ "PROJ_TITLE" | translate }}'
+				pageTitle: '{{ "PROJECT_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROJ_ALL" | translate }}'
+				label: '{{ "PROJECT_TITLE" | translate }}'
 			},
 			resolve: {
 				projects: function ($stateParams, ProjectsService) {
@@ -80,10 +84,14 @@
 		// -------------------------------------------------------------------------
 		.state('projectadmin', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/projectadmin',
+			url: '/{lang}/projectadmin',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -159,10 +167,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'New Project'
+				pageTitle: '{{ "PROJECT_NEW" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'New Project',
+				label: '{{ "PROJECT_NEW" | translate }}',
 				parent: 'projects.list'
 			}
 		})

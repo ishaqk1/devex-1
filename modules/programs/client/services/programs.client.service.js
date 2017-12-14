@@ -58,7 +58,6 @@
     return Program;
 
     function createOrUpdate(program) {
-      // console.log ('create or update');
       if (program._id) {
         return program.$update(onSuccess, onError);
       } else {
@@ -66,7 +65,7 @@
       }
 
       // Handle successful response
-      function onSuccess(program) {
+      function onSuccess() {
         // Any required internal processing from inside the service, goes here.
       }
 

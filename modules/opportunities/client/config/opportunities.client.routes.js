@@ -16,10 +16,14 @@
 		// -------------------------------------------------------------------------
 		.state('opportunities', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/opportunities',
+			url: '/{lang}/opportunities',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+            		value: function($translate){
+                		return $translate.use();
+            		}
+        		}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -35,7 +39,7 @@
 				pageTitle: '{{ "OPP_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_ALL" | translate }}'
+				label: '{{ "OPP_TITLE" | translate }}'
 			},
 			resolve: {
 				opportunities: function ($stateParams, OpportunitiesService) {
@@ -93,10 +97,14 @@
 		// -------------------------------------------------------------------------
 		.state('opportunityadmin', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/opportunityadmin',
+			url: '/{lang}/opportunityadmin',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -178,10 +186,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'New Opportunity'
+				pageTitle: '{{ "OPP_NEW" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'New Opportunity',
+				label: '{{ "OPP_NEW" | translate }}',
 				parent: 'opportunities.list'
 			}
 		})

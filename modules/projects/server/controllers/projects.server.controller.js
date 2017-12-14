@@ -59,18 +59,15 @@ var unsetProjectAdmin = function (project, user) {
 	user.removeRoles ([memberRole(project), adminRole(project)]);
 };
 var unsetProjectRequest = function (project, user) {
-	// console.log ('remove role ', requestRole(project));
 	user.removeRoles ([requestRole(project)]);
 };
 var ensureAdmin = function (project, user, res) {
 	if (!~user.roles.indexOf (adminRole(project)) && !~user.roles.indexOf ('admin')) {
-		// console.log ('NOT admin');
 		res.status(422).send({
 			message: 'User Not Authorized'
 		});
 		return false;
 	} else {
-		// console.log ('Is admin');
 		return true;
 	}
 };
@@ -85,8 +82,6 @@ var searchTerm = function (req, opts) {
 	if (!me.isAdmin) {
 		opts['$or'] = [{isPublished:true}, {code: {$in: me.projects.admin}}];
 	}
-	// console.log ('me = ', me);
-	// console.log ('opts = ', opts);
 	return opts;
 };
 // -------------------------------------------------------------------------
@@ -137,8 +132,6 @@ exports.my = function (req, res) {
 	});
 };
 exports.myadmin = function (req, res) {
-	// var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
-	// var search = me.isAdmin ? {} : { code: { $in: me.projects.admin } };
 	Project.find (searchTerm (req))
 	.populate ('program', 'code title short logo')
 	.select ('code name short program')
@@ -182,7 +175,6 @@ exports.requests = function (project, cb) {
 //
 // -------------------------------------------------------------------------
 exports.create = function(req, res) {
-	// console.log ('Creating a new project');
 	var project = new Project(req.body);
 	//
 	// set the code, this is used for setting roles and other stuff
@@ -207,7 +199,6 @@ exports.create = function(req, res) {
 				Notifications.addNotification ({
 					code: 'not-update-'+project.code,
 					name: 'Update of Project '+project.name,
-					// description: 'Update of Project '+project.name,
 					target: 'Project',
 					event: 'Update'
 				});
@@ -287,14 +278,11 @@ exports.update = function (req, res) {
 				Promise.all (notificationCodes.map (function (code) {
 					return Notifications.notifyObject (code, project);
 				}))
-				.catch (function (err) {
-					console.log (err);
+				.catch (function () {
 				})
 				.then (function () {
 					res.json (decorate (project, req.user ? req.user.roles : []));
 				});
-				// // res.json(project);
-				// res.json (decorate (project, req.user ? req.user.roles : []));
 			}
 		});
 	}
@@ -306,9 +294,7 @@ exports.update = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.delete = function (req, res) {
-	// console.log ('Deleting');
 	if (ensureAdmin (req.project, req.user, res)) {
-		// console.log ('Deleting');
 
 		var project = req.project;
 		project.remove(function (err) {
@@ -329,9 +315,7 @@ exports.delete = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.list = function (req, res) {
-	// var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
-	// var search = me.isAdmin ? {} : {$or: [{isPublished:true}, {code: {$in: me.projects.admin}}]}
-	Project.find(searchTerm (req)).sort('name')
+	Project.find(searchTerm (req)).sort('activity name')
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
 	.populate('program', 'code title logo isPublished')
@@ -342,7 +326,6 @@ exports.list = function (req, res) {
 			});
 		} else {
 			res.json (decorateList (projects, req.user ? req.user.roles : []));
-			// res.json(projects);
 		}
 	});
 };
@@ -399,7 +382,6 @@ exports.request = function (req, res) {
 // -------------------------------------------------------------------------
 exports.confirmMember = function (req, res) {
 	var user = req.model;
-	// console.log ('++++ confirm member ', user.username, user._id);
 	unsetProjectRequest (req.project, user);
 	setProjectMember (req.project, user);
 	user.save (function (err, result) {
@@ -408,14 +390,12 @@ exports.confirmMember = function (req, res) {
 				message: errorHandler.getErrorMessage (err)
 			});
 		} else {
-			// console.log ('---- member roles ', result.roles);
 			res.json (result);
 		}
 	});
 };
 exports.denyMember = function (req, res) {
 	var user = req.model;
-	// console.log ('++++ deny member ', user.username, user._id);
 	unsetProjectRequest (req.project, user);
 	unsetProjectMember (req.project, user);
 	user.save (function (err, result) {
@@ -424,7 +404,6 @@ exports.denyMember = function (req, res) {
 				message: errorHandler.getErrorMessage (err)
 			});
 		} else {
-			// console.log ('---- member roles ', result.roles);
 			res.json (result);
 		}
 	});
@@ -446,7 +425,6 @@ exports.forProgram = function (req, res) {
 			});
 		} else {
 			res.json (decorateList (projects, req.user ? req.user.roles : []));
-			// res.json(projects);
 		}
 	});
 };
@@ -457,7 +435,6 @@ exports.forProgram = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.new = function (req, res) {
-	// console.log ('get a new project set up and return it');
 	var p = new Project ();
 	res.json(p);
 };

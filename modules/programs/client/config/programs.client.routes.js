@@ -16,10 +16,14 @@
 		// -------------------------------------------------------------------------
 		.state('programs', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/teams',
+			url: '/{lang}/teams',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -32,10 +36,10 @@
 			url: '',
 			templateUrl: '/modules/programs/client/views/list-programs.client.view.html',
 			data: {
-				pageTitle: '{{ "PROG_TITLE" | translate }}'
+				pageTitle: '{{ "TEAMS_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROG_ALL" | translate }}'
+				label: '{{ "TEAMS_TITLE" | translate }}'
 			},
 			resolve: {
 				programs: function ($stateParams, ProgramsService) {
@@ -77,10 +81,14 @@
 		// -------------------------------------------------------------------------
 		.state('programadmin', {
 			abstract: true,
-			url: '/{lang:(?:fr|en)}/programadmin',
+			url: '/{lang}/programadmin',
 			template: '<ui-view/>',
 	        params: {
-	          lang: 'en'
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -142,10 +150,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'New Program'
+				pageTitle: '{{ "TEAM_NEW" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'New Program',
+				label: '{{ "TEAM_NEW" | translate }}',
 				parent: 'programs.list'
 			}
 		})

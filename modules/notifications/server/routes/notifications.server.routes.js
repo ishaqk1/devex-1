@@ -8,10 +8,13 @@ var notificationsPolicy = require('../policies/notifications.server.policy'),
 
 module.exports = function(app) {
 	// Notifications Routes
+	//
+	// these should change and be focussed on templates more when we change to
+	// database stored templates and notification meta data properly
+	//
 	app.route('/api/notifications').all(notificationsPolicy.isAllowed)
 		.get(notifications.list)
 		.post(notifications.create);
-
 	app.route('/api/notifications/:notificationId').all(notificationsPolicy.isAllowed)
 		.get(notifications.read)
 		.put(notifications.update)
@@ -25,6 +28,11 @@ module.exports = function(app) {
 		.get(notifications.readSubscription)
 		.delete(notifications.myDelete);
 
+	//
+	// these are used for subscribing and unsubscribing, currently to updates on
+	// a particular opportunity
+	// TBD: user proile should change to use these as well
+	//
 	app.route('/api/my/notification/:notificationId').all(notificationsPolicy.isAllowed)
 		.delete(notifications.unsubscribeMe)
 		.get(notifications.subscribeMe);
@@ -37,7 +45,6 @@ module.exports = function(app) {
 		.get(notifications.forUser);
 
 	app.route('/api/new/notification')
-		// .all(notificationsPolicy.isAllowed)
 		.get(notifications.new);
 
 	app.route('/api/unsubscribe/:externalSubscriptionId')
@@ -46,10 +53,10 @@ module.exports = function(app) {
 	app.route('/api/subscribe/:externalSubscriptionId/:notificationId')
 		.get(notifications.subscribeExternal);
 
-	app.route ('/api/fix/subscriptions').get (notifications.reApplySubscriptions);
+	app.route ('/api/fix/subscriptions').all(notificationsPolicy.isAllowed).get(notifications.reApplySubscriptions);
+	app.route ('/api/check/subscriptions').all(notificationsPolicy.isAllowed).get(notifications.checkSubscriptions);
 
-	// app.route('/api/cc/tryme').get(notifications.tryme);
-	// app.route('/api/cc/tryme2').get(notifications.tryme2);
+	app.route('/api/cc/tryme').get(notifications.tryme);
 
 	// Finish by binding the Notification middleware
 	app.param('notificationId', notifications.notificationByID);

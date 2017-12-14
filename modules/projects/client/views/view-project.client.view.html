@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-xs-12 text-right">
 				<div>
-					<label class="label-danger" ng-if="vm.project.program.isPublished && vm.canEdit && !vm.project.isPublished" uib-tooltip="No one can see this page until you publish it.">
+					<label class="label label-danger" ng-if="vm.project.program.isPublished && vm.canEdit && !vm.project.isPublished" uib-tooltip="No one can see this page until you publish it.">
 					<i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED
 					</label>
 				</div>
@@ -42,7 +42,7 @@
 				<dl class="dl-horizontal">
 				<dt translate="OPP_TEAM">Team:</dt>
 				<dd>
-				<a ng-if="vm.project.program" ui-sref="programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title}}</a>
+				<a ng-if="vm.project.program" id="programs.view" ui-sref="programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title}}</a>
 				<span ng-if="!vm.project.program" class="text-muted">No program</span>
 				</dd>
 				<!-- github link -->
@@ -89,7 +89,7 @@
 	<div class="row form-foot">
 	<div class="col-sm-12 col-form-buttons text-right">
 		<div>
-			<label class="label-danger" ng-if="vm.project.program.isPublished && vm.canEdit && !vm.project.isPublished" uib-tooltip="No one can see this page until you publish it.">
+			<label class="label label-danger" ng-if="vm.project.program.isPublished && vm.canEdit && !vm.project.isPublished" uib-tooltip="No one can see this page until you publish it.">
 			<i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED
 			</label>
 		</div>

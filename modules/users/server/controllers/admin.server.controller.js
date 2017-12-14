@@ -8,11 +8,9 @@ var path = require('path'),
   _ = require('lodash'),
   User = mongoose.model('User'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  // notifier = require(path.resolve('./modules/core/server/controllers/core.server.notifier.js')).notifier,
   userController = require(path.resolve('./modules/users/server/controllers/users.server.controller.js')),
   Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller'));
 
-// var oppEmailNotifier = notifier('opportunities', 'email');
 
 /**
  * Show the current user
@@ -27,7 +25,7 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var user = req.model;
   var prevState = _.cloneDeep(req.model);
-  // CC: USERFIELDS
+  // CC:USERFIELDS
   // For security purposes only merge these parameters
   user.phone                = req.user.phone;
   user.address              = req.user.address;
@@ -52,6 +50,26 @@ exports.update = function (req, res) {
   user.businessCity         = req.body.businessCity;
   user.businessProvince     = req.body.businessProvince;
   user.businessCode         = req.body.businessCode;
+  user.location       = req.body.location;
+  user.description    = req.body.description;
+  user.website        = req.body.website;
+  user.skills         = req.body.skills;
+  user.badges         = req.body.badges;
+  user.capabilities   = req.body.capabilities;
+  user.endorsements   = req.body.endorsements;
+  user.github         = req.body.github;
+  user.stackOverflow  = req.body.stackOverflow;
+  user.stackExchange  = req.body.stackExchange;
+  user.linkedIn       = req.body.linkedIn;
+  user.isPublicProfile = req.user.isPublicProfile;
+  user.isAutoAdd = req.user.isAutoAdd;
+
+
+
+
+
+
+
   userController.subscriptionHandler(user,prevState)
   .then(function() {
     user.save(function (err) {
@@ -79,16 +97,10 @@ exports.delete = function (req, res) {
       });
     }
 
-    // if (user.subscribeOpportunitiesId !== null) {
-      // oppEmailNotifier.unsubscribe(user.subscribeOpportunitiesId)
       Notifications.unsubscribeUserNotification ('not-add-opportunity', user)
       .then(function() {
         res.json();
       });
-    // }
-    // else {
-      // res.json(user);
-    // }
   });
 };
 
@@ -166,7 +178,7 @@ User.findOne({
 // lists of emails and names for notifications
 //
 // -------------------------------------------------------------------------
-exports.notifyOpportunities = function (req, res, next) {
+exports.notifyOpportunities = function (req, res) {
     User.find ({notifyOpportunities:true}).select ('firstName lastName email')
     .exec (function (err, users) {
       if (err) {
@@ -177,7 +189,7 @@ exports.notifyOpportunities = function (req, res, next) {
       else return res.json (users);
     });
 };
-exports.notifyMeetings = function (req, res, next) {
+exports.notifyMeetings = function (req, res) {
     User.find ({notifyEvents:true}).select ('firstName lastName email')
     .exec (function (err, users) {
       if (err) {

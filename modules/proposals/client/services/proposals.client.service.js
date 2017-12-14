@@ -19,6 +19,10 @@
         method: 'PUT',
         url: '/api/submit/proposal/:proposalId'
       },
+      assign: {
+        method: 'PUT',
+        url: '/api/assign/proposal/:proposalId'
+      },
       forOpportunity: {
         method: 'GET',
         url: '/api/proposals/for/opportunity/:opportunityId',
@@ -27,6 +31,11 @@
       removeDoc: {
         method: 'GET',
         url: '/api/proposal/:proposalId/remove/doc/:documentId'
+      },
+      getStats: {
+        method: 'GET',
+        url: '/api/proposals/stats/opportunity/:opportunityId',
+        isArray:false
       },
       makeRequest: {
         method: 'GET',
@@ -77,7 +86,7 @@
       }
 
       // Handle successful response
-      function onSuccess(proposal) {
+      function onSuccess() {
         // Any required internal processing from inside the service, goes here.
       }
 

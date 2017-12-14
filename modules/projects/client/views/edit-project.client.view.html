@@ -5,18 +5,18 @@
 	<div class="row form-head">
 	<div class="col-sm-7">
 		<h2 ng-if="vm.editing">Editing: {{::vm.project.name}}</h2>
-		<h2 ng-if="!vm.editing">New Project</h2>
+		<h2 ng-if="!vm.editing" translate="PROJECT_NEW">New Project</h2>
 	</div>
 	<div class="col-sm-5 col-form-buttons text-right">
 	<div class="btn-group" role="group">
-	  <button type="submit" class="btn btn-primary" title="Save">
-		<i class="glyphicon glyphicon-save"></i> Save
+	  <button type="submit" class="btn btn-primary" title="{{ 'SAVE' | translate }}">
+		<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span>
 	  </button>
-				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">
-					<i class="glyphicon glyphicon-fast-backward"></i> Cancel
-				</a>
-	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="Remove">
-		<i class="glyphicon glyphicon-trash"></i> Remove
+	  <a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">
+		<i class="glyphicon glyphicon-trash"></i> <span translate="REMOVE">Remove</span>
 	  </a>
 	</div>
 	</div>
@@ -25,41 +25,39 @@
 	<div class="col-sm-12">
 			<fieldset>
 				<div class="form-group" ng-if="vm.programLink" >
-					<a ui-sref="programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
+					<a  id="programs.view" ui-sref="programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
 				</div>
 				<div class="form-group" ng-if="!vm.programLink" >
-					<label class="control-label" for="program">Program</label>
+					<label class="control-label required" for="program" aria-required="true"><span translate="TEAM_TEAM">Team</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<!-- <i class="glyphicon glyphicon-question-sign field-tt-source" ng-required="true" uib-tooltip="Program offering this opportunity" tooltip-placement="bottom"></i> -->
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sprogram = !sprogram"></i>
-					<div class="input-help alert alert-info" data-field="title" ng-show="sprogram">
-						Select the program that is the owner/sponsor of this project.
+					<div class="input-help alert alert-info" data-field="title" ng-show="sprogram" translate="TEAM_SELECT">
+						Select the team that is the owner/sponsor of this project.
 					</div>
 					<select name="program" ng-model="vm.programId" id="program" class="form-control" ng-options="obj._id as obj.title for obj in vm.programs">
 					</select>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label" for="title">Name</label>
+					<label class="control-label required" for="title" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sname = !sname"></i>
-					<div class="input-help alert alert-info" data-field="title" ng-show="sname">
+					<div class="input-help alert alert-info" data-field="title" ng-show="sname" translate="PROJECT_NAME">
 						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
 					</div>
-					<input name="title" type="text" ng-model="vm.project.name" id="title" class="form-control" placeholder="Name" required>
-					<div ng-messages="vm.form.projectForm.title.$error" role="alert">
-						<p class="help-block error-text" ng-message="required">Project name is required.</p>
-					</div>
+					<input name="title" type="text" ng-model="vm.project.name" id="title" class="form-control" placeholder="Name" required aria-required="true">
+					<div ng-messages="vm.form.projectForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label" for="short">Short Description</label>
+					<label class="control-label required" for="short" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc = !ssdesc"></i>
-					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc">
-						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for British Columbians!
+					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc" translate="PROJECT_TEASER">
+						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
 					</div>
 					<textarea name="short" data-ng-model="vm.project.short" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the project" ng-required="true"></textarea>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label" for="description">Description</label>
+					<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc = !sdesc"></i>
-					<div class="input-help alert alert-info" data-field="title" ng-show="sdesc">
+					<div class="input-help alert alert-info" data-field="title" ng-show="sdesc" translate="PROJECT_DETAIL">
 						Here’s where you can go into more detail...
 					</div>
 					<!-- <textarea name="description" data-ng-model="vm.project.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the project" ng-required="true"></textarea> -->
@@ -69,25 +67,29 @@
 						class="form-control input-sm"
 						ui-tinymce="vm.tinymceOptions"
 						placeholder="A full description of the project"
-						ng-model="vm.project.description">
+						ng-model="vm.project.description" required aria-required="true">
 					</textarea>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="github">Github</label>
+					<label class="control-label" for="github">GitHub</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sgit = !sgit"></i>
-					<div class="input-help alert alert-info" data-field="title" ng-show="sgit">
+					<div class="input-help alert alert-info" data-field="title" ng-show="sgit" translate="PROJECT_GITHUB">
 						Paste the URL of the GitHub repo for this project.
 					</div>
-					<input ng-if="vm.isAdmin || vm.isProjectAdmin" name="github" type="text" ng-model="vm.project.github" id="github" class="form-control" placeholder="Project github repo">
-					<input ng-if="!vm.isAdmin && !vm.isProjectAdmin" name="github" type="text" ng-model="vm.project.github" id="github" class="form-control" placeholder="Project github repo" readonly>
+					<input ng-if="vm.isAdmin || vm.isProjectAdmin" name="github" type="text" ng-model="vm.project.github" id="github" class="form-control" placeholder="{{ 'PROJECT_GITHUB_PLACEHOLDER' | translate }}">
+					<input ng-if="!vm.isAdmin && !vm.isProjectAdmin" name="github" type="text" ng-model="vm.project.github" id="github" class="form-control" placeholder="{{ 'PROJECT_GITHUB_PLACEHOLDER' | translate }}" readonly>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="taglist">Tags (comma delimited list)</label>
+					<label class="control-label" for="taglist" translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stags = !stags"></i>
-					<div class="input-help alert alert-info" data-field="title" ng-show="stags">
+					<div class="input-help alert alert-info" data-field="title" ng-show="stags" translate="PROJECT_TAGS">
 						Create tags as quick cues for interested developers. For example, the code language, or other keywords that indicate what’s involved in the work.
 					</div>
-					<input type="text" name="taglist" ng-model="vm.project.taglist" id="taglist" class="form-control" placeholder="Tag List"></input>
+					<input type="text" name="taglist" ng-model="vm.project.taglist" id="taglist" class="form-control" placeholder="{{ 'PROJECT_TAGS_PLACEHOLDER' | translate }}"></input>
+				</div>
+				<div class="form-group" ng-if="vm.isAdmin">
+					<label class="control-label" for="activity">Activity Level Indicator</label>
+					<input type="text" name="activity" ng-model="vm.project.activity" id="activity" class="form-control" placeholder="Tag List"></input>
 				</div>
 			</fieldset>
 	</div>
@@ -95,20 +97,20 @@
 	<div class="row form-foot">
 	<div class="col-sm-12 col-form-buttons text-right">
 	<div class="btn-group">
-	  <a class="btn btn-primary" ng-click="vm.saveme()" title="Save">
-		<i class="glyphicon glyphicon-save"></i> Save
+	  <a class="btn btn-primary" ng-click="vm.saveme()" title="{{ 'SAVE' | translate }}">
+		<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default" ui-sref="projects.view({projectId:vm.project.code})" title="Cancel">
-		<i class="glyphicon glyphicon-fast-backward"></i> Cancel
+	  <a ng-if="vm.editing" class="btn btn-default"  id="projects.view" ui-sref="projects.view({projectId:vm.project.code})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="!vm.editing && !vm.programId" class="btn btn-default" ui-sref="projects.list" title="Cancel">
-		<i class="glyphicon glyphicon-fast-backward"></i> Cancel
+	  <a ng-if="!vm.editing && !vm.programId" class="btn btn-default"  id="projects.list" ui-sref="projects.list" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="!vm.editing && vm.programId" class="btn btn-default" ui-sref="programs.view({programId:vm.programId})" title="Cancel">
-		<i class="glyphicon glyphicon-fast-backward"></i> Cancel
+	  <a ng-if="!vm.editing && vm.programId" class="btn btn-default"  id="programs.view" ui-sref="programs.view({programId:vm.programId})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="Remove">
-		<i class="glyphicon glyphicon-trash"></i> Remove
+	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">
+		<i class="glyphicon glyphicon-trash"></i> <span translate="REMOVE">Remove</span>
 	  </a>
 	</div>
 	</div>
