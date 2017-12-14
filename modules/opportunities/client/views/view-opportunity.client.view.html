@@ -116,7 +116,7 @@
 			<!-- github link -->
 			<dt translate="OPP_CODE">Code:</dt>
 			<dd>
-			<a ng-if="vm.opportunity.issueUrl && vm.opportunity.issueUrl.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> GitHub Repository</a>
+			<a ng-if="vm.opportunity.github && vm.opportunity.github.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> GitHub Repository</a>
 			<!--<dt>Assigned to:</dt>
 			<dd>
 				<span ng-if="vm.opportunity.assignedTo" ng-bind="vm.opportunity.assignedTo.displayName"></span>
@@ -156,7 +156,7 @@
 			<div class="text-center">
 				<div class="well well-info">
 					<h3 style="margin-top: 0px"><i class="fa fa-comments"></i>&nbsp; Questions?</h3>
-					<p><a href="{{vm.opportunity.issueUrl}}" rel="nofollow" target="_blank" translate="OPP_GITHUB_LINK">Visit the GitHub issue for this opportunity and post a comment.</a></p>
+					<p><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank" translate="OPP_GITHUB_LINK">Visit the GitHub issue for this opportunity and post a comment.</a></p>
 				</div>
 			</div>
 		</div>
