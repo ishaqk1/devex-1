@@ -91,48 +91,48 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 13. Developers are strongly advised to contact the Opportunity Contact immediately to arrange for an alternative submission method in accordance with section 14 of these Process Terms if:
 
-* the Developer&#39;s email proposal submission is rejected by the Issuer&#39;s electronic mail system; or
-* the Developer does not receive an automated response email from the Issuer confirming receipt of the email within a half hour of the time the email proposal submission was sent by the Developer.
+<ol type="a"><li>the Developer&#39;s email proposal submission is rejected by the Issuer&#39;s electronic mail system; or</li>
+<li>the Developer does not receive an automated response email from the Issuer confirming receipt of the email within a half hour of the time the email proposal submission was sent by the Developer.</li>
 
-1. 14)An alternate submission method may be made available, at the Issuer&#39;s discretion, commencing one half hour before the end of the Proposal Period, and it is the Developer&#39;s sole responsibility for ensuring that a complete proposal (and all attachments) submitted using an approved alternate submission method is received by the Issuer before the end of the Proposal Period.   The Issuer makes no guarantee that an alternative submission method will be available or that the method available will ensure that a Developer&#39;s proposal is received before the end of the Proposal Period.
+14. An alternate submission method may be made available, at the Issuer&#39;s discretion, commencing one half hour before the end of the Proposal Period, and it is the Developer&#39;s sole responsibility for ensuring that a complete proposal (and all attachments) submitted using an approved alternate submission method is received by the Issuer before the end of the Proposal Period.   The Issuer makes no guarantee that an alternative submission method will be available or that the method available will ensure that a Developer&#39;s proposal is received before the end of the Proposal Period.
 
-1. 15)Proposals will be marked with their receipt time according to their email time stamp on the Opportunity Contact email.  Only complete Proposals received and marked before the end of the Proposal Period will be considered to have been received on time. In the case of a dispute, the Proposal receipt time as recorded on the Opportunity Contact email will prevail, whether accurate or not.
+15. Proposals will be marked with their receipt time according to their email time stamp on the Opportunity Contact email.  Only complete Proposals received and marked before the end of the Proposal Period will be considered to have been received on time. In the case of a dispute, the Proposal receipt time as recorded on the Opportunity Contact email will prevail, whether accurate or not.
 
-1. 16)All Proposals and other records submitted to the Issuer in relation to an Opportunity become the property of the Issuer, and subject to the provisions of the Access to Information Act (Canada), if applicable to the Issuer.
+16. All Proposals and other records submitted to the Issuer in relation to an Opportunity become the property of the Issuer, and subject to the provisions of the Access to Information Act (Canada), if applicable to the Issuer.
 
-1. 17)Proposals received after the end of the Proposal Period will not be eligible for consideration.
+17. Proposals received after the end of the Proposal Period will not be eligible for consideration.
 
-1. 18)Eligible Proposals will be assessed in accordance with the Evaluation Criteria.  The Issuer will be under no obligation to receive further information, whether written or oral, from any Developer.
+18. Eligible Proposals will be assessed in accordance with the Evaluation Criteria.  The Issuer will be under no obligation to receive further information, whether written or oral, from any Developer.
 
-1. 19)At the end of the Proposal Period, the Issuer will announce the highest ranked Developer based on the Evaluation Criteria in the comments section on GitHub associated with the Opportunity.
+19. At the end of the Proposal Period, the Issuer will announce the highest ranked Developer based on the Evaluation Criteria in the comments section on GitHub associated with the Opportunity.
 
 **Reservation of Rights**
 
-1. 20)In addition to any other reservation of rights set out in the Opportunity, the Issuer reserves the right, in its sole discretion:
+20. In addition to any other reservation of rights set out in the Opportunity, the Issuer reserves the right, in its sole discretion:
 
-1. a)to modify the terms of the Opportunity at any time prior to the Closing Time, including the right to cancel the Opportunity;
-2. b)in accordance with the terms of the Opportunity, to accept the proposal or proposals that it deems most advantageous to itself;
-3. c)to waive any non-material irregularity, defect or deficiency in a Proposal;
-4. d)to request clarifications from a Developer with respect to its Proposal, including clarifications as to provisions in its Proposal that are conditional or that may be inconsistent with the terms and conditions of the Opportunity, without any obligation to make such a request to all Developers, and consider such clarifications in evaluating the Proposal;
-5. e)to reject any Proposal due to unsatisfactory past performance under contracts with the Issuer, or any material error, omission or misrepresentation in the Proposal;
-6. f)at any time, to reject any or all Proposals; and
-7. g)at any time, to terminate the competition without award and obtain the goods and services described in the Opportunity by other means, if at all, including by re-issuing the Opportunity or any part of it.
+<ol><li>to modify the terms of the Opportunity at any time prior to the Closing Time, including the right to cancel the Opportunity;</li>
+<li>in accordance with the terms of the Opportunity, to accept the proposal or proposals that it deems most advantageous to itself;</li>
+<li>to waive any non-material irregularity, defect or deficiency in a Proposal;</li>
+<li>to request clarifications from a Developer with respect to its Proposal, including clarifications as to provisions in its Proposal that are conditional or that may be inconsistent with the terms and conditions of the Opportunity, without any obligation to make such a request to all Developers, and consider such clarifications in evaluating the Proposal;</li>
+<li>to reject any Proposal due to unsatisfactory past performance under contracts with the Issuer, or any material error, omission or misrepresentation in the Proposal;</li>
+<li>at any time, to reject any or all Proposals; and</li>
+<li>at any time, to terminate the competition without award and obtain the goods and services described in the Opportunity by other means, if at all, including by re-issuing the Opportunity or any part of it.</li></ol>
 
-1. 21)A Proposal will not necessarily be accepted and the Issuer is not bound to enter into the Contract Terms with any Developer.
+21. A Proposal will not necessarily be accepted and the Issuer is not bound to enter into the Contract Terms with any Developer.
 
 
 
 **Contract**
 
-1. 22)Before and as a condition to entering a contract, the Issuer has the right to:
-  1. a)Request the Developer to provide information confirming the Developer&#39;s legal name, registration(s) and status in a form satisfactory to the Issuer that the Developer has the power and capacity to enter into the contract; and
-  2. b)To not enter into a contract if the Developer cannot satisfy the Issuer that it is the same legal entity that submitted the Proposal.
+22. Before and as a condition to entering a contract, the Issuer has the right to:
+<ol><li>Request the Developer to provide information confirming the Developer&#39;s legal name, registration(s) and status in a form satisfactory to the Issuer that the Developer has the power and capacity to enter into the contract; and</li>
+<li>To not enter into a contract if the Developer cannot satisfy the Issuer that it is the same legal entity that submitted the Proposal.</li>
 
-1. 23)By submitting a Proposal, the Developer agrees that should its Proposal be successful, the Developer will enter into a contract with the Issuer on the terms set out in Schedule &quot;A&quot;.
+23. By submitting a Proposal, the Developer agrees that should its Proposal be successful, the Developer will enter into a contract with the Issuer on the terms set out in Schedule &quot;A&quot;.
 
 **Developers&#39; Responsibilities**
 
-1. 24)Developers must ensure there is no conflict of interest, either real or perceived, in respect of an Opportunity including involvement in the preparation of the applicable Opportunity or a relationship with any employee, contractor or representative of the Issuer involved in preparation of the applicable Opportunity.  If a Developer is in doubt as to whether there might be a conflict of interest, the Developer should consult with the Opportunity Contact prior to submitting a Proposal.
+24. Developers must ensure there is no conflict of interest, either real or perceived, in respect of an Opportunity including involvement in the preparation of the applicable Opportunity or a relationship with any employee, contractor or representative of the Issuer involved in preparation of the applicable Opportunity.  If a Developer is in doubt as to whether there might be a conflict of interest, the Developer should consult with the Opportunity Contact prior to submitting a Proposal.
 
 1. 25)Developers are solely responsible for:
 
