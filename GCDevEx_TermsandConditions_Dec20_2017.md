@@ -14,7 +14,7 @@ These &quot;Code with Us – Paid&quot; Process Terms (the &quot; **Process Term
 
 To have a Proposal to work on an Opportunity evaluated, Developers must:
 
-<ol type="a")
+<ol type="a">
 <li>indicate acceptance of the Process Terms by completing the information requested at the end of the Terms, below; and <\li>
 <li>submit the Accepted Terms with their Proposal in the Proposal Period set out in the Opportunity.<\li>
 <\ol>
