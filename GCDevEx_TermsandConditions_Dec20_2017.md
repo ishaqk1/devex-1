@@ -39,10 +39,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 &quot; **Opportunity Contact**&quot; means the individual named in an Opportunity as the contact person for the Issuer;
 
-&quot; **Opportunity**&quot; means the issue tagged with the &#39;Help Wanted
-
-# &#39;
- label within a Repository, and includes any attached or referenced appendices, addenda, schedules or exhibits;
+&quot; **Opportunity**&quot; means the issue tagged with the &#39;Help Wanted&#39; label within a Repository, and includes any attached or referenced appendices, addenda, schedules or exhibits;
 
 &quot; **Payment**&quot; means the value of remuneration associated with the Opportunity;
 
