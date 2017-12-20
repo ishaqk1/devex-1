@@ -92,7 +92,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 13. Developers are strongly advised to contact the Opportunity Contact immediately to arrange for an alternative submission method in accordance with section 14 of these Process Terms if:
 
 <ol type="a"><li>the Developer&#39;s email proposal submission is rejected by the Issuer&#39;s electronic mail system; or</li>
-<li>the Developer does not receive an automated response email from the Issuer confirming receipt of the email within a half hour of the time the email proposal submission was sent by the Developer.</li>
+<li>the Developer does not receive an automated response email from the Issuer confirming receipt of the email within a half hour of the time the email proposal submission was sent by the Developer.</li></ol>
 
 14. An alternate submission method may be made available, at the Issuer&#39;s discretion, commencing one half hour before the end of the Proposal Period, and it is the Developer&#39;s sole responsibility for ensuring that a complete proposal (and all attachments) submitted using an approved alternate submission method is received by the Issuer before the end of the Proposal Period.   The Issuer makes no guarantee that an alternative submission method will be available or that the method available will ensure that a Developer&#39;s proposal is received before the end of the Proposal Period.
 
