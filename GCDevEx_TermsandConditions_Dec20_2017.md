@@ -14,10 +14,11 @@ These &quot;Code with Us – Paid&quot; Process Terms (the &quot; **Process Term
 
 To have a Proposal to work on an Opportunity evaluated, Developers must:
 
-a)        indicate acceptance of the Process Terms by completing the information requested at the end of the Terms, below; and
-
-b)        submit the Accepted Terms with their Proposal in the Proposal Period set out in the Opportunity.
-
+<ol type="a")
+<li>indicate acceptance of the Process Terms by completing the information requested at the end of the Terms, below; and <\li>
+<li>submit the Accepted Terms with their Proposal in the Proposal Period set out in the Opportunity.<\li>
+<\ol>
+	
 The Issuer will evaluate Proposals based on the Evaluation Criteria posted with the Opportunity and the highest ranked Developer (the &quot; **Contractor**&quot;) will be announced on Github, and assigned to work on the Opportunity exclusively according to the terms set out in Schedule &quot;A&quot; (the &quot; **Contract Terms**&quot;).
 
 **Definitions**
