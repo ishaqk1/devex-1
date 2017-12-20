@@ -1,5 +1,3 @@
-THIS IS A WORK IN PROGRESS
-
 **&quot;Code with Us – Paid&quot; Process Terms**
 
 
