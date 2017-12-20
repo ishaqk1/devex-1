@@ -126,7 +126,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 22. Before and as a condition to entering a contract, the Issuer has the right to:
 <ol type="a"><li>Request the Developer to provide information confirming the Developer&#39;s legal name, registration(s) and status in a form satisfactory to the Issuer that the Developer has the power and capacity to enter into the contract; and</li>
-<li>To not enter into a contract if the Developer cannot satisfy the Issuer that it is the same legal entity that submitted the Proposal.</li>
+<li>To not enter into a contract if the Developer cannot satisfy the Issuer that it is the same legal entity that submitted the Proposal.</li></ol>
 
 23. By submitting a Proposal, the Developer agrees that should its Proposal be successful, the Developer will enter into a contract with the Issuer on the terms set out in Schedule &quot;A&quot;.
 
