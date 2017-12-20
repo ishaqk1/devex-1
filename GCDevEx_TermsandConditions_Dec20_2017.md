@@ -110,7 +110,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 20. In addition to any other reservation of rights set out in the Opportunity, the Issuer reserves the right, in its sole discretion:
 
-<ol><li>to modify the terms of the Opportunity at any time prior to the Closing Time, including the right to cancel the Opportunity;</li>
+<ol type="a"><li>to modify the terms of the Opportunity at any time prior to the Closing Time, including the right to cancel the Opportunity;</li>
 <li>in accordance with the terms of the Opportunity, to accept the proposal or proposals that it deems most advantageous to itself;</li>
 <li>to waive any non-material irregularity, defect or deficiency in a Proposal;</li>
 <li>to request clarifications from a Developer with respect to its Proposal, including clarifications as to provisions in its Proposal that are conditional or that may be inconsistent with the terms and conditions of the Opportunity, without any obligation to make such a request to all Developers, and consider such clarifications in evaluating the Proposal;</li>
