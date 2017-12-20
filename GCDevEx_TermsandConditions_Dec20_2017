@@ -1,0 +1,340 @@
+THIS IS A WORK IN PROGRESS
+
+**&quot;GCDevExchange – Paid&quot; Process Terms**
+
+
+
+**Please note: you are required to complete the information requested at the end of this document and submit the modified version of this document with your Proposal.  Refer to &quot;Introduction&quot; and &quot;Acceptance&quot;, below.**
+
+
+
+**Introduction**
+
+These &quot;Code with Us – Paid&quot; Process Terms (the &quot; **Process Terms**&quot;) govern Developers and Issuers that participate in the BC Developers&#39; ExchangeGC Developers&#39; Exchange, specifically in Code with Us - Paid Opportunities.  These Opportunities are designed to enable Issuers to obtain and pay for contributions to digital resources from Developers in a relatively quick and straightforward way. It is a mechanism to invite Developers to work on a simple but technical task.  All Developers will be given the opportunity to make Proposals to the Issuer regarding Opportunities.
+
+To have a Proposal to work on an Opportunity evaluated, Developers must:
+
+a)        indicate acceptance of the Process Terms by completing the information requested at the end of the Terms, below; and
+
+b)        submit the Accepted Terms with their Proposal in the Proposal Period set out in the Opportunity.
+
+The Issuer will evaluate Proposals based on the Evaluation Criteria posted with the Opportunity and the highest ranked Developer (the &quot; **Contractor**&quot;) will be announced on Github, and assigned to work on the Opportunity exclusively according to the terms set out in Schedule &quot;A&quot; (the &quot; **Contract Terms**&quot;).
+
+**Definitions**
+
+Throughout the Process Terms, including the Introduction, the following definitions apply:
+
+&quot; **Acceptance Criteria**&quot; means the requirements and specifications necessary for a Pull Request to be considered, reviewed and potentially accepted for a Payment, as set out in the Opportunity;
+
+&quot; **Accepted Terms**&quot; means the Process Terms as agreed to by the Developer, with the information completed as required at the end of the Process Terms, below, and submitted to the Issuer with the Proposal;
+
+&quot; **Developer**&quot; means a person or entity with the legal capacity to contract, that submits a Proposal to the Issuer of an Opportunity in accordance with these Process Terms and includes the Contractor;
+
+&quot; **Evaluation Criteria**&quot; means the criteria set out in the Opportunity on which Proposals will be evaluated to be considered for selection to work on the Opportunity;
+
+&quot; **GitHub**&quot; means the third party source code repository hosting service where Opportunities will be posted by the Issuer;
+
+&quot; **Issuer**&quot; means the Province Government of Canada or a Public Sector Entity, as applicable;
+
+&quot; **Opportunity Contact**&quot; means the individual named in an Opportunity as the contact person for the Issuer;
+
+&quot; **Opportunity**&quot; means the issue tagged with the &#39;Help Wanted
+
+# &#39;
+ label within a Repository, and includes any attached or referenced appendices, addenda, schedules or exhibits;
+
+&quot; **Payment**&quot; means the value of remuneration associated with the Opportunity;
+
+&quot; **Payment Information&quot;** means the information provided by the Developer at the request of the Issuer that is required to make a payment to the Developer, and may include a completed direct deposit form, PayPal account, address, or other information as applicable;
+
+&quot; **Proposal**&quot; means the written response of a Developer to an Opportunity that addresses the Evaluation Criteria;
+
+&quot; **Proposal Period**&quot; means the time period set out in the Opportunity during which time Developers may submit Proposals;
+
+ &quot; **Province**&quot; means the Government of British Columbia;
+
+&quot; **Public Sector Entity**&quot; means a public sector entity in British ColumbiaFederal Department, Agency or Crown Corporation;
+
+&quot; **Pull Request**&quot; means the submission of a Contribution from the Contractor; and
+
+&quot; **Repository**&quot; or &quot; **Repo**&quot; means the location on GitHub where the Opportunity is posted and stored.
+
+**Agreeing to the Process Terms**
+
+1. 1)By submitting a Proposal and the Accepted Terms, the Developer indicates acceptance of these Process Terms, including any Schedules attached to these Process Terms.
+
+1. 2)A Proposal must be submitted by a person authorized to provide it on behalf of the Developer with the intent to bind the Developer to the Process Terms and to the statements and representations in the Developer&#39;s Proposal.
+
+**Information about an Opportunity**
+
+1. 3)The Opportunity will describe the issue, and will include criteria defining what a Pull Request must contain/accomplish, the Acceptance Criteria, the Evaluation Criteria, the Proposal Period, and the applicable Payment and methods for the Contractor to receive Payment.
+
+
+
+1. 4)Any revisions to the Opportunity will also be posted on GitHub.  If the Opportunity is modified in any way or cancelled, notification will be provided on GitHub. It is entirely a Developer&#39;s responsibility to check GitHub for information about the Opportunity.
+
+
+
+**Submitting a Proposal**
+
+1. 5)Developers are encouraged to ask any questions regarding an Opportunity early during the Proposal Period.  To the extent reasonably possible, the Issuer will post answers in the comments section on GitHub associated with the Opportunity.
+
+1. 6)Developers must submit their Proposals to the Opportunity Contact by email according to the requirements set out in section 7 and 8 of these Process Terms.
+
+1. 7)For Proposals, including any notice of amendment or withdrawal referred to in section 12, the subject line of the email and any attachment should be clearly marked with the name of the Developer, and the name of the Opportunity.
+
+1. 8)Developers should submit Proposals in a single email and avoid sending multiple email submissions for the same Opportunity.  If the file size of an electronic submission exceeds the applicable maximum size, the Developer may send multiple emails to reduce attachment file size to be within the maximum applicable size.  Where the Developer sends multiple emails, the Developer will identify the order and number of emails making up the email Proposal submission (e.g. &quot;email 1 of 3, email 2 of 3…&quot;).
+
+1. 9)For email proposal submissions sent through multiple emails, the Issuer reserves the right to seek clarification or reject the Proposal if the Issuer is unable to determine what documents constitute the complete Proposal.
+
+1. 10)Developers must ensure that Proposals, including any attachments, are not compressed, do not contain a virus or malware, are not corrupted, and must be able to be opened.  The Issuer may reject Proposals that are compressed, cannot be opened, or that contain viruses, malware or corrupted attachments.
+
+1. 11)Developers are solely responsible for ensuring that its complete email Proposal submission and all attachments are received before the end of the Proposal Period and bear all risk associated with delivering its Proposal by electronic submission.  If the Issuer&#39;s electronic mail system rejects an email Proposal submission for any reason, and the Developer does not resubmit its Proposal before the end of the Proposal Period, the Developer will not be permitted to submit its proposal after the end the Proposal Period.
+
+1. 12)Developers may amend or withdraw their Proposal by way of an email to the Opportunity Contact. At the end of the Proposal Period, all Proposals become irrevocable.  A Developer will not change any part of its proposal after the end of the Proposal Period unless requested by the Issuer for purposes of clarification.
+
+1. 13)Developers are strongly advised to contact the Opportunity Contact immediately to arrange for an alternative submission method in accordance with section 14 of these Process Terms if:
+
+1. a)the Developer&#39;s email proposal submission is rejected by the Issuer&#39;s electronic mail system; or
+2. b)the Developer does not receive an automated response email from the Issuer confirming receipt of the email within a half hour of the time the email proposal submission was sent by the Developer.
+
+1. 14)An alternate submission method may be made available, at the Issuer&#39;s discretion, commencing one half hour before the end of the Proposal Period, and it is the Developer&#39;s sole responsibility for ensuring that a complete proposal (and all attachments) submitted using an approved alternate submission method is received by the Issuer before the end of the Proposal Period.   The Issuer makes no guarantee that an alternative submission method will be available or that the method available will ensure that a Developer&#39;s proposal is received before the end of the Proposal Period.
+
+1. 15)Proposals will be marked with their receipt time according to their email time stamp on the Opportunity Contact email.  Only complete Proposals received and marked before the end of the Proposal Period will be considered to have been received on time. In the case of a dispute, the Proposal receipt time as recorded on the Opportunity Contact email will prevail, whether accurate or not.
+
+1. 16)All Proposals and other records submitted to the Issuer in relation to an Opportunity become the property of the Issuer, and subject to the provisions of the Freedom of Information and Protection of Privacy Act (British Columbia)Access to Information Act (Canada), if applicable to the Issuer.
+
+1. 17)Proposals received after the end of the Proposal Period will not be eligible for consideration.
+
+1. 18)Eligible Proposals will be assessed in accordance with the Evaluation Criteria.  The Issuer will be under no obligation to receive further information, whether written or oral, from any Developer.
+
+1. 19)At the end of the Proposal Period, the Issuer will announce the highest ranked Developer based on the Evaluation Criteria in the comments section on GitHub associated with the Opportunity.
+
+**Reservation of Rights**
+
+1. 20)In addition to any other reservation of rights set out in the Opportunity, the Issuer reserves the right, in its sole discretion:
+
+1. a)to modify the terms of the Opportunity at any time prior to the Closing Time, including the right to cancel the Opportunity;
+2. b)in accordance with the terms of the Opportunity, to accept the proposal or proposals that it deems most advantageous to itself;
+3. c)to waive any non-material irregularity, defect or deficiency in a Proposal;
+4. d)to request clarifications from a Developer with respect to its Proposal, including clarifications as to provisions in its Proposal that are conditional or that may be inconsistent with the terms and conditions of the Opportunity, without any obligation to make such a request to all Developers, and consider such clarifications in evaluating the Proposal;
+5. e)to reject any Proposal due to unsatisfactory past performance under contracts with the Issuer, or any material error, omission or misrepresentation in the Proposal;
+6. f)at any time, to reject any or all Proposals; and
+7. g)at any time, to terminate the competition without award and obtain the goods and services described in the Opportunity by other means, if at all, including by re-issuing the Opportunity or any part of it.
+
+1. 21)A Proposal will not necessarily be accepted and the Issuer is not bound to enter into the Contract Terms with any Developer.
+
+
+
+**Contract**
+
+1. 22)Before and as a condition to entering a contract, the Issuer has the right to:
+  1. a)Request the Developer to provide information confirming the Developer&#39;s legal name, registration(s) and status in a form satisfactory to the Issuer that the Developer has the power and capacity to enter into the contract; and
+  2. b)To not enter into a contract if the Developer cannot satisfy the Issuer that it is the same legal entity that submitted the Proposal.
+
+1. 23)By submitting a Proposal, the Developer agrees that should its Proposal be successful, the Developer will enter into a contract with the Issuer on the terms set out in Schedule &quot;A&quot;.
+
+**Developers&#39; Responsibilities**
+
+1. 24)Developers must ensure there is no conflict of interest, either real or perceived, in respect of an Opportunity including involvement in the preparation of the applicable Opportunity or a relationship with any employee, contractor or representative of the Issuer involved in preparation of the applicable Opportunity.  If a Developer is in doubt as to whether there might be a conflict of interest, the Developer should consult with the Opportunity Contact prior to submitting a Proposal.
+
+1. 25)Developers are solely responsible for:
+
+1. a)ensuring their Proposals are complete and received before the end of the Proposal Period;
+2. b)their own expenses in participating in an Opportunity, including any costs in preparing a Proposal;
+3. c)accepting and complying with the terms of use of sites used in conjunction with an Opportunity (e.g. GitHub, PayPal); and
+4. d)ensuring they have the ability and authority to accept these Process Terms applicable to the Opportunity.
+
+**Representations and Warranties**
+
+1. 26)Developers represent and warrant that:
+
+1. a)they are not aware of any circumstances that would give rise to a conflict of interest, either actual or perceived, in respect of the Opportunity; and
+2. b)at the date the Process Terms are accepted they have the power and capacity to enter into an agreement on these Process Terms and, if the Developer is not an individual, to observe, perform and comply with these Process Terms and that all necessary corporate or other proceedings have been taken and done to authorize the execution and delivery of an agreement on these Process Terms by, or on behalf of, the Developer.
+
+**Limitation of Liability**
+
+1. 27)Under no circumstances will the Issuer or any of its respective servants, employees or agents be liable to any person or business entity for any direct, indirect, special, incidental, consequential or other damages based on any Developer&#39;s submission of a Proposal in response to an Opportunity.
+
+**General**
+
+1. 28)The Process Terms will not in any way make a Developer an employee or agent of the Issuer.
+
+1. 29)If any term or provision of the Process Terms is invalid, illegal or unenforceable, all other terms and provisions will nonetheless remain in full force and effect.
+
+1. 30)The Issuer has no further obligations or commitments to any Developer beyond those stated in the Process Terms.
+
+1. 31)The Issuer will not be held liable for any error or omission in the Opportunity.
+
+1. 32)Developers agree that the Process Terms are governed by and will be construed in accordance with the laws applicable in British ColumbiaCanada.
+
+
+
+**Acceptance**
+
+To indicate acceptance of the Process Terms, the Developer will complete the information in A, B and C below and submit the Accepted Terms, in full, with the applicable Proposal.
+
+1.  Legal Name of Developer (_person or entity_):
+
+1.
+2.
+3. B.  Legal Name of Person Submitting Proposal on behalf of Developer (_if different from &quot;A&quot;_):
+
+1. :
+2.
+3. Developer Email address and Phone Number:
+
+
+
+The Developer&#39;s name, email address, address, telephone number and Payment Information will potentially be collected by the Issuer.  As this information may be &quot;Personal Information,&quot; the Issuer will include a collection notice with these Terms as required by the Freedom of Information and Protection of Privacy Act (British Columbia) each time an Opportunity is posted in the Repository.
+
+**[OR: INSERT ONE BOX AND REMOVE THIS TEXT]:  **
+
+The Developer&#39;s name, email address, address ,telephone number and Payment Information (all of which may be &quot;Personal Information&quot;) is being collected by the Ministry of **[Insert Here]**Government of Canada for the purposes of confirming your acceptance of the Terms and providing Payment.  This information is being collected by the Ministry ofthe Government of Canada**[Insert Here]** pursuant to section **[Insert Here]****4**of the [Freedom of Information and Protection of Privacy Act (British Columbia](http://laws-lois.justice.gc.ca/eng/acts/p-21/page-1.html#h-5) [Privacy Act](http://laws-lois.justice.gc.ca/eng/acts/p-21/page-1.html#h-5)) for the purposes stated above and any questions concerning the collection of your Personal Information may be directed to:  **[****Insert**  **Ministry**  **contact information, including title, business address and business telephone number****] ****Consultation@pco-bcp.gc.ca.****.**
+
+
+
+**Schedule &quot;A&quot; - Contract Terms**
+
+
+
+**Introduction**
+
+The Contractor will have the potential to receive a Payment in accordance with the Opportunity and the Acceptance Criteria.
+
+To be eligible for Payment relating to an Opportunity, the Contractor must provide the Issuer with the Payment Information and submit the Pull Request to the Repository of the Opportunity in the Submission Period.
+
+Throughout the Contract Terms, including the Introduction, the following definitions apply:
+
+&quot; **Acceptance Criteria**&quot; means the requirements and specifications necessary for a Pull Request to be considered, reviewed and potentially accepted for a Payment, as set out in the Opportunity;
+
+&quot; **Affected Party**&quot; means either the Contractor or the Issuer if prevented from performing that party&#39;s obligations in accordance with these Contract Terms by an Event of Force Majeure;
+
+&quot; **BC**  **GC**  **Developers&#39; Exchange**&quot; means the BC GC Developers&#39; Exchange Web site located at [https://beta.gcdevexchange.org/](https://beta.gcdevexchange.org/) [www.bcdevexchange.org](http://www.bcdevexchange.org), and any services associated with the BC GC Developers&#39; Exchange;
+
+&quot; **Contribution**&quot; means the work, such as source code, offered by the Contractor in a Pull Request;
+
+&quot; **Contractor&quot;** means the party announced by the Issuer on GitHub to exclusively enter into the Contract Terms for the Opportunity;
+
+&quot; **Event of Force Majeure**&quot; means one of the following events:
+
+1.
+  1. a)a natural disaster, fire, flood, storm, epidemic, or power failure;
+  2. b)a war (declared and undeclared), insurrection or act of terrorism or piracy;
+  3. c)a strike (including illegal work stoppage or slowdown) or lockout; or
+  4. d)a freight embargo
+
+if the event prevents a party from performing the party&#39;s obligations in accordance with these Terms and is beyond the reasonable control of that party;
+
+&quot; **Issuer**&quot; means the Province Government of Canada or a Public Sector Entity, as applicable;
+
+&quot; **GitHub**&quot; means the third party source code repository hosting service where Opportunities will be posted by the Issuer;
+
+&quot; **License**&quot; means the terms and conditions regarding the use, modification and sharing of the content in a Repository;
+
+&quot; **License File**&quot; means the file in the Repository that contains the License attached to the Opportunity;
+
+&quot; **Opportunity**&quot; means the issue tagged with the &#39;Help Wanted
+
+# &#39;
+ label within a Repository, and includes any attached or referenced appendices, addenda, schedules or exhibits;
+
+&quot; **Opportunity Contact**&quot; means the individual named in an Opportunity as the contact person for the Issuer;
+
+&quot; **Payment**&quot; means the value of remuneration set out in the Opportunity;
+
+&quot; **Payment Information&quot;** means the information provided by the Developer at the request of the Issuer that is required to make a payment to the Developer, and may include a completed direct deposit form, PayPal account, address, or other information as applicable;
+
+&quot; **Proposal**&quot; means the proposal provided by the Contractor to the Issuer for the Opportunity;
+
+ &quot; **Province**&quot; means the Government of British Columbia;
+
+&quot; **Public Sector Entity**&quot; means a Federal Department, Agency or Crown Corporation;
+
+&quot; **Pull Request**&quot; means the submission of a Contribution from the Lead Developer;
+
+&quot; **Repository**&quot; or &quot; **Repo**&quot; means the location on GitHub where the Opportunity is posted and stored; and
+
+&quot; **Submission Period**&quot; means the time period during which time the Contractor may submit a Pull Request, starting from the announcement of the Contractor and ending on (a) the completion date stated in the Opportunity as a mandatory criteria; or (b) if proposed timing is a scored criteria, the end date of the time period proposed by the Contractor in its Proposal.
+
+**Submitting a Pull Request**
+
+1. The Contractor will submit a minimum of one Pull Request that meets the Acceptance Criteria to the Repository for the Opportunity.
+
+1. The Contractor may:
+
+1. a)submit more than one Pull Request in response to an Opportunity in the Submission Period; and
+2. b)withdraw a Pull Request at any time before the Issuer makes a Payment.
+
+1. Any Pull Requests submitted by the Contractor must be received in the Submission Period according to the Pull Request time stamp applied by GitHub.
+
+1. The Submission Period will commence at the time that the Contractor is announced, according to the time stamp on the commenting function on GitHub.
+
+**Evaluation of Pull Requests**
+
+1. The Contractor&#39;s Pull Requests will be reviewed and assessed after the Submission Period in accordance with the Acceptance Criteria described in the Opportunity.
+
+1. The Issuer will select one Pull Request that meets the Acceptance Criteria described in the Opportunity and will accept the Contractor&#39;s Contribution by merging that Pull Request into the Issuer&#39;s code.
+
+1. The Issuer reserves the right in its sole discretion to:
+
+1. a)waive any non-material irregularity, defect or deficiency in a Pull Request; and
+2. b)request clarifications from a Contractor with respect to its Pull Request, without any obligation to make such a request to the Contractor, and consider such clarifications in evaluating the Pull Request.
+
+**Payment**
+
+1. The value of the Payment offered in the Opportunity is a fixed amount in Canadian dollars and is not negotiable.
+
+1. In order to be eligible for Payment in relation to an Opportunity, the Contractor will provide the Payment Information to the Issuer prior to submitting its Pull Request.  The Payment Information must be provided to the Issuer in a form and in the manner acceptable to the Opportunity Contact.
+
+1. Acceptance of the Pull Request by the Issuer according to section 6 of these Contract Terms will result in a Payment being made as specified in the Opportunity to the Contractor within 30 days.
+
+1. If the Issuer is the Province, theThe Issuer&#39;s obligation to pay money to the Contractor is subject to the Financial Administration Act (British ColumbiaCanada), which makes that obligation subject to an appropriation being available in the fiscal year of the Issuer during which payment becomes due.
+
+**Contractor&#39;s Obligations**
+
+1. The Contractor will retain the copyright to the Contribution submitted in their Pull Request unless the License File issued with the Opportunity indicates otherwise.  By submitting a Pull Request, the Contractor agrees to grant the Issuer of the applicable Opportunity rights in accordance with the License originally posted by the Issuer as applicable to that Opportunity.
+
+1. The Contractor is solely responsible for:
+
+1. a)ensuring its Pull Requests are complete and are in compliance with the Opportunity and these Contract Terms;
+2. b)its own expenses in participating in an Opportunity, including any costs in preparing a Pull Request;
+3. c)accepting and complying with the terms of use of sites used in conjunction with an Opportunity (e.g. GitHub, PayPal);
+4. d)ensuring it has the ability and authority to submit a Pull Request and accept these Contract Terms applicable to the Opportunity;
+5. e)determining, managing and paying any income or other taxes, fees or applicable payments that may be incurred as a result of a Payment; and
+6. f)complying with all applicable laws, including in relation to the submission of a Pull Request and receipt of a Payment.
+
+**Representations and Warranties**
+
+1. The Contractor represents and warrants that:
+
+1. a)the material contained in the Pull Request does not infringe, misappropriate or misuse any copyright, patent, trade-mark, trade secret or confidential or proprietary information of a third party;
+2. b)they have the rights to submit the material contained in their Pull Request and to grant any licenses under these Contract Terms;
+3. c)they are not aware of any circumstances that would give rise to a conflict of interest, either actual or perceived, in respect of the Opportunity; and
+4. d)they have the power and capacity to enter into an agreement on these Contract Terms and, if the Contractor is not an individual, to observe, perform and comply with these Contract Terms and that all necessary corporate or other proceedings have been taken and done to authorize the execution and delivery of an agreement on these Contract Terms by, or on behalf of, the Contractor.
+
+**Force Majeure**
+
+1. An Affected Party is not liable to the other party for any failure or delay in the performance of the Affected Party&#39;s obligations under these Contract Terms resulting from an Event of Force Majeure and any time periods for the performance of such obligations are automatically extended for the duration of the Event of Force Majeure provided that the Affected Party complies with the requirements of section 16 of these Contract Terms.
+
+1. An Affected Party must promptly notify the other party in writing upon the occurrence of the Event of Force Majeure and make all reasonable efforts to prevent, control or limit the Event of Force Majeure so as to resume compliance with the Affected Party&#39;s obligations under these Contract Terms as soon as possible.
+
+**Indemnity**
+
+1. The Contractor agrees to indemnify and save harmless the Issuer and any of its respective employees or agents from and against all claims, demands, obligations, losses, liabilities, costs, debts and expenses, including reasonable legal fees and any claim of infringement of third-party intellectual property rights, that the Issuer or any of the Issuer&#39;s employees or agents may sustain, incur, suffer or be put to at any time, either before or after these Contract Terms end (each a &quot;Loss&quot;) to the extent the Loss is directly or indirectly caused or contributed to by any act or omission by the Contractor or by any of the Contractor&#39;s agents, employees, officers, directors or subcontractors in connection with these Contract Terms.
+
+**Dispute Resolution**
+
+1. The Contractor agrees that any action at law or in equity in any way arising out of or in connection with these Contract Terms and/or in any way associated with the use of the BC GC Developer&#39;s Exchange will be resolved by arbitration under the Commercial Arbitration Act (British ColumbiaCanada).  and that the place of arbitration will be Victoria, British Columbia.
+
+**General**
+
+1. The Contract Terms will not in any way make the Contractor an employee or agent of the Issuer.
+
+1. If any term or provision of the Contract Terms is invalid, illegal or unenforceable, all other terms and provisions will nonetheless remain in full force and effect.
+
+1. Sections of these Contract Terms, including section 17, which, by their terms or nature, are intended to survive the expiration of these Terms, will continue in force indefinitely subject to any applicable limitation period prescribed by law, even after these Contract Terms end.
+
+1. The Issuer has no further obligations or commitments to the Contractor beyond those stated in the Contract Terms.
+
+1. The Contractor agrees that the Contract Terms are governed by and will be construed in accordance with the Canadian Lawlaws applicable in British Columbia.
