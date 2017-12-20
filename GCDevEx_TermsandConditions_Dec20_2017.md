@@ -1,6 +1,6 @@
 THIS IS A WORK IN PROGRESS
 
-**&quot;GCDevExchange – Paid&quot; Process Terms**
+**&quot;Code with Us – Paid&quot; Process Terms**
 
 
 
@@ -10,7 +10,7 @@ THIS IS A WORK IN PROGRESS
 
 **Introduction**
 
-These &quot;Code with Us – Paid&quot; Process Terms (the &quot; **Process Terms**&quot;) govern Developers and Issuers that participate in the BC Developers&#39; ExchangeGC Developers&#39; Exchange, specifically in Code with Us - Paid Opportunities.  These Opportunities are designed to enable Issuers to obtain and pay for contributions to digital resources from Developers in a relatively quick and straightforward way. It is a mechanism to invite Developers to work on a simple but technical task.  All Developers will be given the opportunity to make Proposals to the Issuer regarding Opportunities.
+These &quot;Code with Us – Paid&quot; Process Terms (the &quot; **Process Terms**&quot;) govern Developers and Issuers that participate in the GC Developers&#39; Exchange, specifically in Code with Us - Paid Opportunities.  These Opportunities are designed to enable Issuers to obtain and pay for contributions to digital resources from Developers in a relatively quick and straightforward way. It is a mechanism to invite Developers to work on a simple but technical task.  All Developers will be given the opportunity to make Proposals to the Issuer regarding Opportunities.
 
 To have a Proposal to work on an Opportunity evaluated, Developers must:
 
@@ -34,7 +34,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 &quot; **GitHub**&quot; means the third party source code repository hosting service where Opportunities will be posted by the Issuer;
 
-&quot; **Issuer**&quot; means the Province Government of Canada or a Public Sector Entity, as applicable;
+&quot; **Issuer**&quot; means the Government of Canada or a Public Sector Entity, as applicable;
 
 &quot; **Opportunity Contact**&quot; means the individual named in an Opportunity as the contact person for the Issuer;
 
@@ -51,9 +51,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 &quot; **Proposal Period**&quot; means the time period set out in the Opportunity during which time Developers may submit Proposals;
 
- &quot; **Province**&quot; means the Government of British Columbia;
-
-&quot; **Public Sector Entity**&quot; means a public sector entity in British ColumbiaFederal Department, Agency or Crown Corporation;
+ &quot; **Public Sector Entity**&quot; means a Federal Department, Agency or Crown Corporation;
 
 &quot; **Pull Request**&quot; means the submission of a Contribution from the Contractor; and
 
@@ -102,7 +100,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 1. 15)Proposals will be marked with their receipt time according to their email time stamp on the Opportunity Contact email.  Only complete Proposals received and marked before the end of the Proposal Period will be considered to have been received on time. In the case of a dispute, the Proposal receipt time as recorded on the Opportunity Contact email will prevail, whether accurate or not.
 
-1. 16)All Proposals and other records submitted to the Issuer in relation to an Opportunity become the property of the Issuer, and subject to the provisions of the Freedom of Information and Protection of Privacy Act (British Columbia)Access to Information Act (Canada), if applicable to the Issuer.
+1. 16)All Proposals and other records submitted to the Issuer in relation to an Opportunity become the property of the Issuer, and subject to the provisions of the Access to Information Act (Canada), if applicable to the Issuer.
 
 1. 17)Proposals received after the end of the Proposal Period will not be eligible for consideration.
 
@@ -166,7 +164,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 1. 31)The Issuer will not be held liable for any error or omission in the Opportunity.
 
-1. 32)Developers agree that the Process Terms are governed by and will be construed in accordance with the laws applicable in British ColumbiaCanada.
+1. 32)Developers agree that the Process Terms are governed by and will be construed in accordance with the laws applicable in Canada.
 
 
 
@@ -174,23 +172,17 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 To indicate acceptance of the Process Terms, the Developer will complete the information in A, B and C below and submit the Accepted Terms, in full, with the applicable Proposal.
 
-1.  Legal Name of Developer (_person or entity_):
+1. Legal Name of Developer (_person or entity_):
 
-1.
-2.
-3. B.  Legal Name of Person Submitting Proposal on behalf of Developer (_if different from &quot;A&quot;_):
+1. Legal Name of Person Submitting Proposal on behalf of Developer (_if different from &quot;A&quot;_):
 
-1. :
-2.
-3. Developer Email address and Phone Number:
+1. Developer Email address and Phone Number:
 
 
 
-The Developer&#39;s name, email address, address, telephone number and Payment Information will potentially be collected by the Issuer.  As this information may be &quot;Personal Information,&quot; the Issuer will include a collection notice with these Terms as required by the Freedom of Information and Protection of Privacy Act (British Columbia) each time an Opportunity is posted in the Repository.
 
-**[OR: INSERT ONE BOX AND REMOVE THIS TEXT]:  **
 
-The Developer&#39;s name, email address, address ,telephone number and Payment Information (all of which may be &quot;Personal Information&quot;) is being collected by the Ministry of **[Insert Here]**Government of Canada for the purposes of confirming your acceptance of the Terms and providing Payment.  This information is being collected by the Ministry ofthe Government of Canada**[Insert Here]** pursuant to section **[Insert Here]****4**of the [Freedom of Information and Protection of Privacy Act (British Columbia](http://laws-lois.justice.gc.ca/eng/acts/p-21/page-1.html#h-5) [Privacy Act](http://laws-lois.justice.gc.ca/eng/acts/p-21/page-1.html#h-5)) for the purposes stated above and any questions concerning the collection of your Personal Information may be directed to:  **[****Insert**  **Ministry**  **contact information, including title, business address and business telephone number****] ****Consultation@pco-bcp.gc.ca.****.**
+The Developer&#39;s name, email address, address ,telephone number and Payment Information (all of which may be &quot;Personal Information&quot;) is being collected by the Government of Canada for the purposes of confirming your acceptance of the Terms and providing Payment.  This information is being collected by the Government of Canada pursuant to section **4** of the [Privacy Act](http://laws-lois.justice.gc.ca/eng/acts/p-21/page-1.html#h-5)) for the purposes stated above and any questions concerning the collection of your Personal Information may be directed to:   **Consultation@pco-bcp.gc.ca.**
 
 
 
@@ -210,7 +202,7 @@ Throughout the Contract Terms, including the Introduction, the following definit
 
 &quot; **Affected Party**&quot; means either the Contractor or the Issuer if prevented from performing that party&#39;s obligations in accordance with these Contract Terms by an Event of Force Majeure;
 
-&quot; **BC**  **GC**  **Developers&#39; Exchange**&quot; means the BC GC Developers&#39; Exchange Web site located at [https://beta.gcdevexchange.org/](https://beta.gcdevexchange.org/) [www.bcdevexchange.org](http://www.bcdevexchange.org), and any services associated with the BC GC Developers&#39; Exchange;
+&quot; **GC Developers&#39; Exchange**&quot; means the GC Developers&#39; Exchange Web site located at [https://beta.gcdevexchange.org/](https://beta.gcdevexchange.org/), and any services associated with the GC Developers&#39; Exchange;
 
 &quot; **Contribution**&quot; means the work, such as source code, offered by the Contractor in a Pull Request;
 
@@ -226,7 +218,7 @@ Throughout the Contract Terms, including the Introduction, the following definit
 
 if the event prevents a party from performing the party&#39;s obligations in accordance with these Terms and is beyond the reasonable control of that party;
 
-&quot; **Issuer**&quot; means the Province Government of Canada or a Public Sector Entity, as applicable;
+&quot; **Issuer**&quot; means the Government of Canada or a Public Sector Entity, as applicable;
 
 &quot; **GitHub**&quot; means the third party source code repository hosting service where Opportunities will be posted by the Issuer;
 
@@ -247,9 +239,7 @@ if the event prevents a party from performing the party&#39;s obligations in acc
 
 &quot; **Proposal**&quot; means the proposal provided by the Contractor to the Issuer for the Opportunity;
 
- &quot; **Province**&quot; means the Government of British Columbia;
-
-&quot; **Public Sector Entity**&quot; means a Federal Department, Agency or Crown Corporation;
+ &quot; **Public Sector Entity**&quot; means a Federal Department, Agency or Crown Corporation;
 
 &quot; **Pull Request**&quot; means the submission of a Contribution from the Lead Developer;
 
@@ -289,7 +279,7 @@ if the event prevents a party from performing the party&#39;s obligations in acc
 
 1. Acceptance of the Pull Request by the Issuer according to section 6 of these Contract Terms will result in a Payment being made as specified in the Opportunity to the Contractor within 30 days.
 
-1. If the Issuer is the Province, theThe Issuer&#39;s obligation to pay money to the Contractor is subject to the Financial Administration Act (British ColumbiaCanada), which makes that obligation subject to an appropriation being available in the fiscal year of the Issuer during which payment becomes due.
+1. The Issuer&#39;s obligation to pay money to the Contractor is subject to the Financial Administration Act (Canada), which makes that obligation subject to an appropriation being available in the fiscal year of the Issuer during which payment becomes due.
 
 **Contractor&#39;s Obligations**
 
@@ -325,7 +315,7 @@ if the event prevents a party from performing the party&#39;s obligations in acc
 
 **Dispute Resolution**
 
-1. The Contractor agrees that any action at law or in equity in any way arising out of or in connection with these Contract Terms and/or in any way associated with the use of the BC GC Developer&#39;s Exchange will be resolved by arbitration under the Commercial Arbitration Act (British ColumbiaCanada).  and that the place of arbitration will be Victoria, British Columbia.
+1. The Contractor agrees that any action at law or in equity in any way arising out of or in connection with these Contract Terms and/or in any way associated with the use of the GC Developer&#39;s Exchange will be resolved by arbitration under the Commercial Arbitration Act (Canada).
 
 **General**
 
@@ -337,4 +327,4 @@ if the event prevents a party from performing the party&#39;s obligations in acc
 
 1. The Issuer has no further obligations or commitments to the Contractor beyond those stated in the Contract Terms.
 
-1. The Contractor agrees that the Contract Terms are governed by and will be construed in accordance with the Canadian Lawlaws applicable in British Columbia.
+1. The Contractor agrees that the Contract Terms are governed by and will be construed in accordance with the Canadian Law.
