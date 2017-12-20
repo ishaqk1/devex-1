@@ -213,7 +213,7 @@ Throughout the Contract Terms, including the Introduction, the following definit
 <ol type="a"><li>a natural disaster, fire, flood, storm, epidemic, or power failure;</li>
 <li>a war (declared and undeclared), insurrection or act of terrorism or piracy;</li>
 <li>a strike (including illegal work stoppage or slowdown) or lockout; or</li>
-<li>a freight embargo
+<li>a freight embargo</li></ol>
 
 if the event prevents a party from performing the party&#39;s obligations in accordance with these Terms and is beyond the reasonable control of that party;
 
@@ -225,10 +225,7 @@ if the event prevents a party from performing the party&#39;s obligations in acc
 
 &quot; **License File**&quot; means the file in the Repository that contains the License attached to the Opportunity;
 
-&quot; **Opportunity**&quot; means the issue tagged with the &#39;Help Wanted
-
-# &#39;
- label within a Repository, and includes any attached or referenced appendices, addenda, schedules or exhibits;
+&quot; **Opportunity**&quot; means the issue tagged with the &#39;Help Wanted&#39; label within a Repository, and includes any attached or referenced appendices, addenda, schedules or exhibits;
 
 &quot; **Opportunity Contact**&quot; means the individual named in an Opportunity as the contact person for the Issuer;
 
