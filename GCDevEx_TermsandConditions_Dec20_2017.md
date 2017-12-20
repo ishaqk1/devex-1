@@ -125,7 +125,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 **Contract**
 
 22. Before and as a condition to entering a contract, the Issuer has the right to:
-<ol><li>Request the Developer to provide information confirming the Developer&#39;s legal name, registration(s) and status in a form satisfactory to the Issuer that the Developer has the power and capacity to enter into the contract; and</li>
+<ol type="a"><li>Request the Developer to provide information confirming the Developer&#39;s legal name, registration(s) and status in a form satisfactory to the Issuer that the Developer has the power and capacity to enter into the contract; and</li>
 <li>To not enter into a contract if the Developer cannot satisfy the Issuer that it is the same legal entity that submitted the Proposal.</li>
 
 23. By submitting a Proposal, the Developer agrees that should its Proposal be successful, the Developer will enter into a contract with the Issuer on the terms set out in Schedule &quot;A&quot;.
@@ -134,35 +134,35 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 24. Developers must ensure there is no conflict of interest, either real or perceived, in respect of an Opportunity including involvement in the preparation of the applicable Opportunity or a relationship with any employee, contractor or representative of the Issuer involved in preparation of the applicable Opportunity.  If a Developer is in doubt as to whether there might be a conflict of interest, the Developer should consult with the Opportunity Contact prior to submitting a Proposal.
 
-1. 25)Developers are solely responsible for:
+25. Developers are solely responsible for:
 
-1. a)ensuring their Proposals are complete and received before the end of the Proposal Period;
-2. b)their own expenses in participating in an Opportunity, including any costs in preparing a Proposal;
-3. c)accepting and complying with the terms of use of sites used in conjunction with an Opportunity (e.g. GitHub, PayPal); and
-4. d)ensuring they have the ability and authority to accept these Process Terms applicable to the Opportunity.
+<ol type="a"><li>ensuring their Proposals are complete and received before the end of the Proposal Period;</li>
+<li>their own expenses in participating in an Opportunity, including any costs in preparing a Proposal;</li>
+<li>accepting and complying with the terms of use of sites used in conjunction with an Opportunity (e.g. GitHub, PayPal); and</li>
+<li>ensuring they have the ability and authority to accept these Process Terms applicable to the Opportunity.</li></ol>
 
 **Representations and Warranties**
 
-1. 26)Developers represent and warrant that:
+26. Developers represent and warrant that:
 
-1. a)they are not aware of any circumstances that would give rise to a conflict of interest, either actual or perceived, in respect of the Opportunity; and
-2. b)at the date the Process Terms are accepted they have the power and capacity to enter into an agreement on these Process Terms and, if the Developer is not an individual, to observe, perform and comply with these Process Terms and that all necessary corporate or other proceedings have been taken and done to authorize the execution and delivery of an agreement on these Process Terms by, or on behalf of, the Developer.
+<ol type="a"><li>they are not aware of any circumstances that would give rise to a conflict of interest, either actual or perceived, in respect of the Opportunity; and</li>
+<li>at the date the Process Terms are accepted they have the power and capacity to enter into an agreement on these Process Terms and, if the Developer is not an individual, to observe, perform and comply with these Process Terms and that all necessary corporate or other proceedings have been taken and done to authorize the execution and delivery of an agreement on these Process Terms by, or on behalf of, the Developer.</li></ol>
 
 **Limitation of Liability**
 
-1. 27)Under no circumstances will the Issuer or any of its respective servants, employees or agents be liable to any person or business entity for any direct, indirect, special, incidental, consequential or other damages based on any Developer&#39;s submission of a Proposal in response to an Opportunity.
+27. Under no circumstances will the Issuer or any of its respective servants, employees or agents be liable to any person or business entity for any direct, indirect, special, incidental, consequential or other damages based on any Developer&#39;s submission of a Proposal in response to an Opportunity.
 
 **General**
 
-1. 28)The Process Terms will not in any way make a Developer an employee or agent of the Issuer.
+28. The Process Terms will not in any way make a Developer an employee or agent of the Issuer.
 
-1. 29)If any term or provision of the Process Terms is invalid, illegal or unenforceable, all other terms and provisions will nonetheless remain in full force and effect.
+29. If any term or provision of the Process Terms is invalid, illegal or unenforceable, all other terms and provisions will nonetheless remain in full force and effect.
 
-1. 30)The Issuer has no further obligations or commitments to any Developer beyond those stated in the Process Terms.
+30. The Issuer has no further obligations or commitments to any Developer beyond those stated in the Process Terms.
 
-1. 31)The Issuer will not be held liable for any error or omission in the Opportunity.
+31. The Issuer will not be held liable for any error or omission in the Opportunity.
 
-1. 32)Developers agree that the Process Terms are governed by and will be construed in accordance with the laws applicable in Canada.
+32. Developers agree that the Process Terms are governed by and will be construed in accordance with the laws applicable in Canada.
 
 
 
@@ -170,11 +170,11 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 To indicate acceptance of the Process Terms, the Developer will complete the information in A, B and C below and submit the Accepted Terms, in full, with the applicable Proposal.
 
-1. Legal Name of Developer (_person or entity_):
+<ol><li type="A">Legal Name of Developer (_person or entity_):</li>
 
-1. Legal Name of Person Submitting Proposal on behalf of Developer (_if different from &quot;A&quot;_):
+<li>Legal Name of Person Submitting Proposal on behalf of Developer (_if different from &quot;A&quot;_):</li>
 
-1. Developer Email address and Phone Number:
+<li>Developer Email address and Phone Number:</li></ol>
 
 
 
