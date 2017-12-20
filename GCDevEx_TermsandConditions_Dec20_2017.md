@@ -184,6 +184,8 @@ The Developer&#39;s name, email address, address ,telephone number and Payment I
 
 
 
+
+
 **Schedule &quot;A&quot; - Contract Terms**
 
 
@@ -208,11 +210,10 @@ Throughout the Contract Terms, including the Introduction, the following definit
 
 &quot; **Event of Force Majeure**&quot; means one of the following events:
 
-1.
-  1. a)a natural disaster, fire, flood, storm, epidemic, or power failure;
-  2. b)a war (declared and undeclared), insurrection or act of terrorism or piracy;
-  3. c)a strike (including illegal work stoppage or slowdown) or lockout; or
-  4. d)a freight embargo
+<ol type="a"><li>a natural disaster, fire, flood, storm, epidemic, or power failure;</li>
+<li>a war (declared and undeclared), insurrection or act of terrorism or piracy;</li>
+<li>a strike (including illegal work stoppage or slowdown) or lockout; or</li>
+<li>a freight embargo
 
 if the event prevents a party from performing the party&#39;s obligations in accordance with these Terms and is beyond the reasonable control of that party;
 
@@ -249,80 +250,79 @@ if the event prevents a party from performing the party&#39;s obligations in acc
 
 1. The Contractor will submit a minimum of one Pull Request that meets the Acceptance Criteria to the Repository for the Opportunity.
 
-1. The Contractor may:
+2. The Contractor may:
 
-1. a)submit more than one Pull Request in response to an Opportunity in the Submission Period; and
-2. b)withdraw a Pull Request at any time before the Issuer makes a Payment.
+<ol type="a"><li>submit more than one Pull Request in response to an Opportunity in the Submission Period; and</li>
+<li>withdraw a Pull Request at any time before the Issuer makes a Payment.</li></ol>
 
-1. Any Pull Requests submitted by the Contractor must be received in the Submission Period according to the Pull Request time stamp applied by GitHub.
+3. Any Pull Requests submitted by the Contractor must be received in the Submission Period according to the Pull Request time stamp applied by GitHub.
 
-1. The Submission Period will commence at the time that the Contractor is announced, according to the time stamp on the commenting function on GitHub.
+4. The Submission Period will commence at the time that the Contractor is announced, according to the time stamp on the commenting function on GitHub.
 
 **Evaluation of Pull Requests**
 
-1. The Contractor&#39;s Pull Requests will be reviewed and assessed after the Submission Period in accordance with the Acceptance Criteria described in the Opportunity.
+5. The Contractor&#39;s Pull Requests will be reviewed and assessed after the Submission Period in accordance with the Acceptance Criteria described in the Opportunity.
 
-1. The Issuer will select one Pull Request that meets the Acceptance Criteria described in the Opportunity and will accept the Contractor&#39;s Contribution by merging that Pull Request into the Issuer&#39;s code.
+6. The Issuer will select one Pull Request that meets the Acceptance Criteria described in the Opportunity and will accept the Contractor&#39;s Contribution by merging that Pull Request into the Issuer&#39;s code.
+7. The Issuer reserves the right in its sole discretion to:
 
-1. The Issuer reserves the right in its sole discretion to:
-
-1. a)waive any non-material irregularity, defect or deficiency in a Pull Request; and
-2. b)request clarifications from a Contractor with respect to its Pull Request, without any obligation to make such a request to the Contractor, and consider such clarifications in evaluating the Pull Request.
+<ol type="a"><li>waive any non-material irregularity, defect or deficiency in a Pull Request; and</li>
+<li>request clarifications from a Contractor with respect to its Pull Request, without any obligation to make such a request to the Contractor, and consider such clarifications in evaluating the Pull Request.</li></ol>
 
 **Payment**
 
-1. The value of the Payment offered in the Opportunity is a fixed amount in Canadian dollars and is not negotiable.
+8. The value of the Payment offered in the Opportunity is a fixed amount in Canadian dollars and is not negotiable.
 
-1. In order to be eligible for Payment in relation to an Opportunity, the Contractor will provide the Payment Information to the Issuer prior to submitting its Pull Request.  The Payment Information must be provided to the Issuer in a form and in the manner acceptable to the Opportunity Contact.
+9. In order to be eligible for Payment in relation to an Opportunity, the Contractor will provide the Payment Information to the Issuer prior to submitting its Pull Request.  The Payment Information must be provided to the Issuer in a form and in the manner acceptable to the Opportunity Contact.
 
-1. Acceptance of the Pull Request by the Issuer according to section 6 of these Contract Terms will result in a Payment being made as specified in the Opportunity to the Contractor within 30 days.
+10. Acceptance of the Pull Request by the Issuer according to section 6 of these Contract Terms will result in a Payment being made as specified in the Opportunity to the Contractor within 30 days.
 
-1. The Issuer&#39;s obligation to pay money to the Contractor is subject to the Financial Administration Act (Canada), which makes that obligation subject to an appropriation being available in the fiscal year of the Issuer during which payment becomes due.
+11. The Issuer&#39;s obligation to pay money to the Contractor is subject to the Financial Administration Act (Canada), which makes that obligation subject to an appropriation being available in the fiscal year of the Issuer during which payment becomes due.
 
 **Contractor&#39;s Obligations**
 
-1. The Contractor will retain the copyright to the Contribution submitted in their Pull Request unless the License File issued with the Opportunity indicates otherwise.  By submitting a Pull Request, the Contractor agrees to grant the Issuer of the applicable Opportunity rights in accordance with the License originally posted by the Issuer as applicable to that Opportunity.
+12. The Contractor will retain the copyright to the Contribution submitted in their Pull Request unless the License File issued with the Opportunity indicates otherwise.  By submitting a Pull Request, the Contractor agrees to grant the Issuer of the applicable Opportunity rights in accordance with the License originally posted by the Issuer as applicable to that Opportunity.
 
-1. The Contractor is solely responsible for:
+13. The Contractor is solely responsible for:
 
-1. a)ensuring its Pull Requests are complete and are in compliance with the Opportunity and these Contract Terms;
-2. b)its own expenses in participating in an Opportunity, including any costs in preparing a Pull Request;
-3. c)accepting and complying with the terms of use of sites used in conjunction with an Opportunity (e.g. GitHub, PayPal);
-4. d)ensuring it has the ability and authority to submit a Pull Request and accept these Contract Terms applicable to the Opportunity;
-5. e)determining, managing and paying any income or other taxes, fees or applicable payments that may be incurred as a result of a Payment; and
-6. f)complying with all applicable laws, including in relation to the submission of a Pull Request and receipt of a Payment.
+<ol type="a"><li>ensuring its Pull Requests are complete and are in compliance with the Opportunity and these Contract Terms;</li>
+<li>its own expenses in participating in an Opportunity, including any costs in preparing a Pull Request;</li>
+<li>accepting and complying with the terms of use of sites used in conjunction with an Opportunity (e.g. GitHub, PayPal);</li>
+<li>ensuring it has the ability and authority to submit a Pull Request and accept these Contract Terms applicable to the Opportunity;</li>
+<li>determining, managing and paying any income or other taxes, fees or applicable payments that may be incurred as a result of a Payment; and</li>
+<li>complying with all applicable laws, including in relation to the submission of a Pull Request and receipt of a Payment.</li></ol>
 
 **Representations and Warranties**
 
-1. The Contractor represents and warrants that:
+14. The Contractor represents and warrants that:
 
-1. a)the material contained in the Pull Request does not infringe, misappropriate or misuse any copyright, patent, trade-mark, trade secret or confidential or proprietary information of a third party;
-2. b)they have the rights to submit the material contained in their Pull Request and to grant any licenses under these Contract Terms;
-3. c)they are not aware of any circumstances that would give rise to a conflict of interest, either actual or perceived, in respect of the Opportunity; and
-4. d)they have the power and capacity to enter into an agreement on these Contract Terms and, if the Contractor is not an individual, to observe, perform and comply with these Contract Terms and that all necessary corporate or other proceedings have been taken and done to authorize the execution and delivery of an agreement on these Contract Terms by, or on behalf of, the Contractor.
+<ol type="a"><li>the material contained in the Pull Request does not infringe, misappropriate or misuse any copyright, patent, trade-mark, trade secret or confidential or proprietary information of a third party;</li>
+<li>they have the rights to submit the material contained in their Pull Request and to grant any licenses under these Contract Terms;</li>
+<li>they are not aware of any circumstances that would give rise to a conflict of interest, either actual or perceived, in respect of the Opportunity; and</li>
+<li>they have the power and capacity to enter into an agreement on these Contract Terms and, if the Contractor is not an individual, to observe, perform and comply with these Contract Terms and that all necessary corporate or other proceedings have been taken and done to authorize the execution and delivery of an agreement on these Contract Terms by, or on behalf of, the Contractor.</li></ol>
 
 **Force Majeure**
 
-1. An Affected Party is not liable to the other party for any failure or delay in the performance of the Affected Party&#39;s obligations under these Contract Terms resulting from an Event of Force Majeure and any time periods for the performance of such obligations are automatically extended for the duration of the Event of Force Majeure provided that the Affected Party complies with the requirements of section 16 of these Contract Terms.
+15. An Affected Party is not liable to the other party for any failure or delay in the performance of the Affected Party&#39;s obligations under these Contract Terms resulting from an Event of Force Majeure and any time periods for the performance of such obligations are automatically extended for the duration of the Event of Force Majeure provided that the Affected Party complies with the requirements of section 16 of these Contract Terms.
 
-1. An Affected Party must promptly notify the other party in writing upon the occurrence of the Event of Force Majeure and make all reasonable efforts to prevent, control or limit the Event of Force Majeure so as to resume compliance with the Affected Party&#39;s obligations under these Contract Terms as soon as possible.
+16. An Affected Party must promptly notify the other party in writing upon the occurrence of the Event of Force Majeure and make all reasonable efforts to prevent, control or limit the Event of Force Majeure so as to resume compliance with the Affected Party&#39;s obligations under these Contract Terms as soon as possible.
 
 **Indemnity**
 
-1. The Contractor agrees to indemnify and save harmless the Issuer and any of its respective employees or agents from and against all claims, demands, obligations, losses, liabilities, costs, debts and expenses, including reasonable legal fees and any claim of infringement of third-party intellectual property rights, that the Issuer or any of the Issuer&#39;s employees or agents may sustain, incur, suffer or be put to at any time, either before or after these Contract Terms end (each a &quot;Loss&quot;) to the extent the Loss is directly or indirectly caused or contributed to by any act or omission by the Contractor or by any of the Contractor&#39;s agents, employees, officers, directors or subcontractors in connection with these Contract Terms.
+17. The Contractor agrees to indemnify and save harmless the Issuer and any of its respective employees or agents from and against all claims, demands, obligations, losses, liabilities, costs, debts and expenses, including reasonable legal fees and any claim of infringement of third-party intellectual property rights, that the Issuer or any of the Issuer&#39;s employees or agents may sustain, incur, suffer or be put to at any time, either before or after these Contract Terms end (each a &quot;Loss&quot;) to the extent the Loss is directly or indirectly caused or contributed to by any act or omission by the Contractor or by any of the Contractor&#39;s agents, employees, officers, directors or subcontractors in connection with these Contract Terms.
 
 **Dispute Resolution**
 
-1. The Contractor agrees that any action at law or in equity in any way arising out of or in connection with these Contract Terms and/or in any way associated with the use of the GC Developer&#39;s Exchange will be resolved by arbitration under the Commercial Arbitration Act (Canada).
+18. The Contractor agrees that any action at law or in equity in any way arising out of or in connection with these Contract Terms and/or in any way associated with the use of the GC Developer&#39;s Exchange will be resolved by arbitration under the Commercial Arbitration Act (Canada).
 
 **General**
 
-1. The Contract Terms will not in any way make the Contractor an employee or agent of the Issuer.
+19. The Contract Terms will not in any way make the Contractor an employee or agent of the Issuer.
 
-1. If any term or provision of the Contract Terms is invalid, illegal or unenforceable, all other terms and provisions will nonetheless remain in full force and effect.
+20. If any term or provision of the Contract Terms is invalid, illegal or unenforceable, all other terms and provisions will nonetheless remain in full force and effect.
 
-1. Sections of these Contract Terms, including section 17, which, by their terms or nature, are intended to survive the expiration of these Terms, will continue in force indefinitely subject to any applicable limitation period prescribed by law, even after these Contract Terms end.
+21. Sections of these Contract Terms, including section 17, which, by their terms or nature, are intended to survive the expiration of these Terms, will continue in force indefinitely subject to any applicable limitation period prescribed by law, even after these Contract Terms end.
 
-1. The Issuer has no further obligations or commitments to the Contractor beyond those stated in the Contract Terms.
+22. The Issuer has no further obligations or commitments to the Contractor beyond those stated in the Contract Terms.
 
-1. The Contractor agrees that the Contract Terms are governed by and will be construed in accordance with the Canadian Law.
+23. The Contractor agrees that the Contract Terms are governed by and will be construed in accordance with the Canadian Law.
