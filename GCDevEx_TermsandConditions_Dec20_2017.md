@@ -57,42 +57,42 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 **Agreeing to the Process Terms**
 
-1. 1)By submitting a Proposal and the Accepted Terms, the Developer indicates acceptance of these Process Terms, including any Schedules attached to these Process Terms.
+1. By submitting a Proposal and the Accepted Terms, the Developer indicates acceptance of these Process Terms, including any Schedules attached to these Process Terms.
 
-1. 2)A Proposal must be submitted by a person authorized to provide it on behalf of the Developer with the intent to bind the Developer to the Process Terms and to the statements and representations in the Developer&#39;s Proposal.
+2. A Proposal must be submitted by a person authorized to provide it on behalf of the Developer with the intent to bind the Developer to the Process Terms and to the statements and representations in the Developer&#39;s Proposal.
 
 **Information about an Opportunity**
 
-1. 3)The Opportunity will describe the issue, and will include criteria defining what a Pull Request must contain/accomplish, the Acceptance Criteria, the Evaluation Criteria, the Proposal Period, and the applicable Payment and methods for the Contractor to receive Payment.
+3. The Opportunity will describe the issue, and will include criteria defining what a Pull Request must contain/accomplish, the Acceptance Criteria, the Evaluation Criteria, the Proposal Period, and the applicable Payment and methods for the Contractor to receive Payment.
 
 
 
-1. 4)Any revisions to the Opportunity will also be posted on GitHub.  If the Opportunity is modified in any way or cancelled, notification will be provided on GitHub. It is entirely a Developer&#39;s responsibility to check GitHub for information about the Opportunity.
+4. Any revisions to the Opportunity will also be posted on GitHub.  If the Opportunity is modified in any way or cancelled, notification will be provided on GitHub. It is entirely a Developer&#39;s responsibility to check GitHub for information about the Opportunity.
 
 
 
 **Submitting a Proposal**
 
-1. 5)Developers are encouraged to ask any questions regarding an Opportunity early during the Proposal Period.  To the extent reasonably possible, the Issuer will post answers in the comments section on GitHub associated with the Opportunity.
+5. Developers are encouraged to ask any questions regarding an Opportunity early during the Proposal Period.  To the extent reasonably possible, the Issuer will post answers in the comments section on GitHub associated with the Opportunity.
 
-1. 6)Developers must submit their Proposals to the Opportunity Contact by email according to the requirements set out in section 7 and 8 of these Process Terms.
+6. Developers must submit their Proposals to the Opportunity Contact by email according to the requirements set out in section 7 and 8 of these Process Terms.
 
-1. 7)For Proposals, including any notice of amendment or withdrawal referred to in section 12, the subject line of the email and any attachment should be clearly marked with the name of the Developer, and the name of the Opportunity.
+7. For Proposals, including any notice of amendment or withdrawal referred to in section 12, the subject line of the email and any attachment should be clearly marked with the name of the Developer, and the name of the Opportunity.
 
-1. 8)Developers should submit Proposals in a single email and avoid sending multiple email submissions for the same Opportunity.  If the file size of an electronic submission exceeds the applicable maximum size, the Developer may send multiple emails to reduce attachment file size to be within the maximum applicable size.  Where the Developer sends multiple emails, the Developer will identify the order and number of emails making up the email Proposal submission (e.g. &quot;email 1 of 3, email 2 of 3…&quot;).
+8. Developers should submit Proposals in a single email and avoid sending multiple email submissions for the same Opportunity.  If the file size of an electronic submission exceeds the applicable maximum size, the Developer may send multiple emails to reduce attachment file size to be within the maximum applicable size.  Where the Developer sends multiple emails, the Developer will identify the order and number of emails making up the email Proposal submission (e.g. &quot;email 1 of 3, email 2 of 3…&quot;).
 
-1. 9)For email proposal submissions sent through multiple emails, the Issuer reserves the right to seek clarification or reject the Proposal if the Issuer is unable to determine what documents constitute the complete Proposal.
+9. For email proposal submissions sent through multiple emails, the Issuer reserves the right to seek clarification or reject the Proposal if the Issuer is unable to determine what documents constitute the complete Proposal.
 
-1. 10)Developers must ensure that Proposals, including any attachments, are not compressed, do not contain a virus or malware, are not corrupted, and must be able to be opened.  The Issuer may reject Proposals that are compressed, cannot be opened, or that contain viruses, malware or corrupted attachments.
+10. Developers must ensure that Proposals, including any attachments, are not compressed, do not contain a virus or malware, are not corrupted, and must be able to be opened.  The Issuer may reject Proposals that are compressed, cannot be opened, or that contain viruses, malware or corrupted attachments.
 
-1. 11)Developers are solely responsible for ensuring that its complete email Proposal submission and all attachments are received before the end of the Proposal Period and bear all risk associated with delivering its Proposal by electronic submission.  If the Issuer&#39;s electronic mail system rejects an email Proposal submission for any reason, and the Developer does not resubmit its Proposal before the end of the Proposal Period, the Developer will not be permitted to submit its proposal after the end the Proposal Period.
+11. Developers are solely responsible for ensuring that its complete email Proposal submission and all attachments are received before the end of the Proposal Period and bear all risk associated with delivering its Proposal by electronic submission.  If the Issuer&#39;s electronic mail system rejects an email Proposal submission for any reason, and the Developer does not resubmit its Proposal before the end of the Proposal Period, the Developer will not be permitted to submit its proposal after the end the Proposal Period.
 
-1. 12)Developers may amend or withdraw their Proposal by way of an email to the Opportunity Contact. At the end of the Proposal Period, all Proposals become irrevocable.  A Developer will not change any part of its proposal after the end of the Proposal Period unless requested by the Issuer for purposes of clarification.
+12. Developers may amend or withdraw their Proposal by way of an email to the Opportunity Contact. At the end of the Proposal Period, all Proposals become irrevocable.  A Developer will not change any part of its proposal after the end of the Proposal Period unless requested by the Issuer for purposes of clarification.
 
-1. 13)Developers are strongly advised to contact the Opportunity Contact immediately to arrange for an alternative submission method in accordance with section 14 of these Process Terms if:
+13. Developers are strongly advised to contact the Opportunity Contact immediately to arrange for an alternative submission method in accordance with section 14 of these Process Terms if:
 
-1. a)the Developer&#39;s email proposal submission is rejected by the Issuer&#39;s electronic mail system; or
-2. b)the Developer does not receive an automated response email from the Issuer confirming receipt of the email within a half hour of the time the email proposal submission was sent by the Developer.
+* the Developer&#39;s email proposal submission is rejected by the Issuer&#39;s electronic mail system; or
+* the Developer does not receive an automated response email from the Issuer confirming receipt of the email within a half hour of the time the email proposal submission was sent by the Developer.
 
 1. 14)An alternate submission method may be made available, at the Issuer&#39;s discretion, commencing one half hour before the end of the Proposal Period, and it is the Developer&#39;s sole responsibility for ensuring that a complete proposal (and all attachments) submitted using an approved alternate submission method is received by the Issuer before the end of the Proposal Period.   The Issuer makes no guarantee that an alternative submission method will be available or that the method available will ensure that a Developer&#39;s proposal is received before the end of the Proposal Period.
 
