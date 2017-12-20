@@ -170,7 +170,7 @@ Throughout the Process Terms, including the Introduction, the following definiti
 
 To indicate acceptance of the Process Terms, the Developer will complete the information in A, B and C below and submit the Accepted Terms, in full, with the applicable Proposal.
 
-<ol><li type="A">Legal Name of Developer (_person or entity_):</li>
+<ol type="A"><li>Legal Name of Developer (_person or entity_):</li>
 
 <li>Legal Name of Person Submitting Proposal on behalf of Developer (_if different from &quot;A&quot;_):</li>
 
