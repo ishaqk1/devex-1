@@ -211,7 +211,7 @@
 		<button ng-if="ppp.proposal.status === 'Submitted'" type="button" class="btn btn-default" data-ng-click="ppp.withdraw()" translate="PROP_WITHDRAW_MY">Withdraw my proposal</button>
 		<span ng-if="ppp.proposal.status === 'Submitted' || ppp.proposal.status === 'Draft'"> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; </span>
 		<button type="button" class="btn btn-primary" data-ng-click="ppp.submit()" ng-if="ppp.proposal.status === 'Draft'" translate="PROP_SUBMIT_MY">Submit my proposal</button>
-		<button type="button" class="btn" data-ng-click="ppp.close()">Close</button>
+		<button type="button" class="btn" data-ng-click="ppp.close()" translate="CLOSE">Close</button>
 	</div>	
 </div>
 
