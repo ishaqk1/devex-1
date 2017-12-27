@@ -32,7 +32,7 @@
         &nbsp;
         <span ng-if="program.userIs.request" class="label label-primary" uib-tooltip="Your membership request is pending approval">Pending Member</span>
         &nbsp;
-        <span ng-if="!program.isPublished" class="label label-danger" ><i class="fa fa-exclamation-triangle"></i> UNPUBLISHED</span>
+        <span ng-if="!program.isPublished" class="label label-danger" ><i class="fa fa-exclamation-triangle"></i> {{ 'UNPUBLISHED' | translate }}</span>
         &nbsp;
         <a ng-if="(vm.isAdmin || program.userIs.admin) && program.isPublished" href="javascript:void(0);" ng-click="vm.publish(program, false)" ng-click="$event.stopPropagation()" uib-tooltip="Unpublish"><i class="glyphicon glyphicon-ban-circle"></i></a>
         &nbsp;
