@@ -12,7 +12,7 @@
 			controllerAs : 'vm',
 			scope        : {},
 			templateUrl  : '/modules/programs/client/views/list.programs.directive.html',
-			controller   : function ($scope, ProgramsService, Authentication, Notification, $translate) {
+			controller   : function ($scope, ProgramsService, Authentication, Notification, $filter) {
 				var vm = this;
 				var isAdmin  = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
 				var isGov    = Authentication.user && !!~Authentication.user.roles.indexOf ('gov');
@@ -30,7 +30,7 @@
 					//
 					.then (function () {
 						Notification.success ({
-							message : '<i class="glyphicon glyphicon-ok"></i> ' + $translate.instant('TEAM_TEAM') + ' '+t+' Successfully!'
+							message : '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('TEAM_TEAM') + ' '+t+' Successfully!'
 						});
 					})
 					//
@@ -40,7 +40,7 @@
 						program.isPublished = publishedState;
 						Notification.error ({
 							message : res.data.message,
-							title   : '<i class=\'glyphicon glyphicon-remove\'></i> ' + $translate.instant('TEAM_TEAM') + ' '+t+' Error!'
+							title   : '<i class=\'glyphicon glyphicon-remove\'></i> ' + $filter('translate')('TEAM_TEAM') + ' '+t+' Error!'
 						});
 					});
 				};
