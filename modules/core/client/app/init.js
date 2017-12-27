@@ -37,10 +37,13 @@
 
     $uiViewScrollProvider.useAnchorScroll();
 
-    $translateProvider.useStaticFilesLoader({
-      prefix: 'modules/translations/',
+    $translateProvider
+    .useLocalStorage()
+    .useStaticFilesLoader({
+      prefix: 'translations/',
       suffix: '.json'
-    }).preferredLanguage('en');
+    })
+    .preferredLanguage('en');
   }
 
 
