@@ -56,7 +56,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/proposals/client/views/list.proposals.directive.html',
-			controller   : function ($scope, ProposalsService, Authentication, Notification) {
+			controller   : function ($scope, ProposalsService, Authentication, Notification, $filter) {
 				var vm     = this;
 				vm.opportunity = $scope.opportunity;
 				vm.context = $scope.context;
@@ -98,7 +98,7 @@
 				if ($scope.title) vm.title = $scope.title;
 				vm.publish = function (proposal, state) {
 					var publishedState = proposal.isPublished;
-					var t = state ? 'Published' : 'Un-Published'
+					var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED')
 					proposal.isPublished = state;
 					proposal.createOrUpdate ()
 					//

@@ -15,7 +15,7 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate, dataService) {
+	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate, dataService, $filter) {
 		var vm                 = this;
 		vm.program             = program;
 		vm.display             = {};
@@ -56,7 +56,7 @@
 		// -------------------------------------------------------------------------
 		vm.publish = function (state) {
 			var publishedState = program.isPublished;
-			var t = state ? 'Published' : 'Un-Published'
+			var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED')
 			program.isPublished = state;
 			program.createOrUpdate ()
 			//

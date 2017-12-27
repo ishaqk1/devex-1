@@ -22,7 +22,7 @@
 				vm.programs = ProgramsService.query ();
 				vm.publish = function (program, state) {
 					var publishedState = program.isPublished;
-					var t = state ? 'Published' : 'Un-Published'
+					var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED')
 					program.isPublished = state;
 					program.createOrUpdate ()
 					//
