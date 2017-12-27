@@ -196,7 +196,8 @@
 			url: '/create/:opportunityId',
 			data: {
 				roles: ['user'],
-				notroles: ['gov']
+				notroles: ['gov'],
+				pageTitle: '{{ "PROP_NEW" | translate }}'
 			},
 			templateUrl: '/modules/proposals/client/views/edit-proposal.client.view.html',
 			controller: 'ProposalEditController',
@@ -212,6 +213,9 @@
 					}).$promise;
 				},
 				editing: function () { return false; }
+			},
+			ncyBreadcrumb: {
+				label: '{{ "PROP_NEW" | translate }}'
 			}
 		})
 		.state('proposaladmin.createmodal', {

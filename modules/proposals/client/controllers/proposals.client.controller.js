@@ -112,7 +112,7 @@
 	// Controller the view of the proposal page
 	//
 	// =========================================================================
-	.controller ('ProposalEditController', function (editing, $scope, $sce, ask, Upload, $state, $stateParams, proposal, opportunity, Authentication, ProposalsService, UsersService, Notification, NotificationsService, modalService) {
+	.controller ('ProposalEditController', function (editing, $scope, $sce, ask, Upload, $state, $stateParams, proposal, opportunity, Authentication, ProposalsService, UsersService, Notification, NotificationsService, modalService, $filter) {
 		var ppp           = this;
 		ppp.title         = editing ? 'Edit' : 'Create' ;
 		ppp.proposal      = angular.copy (proposal);
@@ -233,7 +233,7 @@
 				ppp.proposal.createOrUpdate ()
 				.then (
 					function (response) {
-						Notification.success({ message: goodmessage || '<i class="glyphicon glyphicon-ok"></i> Your changes have been saved.'});
+						Notification.success({ message: goodmessage || '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('CHANGES_SAVED') });
 						ppp.proposal = response;
 						pristineProposal = angular.toJson (ppp.proposal);
 						ppp.subscribe (true);
@@ -398,7 +398,7 @@
 			else if (type.indexOf ('powerpoint') > -1) return 'powerpoint';
 		};
 	})
-	.controller ('ProposalEditControllerModal', function (editing, $scope, $sce, ask, Upload, $uibModalInstance, $state, $stateParams, proposal, opportunity, Authentication, ProposalsService, UsersService, Notification, NotificationsService, modalService) {
+	.controller ('ProposalEditControllerModal', function (editing, $scope, $sce, ask, Upload, $uibModalInstance, $state, $stateParams, proposal, opportunity, Authentication, ProposalsService, UsersService, Notification, NotificationsService, modalService, $filter) {
 		var ppp           = this;
 		ppp.title         = editing ? 'Edit' : 'Create' ;
 		ppp.proposal      = angular.copy (proposal);
@@ -519,7 +519,7 @@
 				ppp.proposal.createOrUpdate ()
 				.then (
 					function (response) {
-						Notification.success({ message: goodmessage || '<i class="glyphicon glyphicon-ok"></i> Your changes have been saved.'});
+						Notification.success({ message: goodmessage || '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('CHANGES_SAVED') });
 						ppp.proposal = response;
 						pristineProposal = angular.toJson (ppp.proposal);
 						ppp.subscribe (true);

@@ -69,7 +69,7 @@
 				controller: 'EditProfileController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: '{{ "PROFILE_SETTINGS" | translate }'
+					pageTitle: '{{ "PROFILE_SETTINGS" | translate }}'
 				},
 				ncyBreadcrumb: {
 					label: '{{ "PROFILE_SETTINGS" | translate }}'
