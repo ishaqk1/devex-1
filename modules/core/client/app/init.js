@@ -38,7 +38,7 @@
     $uiViewScrollProvider.useAnchorScroll();
 
     $translateProvider.useStaticFilesLoader({
-      prefix: 'translations/',
+      prefix: '/translations/',
       suffix: '.json'
     }).preferredLanguage('en');
   }
