@@ -17,7 +17,7 @@
     $scope.$on('$stateChangeSuccess', stateChangeSuccess);
     $scope.isHomePage = function() {
         var path = $location.path();
-        return (! path) || path === '/' || path === '/en' || path === '/fr';
+        return (! path) || path === '/';
     };
     $scope.isEnglish = function() {
         return ($translate.use() === 'en');

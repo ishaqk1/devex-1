@@ -16,7 +16,7 @@
 		// -------------------------------------------------------------------------
 		.state('proposals', {
 			abstract: true,
-			url: '/{lang}/proposals',
+			url: '/proposals',
 			template: '<ui-view/>',
 	        params: {
 	        	lang: {
@@ -108,7 +108,7 @@
 		// -------------------------------------------------------------------------
 		.state('proposaladmin', {
 			abstract: true,
-			url: '/{lang}/proposaladmin',
+			url: '/proposaladmin',
 			template: '<ui-view/>',
 			data: {
 				notroles: ['gov', 'guest']

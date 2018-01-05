@@ -13,7 +13,7 @@
 		$stateProvider
 			.state('settings', {
 				abstract: true,
-				url: '/{lang}/settings',
+				url: '/settings',
 				templateUrl: '/modules/users/client/views/settings/settings.client.view.html',
 				controller: 'SettingsController',
 				controllerAs: 'vm',
@@ -104,7 +104,7 @@
 			// })
 			.state('authentication', {
 				abstract: true,
-				url: '/{lang}/authentication',
+				url: '/authentication',
 				templateUrl: '/modules/users/client/views/authentication/authentication.client.view.html',
 				controller: 'AuthenticationController',
 				controllerAs: 'vm',
@@ -174,7 +174,7 @@
 			})
 			.state('password', {
 				abstract: true,
-				url: '/{lang}/password',
+				url: '/password',
 				template: '<ui-view autoscroll="true"/>',
 		        params: {
 		        	lang: {
@@ -195,7 +195,7 @@
 			})
 			.state('password.reset', {
 				abstract: true,
-				url: '/{lang}/reset',
+				url: '/reset',
 				template: '<ui-view autoscroll="true"/>',
         		params: {
 	          		lang: {
