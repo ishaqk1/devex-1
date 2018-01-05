@@ -14,9 +14,10 @@
 			$rootScope.currentLang = $translate.use();
 		});
 
-		var currentLang = ($location.host().indexOf('carrefour') > -1) ? 'fr' : 'en';
+		var currentLang = ($location.host().indexOf('carrefourproggc') > -1) ? 'fr' : 'en';
 		var otherLang = (currentLang === 'fr') ? 'en' : 'fr';
-		var otherLangURL = (currentLang === 'fr') ? 'https://beta.gcdevexchange.org' + $location.path() : 'https://beta.carrefourproggc.org' + $location.path()
+		var otherSite = ($location.host().indexOf('carrefourproggc') > -1) ? $location.host().replace('carrefourproggc', 'gcdevexchange') : $location.host().replace('gcdevexchange', 'carrefourproggc');
+		var otherLangURL = $location.protocol() + otherSite + $location.path();
 
 		$rootScope.currentLang = currentLang;
 		$rootScope.otherLang = otherLang;
@@ -68,7 +69,8 @@
 
 			var currentLang = ($location.host().indexOf('carrefour') > -1) ? 'fr' : 'en';
 			var otherLang = (currentLang === 'fr') ? 'en' : 'fr';
-			var otherLangURL = (currentLang === 'fr') ? 'https://beta.gcdevexchange.org' + $location.path() : 'https://beta.carrefourproggc.org' + $location.path()
+			var otherSite = ($location.host().indexOf('carrefourproggc') > -1) ? $location.host().replace('carrefourproggc', 'gcdevexchange') : $location.host().replace('gcdevexchange', 'carrefourproggc');
+			var otherLangURL = $location.protocol() + otherSite + $location.path();
 
 			$rootScope.currentLang = currentLang;
 			$rootScope.otherLang = otherLang;
