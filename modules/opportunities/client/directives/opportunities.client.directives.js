@@ -63,7 +63,7 @@
 				if ($scope.title) vm.title = $scope.title;
 				vm.publish = function (opportunity, state) {
 					var publishedState      = opportunity.isPublished;
-					var t = state ? 'Published' : 'Unpublished';
+					var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED');
 
 					var savemeSeymour = true;
 					var promise = Promise.resolve ();

@@ -16,7 +16,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/projects/client/views/list.projects.directive.html',
-			controller   : function ($scope, ProjectsService, Authentication, Notification) {
+			controller   : function ($scope, ProjectsService, Authentication, Notification, $filter) {
 				var vm     = this;
 				vm.program = $scope.program;
 				vm.context = $scope.context;
@@ -52,7 +52,7 @@
 				if ($scope.title) vm.title = $scope.title;
 				vm.publish = function (project, state) {
 					var publishedState = project.isPublished;
-					var t = state ? 'Published' : 'Un-Published'
+					var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED')
 					project.isPublished = state;
 					project.createOrUpdate ()
 					//

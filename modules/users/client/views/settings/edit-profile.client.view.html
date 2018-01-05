@@ -42,14 +42,14 @@
 				<div class="form-group">
 					<label>
 					<input type="checkbox" ng-model="vm.user.isDisplayEmail" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					Allow my email to be displayed on the site
+					<span translate="PROFILE_ALLOW_EMAIL">Allow my email to be displayed on the site</span>
 					</label>
 				</div>
 				<br>
 				<div class="form-group">
 					<label>
 					<input type="checkbox" ng-model="vm.user.notifyOpportunities" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					Notify me when new opportunities are posted
+					<span translate="PROFILE_NOTIFY_ME">Notify me when new opportunities are posted</span>
 					</label>
 				</div>
 				<div ng-show='vm.user.email === "" || vm.user.email == null' role="alert">
@@ -60,7 +60,7 @@
 					<label>
 					<input ng-if="!vm.goveditable" type="checkbox"  ng-model="vm.isgov" disabled>
 					<input ng-if="vm.goveditable" type="checkbox"  ng-model="vm.isgov" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					Verify me as a Government of Canada employee so I can publish content on the GCDevExchange
+					<span translate="PROFILE_VERIFY_ME">Verify me as a Government of Canada employee so I can publish content on the GCDevExchange</span>
 					</label>			
 				</div>
 				<div ng-show='vm.user.email === "" || vm.user.email == null' role="alert">
@@ -97,7 +97,7 @@
 				</div>-->
 				<br>
 				<div class="form-group">
-					<button type="submit" class="btn btn-lg btn-solo btn-warning">Save</button>
+					<button type="submit" class="btn btn-lg btn-solo btn-warning" translate="SAVE">Save</button>
 				</div>
 				<br>
 				<div class="alert alert-grey">

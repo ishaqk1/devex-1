@@ -16,7 +16,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/notifications/client/views/list.notifications.directive.html',
-			controller   : function ($scope, NotificationsService, Authentication, Notification) {
+			controller   : function ($scope, NotificationsService, Authentication, Notification, $filter) {
 				var vm     = this;
 				vm.program = $scope.program;
 				vm.context = $scope.context;
@@ -52,7 +52,7 @@
 				if ($scope.title) vm.title = $scope.title;
 				vm.publish = function (notification, state) {
 					var publishedState = notification.isPublished;
-					var t = state ? 'Published' : 'Un-Published'
+					var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED')
 					notification.isPublished = state;
 					notification.createOrUpdate ()
 					//

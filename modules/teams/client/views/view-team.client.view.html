@@ -5,7 +5,7 @@
 			<div class="col-xs-12 text-right">
 				<div>
 					<label class="label label-danger" ng-if="vm.team.program.isPublished && vm.canEdit && !vm.team.isPublished" uib-tooltip="No one can see this page until you publish it.">
-					<i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED
+					<i class="fa fa-exclamation-triangle" ></i> {{ 'UNPUBLISHED' | translate }}
 					</label>
 				</div>
 				<div class="btn-group">
@@ -90,7 +90,7 @@
 	<div class="col-sm-12 col-form-buttons text-right">
 		<div>
 			<label class="label label-danger" ng-if="vm.team.program.isPublished && vm.canEdit && !vm.team.isPublished" uib-tooltip="No one can see this page until you publish it.">
-			<i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED
+			<i class="fa fa-exclamation-triangle" ></i> {{ 'UNPUBLISHED' | translate }}
 			</label>
 		</div>
 		<div class="btn-group">

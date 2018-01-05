@@ -15,7 +15,7 @@
 	// Controller the view of the project page
 	//
 	// =========================================================================
-	.controller('ProjectViewController', function ($scope, $state, $sce, $stateParams, project, Authentication, ProjectsService, Notification) {
+	.controller('ProjectViewController', function ($scope, $state, $sce, $stateParams, project, Authentication, ProjectsService, Notification, $filter) {
 		var vm                 = this;
 		vm.programId           = project.program ? project.program._id : $stateParams.programId;
 		vm.project             = project;
@@ -54,7 +54,7 @@
 		// -------------------------------------------------------------------------
 		vm.publish = function (state) {
 			var publishedState = project.isPublished;
-			var t = state ? 'Published' : 'Un-Published'
+			var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED')
 			project.isPublished = state;
 			project.createOrUpdate ()
 			//

@@ -10,10 +10,10 @@
 			</div>
 
 <!-- // User is NOT following the opportunity // -->
-			<button ng-if="!vm.canEdit && !vm.notifyMe && vm.hasEmail" type="button" class="btn btn-default" uib-tooltip="Get email notifications if this opportunity changes." ng-click="vm.subscribe(true)"><i class="glyphicon glyphicon-volume-up"></i> Follow</button>
+			<button ng-if="!vm.canEdit && !vm.notifyMe && vm.hasEmail" type="button" class="btn btn-default" uib-tooltip="Get email notifications if this opportunity changes." ng-click="vm.subscribe(true)"><i class="glyphicon glyphicon-volume-up"></i> <span translate="OPP_FOLLOW">Follow</span></button>
 
 <!-- // User IS following the opportunity // -->
-			<button ng-if="vm.notifyMe" type="button" class="btn btn-primary" uib-tooltip="You’ll get an email if this opportunity changes" ng-click="vm.subscribe(false)""><i class="glyphicon glyphicon-ok-sign"></i> Following</button>			
+			<button ng-if="vm.notifyMe" type="button" class="btn btn-primary" uib-tooltip="You’ll get an email if this opportunity changes" ng-click="vm.subscribe(false)""><i class="glyphicon glyphicon-ok-sign"></i> <span translate="OPP_FOLLOWING">Following</span></button>			
 		
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 		<div class="col-xs-12 text-right">
 			<span>
 				<label class="label label-lg label-danger-o">
-				<i class="fa fa-exclamation-triangle"></i> UNPUBLISHED
+				<i class="fa fa-exclamation-triangle"></i> {{ 'UNPUBLISHED' | translate }}
 				</label>No one can see this opportunity until you publish it.
 			</span> 
 			 &nbsp;
@@ -116,7 +116,7 @@
 			<!-- github link -->
 			<dt translate="OPP_CODE">Code:</dt>
 			<dd>
-			<a ng-if="vm.opportunity.github && vm.opportunity.github.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> GitHub Repository</a>
+			<a ng-if="vm.opportunity.github && vm.opportunity.github.length > 0"><a href="{{vm.opportunity.github}}" rel="nofollow" target="_blank"><i class="fa fa-github"></i> <span translate="OPP_GITHUB_REPO">GitHub Repository</span></a>
 			<!--<dt>Assigned to:</dt>
 			<dd>
 				<span ng-if="vm.opportunity.assignedTo" ng-bind="vm.opportunity.assignedTo.displayName"></span>
@@ -204,7 +204,7 @@
 		<div class="col-xs-12 text-right">
 			<span>
 				<label class="label label-lg label-danger-o">
-				<i class="fa fa-exclamation-triangle"></i> UNPUBLISHED
+				<i class="fa fa-exclamation-triangle"></i> {{ 'UNPUBLISHED' | translate }}
 				</label>No one can see this opportunity until you publish it.
 			</span> 
 			 &nbsp;

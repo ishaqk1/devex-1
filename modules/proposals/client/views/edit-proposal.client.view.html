@@ -17,7 +17,7 @@
 <div class="row" ng-if="ppp.proposal.status === 'Draft'">
 	<div class="col-xs-12 text-center">
 		<div class="well well-danger">
-			<p><label class="label label-lg label-danger-o"><i class="glyphicon glyphicon-file"></i> Your proposal is in DRAFT</label>Submit before <b><span ng-bind="ppp.opportunity.deadline | date:'mediumDate'"></b> to be considered for this opportunity!</p>
+			<p><label class="label label-lg label-danger-o"><i class="glyphicon glyphicon-file"></i> <span translate="PROP_DRAFT">Your proposal is in DRAFT</span></label><span translate="PROP_SUBMIT1">Submit before</span> <b><span ng-bind="ppp.opportunity.deadline | date:'mediumDate'"></b> <span translate="PROP_SUBMIT2">to be considered for this opportunity!</span></p>
 		</div>	
 	</div>
 </div>
@@ -25,7 +25,7 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		<h4><span style="font-weight: 300; color: #777;">My proposal to work on:</span> {{ppp.opportunity.name}}</h4>	
+		<h4><span style="font-weight: 300; color: #777;" translate="PROP_WORK_ON">My proposal to work on:</span> {{ppp.opportunity.name}}</h4>	
 	</div>
 </div>
 
@@ -43,17 +43,17 @@
 	<uib-tabset active>
 		<uib-tab index="0">
 			<uib-tab-heading>
-				<i class="fa fa-user"></i> Developer
+				<i class="fa fa-user"></i> {{ 'PROP_DEVELOPER' | translate }}
 			</uib-tab-heading>
 			<div class="proposal-form-container">
 				<div class="form-group">
 					<div class="well well-info">
-						<p style="text-align: left">Enter contact and billing information for the person who is proposing to do the work.</p> 
-						<p>If you want payment to be made to a company, please check the box below and complete the Company tab.</p>
+						<p translate="PROP_P1">Enter contact and billing information for the person who is proposing to do the work.</p> 
+						<p translate="PROP_P2">If you want payment to be made to a company, please check the box below and complete the Company tab.</p>
 						<br>
 						<label>
 						<input type="checkbox" name="isCompany" ng-model="ppp.proposal.isCompany" autofocus>&nbsp;
-						Payment can be made to a company 
+						<span translate="PROP_P3">Payment can be made to a company</span>
 
 <!-- 						I am applying as
 						<label class="radio-inline">
@@ -67,55 +67,55 @@
 					</div>
 					
 					<div class="form-group" show-errors>
-						<label for="firstName">First Name</label>
-						<input  type="text" id="firstName" name="firstName" class="form-control" ng-model="ppp.user.firstName" placeholder="First Name">
+						<label for="firstName" translate="PROP_FNAME">First Name</label>
+						<input  type="text" id="firstName" name="firstName" class="form-control" ng-model="ppp.user.firstName" placeholder="{{ 'PROP_FNAME' | translate }}">
 					</div>
 					<div class="form-group" show-errors>
-						<label for="lastName">Last Name</label>
-						<input  type="text" id="lastName" name="lastName" class="form-control" ng-model="ppp.user.lastName" placeholder="Last Name">
+						<label for="lastName" translate="PROP_LNAME">Last Name</label>
+						<input  type="text" id="lastName" name="lastName" class="form-control" ng-model="ppp.user.lastName" placeholder="{{ 'PROP_LNAME' | translate }}">
 					</div>
 					<div class="form-group" show-errors>
-						<label for="email">Email</label>
-						<input  type="email" id="email" name="email" class="form-control" ng-model="ppp.user.email" placeholder="Email" lowercase>
+						<label for="email" translate="PROP_EMAIL">Email</label>
+						<input  type="email" id="email" name="email" class="form-control" ng-model="ppp.user.email" placeholder="{{ 'PROP_EMAIL' | translate }}" lowercase>
 						<div ng-messages="ppp.userForm.email.$error" role="alert">
 							<p class="help-block error-text" ng-message="email">Email address is invalid.</p>
 						</div>
 					</div>
 					<div class="form-group" show-errors ng-if="!ppp.proposal.isCompany">
-						<label for="address">Address</label>
-						<input  type="text" id="address" name="address" class="form-control" ng-model="ppp.user.address" placeholder="Address">
+						<label for="address" translate="PROP_ADDRESS">Address</label>
+						<input  type="text" id="address" name="address" class="form-control" ng-model="ppp.user.address" placeholder="{{ 'PROP_ADDRESS' | translate }}">
 					</div>
 					<div class="form-group" show-errors>
-						<label for="phone">Phone</label>
-						<input  type="text" id="phone" name="phone" class="form-control" ng-model="ppp.user.phone" placeholder="Phone">
+						<label for="phone" translate="PROP_PHONE">Phone</label>
+						<input  type="text" id="phone" name="phone" class="form-control" ng-model="ppp.user.phone" placeholder="{{ 'PROP_PHONE' | translate }}">
 					</div>
 				</div>
 			</div>
 		</uib-tab>
 		<uib-tab index="1" disable="!ppp.proposal.isCompany">
 			<uib-tab-heading>
-				<i class="fa fa-building"></i> Company
+				<i class="fa fa-building"></i> {{ 'PROP_COMPANY' | translate }}
 			</uib-tab-heading>
 			<div class="proposal-form-container">
 				<div class="form-group" show-errors>
-					<label for="businessName">Legal Name of Company</label>
-					<input  type="text" id="businessName" name="businessName" class="form-control" ng-model="ppp.user.businessName" placeholder="Legal Name">
+					<label for="businessName" translate="PROP_LEGAL_COMPANY">Legal Name of Company</label>
+					<input  type="text" id="businessName" name="businessName" class="form-control" ng-model="ppp.user.businessName" placeholder="{{ 'PROP_LEGAL_COMPANY' | translate }}">
 				</div>
 				<div class="form-group" show-errors>
-					<label for="businessAddress">Company Mailing Address</label>
-					<input  type="text" id="businessAddress" name="businessAddress" class="form-control" ng-model="ppp.user.businessAddress" placeholder="Company Mailing Address">
+					<label for="businessAddress" translate="PROP_MAILING_ADDRESS">Company Mailing Address</label>
+					<input  type="text" id="businessAddress" name="businessAddress" class="form-control" ng-model="ppp.user.businessAddress" placeholder="{{ 'PROP_MAILING_ADDRESS' | translate }}">
 				</div>
 				<div class="form-group" show-errors>
-					<label for="businessContactName">Contact Name</label>
-					<input  type="text" id="businessContactName" name="businessContactName" class="form-control" ng-model="ppp.user.businessContactName" placeholder="Contact Name">
+					<label for="businessContactName" translate="PROP_CONTACT_NAME">Contact Name</label>
+					<input  type="text" id="businessContactName" name="businessContactName" class="form-control" ng-model="ppp.user.businessContactName" placeholder="{{ 'PROP_CONTACT_NAME' | translate }}">
 				</div>
 				<div class="form-group" show-errors>
-					<label for="businessContactPhone">Contact Phone</label>
-					<input  type="text" id="businessContactPhone" name="businessContactPhone" class="form-control" ng-model="ppp.user.businessContactPhone" placeholder="Contact Phone">
+					<label for="businessContactPhone" translate="PROP_CONTACT_PHONE">Contact Phone</label>
+					<input  type="text" id="businessContactPhone" name="businessContactPhone" class="form-control" ng-model="ppp.user.businessContactPhone" placeholder="{{ 'PROP_CONTACT_PHONE' | translate }}">
 				</div>
 				<div class="form-group" show-errors>
-					<label for="businessContactEmail">Contact Email</label>
-					<input  type="businessContactEmail" id="businessContactEmail" name="businessContactEmail" class="form-control" ng-model="ppp.user.businessContactEmail" placeholder="Contact Email" lowercase>
+					<label for="businessContactEmail" translate="PROP_CONTACT_EMAIL">Contact Email</label>
+					<input  type="businessContactEmail" id="businessContactEmail" name="businessContactEmail" class="form-control" ng-model="ppp.user.businessContactEmail" placeholder="{{ 'PROP_CONTACT_EMAIL' | translate }}" lowercase>
 					<div ng-messages="ppp.userForm.businessContactEmail.$error" role="alert">
 						<p class="help-block error-text" ng-message="businessContactEmail">Email address is invalid.</p>
 					</div>
@@ -125,7 +125,7 @@
 		
 		<uib-tab index="2">
 			<uib-tab-heading>
-				<i class="fa fa-pencil"></i> Proposal
+				<i class="fa fa-pencil"></i> {{ 'PROP_PROPOSAL' | translate }}
 			</uib-tab-heading>
 			
 			<div class="proposal-form-container">
@@ -133,7 +133,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="well well-info">
-								<p style="text-align: left">Draft your proposal here. Make sure to address the <b>proposal evaluation criteria</b> for this opportunity:</p>
+								<p translate="PROP_DRAFT_PROPOSAL">Draft your proposal here. Make sure to address the <b>proposal evaluation criteria</b> for this opportunity:</p>
 								<br>
 								<p ng-bind-html="ppp.display.evaluation"></p>
 							</div>
@@ -145,7 +145,7 @@
 			<br>
 
 			<div class="form-group">
-				<label class="control-label" for="detail">My Proposal</label>
+				<label class="control-label" for="detail" translate="PROP_MY_PROPOSAL">My Proposal</label>
 				<textarea
 					name="detail"
 					id="detail"
@@ -158,22 +158,22 @@
 		</uib-tab>
 		<uib-tab index="3" disable="!ppp.proposal._id" ng-hide="!ppp.proposal._id">
 			<uib-tab-heading>
-				<i class="fa fa-file"></i> Attachments
+				<i class="fa fa-file"></i> <span translate="PROP_ATTACHMENTS">Attachments</span>
 			</uib-tab-heading>
 
 			<div class="proposal-form-container">
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="well well-info">
-							<p>You can upload any supporting material here as an attachment.</p>
+							<p translate="PROP_SUPPORT_MATERIAL">You can upload any supporting material here as an attachment.</p>
 							<br>
-							<p><b>Mandatory:</b> To apply on this opportunity, you must agree to the <a href="https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf" title="GCDevExchange terms">GCDevExchange terms</a>. To indicate your acceptance of the terms, download the terms document, and upload it here as an attachment.</p>
+							<p translate="PROP_MANDATORY"><b>Mandatory:</b> To apply on this opportunity, you must agree to the <a href='https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf' title='GCDevExchange terms'>GCDevExchange terms</a>. To indicate your acceptance of the terms, download the terms document, and upload it here as an attachment.</p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<a href class="btn btn-default" ngf-select="ppp.upload($file)">+ Upload a file</a>	
+						<a href class="btn btn-default" ngf-select="ppp.upload($file)" translate="PROP_UPLOAD_FILE">+ Upload a file</a>	
 					</div>
 				</div>
 				<table class="table table-striped">
@@ -203,15 +203,15 @@
 
 <div class="modal-footer">
 	<div class="col-xs-12 col-sm-4 text-left">
-		<button type="submit" class="btn btn-success" ng-if="ppp.proposal.status === 'New' || ppp.proposal.status === 'Draft'">Save changes</button>
-		<button type="submit" class="btn btn-success" ng-if="ppp.proposal.status === 'Submitted'">Save changes</button>
+		<button type="submit" class="btn btn-success" ng-if="ppp.proposal.status === 'New' || ppp.proposal.status === 'Draft'" translate="SAVE_CHANGES">Save Changes</button>
+		<button type="submit" class="btn btn-success" ng-if="ppp.proposal.status === 'Submitted'" translate="SAVE_CHANGES">Save Changes</button>
 	</div>
 	<div class="col-xs-12 col-sm-8 text-right">
-		<button ng-if="ppp.proposal.status === 'Draft' || ppp.proposal.status === 'Submitted'" type="button" class="btn btn-danger" data-ng-click="ppp.delete()" ">Delete my proposal</button>
-		<button ng-if="ppp.proposal.status === 'Submitted'" type="button" class="btn btn-default" data-ng-click="ppp.withdraw()" ">Withdraw my proposal</button>
+		<button ng-if="ppp.proposal.status === 'Draft' || ppp.proposal.status === 'Submitted'" type="button" class="btn btn-danger" data-ng-click="ppp.delete()" translate="PROP_DELETE_MY">Delete my proposal</button>
+		<button ng-if="ppp.proposal.status === 'Submitted'" type="button" class="btn btn-default" data-ng-click="ppp.withdraw()" translate="PROP_WITHDRAW_MY">Withdraw my proposal</button>
 		<span ng-if="ppp.proposal.status === 'Submitted' || ppp.proposal.status === 'Draft'"> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; </span>
-		<button type="button" class="btn btn-primary" data-ng-click="ppp.submit()" ng-if="ppp.proposal.status === 'Draft'">Submit my proposal</button>
-		<button type="button" class="btn" data-ng-click="ppp.close()">Close</button>
+		<button type="button" class="btn btn-primary" data-ng-click="ppp.submit()" ng-if="ppp.proposal.status === 'Draft'" translate="PROP_SUBMIT_MY">Submit my proposal</button>
+		<button type="button" class="btn" data-ng-click="ppp.close()" translate="CLOSE">Close</button>
 	</div>	
 </div>
 

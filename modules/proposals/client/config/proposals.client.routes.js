@@ -14,10 +14,17 @@
 		// contians the ui-view that all other routes get rendered in
 		//
 		// -------------------------------------------------------------------------
-		.state ('proposals', {
+		.state('proposals', {
 			abstract: true,
 			url: '/proposals',
-			template: '<ui-view/>'
+			template: '<ui-view/>',
+	        params: {
+	        	lang: {
+            		value: function($translate){
+                		return $translate.use();
+            		}
+        		}
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//
@@ -25,14 +32,14 @@
 		// the scope. listing itself is done through a directive
 		//
 		// -------------------------------------------------------------------------
-		.state ('proposals.list', {
+		.state('proposals.list', {
 			url: '',
 			templateUrl: '/modules/proposals/client/views/list-proposals.client.view.html',
 			data: {
-				pageTitle: 'Proposals List'
+				pageTitle: '{{ "PROP_TITLE" | translate }}'
 			},
 			ncyBreadcrumb: {
-				label: 'All proposals'
+				label: '{{ "PROP_TITLE" | translate }}'
 			},
 			resolve: {
 				proposals: function ($stateParams, ProposalsService) {
@@ -48,7 +55,7 @@
 		// view a proposal, resolve the proposal data
 		//
 		// -------------------------------------------------------------------------
-		.state ('proposals.view', {
+		.state('proposals.view', {
 			url: '/:proposalId',
 			data: {
 				roles: ['user']
@@ -65,7 +72,7 @@
 				}
 			}
 		})
-		.state ('proposals.viewmodal', {
+		.state('proposals.viewmodal', {
 			url: '/modal/:proposalId',
 			data: {
 				roles: ['user']
@@ -99,20 +106,27 @@
 		// the base for editing
 		//
 		// -------------------------------------------------------------------------
-		.state ('proposaladmin', {
+		.state('proposaladmin', {
 			abstract: true,
 			url: '/proposaladmin',
 			template: '<ui-view/>',
 			data: {
 				notroles: ['gov', 'guest']
-			}
+			},
+	        params: {
+	        	lang: {
+                	value: function($translate){
+                    	return $translate.use();
+                	}
+            	}
+	        }
 		})
 		// -------------------------------------------------------------------------
 		//
 		// edit a proposal
 		//
 		// -------------------------------------------------------------------------
-		.state ('proposaladmin.edit', {
+		.state('proposaladmin.edit', {
 			url: '/:proposalId/edit/:opportunityId',
 			data: {
 				roles: ['user'],
@@ -136,7 +150,7 @@
 				editing: function () { return true; }
 			}
 		})
-		.state ('proposaladmin.editmodal', {
+		.state('proposaladmin.editmodal', {
 			url: '/:proposalId/edit/modal/:opportunityId',
 			data: {
 				roles: ['user'],
@@ -178,11 +192,12 @@
 		// create a new proposal and edit it
 		//
 		// -------------------------------------------------------------------------
-		.state ('proposaladmin.create', {
+		.state('proposaladmin.create', {
 			url: '/create/:opportunityId',
 			data: {
 				roles: ['user'],
-				notroles: ['gov']
+				notroles: ['gov'],
+				pageTitle: '{{ "PROP_NEW" | translate }}'
 			},
 			templateUrl: '/modules/proposals/client/views/edit-proposal.client.view.html',
 			controller: 'ProposalEditController',
@@ -198,9 +213,12 @@
 					}).$promise;
 				},
 				editing: function () { return false; }
+			},
+			ncyBreadcrumb: {
+				label: '{{ "PROP_NEW" | translate }}'
 			}
 		})
-		.state ('proposaladmin.createmodal', {
+		.state('proposaladmin.createmodal', {
 			url: '/create/modal/:opportunityId',
 			data: {
 				roles: ['user'],

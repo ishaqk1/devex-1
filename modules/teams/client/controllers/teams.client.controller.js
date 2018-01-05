@@ -15,7 +15,7 @@
 	// Controller the view of the team page
 	//
 	// =========================================================================
-	.controller('TeamViewController', function ($scope, $state, $sce, $stateParams, team, Authentication, TeamsService, Notification) {
+	.controller('TeamViewController', function ($scope, $state, $sce, $stateParams, team, Authentication, TeamsService, Notification, $filter) {
 		var vm                 = this;
 		vm.programId           = team.program ? team.program._id : $stateParams.programId;
 		vm.team             = team;
@@ -54,7 +54,7 @@
 		// -------------------------------------------------------------------------
 		vm.publish = function (state) {
 			var publishedState = team.isPublished;
-			var t = state ? 'Published' : 'Un-Published'
+			var t = state ? $filter('translate')('PUBLISHED') : $filter('translate')('UNPUBLISHED')
 			team.isPublished = state;
 			team.createOrUpdate ()
 			//
