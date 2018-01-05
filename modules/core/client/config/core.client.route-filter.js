@@ -14,12 +14,13 @@
 			$rootScope.currentLang = $translate.use();
 		});
 
-		var currentLang = ($location.path().indexOf('/fr') > -1) ? 'fr' : 'en';
+		var currentLang = ($location.host().indexOf('carrefour') > -1) ? 'fr' : 'en';
 		var otherLang = (currentLang === 'fr') ? 'en' : 'fr';
+		var otherLangURL = (currentLang === 'fr') ? 'https://beta.gcdevexchange.org' + $location.path() : 'https://beta.carrefourproggc.org' + $location.path()
 
 		$rootScope.currentLang = currentLang;
 		$rootScope.otherLang = otherLang;
-		$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
+		$rootScope.otherLangURL = otherLangURL;
 		$translate.use(currentLang);
 		document.documentElement.lang = currentLang;
 
@@ -65,20 +66,13 @@
 			// Record previous state
 			storePreviousState(fromState, fromParams);
 
-			var currentLang = '';
-			var otherLang = '';
-
-			if ($state.params.lang !== undefined) {
-				currentLang = $state.params.lang;
-				otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
-			} else {
-				currentLang = 'en';
-				otherLang = 'fr';
-			}
+			var currentLang = ($location.host().indexOf('carrefour') > -1) ? 'fr' : 'en';
+			var otherLang = (currentLang === 'fr') ? 'en' : 'fr';
+			var otherLangURL = (currentLang === 'fr') ? 'https://beta.gcdevexchange.org' + $location.path() : 'https://beta.carrefourproggc.org' + $location.path()
 
 			$rootScope.currentLang = currentLang;
 			$rootScope.otherLang = otherLang;
-			$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
+			$rootScope.otherLangURL = otherLangURL;
 			$translate.use(currentLang);
 			document.documentElement.lang = currentLang;
     	}
