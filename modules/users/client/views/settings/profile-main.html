@@ -76,7 +76,7 @@
 					<label>
 					<input ng-if="!vm.goveditable" type="checkbox"  ng-model="vm.isgov" disabled>
 					<input ng-if="vm.goveditable" type="checkbox"  ng-model="vm.isgov" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					Verify me as a Government of Canada employee so I can publish content on the GCDevExchange
+					<span translate="PROFILE_VERIFY_ME">Verify me as a Government of Canada employee so I can publish content on the GCDevExchange</span>
 					</label>
 				</div>
 			</div>
@@ -103,14 +103,14 @@
 		<br/>
 		<div class="row">
 			<div class="col-xs-12">
-				<button type="submit" class="btn btn-success">Update profile</button>
+				<button type="submit" class="btn btn-success" translate="PROFILE_UPDATE_PROFILE">Update profile</button>
 			</div>
 			<br><br>
 			<hr>
 			<div class="col-xs-12">
-				<h3>Delete my profile</h3>
-				<p>Deleting your profile will erase your record as a contributor on projects and opportunities. There is no undo - make sure you are sure!</p>
-				<button class="btn btn-danger" ng-click="vm.delete()">Delete my profile</button>
+				<h3 translate="PROFILE_DELETE_PROFILE">Delete my profile</h3>
+				<p translate="PROFILE_DELETE_PROFILE_DESC">Deleting your profile will erase your record as a contributor on projects and opportunities. There is no undo - make sure you are sure!</p>
+				<button class="btn btn-danger" ng-click="vm.delete()" translate="PROFILE_DELETE_PROFILE">Delete my profile</button>
 			</div>
 		</div>
 

@@ -17,7 +17,7 @@
 <div class="row" ng-if="ppp.proposal.status === 'Draft'">
 	<div class="col-xs-12 text-center">
 		<div class="well well-danger">
-			<p><label class="label label-lg label-danger-o"><i class="glyphicon glyphicon-file"></i> Your proposal is in DRAFT</label>Submit before <b><span ng-bind="ppp.opportunity.deadline | date:'mediumDate'"></b> to be considered for this opportunity!</p>
+			<p><label class="label label-lg label-danger-o"><i class="glyphicon glyphicon-file"></i> <span translate="PROP_DRAFT">Your proposal is in DRAFT</span></label><span translate="PROP_SUBMIT1">Submit before</span> <b><span ng-bind="ppp.opportunity.deadline | date:'mediumDate'"></b> <span translate="PROP_SUBMIT2">to be considered for this opportunity!</span></p>
 		</div>	
 	</div>
 </div>
@@ -158,22 +158,22 @@
 		</uib-tab>
 		<uib-tab index="3" disable="!ppp.proposal._id" ng-hide="!ppp.proposal._id">
 			<uib-tab-heading>
-				<i class="fa fa-file"></i> Attachments
+				<i class="fa fa-file"></i> <span translate="PROP_ATTACHMENTS">Attachments</span>
 			</uib-tab-heading>
 
 			<div class="proposal-form-container">
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="well well-info">
-							<p>You can upload any supporting material here as an attachment.</p>
+							<p translate="PROP_SUPPORT_MATERIAL">You can upload any supporting material here as an attachment.</p>
 							<br>
-							<p><b>Mandatory:</b> To apply on this opportunity, you must agree to the <a href="https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf" title="GCDevExchange terms">GCDevExchange terms</a>. To indicate your acceptance of the terms, download the terms document, and upload it here as an attachment.</p>
+							<p translate="PROP_MANDATORY"><b>Mandatory:</b> To apply on this opportunity, you must agree to the <a href='https://github.com/canada-ca/devex/blob/master/GCDevExchange_-_Terms_and_Conditions.pdf' title='GCDevExchange terms'>GCDevExchange terms</a>. To indicate your acceptance of the terms, download the terms document, and upload it here as an attachment.</p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<a href class="btn btn-default" ngf-select="ppp.upload($file)">+ Upload a file</a>	
+						<a href class="btn btn-default" ngf-select="ppp.upload($file)" translate="PROP_UPLOAD_FILE">+ Upload a file</a>	
 					</div>
 				</div>
 				<table class="table table-striped">
