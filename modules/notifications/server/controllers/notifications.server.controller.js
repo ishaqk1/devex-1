@@ -533,15 +533,20 @@ exports.forUser = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.unsubscribeExternal = function (req, res) {
-	var message = '<img src="https://bcdevexchange.org/modules/core/client/img/logo/new-logo.png"/><h4>This action has already been performed.</h4>';
+	var d = 'https://gcdevexchange.org';
+	if (process.env.DOMAIN) {
+		d = process.env.DOMAIN;
+	}
+
+	var message = '<img src="/modules/core/client/img/logo/canada.png"/><h4>This action has already been performed.</h4>';
 	message += '<p>Please sign in on the ';
-	message += '<a href=\'https://bcdevexchange.org\'>BCDevExchange.org</a> to manage your notifications.</p>';
-	message += '<p>Thanks for using the BCDevExchange!</p>';
+	message += '<a href=\'' + d + '\'>GCDevExchange.org</a> to manage your notifications.</p>';
+	message += '<p>Thanks for using the GCDevExchange!</p>';
 	if (!req.subscription) return res.send (message);
-	message = '<img src="https://bcdevexchange.org/modules/core/client/img/logo/new-logo.png"/><h4>You are no longer following:</h4><h4>'+req.subscription.notification.name+'</h4>';
+	message = '<img src="/modules/core/client/img/logo/canada.png"/><h4>You are no longer following:</h4><h4>'+req.subscription.notification.name+'</h4>';
 	message += '<p>Please sign in on the ';
-	message += '<a href=\'https://bcdevexchange.org\'>BCDevExchange.org</a> to manage your notifications.</p>';
-	message += '<p>Thanks for using the BCDevExchange!</p>';
+	message += '<a href=\'' + d + '\'>GCDevExchange.org</a> to manage your notifications.</p>';
+	message += '<p>Thanks for using the GCDevExchange!</p>';
 	exports.unsubscribe (req.subscription)
 	.then (function () {
 		res.send (message);
@@ -552,10 +557,15 @@ exports.unsubscribeExternal = function (req, res) {
 };
 
 exports.subscribeExternal = function (req, res) {
-	var message = '<img src="https://bcdevexchange.org/modules/core/client/img/logo/new-logo.png"/><h4>You are now following this oppoprtunity:</h4><h4>'+req.notification.name+'</h4>';
+	var d = 'https://gcdevexchange.org';
+	if (process.env.DOMAIN) {
+		d = process.env.DOMAIN;
+	}
+
+	var message = '<img src="/modules/core/client/img/logo/canada.png"/><h4>You are now following this oppoprtunity:</h4><h4>'+req.notification.name+'</h4>';
 	message += '<p>Please sign in on the ';
-	message += '<a href=\'https://bcdevexchange.org\'>BCDevExchange.org</a> to manage your notifications.</p>';
-	message += '<p>Thanks for using the BCDevExchange!</p>';
+	message += '<a href=\'' + d + '\'>GCDevExchange.org</a> to manage your notifications.</p>';
+	message += '<p>Thanks for using the GCDevExchange!</p>';
 	if (!req.subscription) return res.send (message);
 	exports.subscribe (req.notification, req.subscription.user)
 	.then (function () {
