@@ -248,7 +248,7 @@
 	"PROFILE_PRIVACY_NOTIFICATIONS": "Privacy & Notifications",
 	"PROFILE_UPDATE_SETTINGS": "Update settings",
 	"PROFILE_COLLECTION_NOTICE": "Collection Notice",
-	"PROFILE_COLLECTION_NOTICE_DESC": "This personal information is collected by the Ministry of Citizens’ Services under s.26(c) of the Freedom of Information and Protection of Privacy Act (FOIPPA) for the purposes of communications with registered users. Should you have any questions about the collection of this personal information please contact: Peter Watkins, Executive Director, BC Developers’ Exchange and DevOps, Ministry of Citizens’ Services, 250-514-2739.",
+	"PROFILE_COLLECTION_NOTICE_DESC": "This personal information is collected by the Government of Canada under s. 4 of the <a href='http://laws-lois.justice.gc.ca/eng/acts/p-21/page-1.html#h-5'>Privacy Act</a> for the purposes of communications with registered users. Should you have any questions about the collection of this personal information please contact: <a href='mailto:consultations@pco-bcp.gc.ca'>consultations@pco-bcp.gc.ca</a>",
 	"PROFILE_UPDATE_PROFILE": "Update profile",
 	"PROFILE_DELETE_PROFILE": "Delete Profile",
 	"PROFILE_DELETE_PROFILE_DESC": "Deleting your profile will erase your record as a contributor on projects and opportunities. There is no undo - make sure you are sure!",
