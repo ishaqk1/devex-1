@@ -248,7 +248,7 @@
 	"PROFILE_PRIVACY_NOTIFICATIONS": "Confidentialité et notifications",
 	"PROFILE_UPDATE_SETTINGS": "Modifier les paramètres",
 	"PROFILE_COLLECTION_NOTICE": "Avis de collecte",
-	"PROFILE_COLLECTION_NOTICE_DESC": "Ces renseignements personnels sont recueillis par le ministère des Services aux citoyens en vertu de l'alinéa 26(c) de la Freedom of Information and Protection of Privacy Act aux fins de communication avec les utilisateurs inscrits. Si vous avez des questions concernant la collecte de ces renseignements personnels, veuillez écrire à : consultation@pco-bcp.gc.ca.",
+	"PROFILE_COLLECTION_NOTICE_DESC": "Ces informations personnelles sont recueillies par le gouvernement du Canada en vertu de l'article 4 de la <a href='http://laws-lois.justice.gc.ca/fra/lois/p-21/page-1.html'>Loi sur la protection des renseignements personnels</a> pour des fins de communication auprès d'utilisateurs inscrits. Pour toute question concernant cette collecte de renseignements personnels, veuillez communiquer avec : <a href='mailto:consultations@pco-bcp.gc.ca'>consultations@pco-bcp.gc.ca</a>",
 	"PROFILE_UPDATE_PROFILE": "Modifier le profil",
 	"PROFILE_DELETE_PROFILE": "Supprimer le profil",
 	"PROFILE_DELETE_PROFILE_DESC": "En supprimant votre profil, vous effacez toutes vos contributions à des projets ou possibilités. Cette action est irréversible. Soyez certain de vouloir tout supprimer!",
