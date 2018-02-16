@@ -123,16 +123,8 @@
       .state('admin.datalist', {
         url: '/datalist',
         templateUrl: '/modules/users/client/views/admin/datalist.client.view.html',
+        controller: 'UserListController',
         controllerAs: 'vm',
-        controller: function (users) {
-          var vm = this;
-          vm.users = users;
-        },
-        resolve: {
-          users: function (AdminService) {
-            return AdminService.datalist().$promise;
-          }
-        },
         data: {
           pageTitle: 'Full Data List'
         }
