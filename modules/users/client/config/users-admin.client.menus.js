@@ -25,5 +25,9 @@
       title: 'Notify of Events',
       state: 'admin.notifymeets'
     });
+    menuService.addSubMenuItem('topbar', 'admin', {
+      title: 'Full Data List',
+      state: 'admin.datalist'
+    });
   }
 }());

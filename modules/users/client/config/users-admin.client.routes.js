@@ -81,6 +81,9 @@
           users: function (AdminService) {
             return AdminService.listopps().$promise;
           }
+        },
+        data: {
+          pageTitle: 'Notify of Opportunities'
         }
       })
       .state('admin.notifymeets', {
@@ -95,6 +98,9 @@
           users: function (AdminService) {
             return AdminService.listmeets().$promise;
           }
+        },
+        data: {
+          pageTitle: 'Notify of Meet-ups and Events'
         }
       })
       .state('admin.user-edit', {
@@ -112,6 +118,15 @@
         },
         data: {
           pageTitle: 'Edit {{ userResolve.displayName }}'
+        }
+      })
+      .state('admin.datalist', {
+        url: '/datalist',
+        templateUrl: '/modules/users/client/views/admin/datalist.client.view.html',
+        controller: 'UserListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Full Data List'
         }
       })
       ;
