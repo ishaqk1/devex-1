@@ -4,10 +4,20 @@
     <h1 property="name" id="wb-cont">Full Data List</h1>
   </div>
   <div class="col-md-12">
-    <table>
-      <tr cellspacing="100px" cellpadding="100px" ng-repeat="user in vm.users">
-        <td width="30%" ng-bind="user.firstName">&nbsp;</td>
-        <td width="30%" ng-bind="user.lastName">&nbsp;</td>
+    <table class="wb-tables table table-striped table-hover" ng-if="vm.users.length">
+      <thead>
+        <tr class="active">
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Notify Opportunities</th>
+          <th>Notify Events</th>
+          <th>Roles</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="user in vm.users">
+        <td ng-bind="user.firstName">&nbsp;</td>
+        <td ng-bind="user.lastName">&nbsp;</td>
         <td ng-bind="user.email">&nbsp;</td>
         <td ng-bind="user.notifyOpportunities">&nbsp;</td>
         <td ng-bind="user.notifyEvents">&nbsp;</td>
