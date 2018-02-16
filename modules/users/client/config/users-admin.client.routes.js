@@ -114,6 +114,18 @@
           pageTitle: 'Edit {{ userResolve.displayName }}'
         }
       })
+      .state('admin.datalist', {
+        url: '/datalist',
+        templateUrl: '/modules/users/client/views/admin/datalist.client.view.html',
+        controllerAs: 'vm',
+        controller: function (users) {
+          var vm = this;
+          vm.users = users;
+        },
+        data: {
+          pageTitle: 'Full Data List'
+        }
+      })
       ;
 
     getUser.$inject = ['$stateParams', 'AdminService'];
