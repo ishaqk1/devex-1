@@ -46,5 +46,8 @@
     vm.listMeets = function () {
       $state.go('admin.notifymeets');
     }
+    vm.datalist = function () {
+      $state.go('admin.datalist');
+    }
   }
 }());
