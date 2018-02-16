@@ -81,6 +81,9 @@
           users: function (AdminService) {
             return AdminService.listopps().$promise;
           }
+        },
+        data: {
+          pageTitle: 'Notify of Opportunities'
         }
       })
       .state('admin.notifymeets', {
@@ -95,6 +98,9 @@
           users: function (AdminService) {
             return AdminService.listmeets().$promise;
           }
+        },
+        data: {
+          pageTitle: 'Notify of Meet-ups and Events'
         }
       })
       .state('admin.user-edit', {
@@ -121,6 +127,11 @@
         controller: function (users) {
           var vm = this;
           vm.users = users;
+        },
+        resolve: {
+          users: function (AdminService) {
+            return AdminService.datalist().$promise;
+          }
         },
         data: {
           pageTitle: 'Full Data List'
