@@ -86,7 +86,7 @@ var UserSchema = new Schema({
   provider                 : {type: String, required: 'Provider is required'},
   government               : {type: String, default: ''},
   isDisplayEmail           : {type: Boolean, default:true},
-  notifyOpportunities      : {type: Boolean, default:false},
+  notifyOpportunities      : {type: Boolean, default:true},
   subscribeOpportunitiesId : {type: String, default: null},
   convertedNotifications   : {type: Boolean, default:false},
   notifyEvents             : {type: Boolean, default:false},
