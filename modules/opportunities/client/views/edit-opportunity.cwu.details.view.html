@@ -4,41 +4,11 @@
 		<div class="row">
 
 			<form-display
-				class="col-sm-12"
-				x-options='{
-					"title":"On Site Requirements",
-					"name":"onsite",
-					"help":"<p>State whether you are OK NOT to work with the developer in-person, or if you need them to work with you in-person some, or most of the time.</p>"
-				}'>
-				<label class="radio-inline">
-					<input type="radio" name="onsite" ng-model="vm.opportunity.onsite" value="offsite">In-person work NOT required
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="onsite" ng-model="vm.opportunity.onsite" value="mixed">Some in-person work required
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="onsite" ng-model="vm.opportunity.onsite" value="onsite">In-person work required
-				</label>
-			</form-display>
-
-			<form-display
-				class="col-sm-6"
-				x-options='{
-					"title":"Location",
-					"name":"location",
-					"help":"Where is your office?"
-				}'>
-				<select name="location" ng-model="vm.opportunity.location" id="location" class="form-control" ng-options="v as v for v in vm.cities">
-					<option value="">Select Location</option>
-				</select>
-			</form-display>
-
-			<form-display
 				class="col-sm-6"
 				x-options='{
 					"title":"Fixed-Price Reward",
 					"name":"reward",
-					"help":"<p>To the best of your ability, estimate a fair price for the amount of work you think it should take a qualified developer to meet the acceptance criteria. It is best to over-estimate.</p> <p>Right now, Code With Us opportunities may be offered to a maximum of $10,000.</p>"
+					"help":"<p>To the best of your ability, estimate a fair price for the amount of work you think it should take a qualified developer to meet the acceptance criteria. It is best to over-estimate.</p> <p>Right now, Code With Us opportunities may be offered to a maximum of $9,999.</p>"
 				}'>
 				<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-options="v as (v|currency) for v in vm.amounts">
 					<option value="">Select reward amount</option>
@@ -46,7 +16,7 @@
 			</form-display>
 
 			<form-input
-				class="col-sm-12"
+				class="col-sm-6"
 				ng-model="vm.opportunity.proposalEmail"
 				x-form="vm.opportunityForm"
 				x-options='{

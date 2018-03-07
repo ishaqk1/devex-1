@@ -16,7 +16,7 @@
 				[(o.project), 'Project'],
 				[(o.deadline), 'Proposal Deadline'],
 				[(o.assignment), 'Assignment Date'],
-				[(o.location), 'Location']
+				// [(o.location), 'Location']
 			],
 			cwu: [
 				[(o.evaluation), 'Proposal Evaluation Criteria'],
@@ -350,7 +350,7 @@
 		//
 		// prices list
 		//
-		vm.prices = dataService.prices;
+		vm.amounts = dataService.prices;
 		//
 		// if the user doesn't have the right access then kick them out
 		//
