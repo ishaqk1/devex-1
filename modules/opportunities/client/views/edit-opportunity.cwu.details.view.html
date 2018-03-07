@@ -3,7 +3,7 @@
 	<fieldset>
 		<div class="row">
 
-			<form-display
+			<form-input
 				class="col-sm-6"
 				x-options='{
 					"title":"Fixed-Price Reward",
@@ -13,7 +13,7 @@
 				<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-options="v as (v|currency) for v in vm.amounts">
 					<option value="">Select reward amount</option>
 				</select>
-			</form-display>
+			</form-input>
 
 			<form-input
 				class="col-sm-6"
@@ -42,6 +42,10 @@
 				}'>
 			</form-date-input>
  -->
+ 		</div>
+ 		
+		<div class="row">
+
 			<form-input
 				class="col-sm-4"
 				ng-model="vm.opportunity.deadline"
