@@ -1,9 +1,9 @@
 <section class="form-page">
 <div class="container" role="main">
-	<!-- <div ncy-breadcrumb></div> -->
+
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="well well-lg well-info">
+			<div class="well well-lg well-info well-left-align">
 		      <h4 translate="OPP_EDIT_P1">Managing a GCDevExchange opportunity</h4>
 		      <p translate="OPP_EDIT_P2" style="text-align: left;">By posting an opportunity on the GCDevExchange, you are agreeing to the following <a href="https://github.com/canada-ca/devex/blob/master/GCDevEx_TermsandConditions.md">Terms</a>. Make sure you are familiar with the process and understand your responsibilities for managing an opportunity.</p>
 		      <br>
@@ -12,322 +12,132 @@
 		</div>
 	</div>
 
+	<div class="row"  ng-if="false && !vm.canPublish">
+		<div class="col-xs-12 well well-sm well-warning"">
+			<div class="text-center">
+				<span>
+					<label class="label label-lg label-danger-o"><i class="fa fa-exclamation-triangle"></i> &nbsp; You may not publish this opportunity until the following fields have been filled out.</label>
+				</span>
+			</div>
+			<br/>
+			<div class="col-sm-4 col-sm-offset-4">
+				<ul><li ng-repeat="fname in vm.errorFields">{{fname}}</li></ul>
+			</div>
+		</div>
+	</div>
+
 	<form id="opportunityForm" warn-on-exit name="vm.opportunityForm" class="form" ng-submit="vm.save(vm.opportunityForm.$valid)" novalidate>
-	<div class="row form-head">
-		<div class="col-md-6">
-			<h2 ng-if="vm.editing">Editing: {{::vm.opportunity.name}}</h2>
-			<h2 ng-if="!vm.editing" translate="OPP_NEW">New Opportunity</h2>
-		</div>
-		<div class="col-md-6 col-form-buttons text-right">
-				
-				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="{{ 'SAVE_CHANGES' | translate }}" translate="SAVE_CHANGES">Save Changes</button>
- 				
+
+		<div class="row form-head">
+			<div class="col-md-6">
+				<h2 ng-if="vm.editing">Editing: {{::vm.opportunity.name}}</h2>
+				<h2 ng-if="!vm.editing">New Opportunity</h2>
+			</div>
+			<div class="col-md-6 col-form-buttons text-right">
+				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="Save changes">Save changes</button>
 				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Delete opportunity">Delete opportunity</a>
-
- 				<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}" translate="CANCEL">Cancel</a>
+				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">Cancel</a>
+			</div>
 		</div>
-	</div>
-	
-	<div class="row">
-	<div class="col-sm-12">
-		<fieldset>
-			<!--<div class="form-group">
-				<a  id="programs.view" ui-sref="programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
-				<span ng-if="!vm.programId">To choose a program, please select a Project.</span>
-			</div>-->
 
-			<div class="form-group" ng-if="vm.projectLink" >
-				<a  id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
-			</div>
-			<div class="form-group" >
-				<label class="control-label required" for="project" aria-required="true">Project <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('project')"></i>
-				<div class="input-help alert alert-info" data-field="project" ng-show="vm.displayHelp.project" translate="OPP_SELECT_PROJECT">
-					Select the project that this opportunity falls under. If you don't see the project in the dropdown list, you'll need to go to the Projects tab and create a new project page first.
-				</div>
-				<select ng-if="!vm.projectLink && vm.context === 'program'"
-					name="project"
-					ng-model="vm.projectId"
-					id="project"
-					class="form-control"
-					ng-options="obj._id as obj.name for obj in vm.projects"
-				><option value="" translate="PROJECT_SELECT">Select Project</option>
-				</select>
-				<select ng-if="!vm.projectLink && vm.context === 'allopportunities'"
-					name="project"
-					ng-change="vm.updateProgramProject()"
-					ng-model="vm.projectobj"
-					id="project"
-					class="form-control"
-					ng-options="obj as obj.name group by obj.program.title for obj in vm.projects"
-				><option value="" translate="PROJECT_SELECT">Select Project</option>
-				</select>
-			</div>
-
-			<br><br>
-			<div class="form-group" show-errors>
-				<label class="control-label required" for="title" aria-required="true"><span translate="OPP_SHORT_TITLE_LABEL">Title</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('title')"></i>
-				<div class="input-help alert alert-info" data-field="title" ng-show="vm.displayHelp.title" translate="OPP_SHORT_TITLE">
-					Create a short title for the opportunity that conveys the core of the work you need done.
-				</div>
-				<input name="title" type="text" ng-model="vm.opportunity.name" id="title" class="form-control" placeholder="Title" required>
-				<div ng-messages="vm.opportunityForm.title.$error" role="alert"></div>
-			</div>
-
-			<div class="form-group" show-errors>
-				<label class="control-label required" for="short" aria-required="true"><span translate="OPP_TEASER_LABEL">Teaser</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('short')"></i>
-				<div class="input-help alert alert-info" data-field="short" ng-show="vm.displayHelp.short" translate="OPP_TEASER">
-					Enter a 1-2 sentence description that will entice readers to apply on this opportunity. Describe what you are inviting them to do.
-				</div>
-				<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'OPP_TEASER_PLACEHOLDER' | translate }}" required></textarea>
-				<div ng-messages="vm.opportunityForm.short.$error" role="alert"></div>
-			</div>
-			<div class="form-group" show-errors>
-				<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('description')"></i>
-				<div class="input-help alert alert-info" data-field="description" ng-show="vm.displayHelp.description" translate="OPP_DESCRIPTION">
-					Here's where you can fully describe any useful background, and what you're trying to accomplish by offering this paid opportunity.
-				</div>
-				<!-- <textarea name="description" data-ng-model="vm.opportunity.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the opportunity"></textarea> -->
-				<textarea
-					name="description"
-					id="description"
-					class="form-control input-sm"
-					ui-tinymce="vm.tinymceOptions"
-					placeholder="A full description of the opportunity"
-					ng-required="true"
-					ng-model="vm.opportunity.description">
-				</textarea>
-				<div ng-messages="vm.opportunityForm.description.$error" role="alert"></div>
-			</div>
-
-			<br><br>
-			<div class="form-group" ng-if="vm.isAdmin|| (!vm.editing && vm.isGov) ||vm.opportunity.userIs.admin" show-errors>
-				<label class="control-label required" for="github" aria-required="true"><span translate="OPP_GITHUB_LABEL">Github Repository</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('github')"></i>
-				<div class="input-help alert alert-info" data-field="github" ng-show="vm.displayHelp.github" translate="OPP_GITHUB">
-					Paste the link to your project's GitHub repository. When you publish this opportunity, a new Issue will be generated in your repository, and people can ask questions in the comments section.
-				</div>
-				<input name="github" type="text" ng-model="vm.opportunity.github" id="github" class="form-control" placeholder="{{ 'OPP_GITHUB_PLACEHOLDER' | translate }}" ng-required="true">
-				<div ng-messages="vm.opportunityForm.github.$error" role="alert"></div>
-			</div>
-			<br><br>
-			<!-- <div class="row">
-				<div class="form-group">
-					<div class="col-sm-4 col-md-3">
-						<div class="form-group" show-errors>
-							<label class="control-label" for="location">Location</label>
-							<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('location')"></i>
-							<div class="input-help alert alert-info" data-field="location" ng-show="vm.displayHelp.location">
-								<p>Where is your office?</p>
-							</div>
-							<select name="location" ng-model="vm.opportunity.location" id="location" class="form-control" required ng-options="v as v for v in vm.cities">
-								<option value="">Select Location</option>
-							</select>
-							<div ng-messages="vm.opportunityForm.location.$error" role="alert">
-								<p class="help-block error-text" ng-message="required">Location is required.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br><br>
-			<div class="row">
-				<div class="form-group">
-					<div class="col-sm-12 col-md-12">
-						<div class="form-group" show-errors>
-							<label class="control-label" >On Site Requirements</label>
-							<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('onsite')"></i>
-							<div class="input-help alert alert-info" data-field="onsite" ng-show="vm.displayHelp.onsite">
-								<p>State whether you are OK NOT to work with the developer in-person, or if you need them to work with you in-person some, or most of the time.</p>
-							</div>
-							<div>
-							<label class="radio-inline">
-							<input type="radio" name="onsite" ng-model="vm.opportunity.onsite" value="offsite">In-person work NOT required
+		<div class="row">
+			<div class="col-sm-12">
+				<fieldset>
+					<div class="form-group text-center" ng-if="vm.features.swu">
+								<div class="btn-group">
+									<label class="btn btn-success" ng-model="vm.opportunity.opportunityTypeCd" uib-btn-radio="'code-with-us'">I am looking for an <em>Individual</em></label>
+									<label class="btn btn-success" ng-model="vm.opportunity.opportunityTypeCd" uib-btn-radio="'sprint-with-us'">I am looking for a <em>Team</em></label>
+								</div>
+						<div class="radio" ng-if="0">
+							<label>
+								<input type="radio" name="opportunityTypeCd" ng-model="vm.opportunity.opportunityTypeCd" value="code-with-us"/>
+								I am looking for an <em>Individual</em>
+								&nbsp; &nbsp; &nbsp;
+								<input type="radio" name="opportunityTypeCd" ng-model="vm.opportunity.opportunityTypeCd" value="sprint-with-us"/>
+								I am looking for a <em>Team</em>
 							</label>
-							<label class="radio-inline">
-							<input type="radio" name="onsite" ng-model="vm.opportunity.onsite" value="mixed">Some in-person work required
-							</label>
-							<label class="radio-inline">
-							<input type="radio" name="onsite" ng-model="vm.opportunity.onsite" value="onsite">In-person work required
-							</label>
-							</div>
 						</div>
 					</div>
-				</div>
+				</fieldset>
 			</div>
-			<br><br> -->
-
-			<div class="form-group">
-				<label class="control-label" for="skilllist" translate="OPP_SKILLS_LABEL">Required Skills (seperate each skill with a comma)</label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('skilllist')"></i>
-				<div class="input-help alert alert-info" data-field="skilllist" ng-show="vm.displayHelp.skilllist" translate="OPP_SKILLS">
-					List the skills that are necessary for the person working on this opportunity to have. (e.g. JavaScript, CSS, WordPress, UX Design)
-				</div>
-				<input type="text" name="skilllist" ng-model="vm.opportunity.skilllist" id="skilllist" class="form-control" placeholder="{{ 'OPP_SKILLS_PLACEHOLDER' | translate }}"></input>
-			</div>
-			<div class="form-group" show-errors>
-				<label class="control-label required" for="description" aria-required="true"><span translate="OPP_ACC_CRIT">Acceptance Criteria</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('criteria')"></i>
-				<div class="input-help alert alert-info" data-field="criteria" ng-show="vm.displayHelp.criteria" translate="OPP_ACCEPTANCE_CRITERIA">
-					In this section, you need to clearly define everything that must be delivered and all criteria that must be met in order for you to be satisfied and ready to pay the developer.
-				</div>
-				<!-- <textarea name="criteria" data-ng-model="vm.opportunity.criteria" id="criteria" class="form-control" cols="30" rows="10" placeholder="Opportunity acceptance criteria"></textarea> -->
-				<textarea
-					name="criteria"
-					id="criteria"
-					class="form-control input-sm"
-					ui-tinymce="vm.tinymceOptions"
-					placeholder="A clear definition of everything that must be delivered to get paid for this opportunity..."
-					ng-required="true"
-					ng-model="vm.opportunity.criteria">
-				</textarea>
-				<div ng-messages="vm.opportunityForm.criteria.$error" role="alert"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-4 col-md-3">
-					<div class="form-group" show-errors>
-						<label class="control-label required" for="earn" aria-required="true"><span translate="OPP_REWARD_LABEL">Fixed-Price Reward</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('reward')"></i>
-						<div class="input-help alert alert-info" data-field="reward" ng-show="vm.displayHelp.reward" translate="OPP_REWARD">
-							<p>To the best of your ability, estimate a fair price for the amount of work you think it should take a qualified developer to meet the acceptance criteria. It's best to over-estimate.</p>
-							<p>Right now, GCDevExchange opportunities may be offered to a maximum of $10,000.</p>
-						</div>
-						<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-required="true" required ng-options="v as v | translate for v in vm.prices">
-							<option value="" translate="OPP_REWARD_AMOUNT">Select reward amount</option>
-						</select>
-						<div ng-messages="vm.opportunityForm.earn.$error" role="alert"></div>
-					</div>
-				</div>
-			</div>
-
-			<br><br>
-			<div class="form-group" show-errors>
-				<label class="control-label required" for="description" aria-required="true"><span translate="OPP_EVALUATION_CRITERIA_LABEL">Proposal Evaluation Criteria</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('evaluation')"></i>
-				<div class="input-help alert alert-info" data-field="evaluation" ng-show="vm.displayHelp.evaluation" translate="OPP_EVALUATION_CRITERIA">
-					In this section, you must explicitly describe the criteria you will use to score the proposals you receive. State the weight or points you will give to each criteria (e.g. "Experience contributing Java code to any public code repositories with more than 5 contributors: (10 points)".<br/>
-					It is at your discretion which mandatory and weighted criteria you wish to use. Refer to the <a target="_blank" href="http://www2.gov.bc.ca/gov/content/governments/services-for-government/bc-bid-resources/how-to-buy-services/procurement-process/pre-award/prepare-solicitation-documents/mandatory-and-weighted-criteria">Government of B.C.'s information on procurement</a> for guidance.
-				</div>
-				<!-- <textarea name="criteria" data-ng-model="vm.opportunity.evaluation" id="criteria" class="form-control" cols="30" rows="10" placeholder="Evaluation criteria"></textarea> -->
-				<textarea
-					name="evaluation"
-					id="evaluation"
-					class="form-control input-sm"
-					ui-tinymce="vm.tinymceOptions"
-					placeholder="An explicit definition of the criteria you will use to score proposals..."
-					ng-required="true"
-					ng-model="vm.opportunity.evaluation">
-				</textarea>
-				<div ng-messages="vm.opportunityForm.evaluation.$error" role="alert"></div>
-			</div>
-
-			<div class="form-group" show-errors>
-				<label class="control-label required" for="proposalEmail" aria-required="true"><span translate="OPP_EMAIL_ADDRESS_LABEL">Email to Receive Acceptance of Terms and Contract</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
-				<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('proposalEmail')"></i>
-				<div class="input-help alert alert-info" data-field="proposalEmail" ng-show="vm.displayHelp.proposalEmail" translate="OPP_EMAIL_ADDRESS">
-					Enter the email address where you would like the assigned applicant to send their acceptance of the GCDevExchange Terms and Contract for this opportunity.
-				</div>
-				<input name="proposalEmail" type="text" ng-model="vm.opportunity.proposalEmail" id="proposalEmail" class="form-control" placeholder="{{ 'OPP_EMAIL_ADDRESS_PLACEHOLDER' | translate }}" required>
-				<div ng-messages="vm.opportunityForm.proposalEmail.$error" role="alert"></div>
-			</div>
-
-			<div class="row">
-
-				<div class="col-sm-4">
-					<div class="form-group" show-errors>
-						<label class="control-label" for="deadline" translate="OPP_PROPOSAL_LABEL">Proposal Deadline</label>
-						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('deadline')"></i>
-						<div class="input-help alert alert-info" data-field="deadline" ng-show="vm.displayHelp.deadline">
-	              			<p translate="OPP_PROPOSAL_P1">Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Pacific Time.)</p>
-	              			<p translate="OPP_PROPOSAL_P2">The longer lead time you give, the more proposals you are likely to get. A deadline at least <b>5 days</b> from when you publish is a good aim.</p>
-							<p translate="OPP_PROPOSAL_P3">Make sure you have your <b>opportunity contact</b> lined up to respond to questions on the GitHub Issue in a timely manner, from the time you publish the opportunity right up to the cutoff time.</p>
-						</div>
-						<div>
-						<input type="date" name="deadline" required ng-model="vm.opportunity.deadline"/>
-						</div>
-						<div ng-messages="vm.opportunityForm.deadline.$error" role="alert"></div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="form-group" show-errors>
-						<label class="control-label" for="assignment" translate="OPP_ASSIGNMENT_DATE_LABEL">Assignment Date</label>
-						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('assignment')"></i>
-						<div class="input-help alert alert-info" data-field="assignment" ng-show="vm.displayHelp.assignment" translate="OPP_ASSIGNMENT_DATE">
-							Choose a date that you will commit to assigning someone to this opportunity (dependent, of course, on at least one of the proposals meeting your minimum requirements). (Time of day is fixed at 16:00 Pacific Time.)
-						</div>
-						<div>
-						<input type="date" name="assignment" required ng-model="vm.opportunity.assignment"/>
-						</div>
-						<div ng-messages="vm.opportunityForm.assignment.$error" role="alert"></div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="form-group" show-errors>
-						<label class="control-label" for="start" translate="OPP_START_DATE_LABEL">Proposed Start Date</label>
-						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('start')"></i>
-						<div class="input-help alert alert-info" data-field="start" ng-show="vm.displayHelp.start" translate="OPP_START_DATE">
-							When do you want the person to begin working?
-						</div>
-						<div>
-						<input type="date" name="start" ng-model="vm.opportunity.start"/>
-						</div>
-						<div ng-messages="vm.opportunityForm.start.$error" role="alert"></div>
-					</div>
-				</div>
-<!--
-				<div class="col-sm-3">
-					<div class="form-group" show-errors>
-						<label class="control-label" for="deadline_date">Proposal Deadline - Date</label>
-						<input type="date" format="ddMMyy"/>
-						<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('deadline')"></i>
-						<div class="input-help alert alert-info" data-field="deadline" ng-show="vm.displayHelp.deadline">
-							Choose a deadline for receiving proposals. The longer lead time, the more proposals you are likely to get.
-							A deadline that's at least 5 days after you publish is a good guideline. A
-							lso, it's possible that you may have to field questions that come in at the last minute - so choose a time of day when you'll be able to respond.
-						</div>
-						<div class="input-group">
-							<input type="text" class="form-control" name="deadline_date" id="deadline_date" uib-datepicker-popup="yyyy-MM-dd" ng-model="vm.opportunity.deadline_date" is-open="vm.showdate" required close-text="Close" placeholder="Date"/>
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-default" ng-click="vm.showdate=1"><i class="glyphicon glyphicon-calendar"></i></button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="form-group" show-errors>
-						<label class="control-label" for="deadline_time">Proposal Deadline - Time</label>
-						<div class="input-group">
-							<input type="text" class="form-control" name="deadline_time" id="deadline_time" ng-model="vm.opportunity.deadline_time" required placeholder="Time" />
-							<span class="input-group-addon">
-								PST
-							</span>
-						</div>
-					</div>
-				</div>
- -->
- 			</div>
-		</fieldset>
-	</div>
-	</div>
-	<div class="row form-foot">
-		<div class="col-sm-12 col-form-buttons foot text-right">
-			<!--
-			<a href="javascript:void(0);" uib-tooltip="Save your work anytime. You can always come back later." class="btn btn-primary" ng-click="vm.saveme()"><i class="glyphicon glyphicon-save"></i> Save
-			</a>-->
- 				
-			<button type="submit" href="javascript:void(0);" class="btn btn-success" title="{{ 'SAVE_CHANGES' | translate }}" translate="SAVE_CHANGES">Save Changes</button>
-			
-			<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Remove">Delete opportunity</a>
-
-			<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}" translate="CANCEL">Cancel</a>
-
 		</div>
-	</div>
 
-	</div>
+		<div class="row">
+			<uib-tabset active>
+				<uib-tab index="0">
+					<uib-tab-heading>
+						Header
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.title.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="2">
+					<uib-tab-heading>
+						Background
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.description.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="4" ng-if="vm.opportunity.opportunityTypeCd !== 'sprint-with-us'">
+					<uib-tab-heading>
+						Details
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.cwu.details.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="5" ng-if="vm.opportunity.opportunityTypeCd !== 'sprint-with-us'">
+					<uib-tab-heading>
+						Acceptance and Evaluation
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.cwu.acceptance.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="6" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us'">
+					<uib-tab-heading>
+						Details
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.swu.details.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="7" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us'">
+					<uib-tab-heading>
+						Phases
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.swu.phases.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="8" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us' && vm.opportunity.isInception">
+					<uib-tab-heading>
+						Inception &nbsp; <i class="fa fa-check-circle ctc-green" ng-if="vm.opportunity.isInception"></i>
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.swu.inception.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="10" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us' && vm.opportunity.isPrototype">
+					<uib-tab-heading>
+						Prototype &nbsp; <i class="fa fa-check-circle ctc-green" ng-if="vm.opportunity.isPrototype"></i>
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.swu.prototype.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="12" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us' && vm.opportunity.isImplementation">
+					<uib-tab-heading>
+						Implementation &nbsp; <i class="fa fa-check-circle ctc-green" ng-if="vm.opportunity.isImplementation"></i>
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.swu.implementation.view.html'"></ng-include>
+				</uib-tab>
+				<uib-tab index="14" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us'">
+					<uib-tab-heading>
+						Terms and Conditions
+					</uib-tab-heading>
+					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.swu.terms.view.html'"></ng-include>
+				</uib-tab>
+			</uib-tabset>
+		</div>
+		<br/>
+
+		<div class="row form-foot">
+			<div class="col-sm-12 col-form-buttons foot text-right">
+				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="{{ 'SAVE_CHANGES' | translate }}" translate="SAVE_CHANGES">Save Changes</button>
+				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Remove">Delete opportunity</a>
+				<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}" translate="CANCEL">Cancel</a>
+			</div>
+		</div>
+
+	</form>
+
+</div>
 </section>
 

@@ -18,6 +18,11 @@
 			abstract: true,
 			url: '/{lang}/opportunities',
 			template: '<ui-view/>',
+			resolve: {
+				capabilities: function (SkillsService) {
+					return SkillsService.list ();
+				}
+			},
 	        params: {
 	        	lang: {
             		value: function($translate){
@@ -99,6 +104,11 @@
 			abstract: true,
 			url: '/{lang}/opportunityadmin',
 			template: '<ui-view/>',
+			resolve: {
+				capabilities: function (SkillsService) {
+					return SkillsService.query ();
+				}
+			},
 	        params: {
 	        	lang: {
                 	value: function($translate){
