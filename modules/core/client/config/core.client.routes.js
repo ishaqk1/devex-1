@@ -29,7 +29,7 @@
     $stateProvider
       .state('app', {
         abstract: true,
-        url: '/',
+        url: '/{lang}',
         template: '<ui-view/>',
         params: {
           lang: {

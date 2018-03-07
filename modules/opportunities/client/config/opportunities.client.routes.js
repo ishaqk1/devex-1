@@ -16,7 +16,7 @@
 		// -------------------------------------------------------------------------
 		.state('opportunities', {
 			abstract: true,
-			url: '/opportunities',
+			url: '/{lang}/opportunities',
 			template: '<ui-view/>',
 	        params: {
 	        	lang: {
@@ -97,7 +97,7 @@
 		// -------------------------------------------------------------------------
 		.state('opportunityadmin', {
 			abstract: true,
-			url: '/opportunityadmin',
+			url: '/{lang}/opportunityadmin',
 			template: '<ui-view/>',
 	        params: {
 	        	lang: {
