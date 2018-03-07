@@ -3,9 +3,10 @@
 
 	var publishStatus = function (o) {
 		//
-		// removed background for now
+		// removed background and location for now
 		//
 		// [(o.background), 'Background'],
+		// [(o.location), 'Location']
 		var fields = {
 			common: [
 				[(o.name), 'Title'],
@@ -15,8 +16,7 @@
 				[(o.program), 'Program'],
 				[(o.project), 'Project'],
 				[(o.deadline), 'Proposal Deadline'],
-				[(o.assignment), 'Assignment Date'],
-				// [(o.location), 'Location']
+				[(o.assignment), 'Assignment Date']
 			],
 			cwu: [
 				[(o.evaluation), 'Proposal Evaluation Criteria'],
