@@ -1,5 +1,5 @@
 {{#markdown this}}
-![GC Dev Exchange](https://beta.gcdevexchange.org/modules/core/client/img/logo/new-logo-220px.png)
+![GC Dev Exchange](https://gcdevexchange-carrefourproggc.org/modules/core/client/img/logo/new-logo-220px.png)
 
 ### Hi {{data.username}}!
 
@@ -27,5 +27,5 @@ Contribute to this government open source project in GitHub. Get paid a fixed fe
 
 **Want to stop receiving these emails?**
 
-[Unsubscribe now]({{ data.domain }}/api/unsubscribe/{{ data.subscriptionId }}) from notifications of new opportunities or manage notification preferences in your profile at [beta.gcdevexchange.org](https://beta.gcdevexchange.org).
+[Unsubscribe now]({{ data.domain }}/api/unsubscribe/{{ data.subscriptionId }}) from notifications of new opportunities or manage notification preferences in your profile at [gcdevexchange-carrefourproggc.org](https://gcdevexchange-carrefourproggc.org).
 {{/markdown}}

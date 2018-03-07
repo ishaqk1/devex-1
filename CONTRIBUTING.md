@@ -1,4 +1,4 @@
-## Contributing to beta.gcdevexchange.org
+## Contributing to gcdevexchange-carrefourproggc.org
 
 Government employees, public and members of the private sector are encouraged to contribute to the repository by **forking and submitting a pull request**.
 

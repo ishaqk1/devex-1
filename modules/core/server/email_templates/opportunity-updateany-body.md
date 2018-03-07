@@ -14,5 +14,5 @@ Thanks for your interest!
 
 -----------------------------
 GC Developers' Exchange and DevOps
-[beta.gcdevexchange.org](https://beta.gcdevexchange.org)
+[gcdevexchange-carrefourproggc.org](https://gcdevexchange-carrefourproggc.org)
 {{/markdown}}
