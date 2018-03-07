@@ -99,6 +99,5 @@ module.exports = {
 			minOptionalTestsToPass: 4
 		}
 	}
->>>>>>> BCDevExchange/master
 
 };
