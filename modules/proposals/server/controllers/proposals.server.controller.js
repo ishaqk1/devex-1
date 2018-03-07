@@ -145,7 +145,7 @@ exports.myopp = function (req, res) {
 	Proposal.findOne ({user:req.user._id, opportunity:req.opportunity._id})
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('opportunity', 'code name')
+	.populate('opportunity')
 	.populate('user', userfields)
 	.exec (function (err, proposals) {
 		if (err) {
@@ -321,7 +321,7 @@ exports.list = function (req, res) {
 	Proposal.find({}).sort('name')
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('opportunity', 'code name')
+	.populate('opportunity')
 	.populate('user', userfields)
 	.exec(function (err, proposals) {
 		if (err) {
@@ -346,7 +346,8 @@ exports.forOpportunity = function (req, res) {
 	Proposal.find({opportunity:req.opportunity._id, status:'Submitted'}).sort('created')
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('opportunity', 'code name')
+	.populate('opportunity')
+	.populate('team')
 	.populate('user', userfields)
 	.exec(function (err, proposals) {
 		if (err) {
@@ -384,8 +385,9 @@ exports.proposalByID = function (req, res, next, id) {
 	Proposal.findById(id)
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('opportunity', 'code name issueNumber github')
+	.populate('opportunity')
 	.populate('user', userfields)
+	.populate('team')
 	.exec(function (err, proposal) {
 		if (err) {
 			return next(err);
@@ -414,6 +416,11 @@ var addAttachment = function (req, res, proposal, name, path, type) {
 // -------------------------------------------------------------------------
 exports.uploaddoc = function (req, res) {
 	var proposal = req.proposal;
+	var user     = req.user;
+	var isAdmin  = user && !!~user.roles.indexOf ('admin');
+	var isOwner  = user && (proposal.user._id.toString() === user._id.toString());
+	if ( ! (isOwner || isAdmin)) return res.status(401).send({message: 'Not permitted'});
+
 	if (proposal) {
 		var storage = multer.diskStorage (config.uploads.diskStorage);
 		var upload = multer({storage: storage}).single('file');
@@ -436,13 +443,33 @@ exports.uploaddoc = function (req, res) {
 	}
 };
 exports.removedoc = function (req, res) {
+	var proposal = req.proposal;
+	var user     = req.user;
+	var isAdmin  = user && !!~user.roles.indexOf ('admin');
+	var isOwner  = user && (proposal.user._id.toString() === user._id.toString());
+	if ( ! (isOwner || isAdmin)) return res.status(401).send({message: 'Not permitted'});
+
 	req.proposal.attachments.id(req.params.documentId).remove();
 	saveProposalRequest (req, res, req.proposal);
 };
 exports.downloaddoc = function (req, res) {
+	var proposal = req.proposal;
+	var user     = req.user;
+	var isAdmin  = user && !!~user.roles.indexOf ('admin');
+	var isGov    = user && !!~user.roles.indexOf ('gov');
+	var isOwner  = user && (proposal.user._id.toString() === user._id.toString());
+	if ( ! (user && (isAdmin || isGov || isOwner))) return res.status(401).send({message: 'Not permitted'});
+
 	var fileobj = req.proposal.attachments.id(req.params.documentId);
 	return streamFile (res, fileobj.path, fileobj.name, fileobj.type);
 };
+exports.downloadTerms = function (req, res) {
+	var version = req.params.version;
+	var fileobj = config.terms[version];
+	var home = config.home;
+	if (fileobj) return streamFile (res, home+'/'+fileobj.path, fileobj.name, fileobj.type);
+	else res.status (401).send ({message: 'No terms file found'});
+}
 // -------------------------------------------------------------------------
 //
 // create the archive format and stream it back to the user

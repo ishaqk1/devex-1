@@ -1,33 +1,53 @@
-<div class="container">
-
-<!-- // User IS signed in, and ... // -->
-	<div class="row" ng-if="vm.loggedIn">
-		<div class="col-xs-12 text-center">
-
-<!-- // User doesn't have an email address in their profile // -->
-			<div class="well well-info" ng-if="!vm.notifyMe && !vm.hasEmail">
-				<p><span translate="OPP_UPDATES">Want <span class="hidden-sm hidden-xs">to get </span>updates<span class="hidden-sm hidden-xs"> about this opportunity</span>?</span> <a href id="settings.profile" ui-sref="settings.profile">  Add your email address.</a></p>
-			</div>
-
-<!-- // User is NOT following the opportunity // -->
-			<button ng-if="!vm.canEdit && !vm.notifyMe && vm.hasEmail" type="button" class="btn btn-default" uib-tooltip="Get email notifications if this opportunity changes." ng-click="vm.subscribe(true)"><i class="glyphicon glyphicon-volume-up"></i> <span translate="OPP_FOLLOW">Follow</span></button>
-
-<!-- // User IS following the opportunity // -->
-			<button ng-if="vm.notifyMe" type="button" class="btn btn-primary" uib-tooltip="You’ll get an email if this opportunity changes" ng-click="vm.subscribe(false)""><i class="glyphicon glyphicon-ok-sign"></i> <span translate="OPP_FOLLOWING">Following</span></button>			
-		
+<!-- // If user is NOT signed in // -->
+<div class="banner banner-info" ng-if="!vm.loggedIn">
+	<div class="row">
+		<div class="col-xs-12">
+			<p>To apply on this opportunity you need to <a href ui-sref="authentication.signin"> Sign In</a> or	<a href  id="authentication.gov" ui-sref="authentication.gov"> Sign Up</a></p>
 		</div>
 	</div>
-		
+</div>
+
+<!-- // User doesn't have an email address in their profile // -->
+<div class="banner banner-info" ng-if="vm.notifyMe && !vm.hasEmail">
+	<div class="row">
+		<div class="col-xs-12">
+			<p><span translate="OPP_UPDATES">Want <span class="hidden-sm hidden-xs">to get </span>updates<span class="hidden-sm hidden-xs"> about this opportunity</span>?</span> <a href id="settings.profile" ui-sref="settings.profile">  Add your email address.</a></p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<proposal-apply ng-if="true && vm.closing !== 'CLOSED'" opportunity="vm.opportunity" proposal="vm.myproposal"></proposal-apply>
+	</div>
+</div>
+
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center" style="padding-top: 0; padding-bottom: 10px;">
+			<span ng-if="vm.opportunity.isPublished && vm.opportunity.status === 'Pending'" class="label label-deadline"><i class="fa fa-hourglass-half"></i>&nbsp;<span style="font-weight:300;" translate="OPP_CLOSING">Closing in:</span> {{vm.closing}}</span>
+			<!-- // User is NOT following the opportunity // -->
+			<button ng-if="!vm.canEdit && !vm.notifyMe && vm.hasEmail" type="button" class="btn btn-sm btn-default" uib-tooltip="Get email notifications if this opportunity changes." ng-click="vm.subscribe(true)"><i class="fa fa-bullhorn"></i> <span translate="OPP_FOLLOW">Follow</span></button>
+
+			<!-- // User IS following the opportunity // -->
+			<button ng-if="vm.notifyMe" type="button" class="btn btn-sm btn-default" uib-tooltip="You’ll get an email if this opportunity changes" ng-click="vm.subscribe(false)""><i class="fa fa-check-circle-o"></i> <span translate="OPP_FOLLOWING">Following</span></button>
+		</div>
+	</div>
+
+
 	<!-- // Admin view, draft opportunity is missing stuff // -->
-	<div class="row" ng-if="!vm.canPublish && vm.canEdit">
-		<div class="col-xs-12 text-right">
-			<div class="well well-sm well-danger">
+	<div class="row"  ng-if="!vm.canPublish && vm.canEdit">
+		<div class="col-xs-12 well well-sm well-danger"">
+			<div class="text-center">
 				<span>
-					<label class="label label-lg label-danger-o"><i class="fa fa-exclamation-triangle"></i></label>You can't publish this opportunity until all fields have been filled out.
+					<label class="label label-lg label-danger-o"><i class="fa fa-exclamation-triangle"></i> &nbsp; You may not publish this opportunity until the following fields have been filled out.</label>
 				</span>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
-				</div>				
+			</div>
+			<br/>
+			<div class="col-sm-4 col-sm-offset-4">
+				<ul><li ng-repeat="fname in vm.errorFields">{{fname}}</li></ul>
 			</div>
 		</div>
 	</div>
@@ -39,7 +59,7 @@
 				<label class="label label-lg label-danger-o">
 				<i class="fa fa-exclamation-triangle"></i> {{ 'UNPUBLISHED' | translate }}
 				</label>No one can see this opportunity until you publish it.
-			</span> 
+			</span>
 			 &nbsp;
 			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.canPublish && vm.opportunity.project.isPublished && vm.canEdit && !vm.opportunity.isPublished" class="btn btn-success" ng-click="vm.publish(vm.opportunity, true)">Publish</a>
@@ -53,7 +73,7 @@
 				<label class="label label-lg label-success-o">
 				<i class="glyphicon glyphicon-ok-sign"></i> PUBLISHED
 				</label>
-			</span> 
+			</span>
 			 &nbsp;
 			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.opportunity.project.isPublished && vm.canEdit && vm.opportunity.isPublished" class="btn btn-danger" ng-click="vm.publish(vm.opportunity, false)">Unpublish</a>
@@ -63,16 +83,23 @@
 <!-- // Title and Teaser // -->
 	<div class="row">
 		<div class="col-xs-12 text-center">
-			<h1 property="name" id="wb-cont">{{vm.opportunity.name}}</h1>
+			<h1 property="name" id="wb-cont">{{vm.opportunity.name}}</h2>
 			<p ng-bind="vm.opportunity.short"></p>
 		</div>
 	</div>
+	<!--<div class="panel panel-default panel-flat card-panel">-->
+</div>
 
-	<hr>
+<div class="banner banner-important" ng-if="vm.opportunity.opportunityTypeCd === 'code-with-us'">
+	<div class="row">
+		<div class="col-xs-12">
+			<p translate="OPP_FIXED_PRICE">This is a <strong>fixed-price</strong> opportunity governed by the <a href="https://github.com/canada-ca/devex/blob/master/GCDevEx_TermsandConditions.md">terms</a> of our lightweight procurement model.</p>
+		</div>
+	</div>
+</div>
+
+<div class="container">
 	<br>
-	
-	<!--<div class="panel panel-default panel-flat card-panel">-->	
-
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
 
@@ -83,10 +110,9 @@
           <h4 ng-if="vm.opportunity.onsite == 'offsite'"><i class="fa fa-user">&nbsp;</i><i class="fa fa-cloud">&nbsp;</i>In-person work NOT required &nbsp; &nbsp;</h4>
           <h4 ng-if="vm.opportunity.onsite == 'onsite'" ><i class="fa fa-user">&nbsp;</i><i class="fa fa-building">&nbsp;</i>In-person work required &nbsp; &nbsp;</h4>
           <h4 ng-if="vm.opportunity.onsite == 'mixed'"  ><i class="fa fa-user"></i>&nbsp;<i class="fa fa-cloud">&nbsp;</i><i class="fa fa-building">&nbsp;</i>Some in-person work required</h4>-->
-		
+
           <div class="label-list" style="padding-top: 4px; padding-bottom: 10px;">
-	          <span class="label label-price">{{vm.opportunity.earn | translate}} {{ 'TAX_INCL' | translate}}</span>
-	          <span ng-if="vm.opportunity.isPublished && vm.opportunity.status === 'Pending'" class="label label-deadline"><i class="fa fa-hourglass-half"></i>&nbsp;<span style="font-weight:300;" translate="OPP_CLOSING">Closing in:</span> {{vm.closing}}</span>
+	        <span class="label label-price">{{vm.opportunity.earn | translate}} {{ 'TAX_INCL' | translate}}</span>
 	          <!-- <span class="label label-location"><i class="fa fa-map-marker"></i>&nbsp;{{vm.opportunity.location}}</span>
 	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'offsite'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_NO">In-person work NOT required</span></span>
 	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'onsite'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_YES">In-person work required</span></span>
@@ -126,8 +152,8 @@
 	</div>
 
 	<br>
-	
-	<div class="row">
+
+	<div class="row" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us'">
 		<div class="col-xs-12 text-center">
 			<div class="well well-info">
 				<p translate="OPP_FIXED_PRICE">This is a <strong>fixed-price</strong> opportunity governed by the <a href="https://github.com/canada-ca/devex/blob/master/GCDevEx_TermsandConditions.md">terms</a> of our lightweight procurement model.</p>
@@ -150,7 +176,7 @@
 			<hr>
 			<h3 translate="OPP_HOW_TO_APPLY">How to Apply</h3>
 			<p><span translate="OPP_SUBMIT_BEFORE">Submit your proposal before</span> <b>{{vm.deadline}}</b>.</p>
-			<p translate="OPP_INSTRUCTIONS">With your proposal, you must upload a copy of the <a href="https://github.com/canada-ca/devex/blob/master/GCDevEx_TermsandConditions.md">terms,</a> to indicate your acceptance of the terms.</p>
+			<!-- <p translate="OPP_INSTRUCTIONS">With your proposal, you must upload a copy of the <a href="https://github.com/canada-ca/devex/blob/master/GCDevEx_TermsandConditions.md">terms,</a> to indicate your acceptance of the terms.</p> -->
 			<p><span translate="OPP_PLAN">We plan to assign this opportunity by</span> <b>{{vm.assignment}}</b> <span translate="OPP_PLAN2">with work to start on</span> <b>{{vm.start}}</b>.</p>
 			<br>
 			<div class="text-center" ng-if="vm.opportunity.issueUrl">
@@ -162,30 +188,65 @@
 		</div>
 	</div>
 
+	<div class="row" ng-if="qaz.case !== 'nothing'">
+		<div class="container">
+		<br>
+			<div class="row" ng-if="qaz.case === 'canadd'">
+				<div class="col-xs-12 text-center">
+					<button  id="proposaladmin.create" ui-sref="proposaladmin.create({opportunityId:qaz.opportunity._id})" class="btn btn-lg btn-warning">Submit a proposal</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us'">
+		<div class="col-xs-12">
+			<h3>Capabilities needed to fulfill this opportunity</h3>
+				<div class="form-group col-sm-12">
+
+					<uib-accordion close-others="true">
+
+						<div uib-accordion-group class="panel-default" ng-repeat="idnum in vm.clist" >
+							{{minimumYearsField=idnum+'_minimumYears';""}}
+							{{desiredYearsField=idnum+'_desiredYears';""}}
+							{{experienceField=idnum+'_experience';""}}
+							{{ratingField=idnum+'_years';""}}
+							<uib-accordion-heading>
+								<small>
+									<i class="pull-left glyphicon" ng-class="{'glyphicon-check':vm.opportunity[minimumYearsField]>0, 'glyphicon-unchecked':vm.opportunity[minimumYearsField]===0}"></i>
+									&nbsp; &nbsp;
+									{{vm.capabilities.bykey[idnum].text}}
+									&nbsp; &nbsp;
+									<span class="pull-right" ng-if="vm.opportunity[minimumYearsField]>0">
+										<b>{{vm.opportunity[minimumYearsField]}}</b>{{vm.opportunity[minimumYearsField]>4?'+ years':' years'}} minimum &nbsp; | &nbsp;
+										<b>{{vm.opportunity[desiredYearsField]}}</b>{{vm.opportunity[desiredYearsField]>19?'+ years':' years'}} combined
+									</span>
+								</small>
+							</uib-accordion-heading>
+							<form-display
+								class="col-sm-12"
+								x-options='{
+									"title":"Capability Description"
+								}'>
+								{{vm.capabilities.bykey[idnum].description}}
+							</form-display>
+						</div>
+
+					</uib-accordion>
+				</div>
+
+		</div>
+	</div>
+
 	<!--
 		<core-member-list     title="Assignees" model="vm.opportunity" idstring="vm.idString" service="vm.OpportunitiesService"></core-member-list>
 		<core-member-requests title="Applicants" model="vm.opportunity" idstring="vm.idString" service="vm.OpportunitiesService" ng-if="vm.opportunity.userIs.admin"></core-member-requests>
 	-->
 
-	<!-- // User is NOT signed in // -->
-	<div class="row" ng-if="!vm.loggedIn">
-		<div class="col-xs-12 text-center">
-			<div class="well well-info">
-				<p>To apply on this opportunity you need to <a href ui-sref="authentication.signin"> Sign In</a> or	<a href  id="authentication.gov" ui-sref="authentication.gov"> Sign Up</a>
-				</p>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-xs-12">					
-			<proposal-apply ng-if="true && vm.closing !== 'CLOSED'" opportunity="vm.opportunity" proposal="vm.myproposal"></proposal-apply>
-		</div>
-	</div>
-	
-	<br>
+
 
 	<!-- // Admin view, draft opportunity is missing stuff // -->
+	<!--
 	<div class="row" ng-if="!vm.canPublish && vm.canEdit">
 		<div class="col-xs-12 text-center">
 			<div class="well well-sm well-danger">
@@ -198,6 +259,7 @@
 			</div>
 		</div>
 	</div>
+	-->
 
 	<!-- // Admin view, opportunity is unpublished // -->
 	<div class="row" ng-if="vm.canEdit && !vm.opportunity.isPublished">
@@ -206,7 +268,7 @@
 				<label class="label label-lg label-danger-o">
 				<i class="fa fa-exclamation-triangle"></i> {{ 'UNPUBLISHED' | translate }}
 				</label>No one can see this opportunity until you publish it.
-			</span> 
+			</span>
 			 &nbsp;
 			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.canPublish && vm.opportunity.project.isPublished && vm.canEdit && !vm.opportunity.isPublished" class="btn btn-success" ng-click="vm.publish(vm.opportunity, true)">Publish</a>
@@ -220,7 +282,7 @@
 				<label class="label label-lg label-success-o">
 				<i class="glyphicon glyphicon-ok-sign"></i> PUBLISHED
 				</label>
-			</span> 
+			</span>
 			 &nbsp;
 			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.opportunity.project.isPublished && vm.canEdit && vm.opportunity.isPublished" class="btn btn-danger" ng-click="vm.publish(vm.opportunity, false)">Unpublish</a>
@@ -252,6 +314,7 @@
 				<span translate="OPP_BY">by</span>
 				<span ng-if="vm.opportunity.updatedBy" ng-bind="vm.opportunity.updatedBy.displayName"></span>
 				<span ng-if="!vm.opportunity.updatedBy">Deleted User</span>
+			</p>
 		</div>
 	</div>
 
@@ -264,7 +327,7 @@
 					<label class="label-danger">
 					<i class="fa fa-exclamation-triangle"></i> UNPUBLISHED
 					</label>No one will see this opportunity until you publish it.
-				</span> 
+				</span>
 			</div>
 
 			<label class="label-danger" ng-if="vm.opportunity.project.isPublished && vm.canEdit && !vm.opportunity.isPublished" uib-tooltip="No one can see this page until you publish it."><i class="fa fa-exclamation-triangle" ></i> UNPUBLISHED
@@ -285,11 +348,11 @@
 
 
 <!-- // Proposals section, Admin only view // -->
-	
+
 	<proposal-list ng-if="vm.opportunity.status === 'Pending' && vm.canEdit && vm.opportunity.isPublished" isclosed="vm.closing === 'CLOSED'" context="opportunity" opportunity="vm.opportunity" title="Proposals received"></proposal-list>
 
 	<div class="row" ng-if="vm.canEdit && vm.closing === 'CLOSED'">
-		<div class="col-xs-12">	
+		<div class="col-xs-12">
 			<a class="btn btn-primary" href="/api/proposals/archive/opportunity/{{vm.opportunity._id}}" target="_blank"><i class="fa fa-download"></i> Download Proposals Archive</a>
 		</div>
 	</div>
@@ -321,7 +384,7 @@
 		</div>
 	</div>
 	</div>
-	
+
 </div>
 
 </div>
