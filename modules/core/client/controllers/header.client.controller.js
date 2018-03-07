@@ -15,6 +15,7 @@
     vm.menu = menuService.getMenu('topbar');
 
     $scope.$on('$stateChangeSuccess', stateChangeSuccess);
+    $scope.lang = $translate.use();
     $scope.isHomePage = function() {
         var path = $location.path();
         return (! path) || path === '/' || path === '/en' || path === '/fr';
