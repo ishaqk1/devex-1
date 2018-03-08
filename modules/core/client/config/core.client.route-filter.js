@@ -59,23 +59,6 @@
 					});
 				}
 			}
-
-			var currentLang = '';
-			var otherLang = '';
-
-			if ($state.params.lang !== undefined) {
-				currentLang = $state.params.lang;
-				otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
-			} else {
-				currentLang = 'en';
-				otherLang = 'fr';
-			}
-
-			$rootScope.currentLang = currentLang;
-			$rootScope.otherLang = otherLang;
-			$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
-			$translate.use(currentLang);
-			document.documentElement.lang = currentLang;
 		}
 
 		function stateChangeSuccess(event, toState, toParams, fromState, fromParams) {
@@ -89,6 +72,7 @@
 				currentLang = $state.params.lang;
 				otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
 			} else {
+				$state.params.lang = 'en';
 				currentLang = 'en';
 				otherLang = 'fr';
 			}
