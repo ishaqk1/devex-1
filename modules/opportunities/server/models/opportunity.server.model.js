@@ -13,7 +13,7 @@ var OpportunitySchema = new Schema({
 	code          : {type: String, default: ''},
 	opportunityTypeCd : {type: String, default:'code-with-us', enum:['code-with-us', 'sprint-with-us']},
 	name          : {type: String, default: '', required: 'Name cannot be blank'},
-	name_fr       : {type: String, default: '', required: 'Name cannot be blank'},
+	name_fr       : {type: String, default: ''},
 	short         : {type: String, default: ''},
 	short_fr      : {type: String, default: ''},
 	description   : {type: String, default: ''},

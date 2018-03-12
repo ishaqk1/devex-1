@@ -20,7 +20,6 @@ var ProjectSchema = new Schema({
   name_fr: {
     type: String,
     default: '',
-    required: 'Please fill the project name',
     trim: true
   },
   short: {
@@ -32,7 +31,6 @@ var ProjectSchema = new Schema({
   short_fr: {
     type: String,
     default: '',
-    required: 'Please complete the project short description',
     trim: true
   },
   description: {
@@ -44,7 +42,6 @@ var ProjectSchema = new Schema({
   description_fr: {
     type: String,
     default: '',
-    required: 'Please complete the project description',
     trim: true
   },
   github: {
