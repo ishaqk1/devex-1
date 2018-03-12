@@ -15,7 +15,7 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate, dataService, $filter, $translate) {
+	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, dataService, $filter, $translate) {
 		$scope.isEnglish = function() {
 	        return ($translate.use() === 'en');
 	    };
@@ -91,7 +91,7 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, $translate, dataService, $filter, $translate) {
+	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, dataService, $filter, $translate) {
 		$scope.isEnglish = function() {
 	        return ($translate.use() === 'en');
 	    };
