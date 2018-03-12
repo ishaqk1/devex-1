@@ -17,7 +17,14 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/opportunities/client/views/list.opportunities.directive.html',
-			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $filter) {
+			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $filter, $translate) {
+				$scope.isEnglish = function() {
+			        return ($translate.use() === 'en');
+			    };
+			    $scope.isFrench = function() {
+			        return ($translate.use() === 'fr');
+			    };
+			    
 				var rightNow = new Date ();
 				var vm     = this;
 				var isUser = Authentication.user;
