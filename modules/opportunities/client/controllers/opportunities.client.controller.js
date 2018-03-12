@@ -77,7 +77,14 @@
 	// Controller the view of the opportunity page
 	//
 	// =========================================================================
-	.controller('OpportunityViewController', function ($scope, capabilities, $state, $stateParams, $sce, opportunity, Authentication, OpportunitiesService, Notification, modalService, $q, ask, subscriptions, myproposal, dataService, NotificationsService, $filter) {
+	.controller('OpportunityViewController', function ($scope, capabilities, $state, $stateParams, $sce, opportunity, Authentication, OpportunitiesService, Notification, modalService, $q, ask, subscriptions, myproposal, dataService, NotificationsService, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
 		var vm                    = this;
 		vm.features = window.features;
 		vm.capabilities     = capabilities;
@@ -296,8 +303,15 @@
 	// Controller the view of the opportunity page
 	//
 	// =========================================================================
-	.controller('OpportunityEditController', function ($scope, capabilities, $state, $stateParams, $window, $sce, opportunity, editing, projects, Authentication, Notification, previousState, dataService, modalService, $q, ask, uibButtonConfig, SkillsService, $filter) {
-		uibButtonConfig.activeClass = 'custombuttonbackground';
+	.controller('OpportunityEditController', function ($scope, capabilities, $state, $stateParams, $window, $sce, opportunity, editing, projects, Authentication, Notification, previousState, dataService, modalService, $q, ask, uibButtonConfig, SkillsService, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    uibButtonConfig.activeClass = 'custombuttonbackground';
 		var vm                                = this;
 		vm.features = window.features;
 		vm.capabilities     = capabilities;

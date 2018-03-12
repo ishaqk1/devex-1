@@ -15,8 +15,15 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate, dataService, $filter) {
-		var vm                 = this;
+	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate, dataService, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    var vm                 = this;
 		vm.program             = program;
 		vm.display             = {};
 		vm.display.description = $sce.trustAsHtml(vm.program.description);
@@ -84,8 +91,15 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, $translate, dataService, $filter) {
-		var vm            = this;
+	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, $translate, dataService, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    var vm            = this;
 		vm.user = Authentication.user;
 		vm.fileSelected = false;
 		vm.progress = 0;

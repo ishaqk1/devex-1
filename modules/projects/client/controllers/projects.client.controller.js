@@ -15,8 +15,15 @@
 	// Controller the view of the project page
 	//
 	// =========================================================================
-	.controller('ProjectViewController', function ($scope, $state, $sce, $stateParams, project, Authentication, ProjectsService, Notification, $filter) {
-		var vm                 = this;
+	.controller('ProjectViewController', function ($scope, $state, $sce, $stateParams, project, Authentication, ProjectsService, Notification, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    var vm                 = this;
 		vm.programId           = project.program ? project.program._id : $stateParams.programId;
 		vm.project             = project;
 		vm.display             = {};
@@ -82,8 +89,15 @@
 	// Controller the view of the project page
 	//
 	// =========================================================================
-	.controller('ProjectEditController', function ($scope, $state, $sce, $stateParams, $window, project, editing, programs, Authentication, Notification, previousState, $filter) {
-		var vm             = this;
+	.controller('ProjectEditController', function ($scope, $state, $sce, $stateParams, $window, project, editing, programs, Authentication, Notification, previousState, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    var vm             = this;
 		vm.previousState   = previousState;
 		vm.isAdmin         = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
 		vm.isGov           = Authentication.user && !!~Authentication.user.roles.indexOf ('gov');
