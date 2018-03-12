@@ -17,13 +17,31 @@ var ProjectSchema = new Schema({
     required: 'Please fill the project name',
     trim: true
   },
+  name_fr: {
+    type: String,
+    default: '',
+    required: 'Please fill the project name',
+    trim: true
+  },
   short: {
     type: String,
     default: '',
     required: 'Please complete the project short description',
     trim: true
   },
+  short_fr: {
+    type: String,
+    default: '',
+    required: 'Please complete the project short description',
+    trim: true
+  },
   description: {
+    type: String,
+    default: '',
+    required: 'Please complete the project description',
+    trim: true
+  },
+  description_fr: {
     type: String,
     default: '',
     required: 'Please complete the project description',
@@ -64,7 +82,8 @@ var ProjectSchema = new Schema({
     ref: 'User'
   },
   activity: {type: Number, default:1},
-  tags: [String]
+  tags: [String],
+  tags_fr: [String]
 });
 
 ProjectSchema.statics.findUniqueCode = function (title, suffix, callback) {

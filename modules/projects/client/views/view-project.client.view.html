@@ -23,8 +23,10 @@
 					</a>
 				</div>
 				<div class="col-xs-12 col-sm-12 text-center">
-					<h1 property="name" id="wb-cont"><i class="fa fa-pie-chart"></i> &nbsp; {{vm.project.name}}</h1>
-					<p style="font-size: 16px; padding-bottom: 30px;"><span ng-bind="vm.project.short"></span></p>
+					<h1 ng-if="isEnglish()" property="name" id="wb-cont"><i class="fa fa-pie-chart"></i> &nbsp; {{vm.project.name}}</h1>
+					<h1 ng-if="isFrench()" property="name" id="wb-cont"><i class="fa fa-pie-chart"></i> &nbsp; {{vm.project.name_fr}}</h1>
+					<p ng-if="isEnglish()" style="font-size: 16px; padding-bottom: 30px;"><span ng-bind="vm.project.short"></span></p>
+					<p ng-if="isFrench()" style="font-size: 16px; padding-bottom: 30px;"><span ng-bind="vm.project.short_fr"></span></p>
 				</div>
 			</div>
 		</div>
@@ -42,7 +44,8 @@
 				<dl class="dl-horizontal">
 				<dt translate="OPP_TEAM">Team:</dt>
 				<dd>
-				<a ng-if="vm.project.program" id="programs.view" ui-sref="programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title}}</a>
+				<a ng-if="vm.project.program && isEnglish()" id="programs.view" ui-sref="programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title}}</a>
+				<a ng-if="vm.project.program && isFrench()" id="programs.view" ui-sref="programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title_fr}}</a>
 				<span ng-if="!vm.project.program" class="text-muted">No program</span>
 				</dd>
 				<!-- github link -->
@@ -56,7 +59,8 @@
 	</div>
 
 	<div class="panel-body">
-		<p ng-bind-html="vm.display.description"></p>
+		<p ng-if="isEnglish()" ng-bind-html="vm.display.description"></p>
+		<p ng-if="isFrench()" ng-bind-html="vm.display.description_fr"></p>
 	</div>
 
 	<div class="panel-footer" style="background-color: #f2f2f2">

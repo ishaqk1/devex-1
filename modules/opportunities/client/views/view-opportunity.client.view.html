@@ -83,8 +83,10 @@
 <!-- // Title and Teaser // -->
 	<div class="row">
 		<div class="col-xs-12 text-center">
-			<h1 property="name" id="wb-cont">{{vm.opportunity.name}}</h2>
-			<p ng-bind="vm.opportunity.short"></p>
+			<h1 ng-if="isEnglish()" property="name" id="wb-cont">{{vm.opportunity.name}}</h2>
+			<h1 ng-if="isFrench()" property="name" id="wb-cont">{{vm.opportunity.name_fr}}</h2>
+			<p ng-if="isEnglish()" ng-bind="vm.opportunity.short"></p>
+			<p ng-if="isFrench()" ng-bind="vm.opportunity.short_fr"></p>
 		</div>
 	</div>
 	<!--<div class="panel panel-default panel-flat card-panel">-->
@@ -117,7 +119,8 @@
 	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'offsite'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_NO">In-person work NOT required</span></span>
 	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'onsite'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_YES">In-person work required</span></span>
 	          <span class="label label-location" ng-if="vm.opportunity.onsite == 'mixed'"><i class="fa fa-user"></i>&nbsp;<span translate="IN_PERSON_SOME">Some in-person work required</span></span> -->
-	          <span class="label label-warning" ng-repeat="code in vm.opportunity.skills">{{code}}</span>
+	          <span ng-if="isEnglish()" class="label label-warning" ng-repeat="code in vm.opportunity.skills">{{code}}</span>
+	          <span ng-if="isFrench()" class="label label-warning" ng-repeat="code in vm.opportunity.skills_fr">{{code}}</span>
 			  </div>
 		</div>
 
@@ -131,12 +134,14 @@
 			</dd>
 			<dt translate="OPP_TEAM">Team:</dt>
 			<dd>
-				<a ng-if="vm.opportunity.program" id="programs.view" ui-sref="programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title}}</a>
+				<a ng-if="vm.opportunity.program && isEnglish()" id="programs.view" ui-sref="programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title}}</a>
+				<a ng-if="vm.opportunity.program && isFrench()" id="programs.view" ui-sref="programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title_fr}}</a>
 				<span ng-if="!vm.opportunity.program" class="text-muted">No program</span>
 			</dd>
 			<dt translate="OPP_PROJECT">Project:</dt>
 			<dd>
-				<a ng-if="vm.opportunity.project" id="projects.view" ui-sref="projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name}}</a>
+				<a ng-if="vm.opportunity.project && isEnglish()" id="projects.view" ui-sref="projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name}}</a>
+				<a ng-if="vm.opportunity.project && isFrench()" id="projects.view" ui-sref="projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name_fr}}</a>
 				<span ng-if="!vm.opportunity.project" class="text-muted">No project</span>
 			</dd>
 			<!-- github link -->
@@ -164,15 +169,18 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h3 translate="OPP_BACKGROUND">Background</h3>
-			<p ng-bind-html="vm.display.description"></p>
+			<p ng-if="isEnglish()" ng-bind-html="vm.display.description"></p>
+			<p ng-if="isFrench()" ng-bind-html="vm.display.description_fr"></p>
 			<hr>
 			<h3 translate="OPP_ACC_CRIT">Acceptance Criteria</h3>
 			<p translate="OPP_PAID">To be paid the fixed price for this opportunity, you need to meet all of the following criteria:</p>
-			<p ng-bind-html="vm.display.criteria"></p>
+			<p ng-if="isEnglish()" ng-bind-html="vm.display.criteria"></p>
+			<p ng-if="isFrench()" ng-bind-html="vm.display.criteria_fr"></p>
 			<hr>
 			<h3 translate="OPP_PROPOSAL_EVAL">Proposal Evaluation Criteria</h3>
 			<p translate="OPP_SCORED">Your proposal will be scored by this criteria:</p>
-			<p ng-bind-html="vm.display.evaluation"></p>
+			<p ng-if="isEnglish()" ng-bind-html="vm.display.evaluation"></p>
+			<p ng-if="isFrench()" ng-bind-html="vm.display.evaluation_fr"></p>
 			<hr>
 			<h3 translate="OPP_HOW_TO_APPLY">How to Apply</h3>
 			<p><span translate="OPP_SUBMIT_BEFORE">Submit your proposal before</span> <b>{{vm.deadline}}</b>.</p>

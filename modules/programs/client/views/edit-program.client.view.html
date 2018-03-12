@@ -5,7 +5,8 @@
   <form id="programForm" warn-on-exit name="vm.form.programForm" class="form" ng-submit="vm.save(vm.form.programForm.$valid)" novalidate>
 	<div class="row form-head">
 	<div class="col-sm-7">
-		<h2 ng-if="vm.editing">Editing: {{::vm.program.title}}</h2>
+		<h2 ng-if="vm.editing && isEnglish()">Editing: {{::vm.program.title}}</h2>
+		<h2 ng-if="vm.editing && isFrench()">Editing: {{::vm.program.title_fr}}</h2>
 		<h2 ng-if="!vm.editing" translate="TEAM_NEW">New Team</h2>
 	</div>
 	<div class="col-sm-5 col-form-buttons text-right">
@@ -30,7 +31,8 @@
 						Help Text
 					</div>
 
-					<input name="title" type="text" ng-model="vm.program.title" id="title" class="form-control" placeholder="{{ 'OPP_SHORT_TITLE_LABEL' | translate }}" required aria-required="true">
+					<input ng-if="isEnglish()" name="title" type="text" ng-model="vm.program.title" id="title" class="form-control" placeholder="{{ 'OPP_SHORT_TITLE_LABEL' | translate }}" required aria-required="true">
+					<input ng-if="isFrench()" name="title_fr" type="text" ng-model="vm.program.title_fr" id="title" class="form-control" placeholder="{{ 'OPP_SHORT_TITLE_LABEL' | translate }}" required aria-required="true">
 					<div ng-messages="vm.form.programForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
@@ -54,7 +56,8 @@
 						Help Text
 					</div>
 
-					<textarea name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required aria-required="true"></textarea>
+					<textarea ng-if="isEnglish()" name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required aria-required="true"></textarea>
+					<textarea ng-if="isFrench()" name="short_fr" data-ng-model="vm.program.short_fr" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required aria-required="true"></textarea>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="description">Description</label>
@@ -65,13 +68,21 @@
 					</div>
 
 					<!-- <textarea name="description" data-ng-model="vm.program.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the program"></textarea> -->
-					<textarea
+					<textarea ng-if="isEnglish()"
 						name="description"
 						id="description"
 						class="form-control input-sm"
 						ui-tinymce="vm.tinymceOptions"
 						placeholder="A full description of the team"
 						ng-model="vm.program.description">
+					</textarea>
+					<textarea ng-if="isFrench()"
+						name="description_fr"
+						id="description"
+						class="form-control input-sm"
+						ui-tinymce="vm.tinymceOptions"
+						placeholder="A full description of the team"
+						ng-model="vm.program.description_fr">
 					</textarea>
 				</div>
 <!--
