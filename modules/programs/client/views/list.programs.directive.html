@@ -24,8 +24,10 @@
   </thead>
   <tbody id="tbodyMain">
     <tr role="row" ng-class="{'card-greyed': !program.isPublished}" ng-repeat="program in vm.programs">
-      <td><a ui-sref="programs.view({ programId: program.code })" ng-bind="program.title"></a></td>
-      <td><p ng-bind="program.short"></p></td>
+      <td ng-if="isEnglish()"><a ui-sref="programs.view({ programId: program.code })" ng-bind="program.title"></a></td>
+      <td ng-if="isFrench()"><a ui-sref="programs.view({ programId: program.code })" ng-bind="program.title_fr"></a></td>
+      <td ng-if="isEnglish()"><p ng-bind="program.short"></p></td>
+      <td ng-if="isFrench()"><p ng-bind="program.short_fr"></p></td>
       <td><p ng-bind="program.department | translate"></p></td>
       <td><div ng-if="vm.isAdmin || program.userIs.admin">
         <span ng-if="program.userIs.member && !program.userIs.admin" class="label label-primary">Member</span>
