@@ -23,7 +23,7 @@
 			    $scope.isFrench = function() {
 			        return ($translate.use() === 'fr');
 			    };
-			    
+
 				var vm     = this;
 				vm.program = $scope.program;
 				vm.context = $scope.context;

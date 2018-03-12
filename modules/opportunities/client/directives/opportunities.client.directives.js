@@ -24,7 +24,7 @@
 			    $scope.isFrench = function() {
 			        return ($translate.use() === 'fr');
 			    };
-			    
+
 				var rightNow = new Date ();
 				var vm     = this;
 				var isUser = Authentication.user;
