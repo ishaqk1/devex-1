@@ -19,7 +19,7 @@
         params: {
           lang: {
             value: function($translate){
-              return $translate.use();
+              return $translate.proposedLanguage() || $translate.use();
             }
           }
         }

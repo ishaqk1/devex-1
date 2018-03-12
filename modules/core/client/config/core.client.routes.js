@@ -21,7 +21,7 @@
 
     // Redirect to 404 when route not found
     $urlRouterProvider.otherwise(function ($injector) {
-      $injector.get('$state').transitionTo('not-found', null, {
+      $injector.get('$state').transitionTo('app.not-found', null, {
         location: false
       });
     });
@@ -34,7 +34,7 @@
         params: {
           lang: {
             value: function($translate){
-              return $translate.use();
+              return $translate.proposedLanguage() || $translate.use();
             }
           }
         }

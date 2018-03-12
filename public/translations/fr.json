@@ -104,6 +104,7 @@
 	"EDIT_PROFILE_BLOG": "Nous vous aviserons des nouveaux billets de blogue.",
 	"EDIT_PROFILE_FAILURE": "Modification du profil non réussie!",
 	"404": "Page non trouvée!",
+	"404_MESSAGE": "Oops! Quelque chose ne fonctionne pas bien. Si vous aviez l'amabilité <a href='https://github.com/canada-ca/devex/issues'>d'ouvrir un problème et de nous dire ce qui s'est passé</a>, cela nous aidera à le régler plus rapidement. Merci!",
 	"403": "Interdit!",
 	"400": "Mauvaise demande",
 	"CHANGES_SAVED": "Vos changements ont été enregistrés.",
