@@ -1,7 +1,7 @@
 <div class="col-sm-12">
 	<fieldset>
 
-		<form-display ng-if="isEnglish()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title":"Background",
@@ -17,7 +17,7 @@
 				ng-model="vm.opportunity.description">
 			</textarea>
 		</form-display>
-		<form-display ng-if="isFrench()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title":"Background",
@@ -26,7 +26,7 @@
 			}'>
 			<textarea
 				name="description_fr"
-				id="description"
+				id="description_fr"
 				class="form-control input-sm"
 				ui-tinymce="vm.tinymceOptions"
 				placeholder="A full description of the opportunity"

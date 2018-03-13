@@ -1,7 +1,7 @@
 
 <div class="col-sm-12">
 	<fieldset>
-		<form-display ng-if="isEnglish()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title" :"Acceptance Criteria",
@@ -17,7 +17,7 @@
 				ng-model="vm.opportunity.criteria">
 			</textarea>
 		</form-display>
-		<form-display ng-if="isFrench()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title" :"Acceptance Criteria",
@@ -26,7 +26,7 @@
 			}'>
 			<textarea
 				name="criteria_fr"
-				id="criteria"
+				id="criteria_fr"
 				class="form-control input-sm"
 				ui-tinymce="vm.tinymceOptions"
 				placeholder="A clear definition of everything that must be delivered to get paid for this opportunity..."
@@ -47,7 +47,7 @@
 			}'>
 		</form-input>
 
-		<form-display ng-if="isEnglish()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title" :"Proposal Evaluation Criteria",
@@ -63,7 +63,7 @@
 				ng-model="vm.opportunity.evaluation">
 			</textarea>
 		</form-display>
-		<form-display ng-if="isFrench()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title" :"Proposal Evaluation Criteria",
@@ -72,7 +72,7 @@
 			}'>
 			<textarea
 				name="evaluation_fr"
-				id="evaluation"
+				id="evaluation_fr"
 				class="form-control input-sm"
 				ui-tinymce="vm.tinymceOptions"
 				placeholder="An explicit definition of the criteria you will use to score proposals..."

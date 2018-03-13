@@ -46,8 +46,8 @@
 					<div class="input-help alert alert-info" data-field="title" ng-show="sname" translate="PROJECT_NAME">
 						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
 					</div>
-					<input ng-if="isEnglish()" name="title" type="text" ng-model="vm.project.name" id="title" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
-					<input ng-if="isFrench()" name="title_fr" type="text" ng-model="vm.project.name_fr" id="title" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
+					<input name="title" type="text" ng-model="vm.project.name" id="title" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
+					<input name="title_fr" type="text" ng-model="vm.project.name_fr" id="title_fr" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
 					<div ng-messages="vm.form.projectForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
@@ -56,8 +56,8 @@
 					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc" translate="PROJECT_TEASER">
 						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
 					</div>
-					<textarea ng-if="isEnglish()" name="short" data-ng-model="vm.project.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
-					<textarea ng-if="isFrench()" name="short_fr" data-ng-model="vm.project.short_fr" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
+					<textarea name="short" data-ng-model="vm.project.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
+					<textarea name="short_fr" data-ng-model="vm.project.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
 				</div>
 				<div class="form-group" show-errors>
 					<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
@@ -66,7 +66,7 @@
 						Here’s where you can go into more detail...
 					</div>
 					<!-- <textarea name="description" data-ng-model="vm.project.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the project" ng-required="true"></textarea> -->
-					<textarea ng-if="isEnglish()"
+					<textarea
 						name="description"
 						id="description"
 						class="form-control input-sm"
@@ -74,9 +74,9 @@
 						placeholder="A full description of the project"
 						ng-model="vm.project.description" required aria-required="true">
 					</textarea>
-					<textarea ng-if="isFrench()"
+					<textarea
 						name="description_fr"
-						id="description"
+						id="description_fr"
 						class="form-control input-sm"
 						ui-tinymce="vm.tinymceOptions"
 						placeholder="A full description of the project"

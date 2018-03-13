@@ -74,7 +74,7 @@
 			</select>
 		</div>
  -->
-		<form-input ng-if="isEnglish()"
+		<form-input
 			class="col-sm-12"
 			ng-model="vm.opportunity.name"
 			x-form="vm.opportunityForm"
@@ -86,20 +86,20 @@
 				"placeholder":"Opportunity Title"
 			}'>
 		</form-input>
-		<form-input ng-if="isFrench()"
+		<form-input
 			class="col-sm-12"
 			ng-model="vm.opportunity.name_fr"
 			x-form="vm.opportunityForm"
 			x-options='{
 				"title":"Title",
 				"help":"Create a short title for the opportunity that conveys the core of the work you need done.",
-				"id":"title",
+				"id":"title_fr",
 				"name":"title_fr",
 				"placeholder":"Opportunity Title"
 			}'>
 		</form-input>
 
-		<form-display ng-if="isEnglish()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title":"Teaser",
@@ -108,14 +108,14 @@
 			}'>
 			<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..."></textarea>
 		</form-display>
-		<form-display ng-if="isFrench()"
+		<form-display
 			class="col-sm-12"
 			x-options='{
 				"title":"Teaser",
 				"name":"short_fr",
 				"help":"Enter a 1-2 sentence description that will entice readers to apply on this opportunity. Describe what you are inviting them to do."
 			}'>
-			<textarea name="short_fr" data-ng-model="vm.opportunity.short_fr" id="short" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..."></textarea>
+			<textarea name="short_fr" data-ng-model="vm.opportunity.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..."></textarea>
 		</form-display>
 
 
