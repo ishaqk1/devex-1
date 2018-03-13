@@ -107,8 +107,11 @@
 		vm.idString               = 'opportunityId';
 		vm.display                = {};
 		vm.display.description    = $sce.trustAsHtml(vm.opportunity.description);
+		vm.display.description_fr = $sce.trustAsHtml(vm.opportunity.description_fr);
 		vm.display.evaluation     = $sce.trustAsHtml(vm.opportunity.evaluation);
+		vm.display.evaluation_fr  = $sce.trustAsHtml(vm.opportunity.evaluation_fr);
 		vm.display.criteria       = $sce.trustAsHtml(vm.opportunity.criteria);
+		vm.display.criteria_fr    = $sce.trustAsHtml(vm.opportunity.criteria_fr);
 		//
 		// prices list
 		//
@@ -339,6 +342,7 @@
 		vm.authentication                     = Authentication;
 		vm.form                               = {};
 		vm.opportunity.skilllist              = vm.opportunity.skills ? vm.opportunity.skills.join (', ') : '';
+		vm.opportunity.skilllist_fr           = vm.opportunity.skills_fr ? vm.opportunity.skills_fr.join (', ') : '';
 		vm.opportunity.taglist                = vm.opportunity.tags   ? vm.opportunity.tags.join (', ')   : '';
 
 		// -------------------------------------------------------------------------
@@ -586,6 +590,11 @@
 				vm.opportunity.skills = vm.opportunity.skilllist.split(/ *, */);
 			} else {
 				vm.opportunity.skills = [];
+			}
+			if (vm.opportunity.skilllist_fr !== '') {
+				vm.opportunity.skills_fr = vm.opportunity.skilllist_fr.split(/ *, */);
+			} else {
+				vm.opportunity.skills_fr = [];
 			}
 			//
 			// if any context pieces were being set then copy in to the

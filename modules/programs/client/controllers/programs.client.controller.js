@@ -27,6 +27,7 @@
 		vm.program             = program;
 		vm.display             = {};
 		vm.display.description = $sce.trustAsHtml(vm.program.description);
+		vm.display.description_fr = $sce.trustAsHtml(vm.program.description_fr);
 		vm.authentication      = Authentication;
 		vm.ProgramsService     = ProgramsService;
 		vm.idString            = 'programId';

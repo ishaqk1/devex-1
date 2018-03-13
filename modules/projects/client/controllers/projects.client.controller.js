@@ -28,6 +28,7 @@
 		vm.project             = project;
 		vm.display             = {};
 		vm.display.description = $sce.trustAsHtml(vm.project.description);
+		vm.display.description_fr = $sce.trustAsHtml(vm.project.description_fr);
 		vm.authentication      = Authentication;
 		vm.ProjectsService     = ProjectsService;
 		vm.idString            = 'projectId';
@@ -110,6 +111,7 @@
 		if (editing && !vm.isAdmin && !project.userIs.admin) $state.go('forbidden');
 		vm.form            = {};
 		vm.project.taglist = vm.project.tags? vm.project.tags.join (', ') : '';
+		vm.project.taglist_fr = vm.project.tags_fr? vm.project.tags_fr.join (', ') : '';
 		vm.editing         = editing;
 		vm.context         = $stateParams.context;
 		vm.programs        = programs;
@@ -190,6 +192,11 @@
 				vm.project.tags = vm.project.taglist.split(/ *, */);
 			} else {
 				vm.project.tags = [];
+			}
+			if (vm.project.taglist_fr !== '') {
+				vm.project.tags_fr = vm.project.taglist_fr.split(/ *, */);
+			} else {
+				vm.project.tags_fr = [];
 			}
 			//
 			// if we were adding, then set the selected programId, unless it was adding inside

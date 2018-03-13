@@ -123,6 +123,14 @@
 					</div>
 					<input type="text" name="taglist" ng-model="vm.project.taglist" id="taglist" class="form-control" placeholder="{{ 'PROJECT_TAGS_PLACEHOLDER' | translate }}"></input>
 				</div>
+				<div class="form-group">
+					<label class="control-label" for="taglist_fr" translate="PROJECT_TAGS_LABEL">Tags (comma delimited list) (Français)</label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stags_fr = !stags_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="stags_fr" translate="PROJECT_TAGS">
+						Create tags as quick cues for interested developers. For example, the code language, or other keywords that indicate what’s involved in the work.
+					</div>
+					<input type="text" name="taglist_fr" ng-model="vm.project.taglist_fr" id="taglist_fr" class="form-control" placeholder="{{ 'PROJECT_TAGS_PLACEHOLDER' | translate }}"></input>
+				</div>
 				<div class="form-group" ng-if="vm.isAdmin">
 					<label class="control-label" for="activity">Activity Level Indicator</label>
 					<input type="text" name="activity" ng-model="vm.project.activity" id="activity" class="form-control" placeholder="Tag List"></input>
