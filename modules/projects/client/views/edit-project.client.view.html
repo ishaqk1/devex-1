@@ -47,8 +47,16 @@
 						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
 					</div>
 					<input name="title" type="text" ng-model="vm.project.name" id="title" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
-					<input name="title_fr" type="text" ng-model="vm.project.name_fr" id="title_fr" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
 					<div ng-messages="vm.form.projectForm.title.$error" role="alert"></div>
+				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="title" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> (Français) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sname_fr = !sname_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="sname_fr" translate="PROJECT_NAME">
+						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
+					</div>
+					<input name="title_fr" type="text" ng-model="vm.project.name_fr" id="title_fr" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
+					<div ng-messages="vm.form.projectForm.title_fr.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
 					<label class="control-label required" for="short" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
@@ -57,6 +65,13 @@
 						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
 					</div>
 					<textarea name="short" data-ng-model="vm.project.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
+				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="short" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> (Français) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc_fr = !ssdesc_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc_fr" translate="PROJECT_TEASER">
+						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
+					</div>
 					<textarea name="short_fr" data-ng-model="vm.project.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
 				</div>
 				<div class="form-group" show-errors>
@@ -74,6 +89,14 @@
 						placeholder="A full description of the project"
 						ng-model="vm.project.description" required aria-required="true">
 					</textarea>
+				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="description" aria-required="true">Description (Français) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc_fr = !sdesc_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="sdesc_fr" translate="PROJECT_DETAIL">
+						Here’s where you can go into more detail...
+					</div>
+					<!-- <textarea name="description" data-ng-model="vm.project.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the project" ng-required="true"></textarea> -->
 					<textarea
 						name="description_fr"
 						id="description_fr"
