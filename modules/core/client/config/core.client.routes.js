@@ -31,7 +31,7 @@
         url: '/',
         abstract: true,
         template: '<ui-view/>',
-        redirectTo: 'en'
+        redirectTo: 'en.home'
       })
       .state('en', {
         url: '/en',
