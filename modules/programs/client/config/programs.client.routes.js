@@ -40,10 +40,10 @@
 			url: '',
 			templateUrl: '/modules/programs/client/views/list-programs.client.view.html',
 			data: {
-				pageTitle: '{{ "TEAMS_TITLE" | translate }}'
+				pageTitle: 'Teams List'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "TEAMS_TITLE" | translate }}'
+				label: 'Teams List'
 			},
 			resolve: {
 				programs: function ($stateParams, ProgramsService) {
@@ -57,10 +57,10 @@
 			url: '',
 			templateUrl: '/modules/programs/client/views/list-programs.client.view.html',
 			data: {
-				pageTitle: '{{ "TEAMS_TITLE" | translate }}'
+				pageTitle: 'Liste des équipes'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "TEAMS_TITLE" | translate }}'
+				label: 'Liste des équipes'
 			},
 			resolve: {
 				programs: function ($stateParams, ProgramsService) {
@@ -224,10 +224,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: '{{ "TEAM_NEW" | translate }}'
+				pageTitle: 'New Team'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "TEAM_NEW" | translate }}',
+				label: 'New Team',
 				parent: 'programs.list'
 			}
 		})
@@ -251,10 +251,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: '{{ "TEAM_NEW" | translate }}'
+				pageTitle: 'Nouvelle équipe'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "TEAM_NEW" | translate }}',
+				label: 'Nouvelle équipe',
 				parent: 'programs.list'
 			}
 		})

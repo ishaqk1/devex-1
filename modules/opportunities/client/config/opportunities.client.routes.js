@@ -50,10 +50,10 @@
 			url: '',
 			templateUrl: '/modules/opportunities/client/views/list-opportunities.client.view.html',
 			data: {
-				pageTitle: '{{ "OPP_TITLE" | translate }}'
+				pageTitle: 'Opportunities List'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_TITLE" | translate }}'
+				label: 'Opportunities List'
 			},
 			resolve: {
 				opportunities: function ($stateParams, OpportunitiesService) {
@@ -70,10 +70,10 @@
 			url: '',
 			templateUrl: '/modules/opportunities/client/views/list-opportunities.client.view.html',
 			data: {
-				pageTitle: '{{ "OPP_TITLE" | translate }}'
+				pageTitle: 'Liste des possibilités'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_TITLE" | translate }}'
+				label: 'Liste des possibilités'
 			},
 			resolve: {
 				opportunities: function ($stateParams, OpportunitiesService) {
@@ -233,7 +233,7 @@
 			}
 		})
 		.state('fr.opportunityadmin.edit', {
-			url: '/:opportunityId/edit',
+			url: '/:opportunityId/modifier',
 			params: {
 				programId: null,
 				projectId: null
@@ -264,7 +264,7 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'Opportunity: {{ opportunity.name }}'
+				pageTitle: 'Possibilité : {{ opportunity.name }}'
 			},
 			ncyBreadcrumb: {
 				label: 'Modifier le possibilité',
@@ -306,10 +306,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: '{{ "OPP_NEW" | translate }}'
+				pageTitle: 'New Opportunity'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_NEW" | translate }}',
+				label: 'New Opportunity',
 				parent: 'opportunities.list'
 			}
 		})
@@ -343,10 +343,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: '{{ "OPP_NEW" | translate }}'
+				pageTitle: 'Nouvelle possibilité'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_NEW" | translate }}',
+				label: 'Nouvelle possibilité',
 				parent: 'opportunities.list'
 			}
 		})

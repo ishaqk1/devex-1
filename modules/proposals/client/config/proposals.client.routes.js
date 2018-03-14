@@ -50,10 +50,10 @@
 			url: '',
 			templateUrl: '/modules/proposals/client/views/list-proposals.client.view.html',
 			data: {
-				pageTitle: '{{ "PROP_TITLE" | translate }}'
+				pageTitle: 'Proposals List'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROP_TITLE" | translate }}'
+				label: 'Proposals List'
 			},
 			resolve: {
 				proposals: function ($stateParams, ProposalsService) {
@@ -68,10 +68,10 @@
 			url: '',
 			templateUrl: '/modules/proposals/client/views/list-proposals.client.view.html',
 			data: {
-				pageTitle: '{{ "PROP_TITLE" | translate }}'
+				pageTitle: 'Liste des propositions'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROP_TITLE" | translate }}'
+				label: 'Liste des propositions'
 			},
 			resolve: {
 				proposals: function ($stateParams, ProposalsService) {
@@ -233,7 +233,7 @@
 			data: {
 				roles: ['user'],
 				notroles: ['gov'],
-				pageTitle: '{{ "PROP_NEW" | translate }}'
+				pageTitle: 'New Proposal'
 			},
 			templateUrl: '/modules/proposals/client/views/edit-proposal.client.view.html',
 			controller: 'ProposalEditController',
@@ -257,7 +257,7 @@
 				editing: function () { return false; }
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROP_NEW" | translate }}'
+				label: 'New Proposal'
 			}
 		})
 		.state('fr.proposaladmin.create', {
@@ -265,7 +265,7 @@
 			data: {
 				roles: ['user'],
 				notroles: ['gov'],
-				pageTitle: '{{ "PROP_NEW" | translate }}'
+				pageTitle: 'Nouvelle proposition'
 			},
 			templateUrl: '/modules/proposals/client/views/edit-proposal.client.view.html',
 			controller: 'ProposalEditController',
@@ -289,7 +289,7 @@
 				editing: function () { return false; }
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROP_NEW" | translate }}'
+				label: 'Nouvelle proposition'
 			}
 		})
 		;

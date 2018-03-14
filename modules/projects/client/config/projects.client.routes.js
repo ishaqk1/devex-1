@@ -40,10 +40,10 @@
 			url: '',
 			templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
 			data: {
-				pageTitle: '{{ "PROJECT_TITLE" | translate }}'
+				pageTitle: 'Projects List'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROJECT_TITLE" | translate }}'
+				label: 'Projects List'
 			},
 			resolve: {
 				projects: function ($stateParams, ProjectsService) {
@@ -57,10 +57,10 @@
 			url: '',
 			templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
 			data: {
-				pageTitle: '{{ "PROJECT_TITLE" | translate }}'
+				pageTitle: 'Liste des projets'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROJECT_TITLE" | translate }}'
+				label: 'Liste des projets'
 			},
 			resolve: {
 				projects: function ($stateParams, ProjectsService) {
@@ -250,10 +250,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: '{{ "PROJECT_NEW" | translate }}'
+				pageTitle: 'New Project'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROJECT_NEW" | translate }}',
+				label: 'New Project',
 				parent: 'projects.list'
 			}
 		})
@@ -285,10 +285,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: '{{ "PROJECT_NEW" | translate }}'
+				pageTitle: 'Nouveau projet'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "PROJECT_NEW" | translate }}',
+				label: 'Nouveau projet',
 				parent: 'projects.list'
 			}
 		})

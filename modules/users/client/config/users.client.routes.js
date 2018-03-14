@@ -76,10 +76,10 @@
 					}
 				},
 				data: {
-					pageTitle: '{{ "PROFILE_PRIVACY" | translate }}'
+					pageTitle: 'Privacy & Notifications'
 				},
 				ncyBreadcrumb: {
-					label: '{{ "PROFILE_PRIVACY" | translate }}'
+					label: 'Privacy & Notifications'
 				}
 			})
 			.state ('fr.settings.privacy', {
@@ -93,10 +93,10 @@
 					}
 				},
 				data: {
-					pageTitle: '{{ "PROFILE_PRIVACY" | translate }}'
+					pageTitle: 'Confidentialité et notifications'
 				},
 				ncyBreadcrumb: {
-					label: '{{ "PROFILE_PRIVACY" | translate }}'
+					label: 'Confidentialité et notifications'
 				}
 			})
 			.state ('en.settings.messages', {
@@ -123,10 +123,10 @@
 				controller: 'EditProfileController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: '{{ "PROFILE_SETTINGS" | translate }}'
+					pageTitle: 'Settings'
 				},
 				ncyBreadcrumb: {
-					label: '{{ "PROFILE_SETTINGS" | translate }}'
+					label: 'Settings'
 				}
 			})
 			.state('fr.settings.profile', {
@@ -135,10 +135,10 @@
 				controller: 'EditProfileController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: '{{ "PROFILE_SETTINGS" | translate }}'
+					pageTitle: 'Paramètres'
 				},
 				ncyBreadcrumb: {
-					label: '{{ "PROFILE_SETTINGS" | translate }}'
+					label: 'Paramètres'
 				}
 			})
 			.state('en.settings.payment', {
