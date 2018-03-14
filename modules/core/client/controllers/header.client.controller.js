@@ -25,10 +25,15 @@
     $scope.isFrench = function() {
         return ($translate.use() === 'fr');
     };
+    $scope.lang = $translate.use();
     $scope.changeLanguage = function(){
         var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
+        var params = angular.extend($stateParams, {lang: newLang});
+
         $translate.use(newLang).then(function () {
-            $state.go(newLang + '.' + $state.current);
+            $state.transitionTo(newLang + '.' + $state.current, params, {
+                reload: true, inherit: false, notify: true
+            });
         });
     }
     $scope.isActiveMenu = function(item) {

@@ -11,22 +11,11 @@
 		$rootScope.$on('$stateChangeStart', stateChangeStart);
 		$rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
 		$rootScope.$on('$translateChangeSuccess', function(){
-			$rootScope.lang = $translate.use();
-			document.documentElement.lang = $translate.use();
+			var lang = $translate.use();
+			console.log('lang: ' + lang);
+			$rootScope.lang = lang;
+			document.documentElement.lang = lang;
 		});
-
-		var lang = ($location.path().indexOf('/fr') > -1) ? 'fr' : 'en';
-		console.log('lang1: ' + lang);
-		var otherLang = (lang === 'fr') ? 'en' : 'fr';
-
-		$rootScope.lang = lang;
-		$rootScope.otherLang = otherLang;
-		$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + lang, '/' + otherLang) : $location.path() + otherLang);
-		$translate.use(lang);
-		document.documentElement.lang = lang;
-
-		console.log('lang2: ' + $translate.use());
-		$rootScope.lang = $translate.use();
 
 		function stateChangeStart(event, toState, toParams) {
 			// Check authentication before changing state
@@ -69,23 +58,6 @@
 		function stateChangeSuccess(event, toState, toParams, fromState, fromParams) {
 			// Record previous state
 			storePreviousState(fromState, fromParams);
-
-			// var lang = '';
-			// var otherLang = '';
-
-			// if ($state.params.lang !== undefined) {
-			// 	lang = $state.params.lang;
-			// 	otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
-			// } else {
-			// 	lang = 'en';
-			// 	otherLang = 'fr';
-			// }
-
-			// $rootScope.lang = lang;
-			// $rootScope.otherLang = otherLang;
-			// $rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + lang, '/' + otherLang) : $location.path() + otherLang);
-			// $translate.use(lang);
-			// document.documentElement.lang = lang;
     	}
 
 	    // Store previous state
