@@ -10,9 +10,13 @@
   function routeConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.rule(function ($injector, $location) {
       var path = $location.path();
-      console.log(path);
+      if(path === '/'){
+        $injector.get('$state').transitionTo('en.home', null, {
+          location: false
+        });
+      }
+      
       var hasTrailingSlash = path.length > 1 && path[path.length - 1] === '/';
-
       if (hasTrailingSlash) {
         // if last character is a slash, return the same url without the slash
         var newPath = path.substr(0, path.length - 1);

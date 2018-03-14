@@ -33,9 +33,9 @@
 	            $state.go(newLang + currentState.slice(2));
 	        });
 	    }
-	    $rootScope.goTo = function(state, params){
+	    $rootScope.goTo = function(state){
 	        var lang = $translate.use();
-	        $state.go(lang + '.' + state, params);
+	        $state.go(lang + '.' + state);
 	    }
 
 		function stateChangeStart(event, toState, toParams) {
