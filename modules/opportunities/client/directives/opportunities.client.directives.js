@@ -17,7 +17,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/opportunities/client/views/list.opportunities.directive.html',
-			controller   : function ($scope, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $filter, $translate) {
+			controller   : function ($scope, $state, OpportunitiesService, Authentication, Notification, modalService, $q, ask, $filter, $translate) {
 				$scope.isEnglish = function() {
 			        return ($translate.use() === 'en');
 			    };

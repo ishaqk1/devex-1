@@ -12,7 +12,7 @@
 			controllerAs : 'vm',
 			scope        : {},
 			templateUrl  : '/modules/programs/client/views/list.programs.directive.html',
-			controller   : function ($scope, ProgramsService, Authentication, Notification, $filter, $translate) {
+			controller   : function ($scope, $state, ProgramsService, Authentication, Notification, $filter, $translate) {
 				$scope.isEnglish = function() {
 			        return ($translate.use() === 'en');
 			    };

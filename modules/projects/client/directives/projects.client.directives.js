@@ -16,7 +16,7 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/projects/client/views/list.projects.directive.html',
-			controller   : function ($scope, ProjectsService, Authentication, Notification, $filter, $translate) {
+			controller   : function ($scope, $state, ProjectsService, Authentication, Notification, $filter, $translate) {
 				$scope.isEnglish = function() {
 			        return ($translate.use() === 'en');
 			    };
