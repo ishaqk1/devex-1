@@ -28,14 +28,10 @@
     $scope.lang = $translate.use();
     $scope.changeLanguage = function(){
         var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
-        var params = angular.extend($stateParams);
-        console.log($stateParams);
-        console.log(params);
-        console.log($state);
-        console.log($state.current);
+        var currentState = $state.current.name;
 
         $translate.use(newLang).then(function () {
-            $state.transitionTo(newLang + '.' + $state.current, params, {
+            $state.transitionTo(newLang + currentState.slice(2), angular.extend($stateParams), {
                 reload: true, inherit: false, notify: true
             });
         });
