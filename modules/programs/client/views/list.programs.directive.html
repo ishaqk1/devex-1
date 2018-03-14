@@ -42,7 +42,8 @@
         &nbsp;
         <a ng-if="vm.isGov && !program.userIs.member && !program.userIs.request" href="javascript:void(0);" ng-click="vm.request(program)" ng-click="$event.stopPropagation()" uib-tooltip="Request Membership"><i class="glyphicon glyphicon-user"></i></a>
         &nbsp;
-        <a ng-if="vm.isAdmin || program.userIs.admin" href="javascript:void(0);"  id="programadmin.edit" ui-sref="{{lang}}.programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
+        <a ng-if="vm.isAdmin || program.userIs.admin && isEnglish()" href="javascript:void(0);"  id="programadmin.edit" ui-sref="en.programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
+        <a ng-if="vm.isAdmin || program.userIs.admin && isFrench()" href="javascript:void(0);"  id="programadmin.edit" ui-sref="fr.programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
       </div></td>
     </tr>
   </tbody>

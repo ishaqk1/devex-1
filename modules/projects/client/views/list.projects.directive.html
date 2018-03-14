@@ -3,7 +3,10 @@
     <h3 ng-bind="vm.title" class="list-page-hide"></h3>
   </div>
   <div class="col-sm-5 col-form-buttons text-right">
-    <button ng-if="vm.userCanAdd" class="btn btn-default" ng-class="{'btn-default': !vm.program, 'btn-link': vm.program}" ui-sref="projectadmin.create({programId:vm.programId, programTitle:vm.programTitle, context:vm.context})" title="New">
+    <button ng-if="vm.userCanAdd && isEnglish()" class="btn btn-default" ng-class="{'btn-default': !vm.program, 'btn-link': vm.program}" ui-sref="en.projectadmin.create({programId:vm.programId, programTitle:vm.programTitle, context:vm.context})" title="New">
+      <i class="glyphicon glyphicon-plus"></i> <span translate="PROJECT_NEW">New Project</span>
+    </button>
+    <button ng-if="vm.userCanAdd && isFrench" class="btn btn-default" ng-class="{'btn-default': !vm.program, 'btn-link': vm.program}" ui-sref="fr.projectadmin.create({programId:vm.programId, programTitle:vm.programTitle, context:vm.context})" title="New">
       <i class="glyphicon glyphicon-plus"></i> <span translate="PROJECT_NEW">New Project</span>
     </button>
   </div>
@@ -23,12 +26,12 @@
   </thead>
   <tbody id="tbodyMain">
     <tr role="row" ng-class="{'card-greyed': !project.isPublished}" ng-repeat="project in vm.projects | slice:column.start:column.end">
-      <td ng-if="isEnglish()"><a ui-sref="projects.view({ projectId: project.code, programId: project.program.code })" ng-bind="project.name"></a></td>
-      <td ng-if="isFrench()"><a ui-sref="projects.view({ projectId: project.code, programId: project.program.code })" ng-bind="project.name_fr"></a></td>
+      <td ng-if="isEnglish()"><a ui-sref="en.projects.view({ projectId: project.code, programId: project.program.code })" ng-bind="project.name"></a></td>
+      <td ng-if="isFrench()"><a ui-sref="fr.projects.view({ projectId: project.code, programId: project.program.code })" ng-bind="project.name_fr"></a></td>
       <td ng-if="isEnglish()" ng-bind="project.short"></td>
       <td ng-if="isFrench()" ng-bind="project.short_fr"></td>
-      <td ng-if="isEnglish()"><a ng-if="project.program" id="programs.view" ui-sref="programs.view({programId:project.program.code})"><i class="fa fa-university"></i> {{project.program.title}}</a></td>
-      <td ng-if="isFrench()"><a ng-if="project.program" id="programs.view" ui-sref="programs.view({programId:project.program.code})"><i class="fa fa-university"></i> {{project.program.title_fr}}</a></td>
+      <td ng-if="isEnglish()"><a ng-if="project.program" id="programs.view" ui-sref="en.programs.view({programId:project.program.code})"><i class="fa fa-university"></i> {{project.program.title}}</a></td>
+      <td ng-if="isFrench()"><a ng-if="project.program" id="programs.view" ui-sref="fr.programs.view({programId:project.program.code})"><i class="fa fa-university"></i> {{project.program.title_fr}}</a></td>
       <td ng-if="isEnglish()"><div class="label-list"><span class="label label-info" ng-repeat="code in project.tags">{{code}}</span></div></td>
       <td ng-if="isFrench()"><div class="label-list"><span class="label label-info" ng-repeat="code in project.tags_fr">{{code}}</span></div></td>
       <td><div ng-if="vm.isAdmin || project.userIs.admin">
@@ -39,7 +42,10 @@
         <span ng-if="!project.isPublished" class="label label-danger">
               <i class="fa fa-exclamation-triangle" ></i> {{ 'UNPUBLISHED' | translate }}</span>
         &nbsp;
-        <a ng-if="vm.isAdmin || project.userIs.admin" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}">
+        <a ng-if="vm.isAdmin || project.userIs.admin && isEnglish()" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="en.projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}">
+        <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a ng-if="vm.isAdmin || project.userIs.admin && isFrench()" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="fr.projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}">
         <i class="glyphicon glyphicon-edit"></i>
         </a>
         &nbsp;

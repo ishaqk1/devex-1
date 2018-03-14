@@ -3,7 +3,10 @@
     <h3 ng-bind="vm.title" class="list-page-hide"></h3>
   </div>
   <div class="col-sm-5 col-form-buttons text-right">
-    <button ng-if="vm.userCanAdd" class="btn" ng-class="{'btn-default': !vm.project && !vm.program, 'btn-link': vm.project || vm.program}" ui-sref="opportunityadmin.create({programId:vm.programId, projectId:vm.projectId, programTitle:vm.programTitle, projectTitle:vm.projectTitle, context:vm.context})" title="New">
+    <button ng-if="vm.userCanAdd && isEnglish()" class="btn" ng-class="{'btn-default': !vm.project && !vm.program, 'btn-link': vm.project || vm.program}" ui-sref="en.opportunityadmin.create({programId:vm.programId, projectId:vm.projectId, programTitle:vm.programTitle, projectTitle:vm.projectTitle, context:vm.context})" title="New">
+      <i class="glyphicon glyphicon-plus"></i> <span translate="OPP_NEW">Post an Opportunity</span>
+    </button>
+    <button ng-if="vm.userCanAdd && isFrench()" class="btn" ng-class="{'btn-default': !vm.project && !vm.program, 'btn-link': vm.project || vm.program}" ui-sref="fr.opportunityadmin.create({programId:vm.programId, projectId:vm.projectId, programTitle:vm.programTitle, projectTitle:vm.projectTitle, context:vm.context})" title="New">
       <i class="glyphicon glyphicon-plus"></i> <span translate="OPP_NEW">Post an Opportunity</span>
     </button>
   </div>
@@ -25,12 +28,12 @@
   </thead>
   <tbody id="tbodyMain">
     <tr role="row" ng-class="{'card-greyed': !opportunity.isPublished}" ng-repeat="opportunity in vm.opportunities | slice:column.start:column.end">
-      <td ng-if="isEnglish()"><a ui-sref="opportunities.view({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-bind="opportunity.name"></a></td>
-      <td ng-if="isFrench()"><a ui-sref="opportunities.view({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-bind="opportunity.name_fr"></a></td>
+      <td ng-if="isEnglish()"><a ui-sref="en.opportunities.view({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-bind="opportunity.name"></a></td>
+      <td ng-if="isFrench()"><a ui-sref="fr.opportunities.view({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-bind="opportunity.name_fr"></a></td>
       <td ng-if="isEnglish()" ng-bind="opportunity.short"></td>
       <td ng-if="isFrench()" ng-bind="opportunity.short_fr"></td>
-      <td ng-if="isEnglish()"><a ng-if="opportunity.project" id="projects.view" ui-sref="projects.view({projectId:opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{opportunity.project.name}}</a></td>
-      <td ng-if="isFrench()"><a ng-if="opportunity.project" id="projects.view" ui-sref="projects.view({projectId:opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{opportunity.project.name_fr}}</a></td>
+      <td ng-if="isEnglish()"><a ng-if="opportunity.project" id="projects.view" ui-sref="en.projects.view({projectId:opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{opportunity.project.name}}</a></td>
+      <td ng-if="isFrench()"><a ng-if="opportunity.project" id="projects.view" ui-sref="fr.projects.view({projectId:opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{opportunity.project.name_fr}}</a></td>
       <td><span class="label label-price">{{opportunity.earn | translate}} {{ 'TAX_INCL' | translate}}</span></td>
       <td><span class="label label-deadline"><i class="fa fa-hourglass-half"></i> <span style="font-weight:300;" translate="OPP_CLOSING">Closing in:</span> {{vm.closing(opportunity)}}</span></td>
       <td ng-if="isEnglish()"><div class="label-list"><span class="label label-warning" ng-repeat="code in opportunity.skills">{{code}}</span></div></td>
@@ -43,7 +46,8 @@
         <a ng-if="opportunity.project.isPublished && (vm.isAdmin || opportunity.userIs.admin) && !opportunity.isPublished" href="javascript:void(0);" ng-click="vm.publish(opportunity, true); $event.stopPropagation()" uib-tooltip="Publish"><i class="glyphicon glyphicon-check"></i>
         </a>
         &nbsp;
-        <a ng-if="vm.isAdmin || opportunity.userIs.admin" href="javascript:void(0);"  id="opportunityadmin.edit" ui-sref="opportunityadmin.edit({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
+        <a ng-if="vm.isAdmin || opportunity.userIs.admin && isEnglish()" href="javascript:void(0);" id="opportunityadmin.edit" ui-sref="en.opportunityadmin.edit({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
+        <a ng-if="vm.isAdmin || opportunity.userIs.admin && isFrench()" href="javascript:void(0);" id="opportunityadmin.edit" ui-sref="fr.opportunityadmin.edit({ opportunityId: opportunity.code, projectId: vm.projectId })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
         <button ng-if="vm.canApplyGeneral && !opportunity.userIs.member && !opportunity.userIs.request" class="btn btn-default btn-sm">Apply</button>
       </div></td>
     </tr>
