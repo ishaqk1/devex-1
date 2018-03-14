@@ -10,13 +10,8 @@
   function routeConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.rule(function ($injector, $location) {
       var path = $location.path();
-      if (path === '/') {
-        $injector.get('$state').transitionTo('en.home', null, {
-          location: false
-        });
-      }
-
       var hasTrailingSlash = path.length > 1 && path[path.length - 1] === '/';
+
       if (hasTrailingSlash) {
         // if last character is a slash, return the same url without the slash
         var newPath = path.substr(0, path.length - 1);
@@ -26,7 +21,7 @@
 
     // Redirect to 404 when route not found
     $urlRouterProvider.otherwise(function ($injector) {
-      $injector.get('$state').transitionTo('en.not-found', null, {
+      $injector.get('$state').transitionTo('en.home', null, {
         location: false
       });
     });
@@ -66,7 +61,7 @@
           lang: 'fr'
         }
       })
-      .state('en.not-found', {
+      .state('not-found', {
         url: '/not-found',
         templateUrl: '/modules/core/client/views/404.client.view.html',
         controller: 'ErrorController',
@@ -84,7 +79,7 @@
           label: 'Not Found'
         }
       })
-      .state('en.bad-request', {
+      .state('bad-request', {
         url: '/bad-request',
         templateUrl: '/modules/core/client/views/400.client.view.html',
         controller: 'ErrorController',
@@ -102,7 +97,7 @@
           label: 'Bad Request'
         }
       })
-      .state('en.forbidden', {
+      .state('forbidden', {
         url: '/forbidden',
         templateUrl: '/modules/core/client/views/403.client.view.html',
         data: {
@@ -110,7 +105,7 @@
           pageTitle: 'Forbidden'
         }
       })
-      .state('en.disclaimer', {
+      .state('disclaimer', {
         url: '/disclaimer',
         templateUrl: '/modules/core/client/views/disclaimer.client.view.html',
         data: {
@@ -118,7 +113,7 @@
           pageTitle: 'Disclaimer'
         }
       })
-      .state('en.privacy', {
+      .state('privacy', {
         url: '/privacy',
         templateUrl: '/modules/core/client/views/privacy.client.view.html',
         data: {
@@ -126,7 +121,7 @@
           pageTitle: 'Privacy'
         }
       })
-      .state('en.accessibility', {
+      .state('accessibility', {
         url: '/accessibility',
         templateUrl: '/modules/core/client/views/accessibility.client.view.html',
         data: {
@@ -134,7 +129,7 @@
           pageTitle: 'Accessibility'
         }
       })
-      .state('en.codewithus', {
+      .state('codewithus', {
         url: '/codewithus',
         templateUrl: '/modules/core/client/views/codewithus.view.html',
         data: {
@@ -142,7 +137,7 @@
           pageTitle: 'Code With Us'
         }
       })
-      .state('en.roadmap', {
+      .state('roadmap', {
         url: '/roadmap',
         templateUrl: '/modules/core/client/views/roadmap.view.html',
         data: {
@@ -150,7 +145,7 @@
           pageTitle: 'Roadmap'
         }
       })
-      .state('en.iotblog', {
+      .state('iotblog', {
         url: '/iotblog',
         templateUrl: '/modules/core/client/views/iotblog.view.html',
         data: {
@@ -158,7 +153,7 @@
           pageTitle: 'IOT Blog'
         }
       })
-      .state('en.codewithusps', {
+      .state('codewithusps', {
         url: '/codewithusps',
         templateUrl: '/modules/core/client/views/codewithus-ps.view.html',
         data: {
@@ -166,7 +161,7 @@
           pageTitle: 'Code With Us'
         }
       })
-      .state('en.copyright', {
+      .state('copyright', {
         url: '/copyright',
         templateUrl: '/modules/core/client/views/copyright.client.view.html',
         data: {
