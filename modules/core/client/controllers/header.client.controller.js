@@ -24,7 +24,6 @@
     $rootScope.isFrench = function() {
         return ($translate.use() === 'fr');
     };
-    $rootScope.lang = $translate.use();
     $rootScope.changeLanguage = function(){
         var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
         var currentState = $state.current.name;
@@ -33,6 +32,8 @@
             $state.go(newLang + currentState.slice(2));
         });
     }
+
+    $scope.thisLang = $rootScope.lang;
 
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',

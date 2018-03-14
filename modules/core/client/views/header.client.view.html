@@ -57,7 +57,7 @@
 
   <div class="themenav">
     <ul class="nav scroll dragscroll secondary affix-top" data-spy="affix" data-offset-top="150">
-      <li><a class="nav-link" ui-sref="{{lang}}.programs.list" translate="TEAMS">Teams</a></li>
+      <li><a class="nav-link" ui-sref="{{lang}}.programs.list" translate="TEAMS">Teams</a> {{thisLang}}</li>
       <li><a class="nav-link" ui-sref="{{lang}}.projects.list" translate="PROJECTS">Projects</a></li>
       <li><a class="nav-link" ui-sref="{{lang}}.opportunities.list" translate="OPPORTUNITIES">Opportunities</a></li>
     </ul>
@@ -68,7 +68,7 @@
     <div class="container">
       <div class="row">
         <ol class="breadcrumb">
-          <li ng-if="!isHomePage()"><a ui-sref="{{lang}}.home" translate="HOME">Home</a></li>
+          <li ng-if="!isHomePage()"><a ui-sref="{{lang}}.home" translate="HOME">Home</a> {{lang}}</li>
           <li ncy-breadcrumb></li>
         </ol>
       </div>

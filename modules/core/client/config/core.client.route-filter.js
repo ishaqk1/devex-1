@@ -12,7 +12,6 @@
 		$rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
 		$rootScope.$on('$translateChangeSuccess', function(){
 			var lang = $translate.use();
-			console.log('lang: ' + lang);
 			$rootScope.lang = lang;
 			document.documentElement.lang = lang;
 		});
