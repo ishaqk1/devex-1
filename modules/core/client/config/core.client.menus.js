@@ -9,6 +9,9 @@
 
   function menuConfig(menuService, $translate) {
     console.log($translate.use());
+    var lang = ($translate.use() === 'fr') ? 'fr' : 'en';
+    console.log(lang);
+
     menuService.addMenu('account', {
       roles: ['user']
     });
@@ -20,23 +23,14 @@
       roles: ['user']
     });
 
-    if ($translate.use() === 'en') {
-      menuService.addSubMenuItem('account', 'settings', {
-        title: 'Profile',
-        state: 'en.settings.profile'
-      });
-    }
-
-    if ($translate.use() === 'fr') {
-      menuService.addSubMenuItem('account', 'settings', {
-        title: 'Profil',
-        state: 'fr.settings.profile'
-      });
-    }
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Profile',
+      state: lang + '.settings.profile'
+    });
 
     if (window.features.swu) menuService.addSubMenuItem('account', 'settings', {
       title: 'Messages',
-      state: 'settings.messages'
+      state: lang + '.settings.messages'
     });
 
   }
