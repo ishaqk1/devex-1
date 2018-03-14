@@ -5,39 +5,14 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$translate', '$location', 'Authentication', 'menuService'];
+  HeaderController.$inject = ['$scope', '$state', '$stateParams', '$translate', '$location', 'Authentication', 'menuService'];
 
-  function HeaderController($scope, $rootScope, $state, $stateParams, $translate, $location, Authentication, menuService, flags) {
+  function HeaderController($scope, $state, $stateParams, $translate, $location, Authentication, menuService, flags) {
     var vm = this;
     vm.accountMenu = menuService.getMenu('account').items[0];
     vm.authentication = Authentication;
     vm.isCollapsed = false;
     vm.menu = menuService.getMenu('topbar');
-
-    $rootScope.isHomePage = function() {
-        var path = $location.path();
-        return (! path) || path === '/' || path === '/en' || path === '/fr';
-    };
-    $rootScope.isEnglish = function() {
-        return ($translate.use() === 'en');
-    };
-    $rootScope.isFrench = function() {
-        return ($translate.use() === 'fr');
-    };
-    $rootScope.changeLanguage = function(){
-        var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
-        var currentState = $state.current.name;
-
-        $translate.use(newLang).then(function () {
-            $state.go(newLang + currentState.slice(2));
-        });
-    }
-    $rootScope.goTo = function(state){
-        var lang = $translate.use();
-        $state.go(lang + '.' + state);
-    }
-
-    $scope.thisLang = $rootScope.lang;
 
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',

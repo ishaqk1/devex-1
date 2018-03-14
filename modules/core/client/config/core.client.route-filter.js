@@ -15,6 +15,28 @@
 			$rootScope.lang = lang;
 			document.documentElement.lang = lang;
 		});
+		$rootScope.isHomePage = function() {
+	        var path = $location.path();
+	        return (! path) || path === '/' || path === '/en' || path === '/fr';
+	    };
+	    $rootScope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $rootScope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+	    $rootScope.changeLanguage = function(){
+	        var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
+	        var currentState = $state.current.name;
+
+	        $translate.use(newLang).then(function () {
+	            $state.go(newLang + currentState.slice(2));
+	        });
+	    }
+	    $rootScope.goTo = function(state, params){
+	        var lang = $translate.use();
+	        $state.go(lang + '.' + state, params);
+	    }
 
 		function stateChangeStart(event, toState, toParams) {
 			// Check authentication before changing state
