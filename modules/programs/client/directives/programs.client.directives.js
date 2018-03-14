@@ -19,6 +19,10 @@
 			    $scope.isFrench = function() {
 			        return ($translate.use() === 'fr');
 			    };
+			    $scope.goTo = function(state){
+			        var lang = $translate.use();
+			        $state.go(lang + '.' + state);
+			    }
 
 				var vm = this;
 				var isAdmin  = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');

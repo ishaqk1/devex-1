@@ -24,6 +24,10 @@
 			    $scope.isFrench = function() {
 			        return ($translate.use() === 'fr');
 			    };
+			    $scope.goTo = function(state){
+			        var lang = $translate.use();
+			        $state.go(lang + '.' + state);
+			    }
 
 				var rightNow = new Date ();
 				var vm     = this;
