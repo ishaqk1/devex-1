@@ -33,7 +33,8 @@
         });
     }
     $rootScope.goTo = function(state){
-        $state.go(state);
+        var lang = $translate.use();
+        $state.go(lang + '.' + state);
     }
 
     $scope.thisLang = $rootScope.lang;
