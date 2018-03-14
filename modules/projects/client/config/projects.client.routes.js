@@ -95,7 +95,7 @@
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.project.name}}',
-				parent: 'projects.list'
+				parent: 'en.projects.list'
 			}
 		})
 		.state('fr.projects.view', {
@@ -118,7 +118,7 @@
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.project.name}}',
-				parent: 'projects.list'
+				parent: 'fr.projects.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -179,7 +179,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Edit Project',
-				parent: 'projects.list'
+				parent: 'en.projects.list'
 			}
 		})
 		.state('fr.projectadmin.edit', {
@@ -214,7 +214,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Modifier le projet',
-				parent: 'projects.list'
+				parent: 'fr.projects.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -254,7 +254,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'New Project',
-				parent: 'projects.list'
+				parent: 'en.projects.list'
 			}
 		})
 		.state('fr.projectadmin.create', {
@@ -289,7 +289,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Nouveau projet',
-				parent: 'projects.list'
+				parent: 'fr.projects.list'
 			}
 		})
 		;

@@ -92,7 +92,7 @@
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.program.title}}',
-				parent: 'programs.list'
+				parent: 'en.programs.list'
 			}
 		})
 		.state('fr.programs.view', {
@@ -112,7 +112,7 @@
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.program.title}}',
-				parent: 'programs.list'
+				parent: 'fr.programs.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -167,7 +167,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Edit Team',
-				parent: 'programs.list'
+				parent: 'en.programs.list'
 			}
 		})
 		.state('fr.programadmin.edit', {
@@ -196,7 +196,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Modifier l\'équipe',
-				parent: 'programs.list'
+				parent: 'fr.programs.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -228,7 +228,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'New Team',
-				parent: 'programs.list'
+				parent: 'en.programs.list'
 			}
 		})
 		.state('fr.programadmin.create', {
@@ -255,7 +255,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Nouvelle équipe',
-				parent: 'programs.list'
+				parent: 'fr.programs.list'
 			}
 		})
 		;

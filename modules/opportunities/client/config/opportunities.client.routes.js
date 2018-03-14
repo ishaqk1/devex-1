@@ -121,7 +121,7 @@
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.opportunity.name}}',
-				parent: 'opportunities.list'
+				parent: 'en.opportunities.list'
 			}
 		})
 		.state('fr.opportunities.view', {
@@ -154,7 +154,7 @@
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.opportunity.name}}',
-				parent: 'opportunities.list'
+				parent: 'fr.opportunities.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -229,7 +229,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Edit Opportunity',
-				parent: 'opportunities.list'
+				parent: 'en.opportunities.list'
 			}
 		})
 		.state('fr.opportunityadmin.edit', {
@@ -268,7 +268,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Modifier le possibilité',
-				parent: 'opportunities.list'
+				parent: 'fr.opportunities.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -310,7 +310,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'New Opportunity',
-				parent: 'opportunities.list'
+				parent: 'en.opportunities.list'
 			}
 		})
 		.state('fr.opportunityadmin.create', {
@@ -347,7 +347,7 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Nouvelle possibilité',
-				parent: 'opportunities.list'
+				parent: 'fr.opportunities.list'
 			}
 		})
 		;
