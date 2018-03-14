@@ -30,8 +30,11 @@
       .state('app', {
         url: '/',
         abstract: true,
-        template: '<ui-view/>',
-        redirectTo: 'en.home'
+        controller: ['$scope', '$state', 
+          function( $scope, $state) {
+            $state.go('en.home');
+          }
+        ]
       })
       .state('en', {
         url: '/en',
