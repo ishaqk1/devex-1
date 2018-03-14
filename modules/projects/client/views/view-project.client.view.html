@@ -9,7 +9,10 @@
 					</label>
 				</div>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="projectadmin.edit({projectId:vm.project.code})" uib-tooltip="Edit this page">
+					<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.projectadmin.edit({projectId:vm.project.code})" uib-tooltip="Edit this page">
+						<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
+					</button>
+					<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.projectadmin.edit({projectId:vm.project.code})" uib-tooltip="Edit this page">
 						<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 					</button>
 					<button type="button" class="btn btn-default" ng-if="vm.canRequestMembership" href="javascript:void(0);" ng-click="vm.request()" uib-tooltip="Want to be listed as a member of this project? Click here to send a request to the project admin.">
@@ -48,8 +51,8 @@
 				<dl class="dl-horizontal">
 				<dt translate="OPP_TEAM">Team:</dt>
 				<dd>
-				<a ng-if="vm.project.program && isEnglish()" id="programs.view" ui-sref="programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title}}</a>
-				<a ng-if="vm.project.program && isFrench()" id="programs.view" ui-sref="programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title_fr}}</a>
+				<a ng-if="vm.project.program && isEnglish()" id="programs.view" ui-sref="en.programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title}}</a>
+				<a ng-if="vm.project.program && isFrench()" id="programs.view" ui-sref="fr.programs.view({programId:vm.project.program.code})"><i class="fa fa-university"></i> {{vm.project.program.title_fr}}</a>
 				<span ng-if="!vm.project.program" class="text-muted">No program</span>
 				</dd>
 				<!-- github link -->
@@ -102,7 +105,10 @@
 			</label>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="projectadmin.edit({projectId:vm.project.code})" uib-tooltip="Edit this page">
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.projectadmin.edit({projectId:vm.project.code})" uib-tooltip="Edit this page">
+				<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
+			</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.projectadmin.edit({projectId:vm.project.code})" uib-tooltip="Edit this page">
 				<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 			</button>
 			<button type="button" class="btn btn-default" ng-if="vm.canRequestMembership" href="javascript:void(0);" ng-click="vm.request()" uib-tooltip="Want to be listed as a member of this project? Click here to send a request to the project admin.">

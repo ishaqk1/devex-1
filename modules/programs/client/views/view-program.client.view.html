@@ -5,7 +5,10 @@
 			<div class="col-xs-12 text-right">
 
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="programadmin.edit({programId:vm.program.code})" uib-tooltip="Edit this page">
+					<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.programadmin.edit({programId:vm.program.code})" uib-tooltip="Edit this page">
+						<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
+					</button>
+					<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.programadmin.edit({programId:vm.program.code})" uib-tooltip="Edit this page">
 						<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 					</button>
 				</div>
@@ -42,7 +45,10 @@
 	<div class="row form-foot">
 	<div class="col-sm-12 col-form-buttons text-right">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="programadmin.edit({programId:vm.program.code})" uib-tooltip="Edit this page">
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.programadmin.edit({programId:vm.program.code})" uib-tooltip="Edit this page">
+				<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
+			</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.programadmin.edit({programId:vm.program.code})" uib-tooltip="Edit this page">
 				<i class="glyphicon glyphicon-edit"></i> <span translate="EDIT">Edit</span>
 			</button>
 		</div>

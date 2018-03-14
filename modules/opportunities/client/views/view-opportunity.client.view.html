@@ -2,7 +2,7 @@
 <div class="banner banner-info" ng-if="!vm.loggedIn">
 	<div class="row">
 		<div class="col-xs-12">
-			<p>To apply on this opportunity you need to <a href ui-sref="authentication.signin"> Sign In</a> or	<a href  id="authentication.gov" ui-sref="authentication.gov"> Sign Up</a></p>
+			<p>To apply on this opportunity you need to <a href ng-click="goTo('authentication.signin')"> Sign In</a> or	<a href  id="authentication.gov" ng-click="goTo('authentication.gov')"> Sign Up</a></p>
 		</div>
 	</div>
 </div>
@@ -11,7 +11,7 @@
 <div class="banner banner-info" ng-if="vm.notifyMe && !vm.hasEmail">
 	<div class="row">
 		<div class="col-xs-12">
-			<p><span translate="OPP_UPDATES">Want <span class="hidden-sm hidden-xs">to get </span>updates<span class="hidden-sm hidden-xs"> about this opportunity</span>?</span> <a href id="settings.profile" ui-sref="settings.profile">  Add your email address.</a></p>
+			<p><span translate="OPP_UPDATES">Want <span class="hidden-sm hidden-xs">to get </span>updates<span class="hidden-sm hidden-xs"> about this opportunity</span>?</span> <a href id="settings.profile" ng-click="goTo('settings.profile')">  Add your email address.</a></p>
 		</div>
 	</div>
 </div>
@@ -61,7 +61,8 @@
 				</label>No one can see this opportunity until you publish it.
 			</span>
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.canPublish && vm.opportunity.project.isPublished && vm.canEdit && !vm.opportunity.isPublished" class="btn btn-success" ng-click="vm.publish(vm.opportunity, true)">Publish</a>
 		</div>
 	</div>
@@ -75,7 +76,8 @@
 				</label>
 			</span>
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.opportunity.project.isPublished && vm.canEdit && vm.opportunity.isPublished" class="btn btn-danger" ng-click="vm.publish(vm.opportunity, false)">Unpublish</a>
 		</div>
 	</div>
@@ -134,14 +136,14 @@
 			</dd>
 			<dt translate="OPP_TEAM">Team:</dt>
 			<dd>
-				<a ng-if="vm.opportunity.program && isEnglish()" id="programs.view" ui-sref="programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title}}</a>
-				<a ng-if="vm.opportunity.program && isFrench()" id="programs.view" ui-sref="programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title_fr}}</a>
+				<a ng-if="vm.opportunity.program && isEnglish()" id="programs.view" ui-sref="en.programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title}}</a>
+				<a ng-if="vm.opportunity.program && isFrench()" id="programs.view" ui-sref="fr.programs.view({programId:vm.opportunity.program.code})"><i class="fa fa-university"></i> {{vm.opportunity.program.title_fr}}</a>
 				<span ng-if="!vm.opportunity.program" class="text-muted">No program</span>
 			</dd>
 			<dt translate="OPP_PROJECT">Project:</dt>
 			<dd>
-				<a ng-if="vm.opportunity.project && isEnglish()" id="projects.view" ui-sref="projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name}}</a>
-				<a ng-if="vm.opportunity.project && isFrench()" id="projects.view" ui-sref="projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name_fr}}</a>
+				<a ng-if="vm.opportunity.project && isEnglish()" id="projects.view" ui-sref="en.projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name}}</a>
+				<a ng-if="vm.opportunity.project && isFrench()" id="projects.view" ui-sref="fr.projects.view({projectId:vm.opportunity.project.code})"><i class="fa fa-pie-chart"></i> {{vm.opportunity.project.name_fr}}</a>
 				<span ng-if="!vm.opportunity.project" class="text-muted">No project</span>
 			</dd>
 			<!-- github link -->
@@ -201,7 +203,8 @@
 		<br>
 			<div class="row" ng-if="qaz.case === 'canadd'">
 				<div class="col-xs-12 text-center">
-					<button  id="proposaladmin.create" ui-sref="proposaladmin.create({opportunityId:qaz.opportunity._id})" class="btn btn-lg btn-warning">Submit a proposal</button>
+					<button ng-if="isEnglish()" id="proposaladmin.create" ui-sref="en.proposaladmin.create({opportunityId:qaz.opportunity._id})" class="btn btn-lg btn-warning">Submit a proposal</button>
+					<button ng-if="isFrench()" id="proposaladmin.create" ui-sref="fr.proposaladmin.create({opportunityId:qaz.opportunity._id})" class="btn btn-lg btn-warning">Submit a proposal</button>
 				</div>
 			</div>
 		</div>
@@ -278,7 +281,8 @@
 				</label>No one can see this opportunity until you publish it.
 			</span>
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.canPublish && vm.opportunity.project.isPublished && vm.canEdit && !vm.opportunity.isPublished" class="btn btn-success" ng-click="vm.publish(vm.opportunity, true)">Publish</a>
 		</div>
 	</div>
@@ -292,7 +296,8 @@
 				</label>
 			</span>
 			 &nbsp;
-			<button type="button" class="btn btn-default" ng-if="vm.canEdit" ui-sref="opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isEnglish()" ui-sref="en.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
+			<button type="button" class="btn btn-default" ng-if="vm.canEdit && isFrench()" ui-sref="fr.opportunityadmin.edit({opportunityId:vm.opportunity.code})" translate="EDIT">Edit</button>
 			<a href="javascript:void(0);" ng-if="vm.opportunity.project.isPublished && vm.canEdit && vm.opportunity.isPublished" class="btn btn-danger" ng-click="vm.publish(vm.opportunity, false)">Unpublish</a>
 		</div>
 	</div>
@@ -387,7 +392,8 @@
 				<button class="btn btn-warning" ng-if="vm.canEdit" ng-click="vm.unassign()">UNASSIGN</button>
 			</div>
 			<div class="col-md-2" ng-if="vm.canEdit || vm.isMember">
-				<a  id="proposals.view" ui-sref="proposals.view({ proposalId: vm.opportunity.proposal._id })">View Proposal</a><br/>
+				<a ng-if="isEnglish()" id="proposals.view" ui-sref="en.proposals.view({ proposalId: vm.opportunity.proposal._id })">View Proposal</a><br/>
+				<a ng-if="isFrench()" id="proposals.view" ui-sref="fr.proposals.view({ proposalId: vm.opportunity.proposal._id })">View Proposal</a><br/>
 			</div>
 		</div>
 	</div>
