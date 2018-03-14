@@ -16,15 +16,7 @@
 	//
 	// =========================================================================
 	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, dataService, $filter, $translate) {
-		$scope.isEnglish = function() {
-	        return ($translate.use() === 'en');
-	    };
-	    $scope.isFrench = function() {
-	        return ($translate.use() === 'fr');
-	    };
-		$scope.lang = $translate.use();
-
-	    var vm                 = this;
+		var vm                 = this;
 		vm.program             = program;
 		vm.display             = {};
 		vm.display.description = $sce.trustAsHtml(vm.program.description);

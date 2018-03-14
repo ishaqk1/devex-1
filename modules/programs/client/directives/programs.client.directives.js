@@ -13,14 +13,6 @@
 			scope        : {},
 			templateUrl  : '/modules/programs/client/views/list.programs.directive.html',
 			controller   : function ($scope, ProgramsService, Authentication, Notification, $filter, $translate) {
-				$scope.isEnglish = function() {
-			        return ($translate.use() === 'en');
-			    };
-			    $scope.isFrench = function() {
-			        return ($translate.use() === 'fr');
-			    };
-			    $scope.lang = $translate.use();
-
 				var vm = this;
 				var isAdmin  = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
 				var isGov    = Authentication.user && !!~Authentication.user.roles.indexOf ('gov');
