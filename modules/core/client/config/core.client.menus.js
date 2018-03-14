@@ -21,7 +21,17 @@
 
     menuService.addSubMenuItem('account', 'settings', {
       title: 'Profile',
-      state: 'settings.profile'
+      state: 'en.settings.profile'
+    });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Profil',
+      state: 'fr.settings.profile'
+    });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Lang Profile',
+      state: '{{lang}}.settings.profile'
     });
 
     if (window.features.swu) menuService.addSubMenuItem('account', 'settings', {
