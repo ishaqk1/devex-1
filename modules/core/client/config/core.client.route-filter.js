@@ -11,17 +11,22 @@
 		$rootScope.$on('$stateChangeStart', stateChangeStart);
 		$rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
 		$rootScope.$on('$translateChangeSuccess', function(){
-			$rootScope.currentLang = $translate.use();
+			$rootScope.lang = $translate.use();
+			document.documentElement.lang = $translate.use();
 		});
 
-		var currentLang = ($location.path().indexOf('/fr') > -1) ? 'fr' : 'en';
-		var otherLang = (currentLang === 'fr') ? 'en' : 'fr';
+		var lang = ($location.path().indexOf('/fr') > -1) ? 'fr' : 'en';
+		console.log('lang1: ' + lang);
+		var otherLang = (lang === 'fr') ? 'en' : 'fr';
 
-		$rootScope.currentLang = currentLang;
+		$rootScope.lang = lang;
 		$rootScope.otherLang = otherLang;
-		$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
-		$translate.use(currentLang);
-		document.documentElement.lang = currentLang;
+		$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + lang, '/' + otherLang) : $location.path() + otherLang);
+		$translate.use(lang);
+		document.documentElement.lang = lang;
+
+		console.log('lang2: ' + $translate.use());
+		$rootScope.lang = $translate.use();
 
 		function stateChangeStart(event, toState, toParams) {
 			// Check authentication before changing state
@@ -65,22 +70,22 @@
 			// Record previous state
 			storePreviousState(fromState, fromParams);
 
-			var currentLang = '';
-			var otherLang = '';
+			// var lang = '';
+			// var otherLang = '';
 
-			if ($state.params.lang !== undefined) {
-				currentLang = $state.params.lang;
-				otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
-			} else {
-				currentLang = 'en';
-				otherLang = 'fr';
-			}
+			// if ($state.params.lang !== undefined) {
+			// 	lang = $state.params.lang;
+			// 	otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
+			// } else {
+			// 	lang = 'en';
+			// 	otherLang = 'fr';
+			// }
 
-			$rootScope.currentLang = currentLang;
-			$rootScope.otherLang = otherLang;
-			$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
-			$translate.use(currentLang);
-			document.documentElement.lang = currentLang;
+			// $rootScope.lang = lang;
+			// $rootScope.otherLang = otherLang;
+			// $rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + lang, '/' + otherLang) : $location.path() + otherLang);
+			// $translate.use(lang);
+			// document.documentElement.lang = lang;
     	}
 
 	    // Store previous state

@@ -130,7 +130,7 @@
 		})
 		.state('fr.programadmin', {
 			abstract: true,
-			url: '/programadmin',
+			url: '/adminequipe',
 			template: '<ui-view/>',
 	        params: {
 	        	lang: 'fr'

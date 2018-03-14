@@ -25,6 +25,12 @@
     $scope.isFrench = function() {
         return ($translate.use() === 'fr');
     };
+    $scope.changeLanguage = function(){
+        var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
+        $translate.use(newLang).then(function () {
+            $state.go(newLang + '.' + $state.current);
+        });
+    }
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',
             active = $state.current.name || '',
