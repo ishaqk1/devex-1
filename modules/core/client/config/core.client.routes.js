@@ -30,11 +30,7 @@
       .state('app', {
         url: '/',
         abstract: true,
-        controller: ['$scope', '$state',
-          function( $scope, $state) {
-            $state.go('en.home');
-          }
-        ]
+        redirectTo: 'en.home'
       })
       .state('en', {
         url: '/en',

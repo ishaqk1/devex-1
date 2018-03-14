@@ -40,6 +40,10 @@
 	    }
 
 		function stateChangeStart(event, toState, toParams) {
+			if (toState.redirectTo) {
+			    event.preventDefault();
+			    $state.go(toState.redirectTo, toParams);
+			}
 			// Check authentication before changing state
 			var userroles   = (Authentication.user && Authentication.user.roles !== undefined) ? Authentication.user.roles : ['guest'];
 			var hasroles    = (toState.data && toState.data.roles && toState.data.roles.length > 0);
