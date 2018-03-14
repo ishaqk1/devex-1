@@ -31,9 +31,7 @@
         var currentState = $state.current.name;
 
         $translate.use(newLang).then(function () {
-            $state.transitionTo(newLang + currentState.slice(2), angular.extend($stateParams), {
-                reload: true, inherit: false, notify: true
-            });
+            $state.go(newLang + currentState.slice(2));
         });
     }
     $scope.isActiveMenu = function(item) {

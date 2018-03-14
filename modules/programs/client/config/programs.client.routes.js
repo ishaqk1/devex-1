@@ -88,7 +88,7 @@
 				}
 			},
 			data: {
-				pageTitle: 'Program: {{program.title}}'
+				pageTitle: 'Team: {{program.title}}'
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.program.title}}',
@@ -108,7 +108,7 @@
 				}
 			},
 			data: {
-				pageTitle: 'Program: {{program.title}}'
+				pageTitle: 'Équipe: {{program.title}}'
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.program.title}}',
@@ -163,15 +163,15 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'Program: {{ program.title }}'
+				pageTitle: 'Team: {{ program.title }}'
 			},
 			ncyBreadcrumb: {
-				label: 'Edit Program',
+				label: 'Edit Team',
 				parent: 'programs.list'
 			}
 		})
 		.state('fr.programadmin.edit', {
-			url: '/:programId/edit',
+			url: '/:programId/modifier',
 			templateUrl: '/modules/programs/client/views/edit-program.client.view.html',
 			controller: 'ProgramEditController',
 			controllerAs: 'vm',
@@ -192,10 +192,10 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'Program: {{ program.title }}'
+				pageTitle: 'Équipe : {{ program.title }}'
 			},
 			ncyBreadcrumb: {
-				label: 'Edit Program',
+				label: 'Modifier l\'équipe',
 				parent: 'programs.list'
 			}
 		})
@@ -232,7 +232,7 @@
 			}
 		})
 		.state('fr.programadmin.create', {
-			url: '/create',
+			url: '/creer',
 			templateUrl: '/modules/programs/client/views/edit-program.client.view.html',
 			controller: 'ProgramEditController',
 			controllerAs: 'vm',
