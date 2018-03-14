@@ -21,9 +21,7 @@
 
     // Redirect to 404 when route not found
     $urlRouterProvider.otherwise(function ($injector) {
-      $injector.get('$state').transitionTo('en.home', null, {
-        location: false
-      });
+      $injector.get('$state').go('en.home');
     });
 
     $stateProvider
