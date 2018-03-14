@@ -5,11 +5,12 @@
     .module('core')
     .run(menuConfig);
 
-  menuConfig.$inject = ['menuService', '$translate'];
+  menuConfig.$inject = ['menuService', '$location'];
 
-  function menuConfig(menuService, $translate) {
-    console.log($translate.use());
-    var lang = ($translate.use() === 'fr') ? 'fr' : 'en';
+  function menuConfig(menuService, $location) {
+    var path = $location.path();
+    console.log(path);
+    var lang = (path.indexOf('/fr') !== -1) ? 'fr' : 'en';
     console.log(lang);
 
     menuService.addMenu('account', {
