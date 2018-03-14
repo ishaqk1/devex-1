@@ -3,7 +3,7 @@
     <h2 class="list-page-hide">Government Partners</h2>
   </div>
   <div class="col-sm-5 col-form-buttons text-right">
-    <button ng-if="vm.userCanAdd" class="btn btn-default" ui-sref="programadmin.create()" title="New">
+    <button ng-if="vm.userCanAdd" class="btn btn-default" ui-sref="{{currentLang}}.programadmin.create()" title="New">
       <i class="glyphicon glyphicon-plus"></i> <span translate="TEAM_NEW">New Team</span>
     </button>
   </div>
@@ -24,8 +24,8 @@
   </thead>
   <tbody id="tbodyMain">
     <tr role="row" ng-class="{'card-greyed': !program.isPublished}" ng-repeat="program in vm.programs">
-      <td ng-if="isEnglish()"><a ui-sref="programs.view({ programId: program.code })" ng-bind="program.title"></a></td>
-      <td ng-if="isFrench()"><a ui-sref="programs.view({ programId: program.code })" ng-bind="program.title_fr"></a></td>
+      <td ng-if="isEnglish()"><a ui-sref="{{currentLang}}.programs.view({ programId: program.code })" ng-bind="program.title"></a></td>
+      <td ng-if="isFrench()"><a ui-sref="{{currentLang}}.programs.view({ programId: program.code })" ng-bind="program.title_fr"></a></td>
       <td ng-if="isEnglish()"><p ng-bind="program.short"></p></td>
       <td ng-if="isFrench()"><p ng-bind="program.short_fr"></p></td>
       <td><p ng-bind="program.department | translate"></p></td>
@@ -42,7 +42,7 @@
         &nbsp;
         <a ng-if="vm.isGov && !program.userIs.member && !program.userIs.request" href="javascript:void(0);" ng-click="vm.request(program)" ng-click="$event.stopPropagation()" uib-tooltip="Request Membership"><i class="glyphicon glyphicon-user"></i></a>
         &nbsp;
-        <a ng-if="vm.isAdmin || program.userIs.admin" href="javascript:void(0);"  id="programadmin.edit" ui-sref="programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
+        <a ng-if="vm.isAdmin || program.userIs.admin" href="javascript:void(0);"  id="programadmin.edit" ui-sref="{{lang}}.programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
       </div></td>
     </tr>
   </tbody>
