@@ -19,8 +19,8 @@
       <div class="brand col-xs-6 text-right">
         <ul class="list-inline margin-bottom-none" ng-hide="vm.authentication.user">
           <li><a href="#beta-definition" aria-controls="beta-definition" class="wb-lbx lbx-modal btn btn-primary text-uppercase" role="button" translate="BETA">Beta</a></li>
-          <li><a ui-sref="{{lang}}.authentication.gov" translate="SIGNUP">Sign Up</a></li>
-          <li><a ui-sref="{{lang}}.authentication.signinadmin" translate="SIGNIN">Sign In</a></li>
+          <li><a href ng-click="goTo('authentication.gov')" translate="SIGNUP">Sign Up</a></li>
+          <li><a href ng-click="goTo('authentication.signinadmin')" translate="SIGNIN">Sign In</a></li>
           <li><a href ng-click="changeLanguage()" translate="CHANGE_LANGUAGE">Français</a></li>
         </ul>
         <ul class="list-inline margin-bottom-none" ng-show="vm.authentication.user">
@@ -58,8 +58,8 @@
   <div class="themenav">
     <ul class="nav scroll dragscroll secondary affix-top" data-spy="affix" data-offset-top="150">
       <li><a class="nav-link" href ng-click="goTo('programs.list')" translate="TEAMS">Teams</a></li>
-      <li><a class="nav-link" ui-sref="{{lang}}.projects.list" translate="PROJECTS">Projects</a></li>
-      <li><a class="nav-link" href ng-click="goTo(opportunities.list)" translate="OPPORTUNITIES">Opportunities</a></li>
+      <li><a class="nav-link" href ng-click="goTo('projects.list')" translate="PROJECTS">Projects</a></li>
+      <li><a class="nav-link" href ng-click="goTo('opportunities.list')" translate="OPPORTUNITIES">Opportunities</a></li>
     </ul>
   </div>
 
@@ -68,7 +68,7 @@
     <div class="container">
       <div class="row">
         <ol class="breadcrumb">
-          <li ng-if="!isHomePage()"><a ui-sref="{{lang}}.home" translate="HOME">Home</a></li>
+          <li ng-if="!isHomePage()"><a href ng-click="goTo('home')" translate="HOME">Home</a></li>
           <li ncy-breadcrumb></li>
         </ol>
       </div>
