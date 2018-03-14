@@ -42,10 +42,10 @@
         <span ng-if="!project.isPublished" class="label label-danger">
               <i class="fa fa-exclamation-triangle" ></i> {{ 'UNPUBLISHED' | translate }}</span>
         &nbsp;
-        <a ng-if="vm.isAdmin || project.userIs.admin && isEnglish()" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="en.projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}">
+        <a ng-if="(vm.isAdmin || project.userIs.admin) && isEnglish()" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="en.projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}">
         <i class="glyphicon glyphicon-edit"></i>
         </a>
-        <a ng-if="vm.isAdmin || project.userIs.admin && isFrench()" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="fr.projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}">
+        <a ng-if="(vm.isAdmin || project.userIs.admin) && isFrench()" href="javascript:void(0);"  id="projectadmin.edit" ui-sref="fr.projectadmin.edit({ projectId: project.code, programId: project.program.code, context:vm.context})" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}">
         <i class="glyphicon glyphicon-edit"></i>
         </a>
         &nbsp;
