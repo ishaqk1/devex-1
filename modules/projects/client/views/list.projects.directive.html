@@ -6,7 +6,7 @@
     <button ng-if="vm.userCanAdd && isEnglish()" class="btn btn-default" ng-class="{'btn-default': !vm.program, 'btn-link': vm.program}" ui-sref="en.projectadmin.create({programId:vm.programId, programTitle:vm.programTitle, context:vm.context})" title="New">
       <i class="glyphicon glyphicon-plus"></i> <span translate="PROJECT_NEW">New Project</span>
     </button>
-    <button ng-if="vm.userCanAdd && isFrench" class="btn btn-default" ng-class="{'btn-default': !vm.program, 'btn-link': vm.program}" ui-sref="fr.projectadmin.create({programId:vm.programId, programTitle:vm.programTitle, context:vm.context})" title="New">
+    <button ng-if="vm.userCanAdd && isFrench()" class="btn btn-default" ng-class="{'btn-default': !vm.program, 'btn-link': vm.program}" ui-sref="fr.projectadmin.create({programId:vm.programId, programTitle:vm.programTitle, context:vm.context})" title="New">
       <i class="glyphicon glyphicon-plus"></i> <span translate="PROJECT_NEW">New Project</span>
     </button>
   </div>
