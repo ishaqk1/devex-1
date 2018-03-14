@@ -7,7 +7,7 @@
 
   menuConfig.$inject = ['menuService', '$translate'];
 
-  function menuConfig(menuService) {
+  function menuConfig(menuService, $translate) {
     console.log($translate.use());
     menuService.addMenu('account', {
       roles: ['user']
