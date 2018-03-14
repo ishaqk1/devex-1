@@ -28,19 +28,22 @@
 
     $stateProvider
       .state('app', {
-          url: '',
-          abstract: true,
-          template: '<ui-view/>'
+        url: '/',
+        abstract: true,
+        template: '<ui-view/>',
+        params: {
+          lang: 'en'
+        }
       })
       .state('en', {
-          url: '/en',
-          abstract: true,
-          template: '<ui-view/>'
+        url: '/en',
+        abstract: true,
+        template: '<ui-view/>'
       })
       .state('fr', {
-          url: '/fr',
-          abstract: true,
-          template: '<ui-view/>'
+        url: '/fr',
+        abstract: true,
+        template: '<ui-view/>'
       })
       .state('app.home', {
         url: '',
@@ -49,9 +52,6 @@
         controllerAs: 'vm',
         ncyBreadcrumb: {
           label: '{{ "HOME" | translate }}'
-        },
-        params: {
-          lang: 'en'
         }
       })
       .state('en.home', {
