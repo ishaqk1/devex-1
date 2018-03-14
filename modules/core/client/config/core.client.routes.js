@@ -21,34 +21,47 @@
 
     // Redirect to 404 when route not found
     $urlRouterProvider.otherwise(function ($injector) {
-      $injector.get('$state').transitionTo('app.not-found', null, {
+      $injector.get('$state').transitionTo('en.not-found', null, {
         location: false
       });
     });
 
     $stateProvider
-      .state('app', {
-        abstract: true,
-        url: '/{lang:(?:en|fr)}',
-        template: '<ui-view/>',
-        params: {
-          lang: {
-            value: function($translate){
-              return $translate.proposedLanguage() || $translate.use();
-            }
-          }
-        }
+      .state('en', {
+          url: '/en',
+          abstract: true,
+          template: '<ui-view/>'
       })
-      .state('app.home', {
+      .state('fr', {
+          url: '/fr',
+          abstract: true,
+          template: '<ui-view/>'
+      })
+      .state('en.home', {
         url: '',
         templateUrl: '/modules/core/client/views/home.client.view.html',
         controller: 'HomeController',
         controllerAs: 'vm',
         ncyBreadcrumb: {
           label: '{{ "HOME" | translate }}'
+        },
+        params: {
+          lang: 'en'
         }
       })
-      .state('app.not-found', {
+      .state('fr.home', {
+        url: '',
+        templateUrl: '/modules/core/client/views/home.client.view.html',
+        controller: 'HomeController',
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: '{{ "HOME" | translate }}'
+        },
+        params: {
+          lang: 'fr'
+        }
+      })
+      .state('en.not-found', {
         url: '/not-found',
         templateUrl: '/modules/core/client/views/404.client.view.html',
         controller: 'ErrorController',
@@ -66,7 +79,7 @@
           label: 'Not Found'
         }
       })
-      .state('app.bad-request', {
+      .state('en.bad-request', {
         url: '/bad-request',
         templateUrl: '/modules/core/client/views/400.client.view.html',
         controller: 'ErrorController',
@@ -84,7 +97,7 @@
           label: 'Bad Request'
         }
       })
-      .state('app.forbidden', {
+      .state('en.forbidden', {
         url: '/forbidden',
         templateUrl: '/modules/core/client/views/403.client.view.html',
         data: {
@@ -92,7 +105,7 @@
           pageTitle: 'Forbidden'
         }
       })
-      .state('app.disclaimer', {
+      .state('en.disclaimer', {
         url: '/disclaimer',
         templateUrl: '/modules/core/client/views/disclaimer.client.view.html',
         data: {
@@ -100,7 +113,7 @@
           pageTitle: 'Disclaimer'
         }
       })
-      .state('app.privacy', {
+      .state('en.privacy', {
         url: '/privacy',
         templateUrl: '/modules/core/client/views/privacy.client.view.html',
         data: {
@@ -108,7 +121,7 @@
           pageTitle: 'Privacy'
         }
       })
-      .state('app.accessibility', {
+      .state('en.accessibility', {
         url: '/accessibility',
         templateUrl: '/modules/core/client/views/accessibility.client.view.html',
         data: {
@@ -116,7 +129,7 @@
           pageTitle: 'Accessibility'
         }
       })
-      .state('app.codewithus', {
+      .state('en.codewithus', {
         url: '/codewithus',
         templateUrl: '/modules/core/client/views/codewithus.view.html',
         data: {
@@ -124,7 +137,7 @@
           pageTitle: 'Code With Us'
         }
       })
-      .state('roadmap', {
+      .state('en.roadmap', {
         url: '/roadmap',
         templateUrl: '/modules/core/client/views/roadmap.view.html',
         data: {
@@ -132,7 +145,7 @@
           pageTitle: 'Roadmap'
         }
       })
-      .state('iotblog', {
+      .state('en.iotblog', {
         url: '/iotblog',
         templateUrl: '/modules/core/client/views/iotblog.view.html',
         data: {
@@ -140,7 +153,7 @@
           pageTitle: 'IOT Blog'
         }
       })
-      .state('app.codewithusps', {
+      .state('en.codewithusps', {
         url: '/codewithusps',
         templateUrl: '/modules/core/client/views/codewithus-ps.view.html',
         data: {
@@ -148,7 +161,7 @@
           pageTitle: 'Code With Us'
         }
       })
-      .state('app.copyright', {
+      .state('en.copyright', {
         url: '/copyright',
         templateUrl: '/modules/core/client/views/copyright.client.view.html',
         data: {
