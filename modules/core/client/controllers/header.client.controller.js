@@ -32,6 +32,9 @@
             $state.go(newLang + currentState.slice(2));
         });
     }
+    $rootScope.goTo = function(state){
+        $state.go(state);
+    }
 
     $scope.thisLang = $rootScope.lang;
 
