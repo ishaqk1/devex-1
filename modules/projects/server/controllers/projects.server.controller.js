@@ -449,7 +449,7 @@ exports.projectByID = function (req, res, next, id) {
 		Project.findOne({code:id})
 		.populate('createdBy', 'displayName')
 		.populate('updatedBy', 'displayName')
-		.populate('program', 'code title logo isPublished')
+		.populate('program', 'code title title_fr logo isPublished')
 		.exec(function (err, project) {
 			if (err) {
 				return next(err);
@@ -472,7 +472,7 @@ exports.projectByID = function (req, res, next, id) {
 		Project.findById(id)
 		.populate('createdBy', 'displayName')
 		.populate('updatedBy', 'displayName')
-		.populate('program', 'code title logo isPublished')
+		.populate('program', 'code title title_fr logo isPublished')
 		.exec(function (err, project) {
 			if (err) {
 				return next(err);

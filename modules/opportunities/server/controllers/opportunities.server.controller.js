@@ -742,8 +742,8 @@ exports.opportunityByID = function (req, res, next, id) {
 		Opportunity.findOne({code:id})
 		.populate('createdBy', 'displayName')
 		.populate('updatedBy', 'displayName')
-		.populate('project', 'code name _id isPublished')
-		.populate('program', 'code title _id logo isPublished')
+		.populate('project', 'code name name_fr _id isPublished')
+		.populate('program', 'code title title_fr _id logo isPublished')
 		.populate({
 			path: 'proposal',
 			model: 'Proposal',
@@ -775,8 +775,8 @@ exports.opportunityByID = function (req, res, next, id) {
 		Opportunity.findById(id)
 		.populate('createdBy', 'displayName')
 		.populate('updatedBy', 'displayName')
-		.populate('project', 'code name _id isPublished')
-		.populate('program', 'code title _id logo isPublished')
+		.populate('project', 'code name name_fr _id isPublished')
+		.populate('program', 'code title title_fr _id logo isPublished')
 		.populate({
 			path: 'proposal',
 			model: 'Proposal',
