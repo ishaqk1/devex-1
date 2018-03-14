@@ -10,6 +10,7 @@
   function routeConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.rule(function ($injector, $location) {
       var path = $location.path();
+      console.log(path);
       var hasTrailingSlash = path.length > 1 && path[path.length - 1] === '/';
 
       if (hasTrailingSlash) {
@@ -27,11 +28,6 @@
     });
 
     $stateProvider
-      .state('app', {
-        url: '/',
-        abstract: true,
-        redirectTo: 'en.home'
-      })
       .state('en', {
         url: '/en',
         abstract: true,
