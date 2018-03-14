@@ -5,9 +5,9 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$state', '$translate', '$location', 'Authentication', 'menuService'];
+  HeaderController.$inject = ['$scope', '$state', '$stateParams', '$translate', '$location', 'Authentication', 'menuService'];
 
-  function HeaderController($scope, $state, $translate, $location, Authentication, menuService, flags) {
+  function HeaderController($scope, $state, $stateParams, $translate, $location, Authentication, menuService, flags) {
     var vm = this;
     vm.accountMenu = menuService.getMenu('account').items[0];
     vm.authentication = Authentication;
@@ -28,7 +28,7 @@
     $scope.lang = $translate.use();
     $scope.changeLanguage = function(){
         var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
-        var params = angular.extend($stateParams, {lang: newLang});
+        var params = angular.extend($stateParams);
 
         $translate.use(newLang).then(function () {
             $state.transitionTo(newLang + '.' + $state.current, params, {
