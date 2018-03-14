@@ -5,29 +5,32 @@
     .module('users.admin')
     .run(menuConfig);
 
-  menuConfig.$inject = ['menuService'];
+  menuConfig.$inject = ['menuService', '$location'];
 
   // Configuring the Users module
-  function menuConfig(menuService) {
+  function menuConfig(menuService, $location) {
+    var path = $location.path();
+    var lang = (path.indexOf('/fr') !== -1) ? 'fr' : 'en';
+
     menuService.addSubMenuItem('topbar', 'admin', {
       title: 'Manage Users',
-      state: 'admin.users'
+      state: lang + '.admin.users'
     });
     menuService.addSubMenuItem('topbar', 'admin', {
       title: 'Manage Gov. Request',
-      state: 'admin.govs'
+      state: lang + '.admin.govs'
     });
     menuService.addSubMenuItem('topbar', 'admin', {
       title: 'Notify of Opportunities',
-      state: 'admin.notifyopps'
+      state: lang + '.admin.notifyopps'
     });
     menuService.addSubMenuItem('topbar', 'admin', {
       title: 'Notify of Events',
-      state: 'admin.notifymeets'
+      state: lang + '.admin.notifymeets'
     });
     menuService.addSubMenuItem('topbar', 'admin', {
       title: 'Full Data List',
-      state: 'admin.datalist'
+      state: lang + '.admin.datalist'
     });
   }
 }());
