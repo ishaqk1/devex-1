@@ -5,9 +5,10 @@
     .module('core')
     .run(menuConfig);
 
-  menuConfig.$inject = ['menuService'];
+  menuConfig.$inject = ['menuService', '$translate'];
 
   function menuConfig(menuService) {
+    console.log($translate.use());
     menuService.addMenu('account', {
       roles: ['user']
     });
@@ -19,20 +20,19 @@
       roles: ['user']
     });
 
-    menuService.addSubMenuItem('account', 'settings', {
-      title: 'Profile',
-      state: 'en.settings.profile'
-    });
+    if ($translate.use() === 'en') {
+      menuService.addSubMenuItem('account', 'settings', {
+        title: 'Profile',
+        state: 'en.settings.profile'
+      });
+    }
 
-    menuService.addSubMenuItem('account', 'settings', {
-      title: 'Profil',
-      state: 'fr.settings.profile'
-    });
-
-    menuService.addSubMenuItem('account', 'settings', {
-      title: 'Lang Profile',
-      state: '{{lang}}.settings.profile'
-    });
+    if ($translate.use() === 'fr') {
+      menuService.addSubMenuItem('account', 'settings', {
+        title: 'Profil',
+        state: 'fr.settings.profile'
+      });
+    }
 
     if (window.features.swu) menuService.addSubMenuItem('account', 'settings', {
       title: 'Messages',
