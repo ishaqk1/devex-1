@@ -10,6 +10,27 @@
 		$stateProvider
 		// -------------------------------------------------------------------------
 		//
+		// -------------------------------------------------------------------------
+		.state('en', {
+	        url: '/en',
+	        abstract: true,
+	        template: '<ui-view/>'
+	    })
+	    .state('fr', {
+	        url: '/fr',
+	        abstract: true,
+	        template: '<ui-view/>'
+	    })
+	    .state('en.programs', {
+	        url: '/teams',
+	        templateUrl: '/modules/programs/client/views/list-programs.client.view.html',
+	    })
+	    .state('fr.programs', {
+	        url: '/equipes',
+	        templateUrl: '/modules/programs/client/views/list-programs.client.view.html',
+	    })
+		// -------------------------------------------------------------------------
+		//
 		// this is the top level, abstract route for all program routes, it only
 		// contians the ui-view that all other routes get rendered in
 		//
