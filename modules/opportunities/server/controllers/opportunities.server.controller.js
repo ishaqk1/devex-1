@@ -113,8 +113,8 @@ var opplist = function (query, req, callback) {
 	.sort([['deadline', -1],['name', 1]])
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('project', 'code name _id isPublished')
-	.populate('program', 'code title _id logo isPublished')
+	.populate('project', 'code name name_fr _id isPublished')
+	.populate('program', 'code title title_fr _id logo isPublished')
 	.exec(function (err, opportunities) {
 		if (err) {
 			callback (err, null);

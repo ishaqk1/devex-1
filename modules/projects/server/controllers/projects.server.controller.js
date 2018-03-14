@@ -318,7 +318,7 @@ exports.list = function (req, res) {
 	Project.find(searchTerm (req)).sort('activity name')
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('program', 'code title logo isPublished')
+	.populate('program', 'code title title_fr logo isPublished')
 	.exec(function (err, projects) {
 		if (err) {
 			return res.status(422).send({
