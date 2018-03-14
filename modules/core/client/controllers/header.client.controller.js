@@ -33,7 +33,7 @@
             $state.go(newLang + currentState.slice(2));
         });
     }
-    
+
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',
             active = $state.current.name || '',
