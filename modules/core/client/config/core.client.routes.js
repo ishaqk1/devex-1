@@ -31,9 +31,7 @@
         url: '/',
         abstract: true,
         template: '<ui-view/>',
-        params: {
-          lang: 'en'
-        }
+        redirectTo: 'en'
       })
       .state('en', {
         url: '/en',
@@ -44,15 +42,6 @@
         url: '/fr',
         abstract: true,
         template: '<ui-view/>'
-      })
-      .state('app.home', {
-        url: '',
-        templateUrl: '/modules/core/client/views/home.client.view.html',
-        controller: 'HomeController',
-        controllerAs: 'vm',
-        ncyBreadcrumb: {
-          label: '{{ "HOME" | translate }}'
-        }
       })
       .state('en.home', {
         url: '',
