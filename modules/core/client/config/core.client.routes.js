@@ -30,7 +30,7 @@
       .state('app', {
         url: '/',
         abstract: true,
-        controller: ['$scope', '$state', 
+        controller: ['$scope', '$state',
           function( $scope, $state) {
             $state.go('en.home');
           }
