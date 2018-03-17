@@ -160,15 +160,24 @@
 		vm.assignment = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
 		dt = vm.opportunity.start;
 		vm.start = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+		dt = vm.opportunity.created;
+		vm.created = monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+		dt = vm.opportunity.updated;
+		vm.updated = monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
 
 		var monthNames_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 		var dayNames_fr = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 		var dt_fr = vm.opportunity.deadline;
-		vm.deadline_fr = dt_fr.getHours()+':00 EST le '+dayNames[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		vm.deadline_fr = dt_fr.getHours()+':00 EST le '+dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
 		dt_fr = vm.opportunity.assignment;
-		vm.assignment_fr = 'le ' + dayNames[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		vm.assignment_fr = 'le ' + dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
 		dt_fr = vm.opportunity.start;
-		vm.start_fr = 'le ' + dayNames[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		vm.start_fr = 'le ' + dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.created;
+		vm.created_fr = dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.updated;
+		vm.updated_fr = dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+
 		// -------------------------------------------------------------------------
 		//
 		// can this be published?
