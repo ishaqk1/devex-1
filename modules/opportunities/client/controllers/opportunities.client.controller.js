@@ -102,6 +102,8 @@
 		vm.opportunity.assignment = new Date (vm.opportunity.assignment);
 		vm.opportunity.start      = new Date (vm.opportunity.start);
 		vm.opportunity.endDate      = new Date (vm.opportunity.endDate);
+		vm.opportunity.created      = new Date (vm.opportunity.created);
+		vm.opportunity.updated      = new Date (vm.opportunity.updated);
 		vm.authentication         = Authentication;
 		vm.OpportunitiesService   = OpportunitiesService;
 		vm.idString               = 'opportunityId';
