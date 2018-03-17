@@ -185,9 +185,11 @@
 			<p ng-if="isFrench()" ng-bind-html="vm.display.evaluation_fr"></p>
 			<hr>
 			<h3 translate="OPP_HOW_TO_APPLY">How to Apply</h3>
-			<p><span translate="OPP_SUBMIT_BEFORE">Submit your proposal before</span> <b>{{vm.deadline}}</b>.</p>
+			<p ng-if="isEnglish()"><span translate="OPP_SUBMIT_BEFORE">Submit your proposal before</span> <b>{{vm.deadline}}</b>.</p>
+			<p ng-if="isFrench()"><span translate="OPP_SUBMIT_BEFORE">Submit your proposal before</span> <b>{{vm.deadline_fr}}</b>.</p>
 			<!-- <p translate="OPP_INSTRUCTIONS">With your proposal, you must upload a copy of the <a href="https://github.com/canada-ca/devex/blob/master/GCDevEx_TermsandConditions.md">terms,</a> to indicate your acceptance of the terms.</p> -->
-			<p><span translate="OPP_PLAN">We plan to assign this opportunity by</span> <b>{{vm.assignment}}</b> <span translate="OPP_PLAN2">with work to start on</span> <b>{{vm.start}}</b>.</p>
+			<p ng-if="isEnglish()"><span translate="OPP_PLAN">We plan to assign this opportunity by</span> <b>{{vm.assignment}}</b> <span translate="OPP_PLAN2">with work to start on</span> <b>{{vm.start}}</b>.</p>
+			<p ng-if="isFrench()"><span translate="OPP_PLAN">We plan to assign this opportunity by</span> <b>{{vm.assignment_fr}}</b> <span translate="OPP_PLAN2">with work to start on</span> <b>{{vm.start_fr}}</b>.</p>
 			<br>
 			<div class="text-center" ng-if="vm.opportunity.issueUrl">
 				<div class="well well-info">

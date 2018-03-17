@@ -4,7 +4,7 @@
 <div class="container" ng-if="!vm.isUser">
 	<div class="row text-center">
 		<div class="well well-info">
-			<p><i class="fa fa-lg fa-envelope-o"></i>&nbsp;&nbsp;<span translate="OPP_CTA">To get notified when new opportunities are posted, or post an opportunity yourself</span>, <a href ui-sref="authentication.signin" translate="SIGNIN">Sign In</a> <span translate="SIGNIN_OR">or</span> <a href id="authentication.gov" ui-sref="authentication.gov" translate="SIGNUP">Sign Up</a>
+			<p><i class="fa fa-lg fa-envelope-o"></i>&nbsp;&nbsp;<span translate="OPP_CTA">To get notified when new opportunities are posted, or post an opportunity yourself</span>, <a href ng-click="goTo('authentication.signin')" translate="SIGNIN">Sign In</a> <span translate="SIGNIN_OR">or</span> <a href ng-click="goTo('authentication.gov')" id="authentication.gov" translate="SIGNUP">Sign Up</a>
 			</p>
 		</div>
 	</div>

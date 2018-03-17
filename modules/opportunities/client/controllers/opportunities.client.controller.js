@@ -155,11 +155,20 @@
 		var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		var dt = vm.opportunity.deadline;
-		vm.deadline = dt.getHours()+':00 PST, '+dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+		vm.deadline = dt.getHours()+':00 EST, '+dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
 		dt = vm.opportunity.assignment;
 		vm.assignment = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
 		dt = vm.opportunity.start;
 		vm.start = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+
+		var monthNames_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+		var dayNames_fr = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+		var dt_fr = vm.opportunity.deadline;
+		vm.deadline_fr = dt_fr.getHours()+':00 EST le '+dayNames[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.assignment;
+		vm.assignment_fr = 'le ' + dayNames[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.start;
+		vm.start_fr = 'le ' + dayNames[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
 		// -------------------------------------------------------------------------
 		//
 		// can this be published?

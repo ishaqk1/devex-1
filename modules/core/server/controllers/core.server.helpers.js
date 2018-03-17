@@ -127,9 +127,21 @@ exports.formatDate = function (d) {
   var monthIndex = d.getMonth();
   var year = d.getFullYear();
 
-
-
   return monthNames[monthIndex] + ' ' + day + ', '+ year;
+}
+
+exports.formatDate_fr = function (d) {
+	  var monthNames = [
+    'janvier', 'février', 'mars',
+    'avril', 'mai', 'juin', 'juillet',
+    'août', 'septembre', 'octobre',
+    'novembre', 'décembre'
+  ];
+  var day = d.getDate();
+  var monthIndex = d.getMonth();
+  var year = d.getFullYear();
+
+  return 'le ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
 }
 
 exports.formatTime = function (d) {

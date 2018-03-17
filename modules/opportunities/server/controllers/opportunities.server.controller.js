@@ -149,20 +149,28 @@ var incrementViews = function (id) {
 var setNotificationData = function (opportunity) {
 	return {
 		name                 : opportunity.name,
+		name_fr              : opportunity.name_fr,
 		short                : opportunity.short,
 		description          : opportunity.description,
 		earn_format_mnoney   : helpers.formatMoney (opportunity.earn, 2),
 		earn                 : helpers.formatMoney (opportunity.earn, 2),
 		dateDeadline         : helpers.formatDate (new Date(opportunity.deadline)),
+		dateDeadline_fr      : helpers.formatDate_fr (new Date(opportunity.deadline)),
 		timeDeadline         : helpers.formatTime (new Date(opportunity.deadline)),
+		timeDeadline_fr      : helpers.formatDate_fr (new Date(opportunity.deadline)),
 		dateAssignment       : helpers.formatDate (new Date(opportunity.assignment)),
+		dateAssignment_fr    : helpers.formatDate_fr (new Date(opportunity.assignment)),
 		dateStart            : helpers.formatDate (new Date(opportunity.start)),
+		dateStart_fr         : helpers.formatDate_fr (new Date(opportunity.start)),
 		datePublished        : helpers.formatDate (new Date(opportunity.lastPublished)),
+		datePublished_fr     : helpers.formatDate_fr (new Date(opportunity.lastPublished)),
 		deadline_format_date : helpers.formatDate (new Date(opportunity.deadline)),
+		deadline_format_date_fr : helpers.formatDate_fr (new Date(opportunity.deadline)),
 		deadline_format_time : helpers.formatTime (new Date(opportunity.deadline)),
 		updatenotification   : 'not-update-'+opportunity.code,
 		code                 : opportunity.code,
-		skills               : opportunity.skills.join (', ')
+		skills               : opportunity.skills.join (', '),
+		skills_fr            : opportunity.skills_fr.join (', ')
 	};
 };
 // -------------------------------------------------------------------------
@@ -220,25 +228,57 @@ var oppBody = function (opp) {
 	dt = opp.start;
 	var start = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
 	var earn = helpers.formatMoney (opp.earn, 2);
-	var locs = {
-		offsite : 'In-person work NOT required',
-		onsite  : 'In-person work required',
-		mixed   : 'Some in-person work required'
-	}
+	// var locs = {
+	// 	offsite : 'In-person work NOT required',
+	// 	onsite  : 'In-person work required',
+	// 	mixed   : 'Some in-person work required'
+	// }
 	var ret = '';
-	ret += 'Value: '+earn;
-	ret += 'Closes: '+deadline;
-	ret += 'Location: '+opp.location+' '+locs[opp.onsite];
+	ret += 'Fixed Price: '+earn;
+	ret += '<br>Closing Date: '+deadline;
+	// ret += 'Location: '+opp.location+' '+locs[opp.onsite];
 	ret += '<h2>Opportunity Description</h2>';
 	ret += opp.description;
 	ret += '<h2>Acceptance Criteria</h2>';
 	ret += opp.criteria;
 	ret += '<h2>How to Apply</h2>';
-	ret += '<p>Go to the <a href="https://gcdevexchange-carrefourproggc.org/opportunities/'+opp.code+'">Opportunity Page</a>, click the Apply button above and submit your proposal by 16:00 PST on '+deadline+'</b>.</p>';
+	ret += '<p>Go to the <a href="https://gcdevexchange-carrefourproggc.org/en/opportunities/'+opp.code+'">Opportunity Page</a>, click the Apply button above and submit your proposal by 17:00 EST on '+deadline+'</b>.</p>';
 	ret += '<p>We plan to assign this opportunity by <b>'+assignment+'</b> with work to start on <b>'+start+'</b>.</p>';
 	// ret += '<p>If your proposal is accepted and you are assigned to the opportunity, you will be notified by email and asked to confirm your agreement to the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf"><i>Code With Us</i> terms and contract.</a></p>';
 	ret += '<h2>Proposal Evaluation Criteria</h2>';
 	ret += opp.evaluation;
+	return ret;
+};
+
+var oppBody_fr = function (opp) {
+	var dt = opp.deadline;
+	var monthNames = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+	var dayNames = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+	var deadline = 'le ' + dayNames[dt.getDay()]+' '+dt.getDate()+' '+monthNames[dt.getMonth()]+' '+dt.getFullYear();
+	dt = opp.assignment;
+	var assignment = 'le ' + dayNames[dt.getDay()]+' '+dt.getDate()+' '+monthNames[dt.getMonth()]+' '+dt.getFullYear();
+	dt = opp.start;
+	var start = 'le ' + dayNames[dt.getDay()]+' '+dt.getDate()+' '+monthNames[dt.getMonth()]+' '+dt.getFullYear();
+	var earn = helpers.formatMoney (opp.earn, 2);
+	// var locs = {
+	// 	offsite : 'In-person work NOT required',
+	// 	onsite  : 'In-person work required',
+	// 	mixed   : 'Some in-person work required'
+	// }
+	var ret = '';
+	ret += 'Prix fixe : '+earn;
+	ret += '<br>Date de clôture : '+deadline;
+	// ret += 'Location: '+opp.location+' '+locs[opp.onsite];
+	ret += '<h2>Description de l\'opportunité</h2>';
+	ret += opp.description_fr;
+	ret += '<h2>Critères d\'acceptation</h2>';
+	ret += opp.criteria_fr;
+	ret += '<h2>Comment présenter une proposition</h2>';
+	ret += '<p>Accédez à <a href="https://gcdevexchange-carrefourproggc.org/fr/possibilites/'+opp.code+'">la page de possibilité</a>, cliquez sur le bouton Appliquer ci-dessus et soumettez votre proposition avant 17:00 EST sur '+deadline+'</b>.</p>';
+	ret += '<p>Nous prévoyons d\'attribuer cette opportunité par <b>'+assignment+'</b> avec le travail pour commencer <b>'+start+'</b>.</p>';
+	// ret += '<p>If your proposal is accepted and you are assigned to the opportunity, you will be notified by email and asked to confirm your agreement to the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf"><i>Code With Us</i> terms and contract.</a></p>';
+	ret += '<h2>Critères d\'évaluation de la proposition</h2>';
+	ret += opp.evaluation_fr;
 	return ret;
 };
 /**
@@ -274,7 +314,8 @@ exports.create = function(req, res) {
 				req.user.save ();
 				Notifications.addNotification ({
 					code: 'not-update-'+opportunity.code,
-					name: 'Update of Opportunity '+opportunity.name,
+					name: opportunity.name,
+					name_fr: opportunity.name_fr,
 					// description: 'Update of Opportunity '+opportunity.name,
 					target: 'Opportunity',
 					event: 'Update'
@@ -345,7 +386,9 @@ exports.update = function (req, res) {
 			Notifications.notifyObject ('not-update-'+opportunity.code, data);
 			github.createOrUpdateIssue ({
 				title  : opportunity.name,
+				title_fr : opportunity.name_fr,
 				body   : oppBody (opportunity),
+				body_fr : oppBody_fr (opportunity),
 				repo   : opportunity.github,
 				number : opportunity.issueNumber
 			})
@@ -409,7 +452,9 @@ var pub = function (req, res, isToBePublished) {
 		}
 		github.createOrUpdateIssue ({
 			title  : opportunity.name,
+			title_fr : opportunity.name_fr,
 			body   : oppBody (opportunity),
+			body_fr : oppBody_fr (opportunity),
 			repo   : opportunity.github,
 			number : opportunity.issueNumber
 		})
