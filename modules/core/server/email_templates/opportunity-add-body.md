@@ -31,7 +31,7 @@ Nous venons de publier une nouvelle opportunité de Carrefour des programmeurs d
 - Compétences requises : **{{ data.skills_fr }}**
 - Date de clôture : **{{ data.deadline_format_date_fr }}**
 
-### [Voir les détails]({{ data.domain }}/fr/opportunities/{{ data.code }})
+### [Voir les détails]({{ data.domain }}/fr/possibilites/{{ data.code }})
 
 [Suivez cette possibilité]({{ data.domain }}/api/subscribe/{{ data.subscriptionId }}/{{ data.updatenotification }}) pour recevoir des alertes.
 

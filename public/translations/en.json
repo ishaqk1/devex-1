@@ -255,7 +255,7 @@
 	"PROFILE_ALLOW_EMAIL_DESC": "Various sections of the site may publish who authored content, or your name and potentially email address. Click this to allow others to see you email",
 	"PROFILE_NOTIFY_ME": "Notify me when new opportunities are posted",
 	"PROFILE_NOTIFY_ME_DESC": "When new opportunites are posted you will recieve an email notification with a link to the opportunity. You can unsubscribe at any time or simply return here and uncheck this option",
-	"PROFILE_VERIFY_ME": "Verify me as a Government of Canada employee so I can publish content on the GCDevExchange",
+	"PROFILE_VERIFY_ME": "Verify me as a Government of Canada employee so I can publish content on the GCDevExchange (requires a valid @canada.ca or @gc.ca email address)",
 	"PROFILE_PUBLIC_PROFILE": "Public Profile",
 	"PROFILE_PRIVACY_NOTIFICATIONS": "Privacy & Notifications",
 	"PROFILE_UPDATE_SETTINGS": "Update settings",

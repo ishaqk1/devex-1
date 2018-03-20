@@ -259,7 +259,7 @@ var oppBody_fr = function (opp) {
 	var assignment = 'le ' + dayNames[dt.getDay()]+' '+dt.getDate()+' '+monthNames[dt.getMonth()]+' '+dt.getFullYear();
 	dt = opp.start;
 	var start = 'le ' + dayNames[dt.getDay()]+' '+dt.getDate()+' '+monthNames[dt.getMonth()]+' '+dt.getFullYear();
-	var earn = helpers.formatMoney (opp.earn, 2);
+	var earn = helpers.formatMoney_fr (opp.earn, 2);
 	// var locs = {
 	// 	offsite : 'In-person work NOT required',
 	// 	onsite  : 'In-person work required',

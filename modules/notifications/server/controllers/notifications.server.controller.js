@@ -553,7 +553,7 @@ exports.unsubscribeExternal = function (req, res) {
 	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> to manage your notifications.</p>';
 	message += '<p>Thanks for using the GC Developers Exchange!</p>';
 	message += '<br><hr><br>';
-	message += '<h4>Vous ne suivez plus :</h4><h4>'+req.subscription.notification.name_fr+'</h4>';
+	message += '<h4>Vous ne suivez plus :</h4><h4>'+req.subscription.notification.name+'</h4>';
 	message += '<p>Veuillez vous vous identifier à ';
 	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> pour gérer ses notifications.</p>';
 	message += '<p>Merci d’utiliser le Carrefour des programmeurs du gouvernement du Canada!</p>';

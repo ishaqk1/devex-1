@@ -115,6 +115,16 @@ var c = isNaN(ic = Math.abs(ic)) ? 2 : ic,
     j = (j) > 3 ? j % 3 : 0;
    return '$' +s + (j ? i.substr(0, j) + t : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : '');
  };
+exports.formatMoney_fr = function(n, ic, id, iit){
+var c = isNaN(ic = Math.abs(ic)) ? 2 : ic,
+    d = id === undefined ? ',' : id,
+    t = iit === undefined ? ' ' : iit,
+    s = n < 0 ? '-' : '',
+    i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c)));
+    var j = i.length;
+    j = (j) > 3 ? j % 3 : 0;
+   return s + (j ? i.substr(0, j) + t : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : '') + ' $';
+ };
 
 exports.formatDate = function (d) {
 	  var monthNames = [
