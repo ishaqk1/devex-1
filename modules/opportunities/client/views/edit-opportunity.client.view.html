@@ -35,7 +35,7 @@
 			</div>
 			<div class="col-md-6 col-form-buttons text-right">
 				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="Save changes" translate="SAVE_CHANGES">Save changes</button>
-				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Delete opportunity">Delete opportunity</a>
+				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="{{ 'OPP_DELETE' | translate }}" translate="OPP_DELETE">Delete Opportunity</a>
 				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel" translate="CANCEL">Cancel</a>
 			</div>
 		</div>
@@ -131,7 +131,7 @@
 		<div class="row form-foot">
 			<div class="col-sm-12 col-form-buttons foot text-right">
 				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="{{ 'SAVE_CHANGES' | translate }}" translate="SAVE_CHANGES">Save Changes</button>
-				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Remove">Delete opportunity</a>
+				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="{{ 'OPP_DELETE' | translate }}" translate="OPP_DELETE">Delete Opportunity</a>
 				<a class="btn btn-default" href="{{vm.previousState.url}}" title="{{ 'CANCEL' | translate }}" translate="CANCEL">Cancel</a>
 			</div>
 		</div>

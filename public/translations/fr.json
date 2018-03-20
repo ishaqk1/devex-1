@@ -151,6 +151,7 @@
 	"PROJECT_SELECT": "Sélectionner Projet",
 	"PROJECT_DELETED": "Projet supprimé avec succès!",
 	"OPP_NEW": "Nouvelle possibilité",
+	"OPP_DELETE": "Supprimer le possibilité",
 	"OPP_HEADER": "Entête",
 	"OPP_CLOSING": "Date de clôture :",
 	"OPP_UPDATES": "Aimeriez-vous <span class='hidden-sm hidden-xs'>recevoir </span>des mises à jour<span class='hidden-sm hidden-xs'> sur cette possibilité</span>?",

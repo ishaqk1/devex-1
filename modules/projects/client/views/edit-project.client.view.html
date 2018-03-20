@@ -39,7 +39,7 @@
 					</select>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="title" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="title" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> ({{ "ENGLISH" | translate }}) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sname = !sname"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="sname" translate="PROJECT_NAME">
 						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
@@ -48,7 +48,7 @@
 					<div ng-messages="vm.form.projectForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="title_fr" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> (Français) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="title_fr" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> ({{ "FRENCH" | translate }}) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sname_fr = !sname_fr"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="sname_fr" translate="PROJECT_NAME">
 						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
@@ -57,7 +57,7 @@
 					<div ng-messages="vm.form.projectForm.title_fr.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="short" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="short" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> ({{ "ENGLISH" | translate }}) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc = !ssdesc"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc" translate="PROJECT_TEASER">
 						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
@@ -65,7 +65,7 @@
 					<textarea name="short" data-ng-model="vm.project.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="short_fr" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> (Français) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="short_fr" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> ({{ "FRENCH" | translate }}) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc_fr = !ssdesc_fr"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc_fr" translate="PROJECT_TEASER">
 						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
@@ -73,7 +73,7 @@
 					<textarea name="short_fr" data-ng-model="vm.project.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="description" aria-required="true">Description ({{ "ENGLISH" | translate }}) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc = !sdesc"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="sdesc" translate="PROJECT_DETAIL">
 						Here’s where you can go into more detail...
@@ -89,7 +89,7 @@
 					</textarea>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="description_fr" aria-required="true">Description (Français) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="description_fr" aria-required="true">Description ({{ "FRENCH" | translate }}) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc_fr = !sdesc_fr"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="sdesc_fr" translate="PROJECT_DETAIL">
 						Here’s where you can go into more detail...
@@ -114,7 +114,7 @@
 					<input ng-if="!vm.isAdmin && !vm.isProjectAdmin" name="github" type="text" ng-model="vm.project.github" id="github" class="form-control" placeholder="{{ 'PROJECT_GITHUB_PLACEHOLDER' | translate }}" readonly>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="taglist" translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</label>
+					<label class="control-label" for="taglist"><span translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</span> ({{ "ENGLISH" | translate }}) </label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stags = !stags"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="stags" translate="PROJECT_TAGS">
 						Create tags as quick cues for interested developers. For example, the code language, or other keywords that indicate what’s involved in the work.
@@ -122,17 +122,17 @@
 					<input type="text" name="taglist" ng-model="vm.project.taglist" id="taglist" class="form-control" placeholder="{{ 'PROJECT_TAGS_PLACEHOLDER' | translate }}"></input>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="taglist_fr"><span translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</span> (Français)</label>
+					<label class="control-label" for="taglist_fr"><span translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</span> ({{ "FRENCH" | translate }}) </label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stags_fr = !stags_fr"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="stags_fr" translate="PROJECT_TAGS">
 						Create tags as quick cues for interested developers. For example, the code language, or other keywords that indicate what’s involved in the work.
 					</div>
 					<input type="text" name="taglist_fr" ng-model="vm.project.taglist_fr" id="taglist_fr" class="form-control" placeholder="{{ 'PROJECT_TAGS_PLACEHOLDER' | translate }}"></input>
 				</div>
-				<div class="form-group" ng-if="vm.isAdmin">
+				<!-- <div class="form-group" ng-if="vm.isAdmin">
 					<label class="control-label" for="activity">Activity Level Indicator</label>
 					<input type="text" name="activity" ng-model="vm.project.activity" id="activity" class="form-control" placeholder="Tag List"></input>
-				</div>
+				</div> -->
 			</fieldset>
 	</div>
 	</div>
