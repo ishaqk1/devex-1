@@ -5,8 +5,7 @@
 			<a id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
 		</div>
  -->
-		<form-display ng-if="isEnglish()"
-			ng-if="vm.projectLink"
+		<form-display ng-if="vm.projectLink && isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title":"Project",
@@ -15,8 +14,7 @@
 			}'>
 			<a id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
 		</form-display>
-		<form-display ng-if="isFrench()"
-			ng-if="vm.projectLink"
+		<form-display ng-if="vm.projectLink && isFrench()"
 			class="col-sm-12"
 			x-options='{
 				"title":"Projet",
@@ -27,8 +25,8 @@
 		</form-display>
 
 
-		<form-display ng-if="isEnglish()"
-			ng-if="!vm.projectLink && (vm.context === 'program' || vm.context === 'allopportunities')"
+		<form-display
+			ng-if="!vm.projectLink && (vm.context === 'program' || vm.context === 'allopportunities') && isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title":"Project",
@@ -57,8 +55,8 @@
 				<option value="">Select Project</option>
 			</select>
 		</form-display>
-		<form-display ng-if="isFrench()"
-			ng-if="!vm.projectLink && (vm.context === 'program' || vm.context === 'allopportunities')"
+		<form-display
+			ng-if="!vm.projectLink && (vm.context === 'program' || vm.context === 'allopportunities') && isFrench()"
 			class="col-sm-12"
 			x-options='{
 				"title":"Projet",
