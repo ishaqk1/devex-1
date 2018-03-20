@@ -14,6 +14,17 @@
 					<option value="">Select reward amount</option>
 				</select>
 			</form-display>
+			<form-display ng-if="isFrench()"
+				class="col-sm-12"
+				x-options='{
+					"title":"Récompense à prix fixe",
+					"name":"reward",
+					"help":"<p>Estimez du mieux que vous pouvez un juste prix qui selon vous représente la quantité de travail que doit accomplir un développeur qualifié pour satisfaire aux critères d&apos;acceptation. Il convient de surestimer ce prix.</p><p>Pour l&apos;instant, les contrats offerts par la voie du Carrefour des développeurs du gouvernement du Canada (CarrefourProgGC) ne doivent pas dépasser 9 999 $.</p>"
+				}'>
+				<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-options="v as (v|currency) for v in vm.amounts">
+					<option value="">Sélectionner Montant de la récompense</option>
+				</select>
+			</form-display>
 
 			<form-input ng-if="isEnglish()"
 				class="col-sm-12"
@@ -25,6 +36,18 @@
 					"id":"proposalEmail",
 					"name":"proposalEmail",
 					"placeholder":"Enter email address"
+				}'>
+			</form-input>
+			<form-input ng-if="isFrench()"
+				class="col-sm-12"
+				ng-model="vm.opportunity.proposalEmail"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Courriel pour recevoir l&apos;acceptation des modalités et du contrat",
+					"help":"Inscrivez l&apos;adresse courriel où vous aimeriez recevoir l&apos;avis d&apos;acceptation des conditions du CarrefourProgGC du soumissionnaire déterminé pour cette possibilité de travail.",
+					"id":"proposalEmail",
+					"name":"proposalEmail",
+					"placeholder":"Saisir l&apos;adresse courriel"
 				}'>
 			</form-input>
 <!--
@@ -55,6 +78,19 @@
 					"type":"date"
 				}'>
 			</form-input>
+			<form-input ng-if="isFrench()"
+				class="col-sm-4"
+				ng-model="vm.opportunity.deadline"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Date limite pour la proposition",
+					"help":"<p>Choisissez une <b>date limite</b> de réception des propositions. (L&apos;heure de la journée est fixée à 16 h – heure normale du Pacifique.)</p> <p>Plus longtemps d&apos;avance votre offre sera affichée, plus nombreuses seront les propositions que vous recevrez. Il est judicieux d&apos;établir la date butoir à <b>cinq jours</b> de la publication de votre possibilité de travail.</p> <p>Veillez à ce que votre <b>personne‑ressource</b> attitrée au contrat soit prête à répondre rapidement aux questions posées sur la page de publication GitHub, et ce, du moment de la publication à l&apos;heure limite de soumission.</p>",
+					"id":"deadline",
+					"name":"deadline",
+					"format":"MMMM dd, yyyy",
+					"type":"date"
+				}'>
+			</form-input>
 
 			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
@@ -69,6 +105,19 @@
 					"type":"date"
 				}'>
 			</form-input>
+			<form-input ng-if="isFrench()"
+				class="col-sm-4"
+				ng-model="vm.opportunity.assignment"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Date de l&apos;assignation",
+					"help":"Établissez une date à laquelle vous vous engagez à attribuer le contrat (sous réserve bien entendu d&apos;avoir reçu au moins une proposition satisfaisant à vos exigences minimales). (L&apos;heure est fixée à 16 h – heure du Pacifique).",
+					"id":"assignment",
+					"name":"assignment",
+					"format":"MMMM dd, yyyy",
+					"type":"date"
+				}'>
+			</form-input>
 
 			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
@@ -77,6 +126,19 @@
 				x-options='{
 					"title":"Proposed Start Date",
 					"help":"When do you want the person to begin working?",
+					"id":"start",
+					"name":"start",
+					"format":"MMMM dd, yyyy",
+					"type":"date"
+				}'>
+			</form-input>
+			<form-input ng-if="isEnglish()"
+				class="col-sm-4"
+				ng-model="vm.opportunity.start"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Date de début proposée",
+					"help":"Quand voulez-vous que la personne commence à travailler?",
 					"id":"start",
 					"name":"start",
 					"format":"MMMM dd, yyyy",
