@@ -154,6 +154,7 @@ var setNotificationData = function (opportunity) {
 		description          : opportunity.description,
 		earn_format_mnoney   : helpers.formatMoney (opportunity.earn, 2),
 		earn                 : helpers.formatMoney (opportunity.earn, 2),
+		earn_fr              : helpers.formatMoney_fr (opportunity.earn, 2),
 		dateDeadline         : helpers.formatDate (new Date(opportunity.deadline)),
 		dateDeadline_fr      : helpers.formatDate_fr (new Date(opportunity.deadline)),
 		timeDeadline         : helpers.formatTime (new Date(opportunity.deadline)),

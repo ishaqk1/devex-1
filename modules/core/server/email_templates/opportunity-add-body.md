@@ -27,7 +27,7 @@ Nous venons de publier une nouvelle opportunité de Carrefour des programmeurs d
 ### {{ data.name_fr }}
 
 - Publié : **{{ data.datePublished_fr }}**
-- Prix fixe : **{{ data.earn }}** (taxes incl.)
+- Prix fixe : **{{ data.earn_fr }}** (taxes incl.)
 - Compétences requises : **{{ data.skills_fr }}**
 - Date de clôture : **{{ data.deadline_format_date_fr }}**
 
