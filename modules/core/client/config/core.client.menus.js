@@ -8,9 +8,6 @@
   menuConfig.$inject = ['menuService', '$location'];
 
   function menuConfig(menuService, $location) {
-    var path = $location.path();
-    var lang = (path.indexOf('/fr') !== -1) ? 'fr' : 'en';
-
     menuService.addMenu('account', {
       roles: ['user']
     });
@@ -22,14 +19,14 @@
       roles: ['user']
     });
 
-    menuService.addSubMenuItem('account', 'settings', {
-      title: 'Profile',
-      state: lang + '.settings.profile'
-    });
+    // menuService.addSubMenuItem('account', 'settings', {
+    //   title: 'Profile',
+    //   state: 'settings.profile'
+    // });
 
     if (window.features.swu) menuService.addSubMenuItem('account', 'settings', {
       title: 'Messages',
-      state: lang + '.settings.messages'
+      state: 'settings.messages'
     });
 
   }

@@ -43,6 +43,9 @@
               <li ui-sref-active="active" ng-repeat="item in vm.accountMenu.items">
                 <a ui-sref="{{item.state}}" ng-bind="item.title"></a>
               </li>
+              <li ng-if="vm.isUser">
+                <a href ng-click="goTo('settings.profile')" translate="PROFILE" target="_self">Profile</a>
+              </li>
               <li class="divider"></li>
               <li>
                 <a href="/api/auth/signout" target="_self"><i class="fa fa-sign-out" aria-hidden="true"></i> Signout</a>

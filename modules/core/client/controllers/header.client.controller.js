@@ -13,6 +13,7 @@
     vm.authentication = Authentication;
     vm.isCollapsed = false;
     vm.menu = menuService.getMenu('topbar');
+    vm.isUser = Authentication.user;
 
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',

@@ -256,7 +256,7 @@ exports.notifyMeetings = function (req, res) {
     });
 };
 exports.registrations = function (req, res) {
-    User.find ({}).select ('created')
+    User.find ({}).sort('-created').select ('created')
     .exec (function (err, users) {
       if (err) {
         return res.status(422).send({
