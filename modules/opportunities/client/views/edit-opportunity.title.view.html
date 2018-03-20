@@ -5,7 +5,7 @@
 			<a id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
 		</div>
  -->
-		<form-display
+		<form-display ng-if="isEnglish()"
 			ng-if="vm.projectLink"
 			class="col-sm-12"
 			x-options='{
@@ -15,10 +15,19 @@
 			}'>
 			<a id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
 		</form-display>
+		<form-display ng-if="isFrench()"
+			ng-if="vm.projectLink"
+			class="col-sm-12"
+			x-options='{
+				"title":"Projet",
+				"name":"project",
+				"help":"This is the project that the opportunity falls under"
+			}'>
+			<a id="projects.view" ui-sref="projects.view({projectId:vm.projectId})"><i class="fa fa-pie-chart"></i> {{vm.projectTitle}}</a>
+		</form-display>
 
 
-
-		<form-display
+		<form-display ng-if="isEnglish()"
 			ng-if="!vm.projectLink && (vm.context === 'program' || vm.context === 'allopportunities')"
 			class="col-sm-12"
 			x-options='{
@@ -48,6 +57,36 @@
 				<option value="">Select Project</option>
 			</select>
 		</form-display>
+		<form-display ng-if="isFrench()"
+			ng-if="!vm.projectLink && (vm.context === 'program' || vm.context === 'allopportunities')"
+			class="col-sm-12"
+			x-options='{
+				"title":"Projet",
+				"name":"project",
+				"help":"Select the project that this opportunity falls under. If you do not see the project in the dropdown list, you will need to go to the Projects tab and create a new project page first."
+			}'>
+			<select
+				ng-if="!vm.projectLink && vm.context === 'program'"
+				name="project"
+				ng-model="vm.projectId"
+				id="project"
+				class="form-control"
+				ng-options="obj._id as obj.name for obj in vm.projects"
+			>
+				<option value="">Sélectionner Projet</option>
+			</select>
+			<select
+				ng-if="!vm.projectLink && vm.context === 'allopportunities'"
+				name="project"
+				ng-change="vm.updateProgramProject()"
+				ng-model="vm.projectobj"
+				id="project"
+				class="form-control"
+				ng-options="obj as obj.name group by obj.program.title for obj in vm.projects"
+			>
+				<option value="">Sélectionner Projet</option>
+			</select>
+		</form-display>
 <!--
 		<div class="form-group" ng-if="!vm.projectLink && (vm.context === 'program' || vm.context === 'allopportunities')" >
 			<label class="control-label" for="project">Project</label>
@@ -74,7 +113,7 @@
 			</select>
 		</div>
  -->
-		<form-input
+		<form-input ng-if="isEnglish()"
 			class="col-sm-12"
 			ng-model="vm.opportunity.name"
 			x-form="vm.opportunityForm"
@@ -86,7 +125,7 @@
 				"placeholder":"Opportunity Title"
 			}'>
 		</form-input>
-		<form-input
+		<form-input ng-if="isEnglish()"
 			class="col-sm-12"
 			ng-model="vm.opportunity.name_fr"
 			x-form="vm.opportunityForm"
@@ -98,8 +137,32 @@
 				"placeholder":"Opportunity Title"
 			}'>
 		</form-input>
+		<form-input ng-if="isFrench()"
+			class="col-sm-12"
+			ng-model="vm.opportunity.name"
+			x-form="vm.opportunityForm"
+			x-options='{
+				"title":"Titre",
+				"help":"Inscrivez un court titre pour votre possibilité de travail qui illustre bien l\'essentiel du travail qui doit être réalisé.",
+				"id":"title",
+				"name":"title",
+				"placeholder":"Titre de la possibilité"
+			}'>
+		</form-input>
+		<form-input ng-if="isFrench()"
+			class="col-sm-12"
+			ng-model="vm.opportunity.name_fr"
+			x-form="vm.opportunityForm"
+			x-options='{
+				"title":"Titre (Français)",
+				"help":"Inscrivez un court titre pour votre possibilité de travail qui illustre bien l\'essentiel du travail qui doit être réalisé.",
+				"id":"title_fr",
+				"name":"title_fr",
+				"placeholder":"Titre de la possibilité"
+			}'>
+		</form-input>
 
-		<form-display
+		<form-display ng-if="isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title":"Teaser",
@@ -108,7 +171,7 @@
 			}'>
 			<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..."></textarea>
 		</form-display>
-		<form-display
+		<form-display ng-if="isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title":"Teaser (Français)",
@@ -117,9 +180,27 @@
 			}'>
 			<textarea name="short_fr" data-ng-model="vm.opportunity.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..."></textarea>
 		</form-display>
+		<form-display ng-if="isFrench()"
+			class="col-sm-12"
+			x-options='{
+				"title":"Teaser",
+				"name":"short",
+				"help":"Présentez une description d\'une ou deux phrases qui suscitera l\'intérêt des lecteurs et qui les encouragera à faire une offre. Décrivez ce que vous attendez d'eux."
+			}'>
+			<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="1 ou 2 phrases qui incitent le lecteur à postuler..."></textarea>
+		</form-display>
+		<form-display ng-if="isFrench()"
+			class="col-sm-12"
+			x-options='{
+				"title":"Teaser (Français)",
+				"name":"short_fr",
+				"help":"Présentez une description d\'une ou deux phrases qui suscitera l\'intérêt des lecteurs et qui les encouragera à faire une offre. Décrivez ce que vous attendez d'eux."
+			}'>
+			<textarea name="short_fr" data-ng-model="vm.opportunity.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="1 ou 2 phrases qui incitent le lecteur à postuler..."></textarea>
+		</form-display>
 
 
-		<form-input
+		<form-input ng-if="isEnglish()"
 			class="col-sm-12"
 			ng-model="vm.opportunity.github"
 			x-form="vm.opportunityForm"
@@ -129,6 +210,18 @@
 				"id":"github",
 				"name":"github",
 				"placeholder":"Paste link to GitHub repository"
+			}'>
+		</form-input>
+		<form-input ng-if="isFrench()"
+			class="col-sm-12"
+			ng-model="vm.opportunity.github"
+			x-form="vm.opportunityForm"
+			x-options='{
+				"title":"Répertoire GitHub",
+				"help":"Coller l\'hyperlien du répertoire GitHub de votre projet.<br /> Lorsque vous publierez cette possibilité de travail, une nouvelle publication sera créée dans votre répertoire. Les gens pourront poser des questions dans la section commentaire.",
+				"id":"github",
+				"name":"github",
+				"placeholder":"Coller le lien « Enjeu » de GitHub"
 			}'>
 		</form-input>
 	</fieldset>

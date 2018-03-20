@@ -3,7 +3,7 @@
 	<fieldset>
 		<div class="row">
 
-			<form-display
+			<form-display ng-if="isEnglish()"
 				class="col-sm-12"
 				x-options='{
 					"title":"Fixed-Price Reward",
@@ -15,7 +15,7 @@
 				</select>
 			</form-display>
 
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-12"
 				ng-model="vm.opportunity.proposalEmail"
 				x-form="vm.opportunityForm"
@@ -42,7 +42,7 @@
 				}'>
 			</form-date-input>
  -->
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
 				ng-model="vm.opportunity.deadline"
 				x-form="vm.opportunityForm"
@@ -56,7 +56,7 @@
 				}'>
 			</form-input>
 
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
 				ng-model="vm.opportunity.assignment"
 				x-form="vm.opportunityForm"
@@ -70,7 +70,7 @@
 				}'>
 			</form-input>
 
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
 				ng-model="vm.opportunity.start"
 				x-form="vm.opportunityForm"

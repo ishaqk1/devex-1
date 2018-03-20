@@ -66,7 +66,7 @@
 						Help Text
 					</div>
 
-					<textarea name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required aria-required="true"></textarea>
+					<textarea name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'TEAM_SHORT_DESCRIPTION_PLACEHOLDER' | translate }}" required aria-required="true"></textarea>
 				</div>
 				<div class="form-group" show-errors>
 					<label class="control-label required" for="short_fr" aria-required="true"><span translate="TEAM_SHORT_DESCRIPTION">Short Description</span> (Français) <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
@@ -76,7 +76,7 @@
 						Help Text
 					</div>
 
-					<textarea name="short_fr" data-ng-model="vm.program.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required aria-required="true"></textarea>
+					<textarea name="short_fr" data-ng-model="vm.program.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="{{ 'TEAM_SHORT_DESCRIPTION_PLACEHOLDER' | translate }}" required aria-required="true"></textarea>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="description">Description</label>

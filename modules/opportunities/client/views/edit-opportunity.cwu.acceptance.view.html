@@ -1,7 +1,7 @@
 
 <div class="col-sm-12">
 	<fieldset>
-		<form-display
+		<form-display ng-if="isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title" :"Acceptance Criteria",
@@ -17,7 +17,7 @@
 				ng-model="vm.opportunity.criteria">
 			</textarea>
 		</form-display>
-		<form-display
+		<form-display ng-if="isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title" :"Acceptance Criteria (Français)",
@@ -34,7 +34,7 @@
 			</textarea>
 		</form-display>
 
-		<form-input
+		<form-input ng-if="isEnglish()"
 			class="col-sm-12"
 			ng-model="vm.opportunity.skilllist"
 			x-form="vm.opportunityForm"
@@ -46,7 +46,7 @@
 				"placeholder" :"e.g. JavaScript, WordPress, CSS"
 			}'>
 		</form-input>
-		<form-input
+		<form-input ng-if="isEnglish()"
 			class="col-sm-12"
 			ng-model="vm.opportunity.skilllist_fr"
 			x-form="vm.opportunityForm"
@@ -59,7 +59,7 @@
 			}'>
 		</form-input>
 
-		<form-display
+		<form-display ng-if="isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title" :"Proposal Evaluation Criteria",
@@ -75,7 +75,7 @@
 				ng-model="vm.opportunity.evaluation">
 			</textarea>
 		</form-display>
-		<form-display
+		<form-display ng-if="isEnglish()"
 			class="col-sm-12"
 			x-options='{
 				"title" :"Proposal Evaluation Criteria (Français)",

@@ -31,12 +31,12 @@
 		<div class="row form-head">
 			<div class="col-md-6">
 				<h2 ng-if="vm.editing">Editing: {{::vm.opportunity.name}}</h2>
-				<h2 ng-if="!vm.editing">New Opportunity</h2>
+				<h2 ng-if="!vm.editing" translate="OPP_NEW">New Opportunity</h2>
 			</div>
 			<div class="col-md-6 col-form-buttons text-right">
-				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="Save changes">Save changes</button>
+				<button type="submit" href="javascript:void(0);" class="btn btn-success" title="Save changes" translate="SAVE_CHANGES">Save changes</button>
 				<a href="javascript:void(0);" ng-if="vm.editing" class="btn btn-danger" ng-click="vm.remove()" title="Delete opportunity">Delete opportunity</a>
-				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel">Cancel</a>
+				<a class="btn btn-default" href="{{vm.previousState.url}}" title="Cancel" translate="CANCEL">Cancel</a>
 			</div>
 		</div>
 
@@ -66,31 +66,31 @@
 			<uib-tabset active>
 				<uib-tab index="0">
 					<uib-tab-heading>
-						Header
+						{{ "OPP_HEADER" | translate }}
 					</uib-tab-heading>
 					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.title.view.html'"></ng-include>
 				</uib-tab>
 				<uib-tab index="2">
 					<uib-tab-heading>
-						Background
+						{{ "OPP_BACKGROUND" | translate }}
 					</uib-tab-heading>
 					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.description.view.html'"></ng-include>
 				</uib-tab>
 				<uib-tab index="4" ng-if="vm.opportunity.opportunityTypeCd !== 'sprint-with-us'">
 					<uib-tab-heading>
-						Details
+						{{ "OPP_DETAILS" | translate }}
 					</uib-tab-heading>
 					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.cwu.details.view.html'"></ng-include>
 				</uib-tab>
 				<uib-tab index="5" ng-if="vm.opportunity.opportunityTypeCd !== 'sprint-with-us'">
 					<uib-tab-heading>
-						Acceptance and Evaluation
+						{{ "OPP_ACC_EVAL" | translate }}
 					</uib-tab-heading>
 					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.cwu.acceptance.view.html'"></ng-include>
 				</uib-tab>
 				<uib-tab index="6" ng-if="vm.opportunity.opportunityTypeCd === 'sprint-with-us'">
 					<uib-tab-heading>
-						Details
+						{{ "OPP_DETAILS" | translate }}
 					</uib-tab-heading>
 					<ng-include class="proposal-form-container" src="'/modules/opportunities/client/views/edit-opportunity.swu.details.view.html'"></ng-include>
 				</uib-tab>

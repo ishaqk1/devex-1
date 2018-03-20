@@ -8,6 +8,13 @@
 	EditProfileController.$inject = ['$scope', '$http', '$location', '$state', 'modalService', 'dataService', 'UsersService', 'Authentication', 'Notification', '$filter', '$translate'];
 
 	function EditProfileController($scope, $http, $location, $state, modalService, dataService, UsersService, Authentication, Notification, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
 		var vm               = this;
 		vm.features = window.features;
 		var isUser           = Authentication.user;

@@ -5,40 +5,76 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<fieldset>
-					<form-input
+					<form-input ng-if="isEnglish()"
 						ng-model="vm.user.firstName"
 						class="col-sm-12"
 						x-form="vm.userForm"
 						x-options='{
-							"title":{{ "PROP_FNAME" | translate }},
+							"title":"First Name",
 							"id":"firstName",
 							"name":"firstName",
-							"placeholder":{{ "PROP_FNAME" | translate }},
+							"placeholder":"First Name",
 							"required":"First Name is required"
 						}'>
 					</form-input>
-					<form-input
+					<form-input ng-if="isFrench()"
+						ng-model="vm.user.firstName"
+						class="col-sm-12"
+						x-form="vm.userForm"
+						x-options='{
+							"title":"Prénom",
+							"id":"firstName",
+							"name":"firstName",
+							"placeholder":"Prénom",
+							"required":"Prénom est requis"
+						}'>
+					</form-input>
+					<form-input ng-if="isEnglish()"
 						ng-model="vm.user.lastName"
 						class="col-sm-12"
 						x-form="vm.userForm"
 						x-options='{
-							"title":"{{ 'PROP_LNAME' | translate }}",
+							"title":"Last Name",
 							"id":"lastName",
 							"name":"lastName",
-							"placeholder":"{{ 'PROP_LNAME' | translate }}",
+							"placeholder":"Last Name",
 							"required":"Last Name is required"
 						}'>
 					</form-input>
-					<form-input
+					<form-input ng-if="isFrench()"
+						ng-model="vm.user.lastName"
+						class="col-sm-12"
+						x-form="vm.userForm"
+						x-options='{
+							"title":"Nom de famille",
+							"id":"lastName",
+							"name":"lastName",
+							"placeholder":"Nom de famille",
+							"required":"Nom de famille est requis"
+						}'>
+					</form-input>
+					<form-input ng-if="isEnglish()"
 						ng-model="vm.user.email"
 						class="col-sm-12"
 						x-form="vm.userForm"
 						x-options='{
-							"title":"{{ "PROP_EMAIL" | translate }}",
+							"title":"Email Address",
 							"id":"email",
 							"name":"email",
-							"placeholder":"{{ "PROP_EMAIL" | translate }}",
+							"placeholder":"Email Address",
 							"required":"Email Address is required"
+						}'>
+					</form-input>
+					<form-input ng-if="isFrench()"
+						ng-model="vm.user.email"
+						class="col-sm-12"
+						x-form="vm.userForm"
+						x-options='{
+							"title":"Adresse courriel",
+							"id":"email",
+							"name":"email",
+							"placeholder":"Adresse courriel",
+							"required":"Adresse courriel est requis"
 						}'>
 					</form-input>
 					<!-- Hiding this field as user testing showed it was confusing. Don't think we've determined its use yet, either. -->
