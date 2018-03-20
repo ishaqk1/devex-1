@@ -21,15 +21,7 @@
     var projectsTitle = (lang === 'fr') ? 'Projets créées' : 'Projects Created';
     var opportunitiesTitle = (lang === 'fr') ? 'Opportunités créées' : 'Opportunities Created';
 
-    var test = AdminService.registrations().$promise;
-    console.log(test);
-    var test = AdminService.registrations();
-    console.log(test);
     AdminService.registrations(function (data) {
-    	console.log(data);
-    });
-
-    AdminService.query(function (data) {
     	var userData = data;
     	var chart = Highcharts.charts[0];
     	var users = [];
