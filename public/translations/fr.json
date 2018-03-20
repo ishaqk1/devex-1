@@ -205,7 +205,7 @@
 	"OPP_EMAIL_ADDRESS": "Inscrivez l'adresse courriel où vous aimeriez recevoir l'avis d'acceptation des conditions du CarrefourProgGC du soumissionnaire déterminé pour cette possibilité de travail.",
 	"OPP_EMAIL_ADDRESS_PLACEHOLDER": "Saisir l'adresse courriel",
 	"OPP_PROPOSAL_LABEL": "Date limite pour la proposition",
-	"OPP_PROPOSAL_P1": "Choisissez une <b>date limite</b> de réception des propositions. (L'heure de la journée est fixée à 16 h – heure normale du Pacifique.)",
+	"OPP_PROPOSAL_P1": "Choisissez une <b>date limite</b> de réception des propositions. (L'heure de la journée est fixée à 16 h – heure normale du l'Est.)",
 	"OPP_PROPOSAL_P2": "Plus longtemps d'avance votre offre sera affichée, plus nombreuses seront les propositions que vous recevrez. Il est judicieux d'établir la date butoir à <b>cinq jours</b> de la publication de votre possibilité de travail.",
 	"OPP_PROPOSAL_P3": "Veillez à ce que votre <b>personne‑ressource</b> attitrée au contrat soit prête à répondre rapidement aux questions posées sur la page de publication GitHub, et ce, du moment de la publication à l'heure limite de soumission.",
 	"OPP_ASSIGNMENT_DATE_LABEL": "Date de l'assignation",
