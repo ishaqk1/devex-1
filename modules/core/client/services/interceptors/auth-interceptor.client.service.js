@@ -26,6 +26,8 @@
             $injector.get('$state').transitionTo('authentication.signin');
             break;
           case 403:
+            console.log($injector);
+            console.log(rejection);
             $injector.get('$state').transitionTo('forbidden');
             break;
           case 404:

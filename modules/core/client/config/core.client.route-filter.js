@@ -63,6 +63,8 @@
 					}
 				}
 			}
+			console.log(toState);
+			console.log(toState.name);
 			if (toState.name === 'en.insights' || toState.name === 'fr.insights') {
 				allowed = true;
 			}
