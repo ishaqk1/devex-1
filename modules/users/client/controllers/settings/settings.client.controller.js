@@ -18,7 +18,7 @@
 	// controller for privacy
 	//
 	// -------------------------------------------------------------------------
-	.controller('ProfilePrivacyController', function ($scope, subscriptions, Authentication, UsersService, Notification) {
+	.controller('ProfilePrivacyController', function ($scope, subscriptions, Authentication, UsersService, Notification, $translate) {
 		var vm = this;
 		vm.user = angular.copy(Authentication.user);
 		var pristineUser = angular.toJson (Authentication.user);
@@ -30,15 +30,15 @@
 				$scope.$broadcast('show-errors-check-validity', 'vm.userForm');
 				return false;
 			}
-			var successMessage = '<h4>Edit profile successful</h4>';
+			var successMessage = '<h4>' + $filter('translate')('EDIT_PROFILE_SUCCESS') + '</h4>';
 			if (vm.user.notifyOpportunities) {
-				successMessage += '<p>We will send you notifications of new GCDevExchange Opportunities.</p>';
+				successMessage += '<p>' + $filter('translate')('EDIT_PROFILE_OPPORTUNITIES') + '</p>';
 			}
 			if (vm.user.isPublicProfile) {
-				successMessage += '<p>Your profile will be made public.</p>';
+				successMessage += '<p>' + $filter('translate')('EDIT_PROFILE_PUBLIC') + '</p>';
 			}
 			if (vm.user.isAutoAdd) {
-				successMessage += '<p>You may be automatically added to teams under your organizations.</p>';
+				successMessage += '<p>' + $filter('translate')('EDIT_PROFILE_AUTOADD') + '</p>';
 			}
 			var user = new UsersService(vm.user);
 			user.$update(function (response) {
@@ -48,7 +48,7 @@
 				vm.user = angular.copy(Authentication.user);
 				pristineUser = angular.toJson(Authentication.user);
 			}, function (response) {
-				Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Edit profile failed!' });
+				Notification.error({ message: response.data.message, title: '<i class="glyphicon glyphicon-remove"></i> ' + $filter('translate')('EDIT_PROFILE_FAILURE') });
 			});
 		}
 	})

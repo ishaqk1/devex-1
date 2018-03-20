@@ -35,9 +35,7 @@
 					<div class="input-help alert alert-info" data-field="title" ng-show="sprogram" translate="TEAM_SELECT">
 						Select the team that is the owner/sponsor of this project.
 					</div>
-					<select ng-if="isEnglish()" name="program" ng-model="vm.programId" id="program" class="form-control" ng-options="obj._id as obj.title for obj in vm.programs">
-					</select>
-					<select ng-if="isFrench()" name="program" ng-model="vm.programId" id="program" class="form-control" ng-options="obj._id as obj.title_fr for obj in vm.programs">
+					<select name="program" ng-model="vm.programId" id="program" class="form-control" ng-options="obj._id as obj.title for obj in vm.programs">
 					</select>
 				</div>
 				<div class="form-group" show-errors>

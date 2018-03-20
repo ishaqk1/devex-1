@@ -10,10 +10,10 @@
 						class="col-sm-12"
 						x-form="vm.userForm"
 						x-options='{
-							"title":"First Name",
+							"title":"{{ "PROP_FNAME" | translate }}",
 							"id":"firstName",
 							"name":"firstName",
-							"placeholder":"First Name",
+							"placeholder":"{{ "PROP_FNAME" | translate }}",
 							"required":"First Name is required"
 						}'>
 					</form-input>
@@ -22,10 +22,10 @@
 						class="col-sm-12"
 						x-form="vm.userForm"
 						x-options='{
-							"title":"Last Name",
+							"title":"{{ "PROP_LNAME" | translate }}",
 							"id":"lastName",
 							"name":"lastName",
-							"placeholder":"Last Name",
+							"placeholder":"{{ "PROP_LNAME" | translate }}",
 							"required":"Last Name is required"
 						}'>
 					</form-input>
@@ -34,10 +34,10 @@
 						class="col-sm-12"
 						x-form="vm.userForm"
 						x-options='{
-							"title":"Email Address",
+							"title":"{{ "PROP_EMAIL" | translate }}",
 							"id":"email",
 							"name":"email",
-							"placeholder":"Email Address",
+							"placeholder":"{{ "PROP_EMAIL" | translate }}",
 							"required":"Email Address is required"
 						}'>
 					</form-input>
