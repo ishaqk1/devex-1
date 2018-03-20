@@ -18,7 +18,7 @@
 	// controller for privacy
 	//
 	// -------------------------------------------------------------------------
-	.controller('ProfilePrivacyController', function ($scope, subscriptions, Authentication, UsersService, Notification, $translate) {
+	.controller('ProfilePrivacyController', function ($scope, subscriptions, Authentication, UsersService, Notification, $filter) {
 		var vm = this;
 		vm.user = angular.copy(Authentication.user);
 		var pristineUser = angular.toJson (Authentication.user);
