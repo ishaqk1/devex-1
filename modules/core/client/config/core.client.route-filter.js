@@ -46,6 +46,10 @@
 			var allowed     = true;
 			var roles;
 			var i;
+			console.log(event);
+			console.log(toState);
+			console.log(toParams);
+			console.log($state);
 			if (hasroles) {
 				allowed = false;
 				for (i = 0, roles = toState.data.roles; i < roles.length; i++) {
