@@ -31,6 +31,7 @@
 			x-options='{
 				"title":"Project",
 				"name":"project",
+				"class":"required",
 				"help":"Select the project that this opportunity falls under. If you do not see the project in the dropdown list, you will need to go to the Projects tab and create a new project page first."
 			}'>
 			<select
@@ -61,6 +62,7 @@
 			x-options='{
 				"title":"Projet",
 				"name":"project",
+				"class":"required",
 				"help":"Select the project that this opportunity falls under. If you do not see the project in the dropdown list, you will need to go to the Projects tab and create a new project page first."
 			}'>
 			<select
@@ -120,6 +122,7 @@
 				"help":"Create a short title for the opportunity that conveys the core of the work you need done.",
 				"id":"title",
 				"name":"title",
+				"class":"required",
 				"placeholder":"Opportunity Title"
 			}'>
 		</form-input>
@@ -132,6 +135,7 @@
 				"help":"Create a short title for the opportunity that conveys the core of the work you need done.",
 				"id":"title_fr",
 				"name":"title_fr",
+				"class":"required",
 				"placeholder":"Opportunity Title"
 			}'>
 		</form-input>
@@ -144,6 +148,7 @@
 				"help":"Inscrivez un court titre pour votre possibilité de travail qui illustre bien l&apos;essentiel du travail qui doit être réalisé.",
 				"id":"title",
 				"name":"title",
+				"class":"required",
 				"placeholder":"Titre de la possibilité"
 			}'>
 		</form-input>
@@ -156,6 +161,7 @@
 				"help":"Inscrivez un court titre pour votre possibilité de travail qui illustre bien l&apos;essentiel du travail qui doit être réalisé.",
 				"id":"title_fr",
 				"name":"title_fr",
+				"class":"required",
 				"placeholder":"Titre de la possibilité"
 			}'>
 		</form-input>
@@ -165,6 +171,7 @@
 			x-options='{
 				"title":"Teaser (English)",
 				"name":"short",
+				"class":"required",
 				"help":"Enter a 1-2 sentence description that will entice readers to apply on this opportunity. Describe what you are inviting them to do."
 			}'>
 			<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..."></textarea>
@@ -174,6 +181,7 @@
 			x-options='{
 				"title":"Teaser (French)",
 				"name":"short_fr",
+				"class":"required",
 				"help":"Enter a 1-2 sentence description that will entice readers to apply on this opportunity. Describe what you are inviting them to do."
 			}'>
 			<textarea name="short_fr" data-ng-model="vm.opportunity.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="1-2 sentences that entice the reader to apply..."></textarea>
@@ -183,6 +191,7 @@
 			x-options='{
 				"title":"Accroche (Anglais)",
 				"name":"short",
+				"class":"required",
 				"help":"Présentez une description d&apos;une ou deux phrases qui suscitera l&apos;intérêt des lecteurs et qui les encouragera à faire une offre. Décrivez ce que vous attendez d&apos;eux."
 			}'>
 			<textarea name="short" data-ng-model="vm.opportunity.short" id="short" class="form-control" cols="30" rows="3" placeholder="1 ou 2 phrases qui incitent le lecteur à postuler..."></textarea>
@@ -192,6 +201,7 @@
 			x-options='{
 				"title":"Accroche (Français)",
 				"name":"short_fr",
+				"class":"required",
 				"help":"Présentez une description d&apos;une ou deux phrases qui suscitera l&apos;intérêt des lecteurs et qui les encouragera à faire une offre. Décrivez ce que vous attendez d&apos;eux."
 			}'>
 			<textarea name="short_fr" data-ng-model="vm.opportunity.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="1 ou 2 phrases qui incitent le lecteur à postuler..."></textarea>
@@ -207,6 +217,7 @@
 				"help":"Paste the link to your project GitHub repository.<br/> When you publish this opportunity, a new Issue will be generated in your repository, and people can ask questions in the comments section.",
 				"id":"github",
 				"name":"github",
+				"class":"required",
 				"placeholder":"Paste link to GitHub repository"
 			}'>
 		</form-input>
@@ -219,6 +230,7 @@
 				"help":"Coller l&apos;hyperlien du répertoire GitHub de votre projet.<br /> Lorsque vous publierez cette possibilité de travail, une nouvelle publication sera créée dans votre répertoire. Les gens pourront poser des questions dans la section commentaire.",
 				"id":"github",
 				"name":"github",
+				"class":"required",
 				"placeholder":"Coller le lien « Enjeu » de GitHub"
 			}'>
 		</form-input>
