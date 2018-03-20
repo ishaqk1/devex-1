@@ -59,6 +59,30 @@
           lang: 'fr'
         }
       })
+      .state('en.insights', {
+        url: '/insights',
+        templateUrl: '/modules/core/client/views/insights.client.view.html',
+        controller: 'InsightsController',
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: '{{ "INSIGHTS" | translate }}'
+        },
+        params: {
+          lang: 'en'
+        }
+      })
+      .state('fr.insights', {
+        url: '/perspicacites',
+        templateUrl: '/modules/core/client/views/insights.client.view.html',
+        controller: 'InsightsController',
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: '{{ "INSIGHTS" | translate }}'
+        },
+        params: {
+          lang: 'fr'
+        }
+      })
       .state('not-found', {
         url: '/not-found',
         templateUrl: '/modules/core/client/views/404.client.view.html',
