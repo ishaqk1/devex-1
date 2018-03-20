@@ -334,9 +334,6 @@
 	        return ($translate.use() === 'fr');
 	    };
 
-	    console.log(projects);
-	    console.log(projects.my());
-
 	    uibButtonConfig.activeClass = 'custombuttonbackground';
 		var vm                                = this;
 		vm.features = window.features;
@@ -349,7 +346,7 @@
 		var isUser                            = Authentication.user;
 		vm.isAdmin                            = isUser && !!~Authentication.user.roles.indexOf ('admin');
 		vm.isGov                              = isUser && !!~Authentication.user.roles.indexOf ('gov');
-		vm.projects                           = projects.my();
+		vm.projects                           = projects;
 		vm.editing                            = editing;
 		vm.opportunity                        = opportunity;
 		vm.opportunity.deadline               = new Date (vm.opportunity.deadline);
