@@ -175,21 +175,6 @@ exports.list = function (req, res) {
 };
 
 /**
- * List of Users
- */
-exports.registrations = function (req, res) {
-  User.find({}, '-salt -password -providerData').sort('-created').select('created').exec(function (err, users) {
-    if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    }
-
-    res.json(users);
-  });
-};
-
-/**
  * User middleware
  */
 exports.userByID = function (req, res, next, id) {
@@ -261,6 +246,17 @@ exports.notifyOpportunities = function (req, res) {
 };
 exports.notifyMeetings = function (req, res) {
     User.find ({notifyEvents:true}).select ('firstName lastName email')
+    .exec (function (err, users) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      }
+      else return res.json (users);
+    });
+};
+exports.registrations = function (req, res) {
+    User.find ({}).select ('created')
     .exec (function (err, users) {
       if (err) {
         return res.status(422).send({

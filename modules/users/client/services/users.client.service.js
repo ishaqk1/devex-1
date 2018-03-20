@@ -113,7 +113,7 @@
       },
       registrations: {
         method: 'GET',
-        url: '/api/users/registrations',
+        url: '/api/registrations',
         isArray: true
       },
       update: {
