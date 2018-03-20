@@ -175,6 +175,21 @@ exports.list = function (req, res) {
 };
 
 /**
+ * List of Users
+ */
+exports.registrations = function (req, res) {
+  User.find({}, '-salt -password -providerData').sort('-created').select('created').exec(function (err, users) {
+    if (err) {
+      return res.status(422).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+
+    res.json(users);
+  });
+};
+
+/**
  * User middleware
  */
 exports.userByID = function (req, res, next, id) {
