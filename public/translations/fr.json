@@ -116,6 +116,8 @@
 	"CANCEL": "Annuler",
 	"REMOVE": "Supprimer",
 	"CLOSE": "Fermer",
+	"ENGLISH": "Anglais",
+	"FRENCH": "Français",
 	"ARE_YOU_SURE": "Êtes-vous certain de vouloir effectuer la suppression?",
 	"IN_PERSON_NO": "Travail en personne NON requis",
 	"IN_PERSON_YES": "Travail en personne requis",
