@@ -8,6 +8,7 @@
   authInterceptor.$inject = ['$q', '$injector', 'Authentication'];
 
   function authInterceptor($q, $injector, Authentication) {
+    console.log(Authentication);
     var service = {
       responseError: responseError
     };
@@ -15,6 +16,7 @@
     return service;
 
     function responseError(rejection) {
+      console.log(rejection);
       if (!rejection.config.ignoreAuthModule) {
         switch (rejection.status) {
           case 400:
@@ -26,8 +28,6 @@
             $injector.get('$state').transitionTo('authentication.signin');
             break;
           case 403:
-            console.log($injector);
-            console.log(rejection);
             $injector.get('$state').transitionTo('forbidden');
             break;
           case 404:

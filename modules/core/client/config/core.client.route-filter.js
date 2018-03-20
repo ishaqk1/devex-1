@@ -64,6 +64,7 @@
 				}
 			}
 			console.log(toState);
+			console.log(allowed);
 			console.log(toState.name);
 			if (toState.name === 'en.insights' || toState.name === 'fr.insights') {
 				allowed = true;
@@ -71,6 +72,7 @@
 			if (!allowed) {
 				event.preventDefault();
 				if (Authentication.user !== null && typeof Authentication.user === 'object') {
+					console.log('got 403');
 					$state.transitionTo('forbidden');
 				} else {
 					$state.go('authentication.signin').then(function () {
@@ -79,6 +81,7 @@
 					});
 				}
 			}
+			console.log(allowed);
 		}
 
 		function stateChangeSuccess(event, toState, toParams, fromState, fromParams) {
