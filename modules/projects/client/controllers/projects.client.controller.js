@@ -138,13 +138,14 @@
 		//
 		// defaults
 		//
-		vm.programLink  = true;
+		vm.programLink  = false;
 		vm.programId    = $stateParams.programId;
 		vm.programTitle = $stateParams.programTitle;
 		//
 		// if editing, set from existing
 		//
 		if (vm.editing) {
+			vm.programLink = true;
 			vm.programId    = project.program._id;
 			vm.programTitle = project.program.title;
 		} else {
@@ -158,6 +159,7 @@
 			// if adding with program context set the program on the record
 			//
 			else if (vm.context === 'program') {
+				vm.programLink = true;
 				vm.project.program = vm.programId;
 			}
 		}

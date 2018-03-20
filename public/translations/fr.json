@@ -255,7 +255,7 @@
 	"PROFILE_ALLOW_EMAIL_DESC": "Dans diverses sections du site, on peut indiquer qui a rédigé le contenu (le nom et peut-être l'adresse électronique). Cochez ici pour permettre aux autres de voir votre adresse électronique",
 	"PROFILE_NOTIFY_ME": "M'aviser lorsque de nouvelles possibilités sont affichées",
 	"PROFILE_NOTIFY_ME_DESC": "Lorsque de nouvelles possibilités seront affichées, vous recevrez par courriel une notification comprenant un lien. Vous pouvez vous désabonner en tout temps, ou désactiver la fonction en décochant l'option",
-	"PROFILE_VERIFY_ME": "Confirmation du statut d'employé du gouvernement du Canada pour permettre la publication de contenu sur GCDevExchange",
+	"PROFILE_VERIFY_ME": "Confirmation du statut d'employé du gouvernement du Canada pour permettre la publication de contenu sur GCDevExchange (nécessite une adresse courriel @canada.ca ou @gc.ca valide)",
 	"PROFILE_PUBLIC_PROFILE": "Profil public",
 	"PROFILE_PRIVACY_NOTIFICATIONS": "Confidentialité et notifications",
 	"PROFILE_UPDATE_SETTINGS": "Modifier les paramètres",
