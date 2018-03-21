@@ -84,6 +84,7 @@
 	    $scope.isFrench = function() {
 	        return ($translate.use() === 'fr');
 	    };
+		$translate.use($stateParams.lang);
 
 		var vm                    = this;
 		vm.features = window.features;
@@ -333,6 +334,7 @@
 	    $scope.isFrench = function() {
 	        return ($translate.use() === 'fr');
 	    };
+		$translate.use($stateParams.lang);
 
 	    uibButtonConfig.activeClass = 'custombuttonbackground';
 		var vm                                = this;

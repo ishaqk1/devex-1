@@ -95,7 +95,8 @@
 			url: '/:opportunityId',
 			params: {
 				programId: null,
-				projectId: null
+				projectId: null,
+	        	lang: 'en'
 			},
 			templateUrl: '/modules/opportunities/client/views/view-opportunity.client.view.html',
 			controller: 'OpportunityViewController',
@@ -128,7 +129,8 @@
 			url: '/:opportunityId',
 			params: {
 				programId: null,
-				projectId: null
+				projectId: null,
+	        	lang: 'fr'
 			},
 			templateUrl: '/modules/opportunities/client/views/view-opportunity.client.view.html',
 			controller: 'OpportunityViewController',
@@ -197,7 +199,8 @@
 			url: '/:opportunityId/edit',
 			params: {
 				programId: null,
-				projectId: null
+				projectId: null,
+	        	lang: 'en'
 			},
 			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
 			controller: 'OpportunityEditController',
@@ -236,7 +239,8 @@
 			url: '/:opportunityId/modifier',
 			params: {
 				programId: null,
-				projectId: null
+				projectId: null,
+	        	lang: 'fr'
 			},
 			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
 			controller: 'OpportunityEditController',
@@ -283,7 +287,8 @@
 				programTitle: null,
 				projectId: null,
 				projectTitle: null,
-				context: null
+				context: null,
+	        	lang: 'en'
 			},
 			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
 			controller: 'OpportunityEditController',
@@ -320,7 +325,8 @@
 				programTitle: null,
 				projectId: null,
 				projectTitle: null,
-				context: null
+				context: null,
+	        	lang: 'fr'
 			},
 			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
 			controller: 'OpportunityEditController',
