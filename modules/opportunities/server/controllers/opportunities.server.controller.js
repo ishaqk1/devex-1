@@ -27,10 +27,19 @@ var path = require('path'),
 	_ = require('lodash'),
 	Notifications = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller')),
 	Proposals = require(path.resolve('./modules/proposals/server/controllers/proposals.server.controller')),
-	github = require(path.resolve('./modules/core/server/controllers/core.server.github'))
+	github = require(path.resolve('./modules/core/server/controllers/core.server.github')),
+	TwitterPackage = require('twitter'),
+	config = require(path.resolve('./config/config'))
 	;
 
-
+if (config.twitter.consumer_key && config.twitter.consumer_secret && config.twitter.access_token_key && config.twitter.access_token_secret) {
+	var Twitter = new TwitterPackage({
+		consumer_key: config.twitter.consumer_key,
+		consumer_secret: config.twitter.consumer_secret,
+		access_token_key: config.twitter.access_token_key,
+		access_token_secret: config.twitter.access_token_secret
+	});
+}
 
 // -------------------------------------------------------------------------
 //
@@ -450,6 +459,15 @@ var pub = function (req, res, isToBePublished) {
 		else if (isToBePublished) {
 			Notifications.notifyObject ('not-update-'+opportunity.code, data);
 			Notifications.notifyObject ('not-updateany-opportunity', data);
+		}
+		if (config.twitter.consumer_key && config.twitter.consumer_secret && config.twitter.access_token_key && config.twitter.access_token_secret) {
+			Twitter.post('statuses/update', {status: 'Test Tweet'},  function(error, tweet, response){
+				if (error) {
+					console.log(error);
+				}
+				console.log(tweet);
+				console.log(response);
+			});
 		}
 		github.createOrUpdateIssue ({
 			title  : opportunity.name,
