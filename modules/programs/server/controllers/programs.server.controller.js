@@ -113,7 +113,7 @@ exports.my = function (req, res) {
 	var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
 	var search = me.isAdmin ? {} : { code: { $in: me.programs.member } };
 	Program.find (search)
-	.select ('code title short')
+	.select ('code title title_fr short')
 	.exec (function (err, programs) {
 		if (err) {
 			return res.status(422).send ({
@@ -128,7 +128,7 @@ exports.myadmin = function (req, res) {
 	var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
 	var search = me.isAdmin ? {} : { code: { $in: me.programs.admin } };
 	Program.find (search)
-	.select ('code title short')
+	.select ('code title title_fr short')
 	.exec (function (err, programs) {
 		if (err) {
 			return res.status(422).send ({

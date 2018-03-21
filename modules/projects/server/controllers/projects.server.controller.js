@@ -120,8 +120,8 @@ exports.my = function (req, res) {
 	var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
 	var search = me.isAdmin ? {} : { code: { $in: me.projects.member } };
 	Project.find (search)
-	.populate ('program', 'code title short logo')
-	.select ('code name short program')
+	.populate ('program', 'code title title_fr short logo')
+	.select ('code name name_fr short program')
 	.exec (function (err, projects) {
 		if (err) {
 			return res.status(422).send ({
@@ -134,8 +134,8 @@ exports.my = function (req, res) {
 };
 exports.myadmin = function (req, res) {
 	Project.find (searchTerm (req))
-	.populate ('program', 'code title short logo')
-	.select ('code name short program')
+	.populate ('program', 'code title title_fr short logo')
+	.select ('code name name_fr short program')
 	.exec (function (err, projects) {
 		if (err) {
 			return res.status(422).send ({

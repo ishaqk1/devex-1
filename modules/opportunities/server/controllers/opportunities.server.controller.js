@@ -191,7 +191,7 @@ var setNotificationData = function (opportunity) {
 // -------------------------------------------------------------------------
 exports.my = function (req, res) {
 	Opportunity.find (searchTerm (req))
-	.select ('code name short')
+	.select ('code name name_fr short')
 	.exec (function (err, opportunities) {
 		if (err) {
 			return res.status(422).send ({
