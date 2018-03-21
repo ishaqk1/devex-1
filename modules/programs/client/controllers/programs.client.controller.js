@@ -134,7 +134,7 @@
 		vm.remove = function () {
 			if ($window.confirm('Are you sure you want to delete?')) {
 				vm.program.$remove(function() {
-					$state.go('programs.list');
+					$state.go($translate.use() + '.programs.list');
 					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('TEAM_TEAM') + ' deleted successfully!' });
 				});
 			}

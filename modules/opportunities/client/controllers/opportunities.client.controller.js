@@ -254,7 +254,7 @@
 		//
 		// -------------------------------------------------------------------------
 		vm.signInAndApply = function () {
-			$state.go('authentication.signin').then(function () {
+			$state.go($translate.use() + '.authentication.signin').then(function () {
 				$state.previous = {
 					state: 'opportunities.view',
 					params: {opportunityId:opportunity.code},
@@ -565,7 +565,7 @@
 		vm.remove = function () {
 			if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
 				vm.opportunity.$remove(function() {
-					$state.go('opportunities.list');
+					$state.go($translate.use() + '.opportunities.list');
 					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('OPP_DELETED') });
 				});
 			}
@@ -677,7 +677,7 @@
 						message : '<i class="glyphicon glyphicon-ok"></i> opportunity saved successfully!'
 					});
 
-					$state.go('opportunities.view', {opportunityId:opportunity.code});
+					$state.go($translate.use() + '.opportunities.view', {opportunityId:opportunity.code});
 				})
 				//
 				// fail, notify and stay put
