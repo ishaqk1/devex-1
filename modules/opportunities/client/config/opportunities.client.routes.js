@@ -209,7 +209,7 @@
 					}).$promise;
 				},
 				programs: function (ProgramsService) {
-					return ProgramsService.my ().$promise;
+					return ProgramsService.myadmin ().$promise;
 				},
 				projects: function (ProjectsService) {
 					return ProjectsService.my ().$promise;
@@ -248,7 +248,7 @@
 					}).$promise;
 				},
 				programs: function (ProgramsService) {
-					return ProgramsService.my ().$promise;
+					return ProgramsService.myadmin ().$promise;
 				},
 				projects: function (ProjectsService) {
 					return ProjectsService.my ().$promise;
