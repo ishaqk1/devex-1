@@ -212,7 +212,7 @@
 					return ProgramsService.myadmin ().$promise;
 				},
 				projects: function (ProjectsService) {
-					return ProjectsService.myadmin ().$promise;
+					return ProjectsService.my ().$promise;
 				},
 				editing: function () { return true; },
 				previousState: function ($state) {
@@ -251,7 +251,7 @@
 					return ProgramsService.myadmin ().$promise;
 				},
 				projects: function (ProjectsService) {
-					return ProjectsService.myadmin ().$promise;
+					return ProjectsService.my ().$promise;
 				},
 				editing: function () { return true; },
 				previousState: function ($state) {
@@ -293,7 +293,7 @@
 					return new OpportunitiesService();
 				},
 				projects: function (ProjectsService) {
-					return ProjectsService.myadmin ().$promise;
+					return ProjectsService.my ().$promise;
 				},
 				editing: function () { return false; },
 				previousState: function ($state) {
@@ -330,7 +330,7 @@
 					return new OpportunitiesService();
 				},
 				projects: function (ProjectsService) {
-					return ProjectsService.myadmin ().$promise;
+					return ProjectsService.my ().$promise;
 				},
 				editing: function () { return false; },
 				previousState: function ($state) {

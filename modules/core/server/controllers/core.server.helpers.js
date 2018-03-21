@@ -9,8 +9,6 @@ exports.generateCode = function (s) {
 };
 
 exports.applyAudit = function (model, user) {
-	console.log(model);
-	console.log(user);
 	model.updated   = Date.now ();
 	model.updatedBy = (user && user._id) ? user._id : null;
 	if (!model.created) {
