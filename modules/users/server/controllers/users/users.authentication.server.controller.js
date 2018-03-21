@@ -11,8 +11,8 @@ var path = require('path'),
 
 // URLs for which user can't be redirected on signin
 var noReturnUrls = [
-  '/authentication/signin',
-  '/authentication/signup'
+  '/en/authentication/signin',
+  '/en/authentication/signup'
 ];
 
 /**
@@ -100,20 +100,20 @@ exports.oauthCallback = function (strategy) {
     // info.redirect_to contains inteded redirect path
     passport.authenticate(strategy, function (err, user, info) {
       if (err) {
-        return res.redirect('/authentication/signin?err=' + encodeURIComponent(errorHandler.getErrorMessage(err)));
+        return res.redirect('/en/authentication/signin?err=' + encodeURIComponent(errorHandler.getErrorMessage(err)));
       }
       if (!user) {
-        return res.redirect('/authentication/signin');
+        return res.redirect('/en/authentication/signin');
       }
       req.login(user, function (err) {
         if (err) {
-          return res.redirect('/authentication/signin');
+          return res.redirect('/en/authentication/signin');
         }
         if (!user.email) {
-          return res.redirect(info.redirect_to || '/settings/profile');
+          return res.redirect(info.redirect_to || '/en/settings/profile');
         }
         else {
-          return res.redirect(info.redirect_to || '/');
+          return res.redirect(info.redirect_to || '/en');
         }
       });
     })(req, res, next);
@@ -203,7 +203,7 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
 
       // And save the user
       user.save(function (err) {
-        return done(err, user, '/settings/accounts');
+        return done(err, user, '/en/settings/accounts');
       });
     } else {
       return done(new Error('User is already connected using this provider'), user);
