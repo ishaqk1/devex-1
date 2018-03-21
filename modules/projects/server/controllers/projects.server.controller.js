@@ -121,7 +121,7 @@ exports.my = function (req, res) {
 	var search = me.isAdmin ? {} : { code: { $in: me.projects.member } };
 	Project.find (search)
 	.populate ('program', 'code title short logo')
-	.select ('code name short')
+	.select ('code name short program')
 	.exec (function (err, projects) {
 		if (err) {
 			return res.status(422).send ({
