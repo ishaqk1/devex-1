@@ -333,7 +333,6 @@
 	    $scope.isFrench = function() {
 	        return ($translate.use() === 'fr');
 	    };
-	    console.log(projects);
 
 	    uibButtonConfig.activeClass = 'custombuttonbackground';
 		var vm                                = this;
@@ -462,7 +461,6 @@
 		// if there is only one available project just force it
 		//
 		else if (vm.projects.length === 1) {
-			console.log(vm.projects);
 			vm.projectLink         = true;
 			vm.projectId           = vm.projects[0]._id;
 			vm.projectTitle        = vm.projects[0].name;
