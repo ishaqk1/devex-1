@@ -108,10 +108,10 @@
 				}
 			},
 			data: {
-				pageTitle: 'Équipe: {{program.title}}'
+				pageTitle: 'Équipe: {{program.title_fr}}'
 			},
 			ncyBreadcrumb: {
-				label: '{{vm.program.title}}',
+				label: '{{vm.program.title_fr}}',
 				parent: 'fr.programs.list'
 			}
 		})
@@ -192,7 +192,7 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'Équipe : {{ program.title }}'
+				pageTitle: 'Équipe : {{ program.title_fr }}'
 			},
 			ncyBreadcrumb: {
 				label: 'Modifier l\'équipe',

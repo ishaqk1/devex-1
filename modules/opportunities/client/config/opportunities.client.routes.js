@@ -152,10 +152,10 @@
 				}
 			},
 			data: {
-				pageTitle: 'Possibilité : {{opportunity.name}}'
+				pageTitle: 'Possibilité : {{opportunity.name_fr}}'
 			},
 			ncyBreadcrumb: {
-				label: '{{vm.opportunity.name}}',
+				label: '{{vm.opportunity.name_fr}}',
 				parent: 'fr.opportunities.list'
 			}
 		})
@@ -268,7 +268,7 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: 'Possibilité : {{ opportunity.name }}'
+				pageTitle: 'Possibilité : {{ opportunity.name_fr }}'
 			},
 			ncyBreadcrumb: {
 				label: 'Modifier le possibilité',

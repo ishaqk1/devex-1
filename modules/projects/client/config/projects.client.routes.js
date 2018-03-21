@@ -114,10 +114,10 @@
 				}
 			},
 			data: {
-				pageTitle: 'Projet : {{ project.name }}'
+				pageTitle: 'Projet : {{ project.name_fr }}'
 			},
 			ncyBreadcrumb: {
-				label: '{{vm.project.name}}',
+				label: '{{vm.project.name_fr}}',
 				parent: 'fr.projects.list'
 			}
 		})
