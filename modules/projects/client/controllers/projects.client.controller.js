@@ -171,7 +171,7 @@
 		vm.remove = function () {
 			if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
 				vm.project.$remove(function() {
-					$state.go('projects.list');
+					$state.go($translate.use() + '.projects.list');
 					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('PROJECT_DELETED') });
 				});
 			}
@@ -219,7 +219,7 @@
 				Notification.success ({
 					message : '<i class="glyphicon glyphicon-ok"></i> project saved successfully!'
 				});
-				$state.go('projects.view', {projectId:project.code});
+				$state.go($translate.use() + '.projects.view', {projectId:project.code});
 			})
 			//
 			// fail, notify and stay put

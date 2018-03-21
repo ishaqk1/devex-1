@@ -15,6 +15,11 @@ exports.applyAudit = function (model, user) {
 		model.created   = model.updated;
 		model.createdBy = model.updatedBy;
 	}
+	console.log(model);
+	console.log(user);
+	if (!model.createdBy) {
+		model.createdBy = Date.now ();
+	}
 };
 
 exports.myStuff = function (roles) {
