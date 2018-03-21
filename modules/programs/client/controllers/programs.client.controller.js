@@ -170,7 +170,7 @@
 				//
 				((vm.fileSelected) ? vm.upload (vm.croppedDataUrl, vm.picFile, vm.program._id) : Promise.resolve ())
 				.then (function () {
-						$state.go('programs.view', {programId:program.code});
+						$state.go($translate.use() + '.programs.view', {programId:program.code});
 				});
 			})
 			//

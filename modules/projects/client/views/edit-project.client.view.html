@@ -25,10 +25,13 @@
 	<div class="row">
 	<div class="col-sm-12">
 			<fieldset>
-				<div class="form-group" ng-if="vm.programLink" >
-					<a  id="programs.view" ui-sref="programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
+				<div class="form-group" ng-if="vm.programLink && isEnglish()">
+					<a  id="programs.view" ui-sref="en.programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
 				</div>
-				<div class="form-group" ng-if="!vm.programLink" >
+				<div class="form-group" ng-if="vm.programLink && isFrench()">
+					<a  id="programs.view" ui-sref="fr.programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
+				</div>
+				<div class="form-group" ng-if="!vm.programLink">
 					<label class="control-label required" for="program" aria-required="true"><span translate="TEAM_TEAM">Team</span></label>
 					<!-- <i class="glyphicon glyphicon-question-sign field-tt-source" ng-required="true" uib-tooltip="Program offering this opportunity" tooltip-placement="bottom"></i> -->
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sprogram = !sprogram"></i>
@@ -142,13 +145,19 @@
 	  <a class="btn btn-primary" ng-click="vm.saveme()" title="{{ 'SAVE' | translate }}">
 		<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default"  id="projects.view" ui-sref="projects.view({projectId:vm.project.code})" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="vm.editing && isEnglish()" class="btn btn-default"  id="projects.view" ui-sref="en.projects.view({projectId:vm.project.code})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="vm.editing && isFrench()" class="btn btn-default"  id="projects.view" ui-sref="fr.projects.view({projectId:vm.project.code})" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
 	  <a ng-if="!vm.editing && !vm.programId" class="btn btn-default"  id="projects.list" ui-sref="projects.list" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="!vm.editing && vm.programId" class="btn btn-default"  id="programs.view" ui-sref="programs.view({programId:vm.programId})" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="!vm.editing && vm.programId && isEnglish()" class="btn btn-default"  id="programs.view" ui-sref="en.programs.view({programId:vm.programId})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="!vm.editing && vm.programId && isFrench()" class="btn btn-default"  id="programs.view" ui-sref="fr.programs.view({programId:vm.programId})" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
 	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">

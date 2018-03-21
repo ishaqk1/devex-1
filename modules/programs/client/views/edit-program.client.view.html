@@ -177,10 +177,16 @@
 	  <a class="btn btn-primary" ng-click="vm.saveme(vm.form.programForm.$valid)" title="{{ 'SAVE' | translate }}">
 		<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default"  id="programs.view" ui-sref="programs.view({programId:vm.program.code})" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="vm.editing && isEnglish()" class="btn btn-default"  id="programs.view" ui-sref="en.programs.view({programId:vm.program.code})" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="!vm.editing" class="btn btn-default"  id="programs.list" ui-sref="programs.list" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="vm.editing && isFrench()" class="btn btn-default"  id="programs.view" ui-sref="fr.programs.view({programId:vm.program.code})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="!vm.editing && isEnglish()" class="btn btn-default"  id="programs.list" ui-sref="en.programs.list" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="!vm.editing && isFrench()" class="btn btn-default"  id="programs.list" ui-sref="fr.programs.list" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
 	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">
