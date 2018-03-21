@@ -18,7 +18,7 @@ exports.applyAudit = function (model, user) {
 	console.log(model);
 	console.log(user);
 	if (!model.createdBy) {
-		model.createdBy = Date.now ();
+		model.createdBy = (user && user._id) ? user._id : null;
 	}
 };
 
