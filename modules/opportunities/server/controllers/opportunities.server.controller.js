@@ -305,7 +305,7 @@ exports.create = function(req, res) {
 	//
 	// set the code, this is used setting roles and other stuff
 	//
-	Opportunity.findUniqueCode (opportunity.name, null, function (newcode) {
+	Opportunity.findUniqueCode (opportunity.name, opportunity.name_fr, null, function (newcode) {
 		opportunity.code = newcode;
 		//
 		// set the audit fields so we know who did what when

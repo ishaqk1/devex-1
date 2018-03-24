@@ -180,7 +180,7 @@ exports.create = function(req, res) {
 	//
 	// set the code, this is used for setting roles and other stuff
 	//
-	Project.findUniqueCode (project.name, null, function (newcode) {
+	Project.findUniqueCode (project.name, project.name_fr, null, function (newcode) {
 		project.code = newcode;
 		//
 		// set the audit fields so we know who did what when

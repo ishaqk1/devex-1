@@ -29,9 +29,9 @@ var ProgramSchema = new Schema({
 	updatedBy   : {type: 'ObjectId', ref: 'User', default: null }
 });
 
-ProgramSchema.statics.findUniqueCode = function (title, suffix, callback) {
+ProgramSchema.statics.findUniqueCode = function (title, title_fr, suffix, callback) {
 	var _this = this;
-	var possible = 'pro-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
+	var possible = 'team-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + '-equipe-' + (title_fr.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
 
 	_this.findOne({
 		code: possible
@@ -40,7 +40,7 @@ ProgramSchema.statics.findUniqueCode = function (title, suffix, callback) {
 			if (!user) {
 				callback(possible);
 			} else {
-				return _this.findUniqueCode(title, (suffix || 0) + 1, callback);
+				return _this.findUniqueCode(title, title_fr, (suffix || 0) + 1, callback);
 			}
 		} else {
 			callback(null);

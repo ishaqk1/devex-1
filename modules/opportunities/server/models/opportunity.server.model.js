@@ -113,9 +113,9 @@ var OpportunitySchema = new Schema({
 	terms                     : {type: String, default: ''}
 });
 
-OpportunitySchema.statics.findUniqueCode = function (title, suffix, callback) {
+OpportunitySchema.statics.findUniqueCode = function (title, title_fr, suffix, callback) {
 	var _this = this;
-	var possible = 'opp-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
+	var possible = 'opp-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + '-poss-' + (title_fr.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
 
 	_this.findOne({
 		code: possible
@@ -124,7 +124,7 @@ OpportunitySchema.statics.findUniqueCode = function (title, suffix, callback) {
 			if (!user) {
 				callback(possible);
 			} else {
-				return _this.findUniqueCode(title, (suffix || 0) + 1, callback);
+				return _this.findUniqueCode(title, title_fr, (suffix || 0) + 1, callback);
 			}
 		} else {
 			callback(null);

@@ -29,8 +29,14 @@
 	        var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
 	        var currentState = $state.current.name;
 
+	        var params = {};
+	        if ($state.params) {
+	        	params = $state.params;
+	        	params.lang = newLang;
+	        }
+
 	        $translate.use(newLang).then(function () {
-	            $state.go(newLang + currentState.slice(2));
+	            $state.go(newLang + currentState.slice(2), params);
 	        });
 	    }
 	    $rootScope.goTo = function(state){
