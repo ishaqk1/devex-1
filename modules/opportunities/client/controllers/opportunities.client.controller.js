@@ -366,7 +366,10 @@
 		vm.opportunity.skilllist              = vm.opportunity.skills ? vm.opportunity.skills.join (', ') : '';
 		vm.opportunity.skilllist_fr           = vm.opportunity.skills_fr ? vm.opportunity.skills_fr.join (', ') : '';
 		vm.opportunity.taglist                = vm.opportunity.tags   ? vm.opportunity.tags.join (', ')   : '';
-
+		//
+		// prices list
+		//
+		vm.amounts = dataService.prices;
 		// -------------------------------------------------------------------------
 		//
 		// can this be published?
@@ -377,20 +380,18 @@
 		//
 		// set up the dropdown amounts for code with us earnings
 		//
+		/*
 		var minAmount = 500;
 		var maxAmount = 70000;
 		var step      = 500;
 		vm.amounts = [];
 		var i;
 		for (i = minAmount; i <= maxAmount; i += step) vm.amounts.push (i);
+		*/
 
 
 		if (!vm.opportunity.opportunityTypeCd || vm.opportunity.opportunityTypeCd === '') vm.opportunity.opportunityTypeCd = 'code-with-us';
 		// if (!vm.opportunity.capabilities) vm.opportunity.capabilities = [];
-		//
-		// prices list
-		//
-		vm.amounts = dataService.prices;
 		//
 		// if the user doesn't have the right access then kick them out
 		//

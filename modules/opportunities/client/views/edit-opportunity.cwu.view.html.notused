@@ -167,7 +167,7 @@
 					<label class="control-label" for="deadline">Proposal Deadline</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('deadline')"></i>
 					<div class="input-help alert alert-info" data-field="deadline" ng-show="vm.displayHelp.deadline">
-              			<p>Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Eastern Time.)</p>
+              			<p>Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Pacific Time.)</p>
               			<p>The longer lead time you give, the more proposals you are likely to get. A deadline at least <b>5 days</b> from when you publish is a good aim.</p>
 						<p>Make sure you have your <b>opportunity contact</b> lined up to respond to questions on the GitHub Issue in a timely manner, from the time you publish the opportunity right up to the cutoff time.</p>
 					</div>
@@ -184,7 +184,7 @@
 					<label class="control-label" for="assignment">Assignment Date</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('assignment')"></i>
 					<div class="input-help alert alert-info" data-field="assignment" ng-show="vm.displayHelp.assignment">
-						Choose a date that you will commit to assigning someone to this opportunity (dependent, of course, on at least one of the proposals meeting your minimum requirements). (Time of day is fixed at 16:00 Eastern Time.)
+						Choose a date that you will commit to assigning someone to this opportunity (dependent, of course, on at least one of the proposals meeting your minimum requirements). (Time of day is fixed at 16:00 Pacific Time.)
 					</div>
 					<div>
 					<input type="date" name="assignment" required ng-model="vm.opportunity.assignment"/>
@@ -216,7 +216,7 @@
 					<label class="control-label" for="deadline">Proposal Deadline</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('deadline')"></i>
 					<div class="input-help alert alert-info" data-field="deadline" ng-show="vm.displayHelp.deadline">
-              			<p>Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Eastern Time.)</p>
+              			<p>Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Pacific Time.)</p>
               			<p>The longer lead time you give, the more proposals you are likely to get. A deadline at least <b>5 days</b> from when you publish is a good aim.</p>
 						<p>Make sure you have your <b>opportunity contact</b> lined up to respond to questions on the GitHub Issue in a timely manner, from the time you publish the opportunity right up to the cutoff time.</p>
 					</div>
@@ -233,7 +233,7 @@
 					<label class="control-label" for="assignment">Assignment Date</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="vm.toggleHelp('assignment')"></i>
 					<div class="input-help alert alert-info" data-field="assignment" ng-show="vm.displayHelp.assignment">
-						Choose a date that you will commit to assigning someone to this opportunity (dependent, of course, on at least one of the proposals meeting your minimum requirements). (Time of day is fixed at 16:00 Eastern Time.)
+						Choose a date that you will commit to assigning someone to this opportunity (dependent, of course, on at least one of the proposals meeting your minimum requirements). (Time of day is fixed at 16:00 Pacific Time.)
 					</div>
 					<div>
 					<input type="date" name="assignment" required ng-model="vm.opportunity.assignment"/>
