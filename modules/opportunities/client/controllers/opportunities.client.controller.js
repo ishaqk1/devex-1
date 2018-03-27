@@ -98,6 +98,7 @@
 		vm.myproposal             = myproposal;
 		vm.projectId              = $stateParams.projectId;
 		vm.opportunity            = opportunity;
+		vm.opportunity.earn       = (vm.opportunity.earn).toString();
 		vm.pageViews              = opportunity.views;
 		vm.opportunity.deadline   = new Date (vm.opportunity.deadline);
 		vm.opportunity.assignment = new Date (vm.opportunity.assignment);
@@ -351,6 +352,7 @@
 		vm.projects                           = projects;
 		vm.editing                            = editing;
 		vm.opportunity                        = opportunity;
+		vm.opportunity.earn                   = (vm.opportunity.earn).toString();
 		vm.opportunity.deadline               = new Date (vm.opportunity.deadline);
 		vm.opportunity.assignment             = new Date (vm.opportunity.assignment);
 		vm.opportunity.start                  = new Date (vm.opportunity.start)		;
