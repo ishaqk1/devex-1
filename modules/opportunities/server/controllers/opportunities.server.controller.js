@@ -470,7 +470,7 @@ var pub = function (req, res, isToBePublished) {
 			Notifications.notifyObject ('not-updateany-opportunity', data);
 		}
 		if (config.twitter.consumer_key && config.twitter.consumer_secret && config.twitter.access_token_key && config.twitter.access_token_secret) {
-			Twitter.post('statuses/update', {status: 'Test Tweet'},  function(error, tweet, response){
+			Twitter.post('statuses/update', {status: 'New Opportunity: ' + opportunity.name + ' ' + config.app.domain + '/en/opportunities/' + opportunity.code },  function(error, tweet, response){
 				if (error) {
 					console.log(error);
 				}
@@ -479,7 +479,7 @@ var pub = function (req, res, isToBePublished) {
 			});
 		}
 		if (config.twitter_fr.consumer_key && config.twitter_fr.consumer_secret && config.twitter_fr.access_token_key && config.twitter_fr.access_token_secret) {
-			TwitterFR.post('statuses/update', {status: 'Le teste Tweet'},  function(error, tweet, response){
+			TwitterFR.post('statuses/update', {status: 'Nouvelle possibilité : ' + opportunity.name + ' ' + config.app.domain + '/fr/possibilites/' + opportunity.code },  function(error, tweet, response){
 				if (error) {
 					console.log(error);
 				}

@@ -22,7 +22,7 @@ We've just posted a new GC Developers Exchange opportunity:
 
 ### Bonjour {{data.username}}!
 
-Nous venons de publier une nouvelle opportunité de Carrefour des programmeurs du gouvernement du Canada:
+Nous venons de publier une nouvelle possibilité de Carrefour des programmeurs du gouvernement du Canada:
 
 ### {{ data.name_fr }}
 
