@@ -171,7 +171,7 @@
 		var monthNames_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 		var dayNames_fr = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 		var dt_fr = vm.opportunity.deadline;
-		vm.deadline_fr = dt_fr.getHours()+':00 EST le '+dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		vm.deadline_fr = dt_fr.getHours()+':00 PST le '+dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
 		dt_fr = vm.opportunity.assignment;
 		vm.assignment_fr = 'le ' + dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
 		dt_fr = vm.opportunity.start;

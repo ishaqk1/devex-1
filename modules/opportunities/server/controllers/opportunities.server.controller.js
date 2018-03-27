@@ -261,7 +261,7 @@ var oppBody = function (opp) {
 	ret += '<h2>Acceptance Criteria</h2>';
 	ret += opp.criteria;
 	ret += '<h2>How to Apply</h2>';
-	ret += '<p>Go to the <a href="https://gcdevexchange-carrefourproggc.org/en/opportunities/'+opp.code+'">Opportunity Page</a>, click the Apply button above and submit your proposal by 17:00 EST on '+deadline+'</b>.</p>';
+	ret += '<p>Go to the <a href="https://gcdevexchange-carrefourproggc.org/en/opportunities/'+opp.code+'">Opportunity Page</a>, click the Apply button above and submit your proposal by 17:00 PST on '+deadline+'</b>.</p>';
 	ret += '<p>We plan to assign this opportunity by <b>'+assignment+'</b> with work to start on <b>'+start+'</b>.</p>';
 	// ret += '<p>If your proposal is accepted and you are assigned to the opportunity, you will be notified by email and asked to confirm your agreement to the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf"><i>Code With Us</i> terms and contract.</a></p>';
 	ret += '<h2>Proposal Evaluation Criteria</h2>';
@@ -293,7 +293,7 @@ var oppBody_fr = function (opp) {
 	ret += '<h2>Critères d\'acceptation</h2>';
 	ret += opp.criteria_fr;
 	ret += '<h2>Comment présenter une proposition</h2>';
-	ret += '<p>Accédez à <a href="https://gcdevexchange-carrefourproggc.org/fr/possibilites/'+opp.code+'">la page de possibilité</a>, cliquez sur le bouton Appliquer ci-dessus et soumettez votre proposition avant 17:00 EST sur '+deadline+'</b>.</p>';
+	ret += '<p>Accédez à <a href="https://gcdevexchange-carrefourproggc.org/fr/possibilites/'+opp.code+'">la page de possibilité</a>, cliquez sur le bouton Appliquer ci-dessus et soumettez votre proposition avant 17:00 PST sur '+deadline+'</b>.</p>';
 	ret += '<p>Nous prévoyons d\'attribuer cette opportunité par <b>'+assignment+'</b> avec le travail pour commencer <b>'+start+'</b>.</p>';
 	// ret += '<p>If your proposal is accepted and you are assigned to the opportunity, you will be notified by email and asked to confirm your agreement to the <a href="https://github.com/BCDevExchange/devex/raw/master/Code-with-Us%20Terms_BC%20Developers%20Exchange.pdf"><i>Code With Us</i> terms and contract.</a></p>';
 	ret += '<h2>Critères d\'évaluation de la proposition</h2>';
