@@ -4,10 +4,10 @@ var fs = require('fs');
 
 module.exports = {
   app: {
-    title: 'GCDevExchange - The GC Developer\'s Exchange',
-    description: 'Better ways for government and developers to work together',
-    keywords: 'developer, government, codewithus, agile, digitial service',
-    domain: 'https://gcdevexchange.org'
+    title: 'GCDevExchange | CarrefourProgGC',
+    description: 'Making it easier for government and developers to work together | Aider le gouvernement et les programmeurs à travailler ensemble',
+    keywords: 'developer, développeur, government, gouvernement, agile, digital service, service numérique',
+    domain: 'https://gcdevexchange-carrefourproggc.org'
   },
   port: process.env.PORT || 3000,
   host: process.env.HOST || '0.0.0.0',
