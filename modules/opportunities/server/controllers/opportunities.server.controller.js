@@ -41,6 +41,15 @@ if (config.twitter.consumer_key && config.twitter.consumer_secret && config.twit
 	});
 }
 
+if (config.twitter_fr.consumer_key && config.twitter_fr.consumer_secret && config.twitter_fr.access_token_key && config.twitter_fr.access_token_secret) {
+	var TwitterFR = new TwitterPackage({
+		consumer_key: config.twitter_fr.consumer_key,
+		consumer_secret: config.twitter_fr.consumer_secret,
+		access_token_key: config.twitter_fr.access_token_key,
+		access_token_secret: config.twitter_fr.access_token_secret
+	});
+}
+
 // -------------------------------------------------------------------------
 //
 // set a opportunity role on a user
@@ -462,6 +471,15 @@ var pub = function (req, res, isToBePublished) {
 		}
 		if (config.twitter.consumer_key && config.twitter.consumer_secret && config.twitter.access_token_key && config.twitter.access_token_secret) {
 			Twitter.post('statuses/update', {status: 'Test Tweet'},  function(error, tweet, response){
+				if (error) {
+					console.log(error);
+				}
+				console.log(tweet);
+				console.log(response);
+			});
+		}
+		if (config.twitter_fr.consumer_key && config.twitter_fr.consumer_secret && config.twitter_fr.access_token_key && config.twitter_fr.access_token_secret) {
+			TwitterFR.post('statuses/update', {status: 'Le teste Tweet'},  function(error, tweet, response){
 				if (error) {
 					console.log(error);
 				}
