@@ -479,7 +479,7 @@ var pub = function (req, res, isToBePublished) {
 			});
 		}
 		if (config.twitter_fr.consumer_key && config.twitter_fr.consumer_secret && config.twitter_fr.access_token_key && config.twitter_fr.access_token_secret) {
-			TwitterFR.post('statuses/update', {status: 'Nouvelle possibilité : ' + opportunity.name + ' ' + config.app.domain + '/fr/possibilites/' + opportunity.code },  function(error, tweet, response){
+			TwitterFR.post('statuses/update', {status: 'Nouvelle possibilité : ' + opportunity.name_fr + ' ' + config.app.domain + '/fr/possibilites/' + opportunity.code },  function(error, tweet, response){
 				if (error) {
 					console.log(error);
 				}
