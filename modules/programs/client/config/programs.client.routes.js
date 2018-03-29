@@ -16,7 +16,7 @@
 		// -------------------------------------------------------------------------
 		.state('en.programs', {
 			abstract: true,
-	        url: '/teams',
+	    url: '/teams',
 			template: '<ui-view/>',
 	        params: {
 	        	lang: 'en'
