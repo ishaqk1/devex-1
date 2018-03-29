@@ -50,7 +50,7 @@ module.exports.initLocalVariables = function (app) {
   app.locals.preview = config.preview;
   app.locals.favicon = config.favicon;
   app.locals.env = process.env.NODE_ENV;
-  app.locals.domain = config.domain;
+  app.locals.domain = config.app.domain;
 
   // Passing the request url to environment locals
   app.use(function (req, res, next) {
