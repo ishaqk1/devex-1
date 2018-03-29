@@ -3,19 +3,32 @@
 	<fieldset>
 		<div class="row">
 
-			<form-display
+			<form-display ng-if="isEnglish()"
 				class="col-sm-12"
 				x-options='{
 					"title":"Fixed-Price Reward",
 					"name":"reward",
+					"class":"required",
 					"help":"<p>To the best of your ability, estimate a fair price for the amount of work you think it should take a qualified developer to meet the acceptance criteria. It is best to over-estimate.</p> <p>Right now, Code With Us opportunities may be offered to a maximum of $9,999.</p>"
 				}'>
 				<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-options="v as (v|currency) for v in vm.amounts">
 					<option value="">Select reward amount</option>
 				</select>
 			</form-display>
+			<form-display ng-if="isFrench()"
+				class="col-sm-12"
+				x-options='{
+					"title":"Récompense à prix fixe",
+					"name":"reward",
+					"class":"required",
+					"help":"<p>Estimez du mieux que vous pouvez un juste prix qui selon vous représente la quantité de travail que doit accomplir un développeur qualifié pour satisfaire aux critères d&apos;acceptation. Il convient de surestimer ce prix.</p><p>Pour l&apos;instant, les contrats offerts par la voie du Carrefour des développeurs du gouvernement du Canada (CarrefourProgGC) ne doivent pas dépasser 9 999 $.</p>"
+				}'>
+				<select name="earn" ng-model="vm.opportunity.earn" id="earn" class="form-control" ng-options="v as (v|currency) for v in vm.amounts">
+					<option value="">Sélectionner Montant de la récompense</option>
+				</select>
+			</form-display>
 
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-12"
 				ng-model="vm.opportunity.proposalEmail"
 				x-form="vm.opportunityForm"
@@ -24,7 +37,21 @@
 					"help":"Enter the email address where you would like the assigned applicant to send their acceptance of the Code With Us Terms and Contract for this opportunity.",
 					"id":"proposalEmail",
 					"name":"proposalEmail",
+					"class":"required",
 					"placeholder":"Enter email address"
+				}'>
+			</form-input>
+			<form-input ng-if="isFrench()"
+				class="col-sm-12"
+				ng-model="vm.opportunity.proposalEmail"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Courriel pour recevoir l&apos;acceptation des modalités et du contrat",
+					"help":"Inscrivez l&apos;adresse courriel où vous aimeriez recevoir l&apos;avis d&apos;acceptation des conditions du CarrefourProgGC du soumissionnaire déterminé pour cette possibilité de travail.",
+					"id":"proposalEmail",
+					"name":"proposalEmail",
+					"class":"required",
+					"placeholder":"Saisir l&apos;adresse courriel"
 				}'>
 			</form-input>
 <!--
@@ -42,7 +69,7 @@
 				}'>
 			</form-date-input>
  -->
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
 				ng-model="vm.opportunity.deadline"
 				x-form="vm.opportunityForm"
@@ -51,12 +78,27 @@
 					"help":"<p>Choose a <b>cutoff date</b> for receiving proposals. (Time of day is fixed at 16:00 Pacific Time.)</p> <p>The longer lead time you give, the more proposals you are likely to get. A deadline at least <b>5 days</b> from when you publish is a good aim.</p> <p>Make sure you have your <b>opportunity contact</b> lined up to respond to questions on the GitHub Issue in a timely manner, from the time you publish the opportunity right up to the cutoff time.</p>",
 					"id":"deadline",
 					"name":"deadline",
+					"class":"required",
+					"format":"MMMM dd, yyyy",
+					"type":"date"
+				}'>
+			</form-input>
+			<form-input ng-if="isFrench()"
+				class="col-sm-4"
+				ng-model="vm.opportunity.deadline"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Date limite pour la proposition",
+					"help":"<p>Choisissez une <b>date limite</b> de réception des propositions. (L&apos;heure de la journée est fixée à 16 h – heure normale du Pacifique.)</p> <p>Plus longtemps d&apos;avance votre offre sera affichée, plus nombreuses seront les propositions que vous recevrez. Il est judicieux d&apos;établir la date butoir à <b>cinq jours</b> de la publication de votre possibilité de travail.</p> <p>Veillez à ce que votre <b>personne‑ressource</b> attitrée au contrat soit prête à répondre rapidement aux questions posées sur la page de publication GitHub, et ce, du moment de la publication à l&apos;heure limite de soumission.</p>",
+					"id":"deadline",
+					"name":"deadline",
+					"class":"required",
 					"format":"MMMM dd, yyyy",
 					"type":"date"
 				}'>
 			</form-input>
 
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
 				ng-model="vm.opportunity.assignment"
 				x-form="vm.opportunityForm"
@@ -65,12 +107,27 @@
 					"help":"Choose a date that you will commit to assigning someone to this opportunity (dependent, of course, on at least one of the proposals meeting your minimum requirements). (Time of day is fixed at 16:00 Pacific Time.)",
 					"id":"assignment",
 					"name":"assignment",
+					"class":"required",
+					"format":"MMMM dd, yyyy",
+					"type":"date"
+				}'>
+			</form-input>
+			<form-input ng-if="isFrench()"
+				class="col-sm-4"
+				ng-model="vm.opportunity.assignment"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Date de l&apos;assignation",
+					"help":"Établissez une date à laquelle vous vous engagez à attribuer le contrat (sous réserve bien entendu d&apos;avoir reçu au moins une proposition satisfaisant à vos exigences minimales). (L&apos;heure est fixée à 16 h – heure du Pacifique).",
+					"id":"assignment",
+					"name":"assignment",
+					"class":"required",
 					"format":"MMMM dd, yyyy",
 					"type":"date"
 				}'>
 			</form-input>
 
-			<form-input
+			<form-input ng-if="isEnglish()"
 				class="col-sm-4"
 				ng-model="vm.opportunity.start"
 				x-form="vm.opportunityForm"
@@ -79,6 +136,21 @@
 					"help":"When do you want the person to begin working?",
 					"id":"start",
 					"name":"start",
+					"class":"required",
+					"format":"MMMM dd, yyyy",
+					"type":"date"
+				}'>
+			</form-input>
+			<form-input ng-if="isFrench()"
+				class="col-sm-4"
+				ng-model="vm.opportunity.start"
+				x-form="vm.opportunityForm"
+				x-options='{
+					"title":"Date de début proposée",
+					"help":"Quand voulez-vous que la personne commence à travailler?",
+					"id":"start",
+					"name":"start",
+					"class":"required",
 					"format":"MMMM dd, yyyy",
 					"type":"date"
 				}'>

@@ -15,12 +15,20 @@
 	// Controller the view of the project page
 	//
 	// =========================================================================
-	.controller('ProjectViewController', function ($scope, $state, $sce, $stateParams, project, Authentication, ProjectsService, Notification, $filter) {
-		var vm                 = this;
+	.controller('ProjectViewController', function ($scope, $state, $sce, $stateParams, project, Authentication, ProjectsService, Notification, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    var vm                 = this;
 		vm.programId           = project.program ? project.program._id : $stateParams.programId;
 		vm.project             = project;
 		vm.display             = {};
 		vm.display.description = $sce.trustAsHtml(vm.project.description);
+		vm.display.description_fr = $sce.trustAsHtml(vm.project.description_fr);
 		vm.authentication      = Authentication;
 		vm.ProjectsService     = ProjectsService;
 		vm.idString            = 'projectId';
@@ -82,8 +90,15 @@
 	// Controller the view of the project page
 	//
 	// =========================================================================
-	.controller('ProjectEditController', function ($scope, $state, $sce, $stateParams, $window, project, editing, programs, Authentication, Notification, previousState, $filter) {
-		var vm             = this;
+	.controller('ProjectEditController', function ($scope, $state, $sce, $stateParams, $window, project, editing, programs, Authentication, Notification, previousState, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    var vm             = this;
 		vm.previousState   = previousState;
 		vm.isAdmin         = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
 		vm.isGov           = Authentication.user && !!~Authentication.user.roles.indexOf ('gov');
@@ -96,6 +111,7 @@
 		if (editing && !vm.isAdmin && !project.userIs.admin) $state.go('forbidden');
 		vm.form            = {};
 		vm.project.taglist = vm.project.tags? vm.project.tags.join (', ') : '';
+		vm.project.taglist_fr = vm.project.tags_fr? vm.project.tags_fr.join (', ') : '';
 		vm.editing         = editing;
 		vm.context         = $stateParams.context;
 		vm.programs        = programs;
@@ -122,13 +138,14 @@
 		//
 		// defaults
 		//
-		vm.programLink  = true;
+		vm.programLink  = false;
 		vm.programId    = $stateParams.programId;
 		vm.programTitle = $stateParams.programTitle;
 		//
 		// if editing, set from existing
 		//
 		if (vm.editing) {
+			vm.programLink = true;
 			vm.programId    = project.program._id;
 			vm.programTitle = project.program.title;
 		} else {
@@ -142,6 +159,7 @@
 			// if adding with program context set the program on the record
 			//
 			else if (vm.context === 'program') {
+				vm.programLink = true;
 				vm.project.program = vm.programId;
 			}
 		}
@@ -153,7 +171,7 @@
 		vm.remove = function () {
 			if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
 				vm.project.$remove(function() {
-					$state.go('projects.list');
+					$state.go($translate.use() + '.projects.list');
 					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('PROJECT_DELETED') });
 				});
 			}
@@ -177,6 +195,11 @@
 			} else {
 				vm.project.tags = [];
 			}
+			if (vm.project.taglist_fr !== '') {
+				vm.project.tags_fr = vm.project.taglist_fr.split(/ *, */);
+			} else {
+				vm.project.tags_fr = [];
+			}
 			//
 			// if we were adding, then set the selected programId, unless it was adding inside
 			// a program context already, then just use the one that is already set
@@ -196,7 +219,7 @@
 				Notification.success ({
 					message : '<i class="glyphicon glyphicon-ok"></i> project saved successfully!'
 				});
-				$state.go('projects.view', {projectId:project.code});
+				$state.go($translate.use() + '.projects.view', {projectId:project.code});
 			})
 			//
 			// fail, notify and stay put

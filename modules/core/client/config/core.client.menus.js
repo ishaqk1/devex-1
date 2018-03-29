@@ -5,9 +5,9 @@
     .module('core')
     .run(menuConfig);
 
-  menuConfig.$inject = ['menuService'];
+  menuConfig.$inject = ['menuService', '$location'];
 
-  function menuConfig(menuService) {
+  function menuConfig(menuService, $location) {
     menuService.addMenu('account', {
       roles: ['user']
     });
@@ -19,10 +19,10 @@
       roles: ['user']
     });
 
-    menuService.addSubMenuItem('account', 'settings', {
-      title: 'Profile',
-      state: 'settings.profile'
-    });
+    // menuService.addSubMenuItem('account', 'settings', {
+    //   title: 'Profile',
+    //   state: 'settings.profile'
+    // });
 
     if (window.features.swu) menuService.addSubMenuItem('account', 'settings', {
       title: 'Messages',

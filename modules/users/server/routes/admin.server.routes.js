@@ -13,6 +13,8 @@ module.exports = function (app) {
   app.route('/api/users')
     .get(adminPolicy.isAllowed, admin.list);
 
+  app.route('/api/registrations').get(adminPolicy.isAllowed, admin.registrations);
+
   app.route ('/api/listopps').get(adminPolicy.isAllowed, admin.notifyOpportunities);
   app.route ('/api/listmeets').get(adminPolicy.isAllowed, admin.notifyMeetings);
 

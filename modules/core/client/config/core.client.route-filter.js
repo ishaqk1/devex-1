@@ -11,17 +11,38 @@
 		$rootScope.$on('$stateChangeStart', stateChangeStart);
 		$rootScope.$on('$stateChangeSuccess', stateChangeSuccess);
 		$rootScope.$on('$translateChangeSuccess', function(){
-			$rootScope.currentLang = $translate.use();
+			var lang = $translate.use();
+			$rootScope.lang = lang;
+			document.documentElement.lang = lang;
 		});
+		$rootScope.isHomePage = function() {
+	        var path = $location.path();
+	        return (! path) || path === '/' || path === '/en' || path === '/fr';
+	    };
+	    $rootScope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $rootScope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+	    $rootScope.changeLanguage = function(){
+	        var newLang = ($translate.use() === 'fr') ? 'en' : 'fr';
+	        var currentState = $state.current.name;
 
-		var currentLang = ($location.path().indexOf('/fr') > -1) ? 'fr' : 'en';
-		var otherLang = (currentLang === 'fr') ? 'en' : 'fr';
+	        var params = {};
+	        if ($state.params) {
+	        	params = $state.params;
+	        	params.lang = newLang;
+	        }
 
-		$rootScope.currentLang = currentLang;
-		$rootScope.otherLang = otherLang;
-		$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
-		$translate.use(currentLang);
-		document.documentElement.lang = currentLang;
+	        $translate.use(newLang).then(function () {
+	            $state.go(newLang + currentState.slice(2), params);
+	        });
+	    }
+	    $rootScope.goTo = function(state){
+	        var lang = $translate.use();
+	        $state.go(lang + '.' + state);
+	    }
 
 		function stateChangeStart(event, toState, toParams) {
 			// Check authentication before changing state
@@ -53,7 +74,7 @@
 				if (Authentication.user !== null && typeof Authentication.user === 'object') {
 					$state.transitionTo('forbidden');
 				} else {
-					$state.go('authentication.signin').then(function () {
+					$state.go($translate.use() + '.authentication.signin').then(function () {
 						// Record previous state
 						storePreviousState(toState, toParams);
 					});
@@ -64,24 +85,6 @@
 		function stateChangeSuccess(event, toState, toParams, fromState, fromParams) {
 			// Record previous state
 			storePreviousState(fromState, fromParams);
-
-			var currentLang = '';
-			var otherLang = '';
-
-			if ($state.params.lang !== undefined) {
-				currentLang = $state.params.lang;
-				otherLang = ($state.params.lang === 'fr' ? 'en' : 'fr');
-			} else {
-				$state.params.lang = 'en';
-				currentLang = 'en';
-				otherLang = 'fr';
-			}
-
-			$rootScope.currentLang = currentLang;
-			$rootScope.otherLang = otherLang;
-			$rootScope.otherLangURL = ($location.path() !== '/' ? $location.path().replace('/' + currentLang, '/' + otherLang) : $location.path() + otherLang);
-			$translate.use(currentLang);
-			document.documentElement.lang = currentLang;
     	}
 
 	    // Store previous state

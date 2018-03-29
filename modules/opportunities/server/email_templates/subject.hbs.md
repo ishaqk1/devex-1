@@ -1,1 +1,1 @@
-New {{ opportunity.earn_format_money }} Code With Us opporunity on GCDevExchange
+New {{ opportunity.earn_format_money }} opporunity on GCDevExchange

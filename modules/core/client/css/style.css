@@ -167,3 +167,12 @@
   -webkit-box-shadow: 0px 9px 9px -5px rgba(0, 0, 0, 0.56);
   -moz-box-shadow: 0px 9px 9px -5px rgba(0, 0, 0, 0.56);
 }
+
+.checkbox.required:before, input[type=checkbox].required:before, label.required:before, legend.required:before {
+  content: '' !important;
+}
+.checkbox.required:after, input[type=checkbox].required:after, label.required:after, legend.required:after {
+  content: " *";
+  color: #d3080c;
+  font-weight: 700;
+}

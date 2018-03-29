@@ -5,26 +5,16 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$state', '$translate', '$location', 'Authentication', 'menuService'];
+  HeaderController.$inject = ['$scope', '$state', '$stateParams', '$translate', '$location', 'Authentication', 'menuService'];
 
-  function HeaderController($scope, $state, $translate, $location, Authentication, menuService, flags) {
+  function HeaderController($scope, $state, $stateParams, $translate, $location, Authentication, menuService, flags) {
     var vm = this;
     vm.accountMenu = menuService.getMenu('account').items[0];
     vm.authentication = Authentication;
     vm.isCollapsed = false;
     vm.menu = menuService.getMenu('topbar');
+    vm.isUser = Authentication.user;
 
-    $scope.$on('$stateChangeSuccess', stateChangeSuccess);
-    $scope.isHomePage = function() {
-        var path = $location.path();
-        return (! path) || path === '/' || path === '/en' || path === '/fr';
-    };
-    $scope.isEnglish = function() {
-        return ($translate.use() === 'en');
-    };
-    $scope.isFrench = function() {
-        return ($translate.use() === 'fr');
-    };
     $scope.isActiveMenu = function(item) {
         var route = item.state || '',
             active = $state.current.name || '',
@@ -38,6 +28,7 @@
             return true;
     };
 
+    $scope.$on('$stateChangeSuccess', stateChangeSuccess);
     function stateChangeSuccess() {
       // Collapsing the menu after navigation
       vm.isCollapsed = false;

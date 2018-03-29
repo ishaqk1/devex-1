@@ -13,17 +13,24 @@ var OpportunitySchema = new Schema({
 	code          : {type: String, default: ''},
 	opportunityTypeCd : {type: String, default:'code-with-us', enum:['code-with-us', 'sprint-with-us']},
 	name          : {type: String, default: '', required: 'Name cannot be blank'},
+	name_fr       : {type: String, default: '', required: 'Name cannot be blank'},
 	short         : {type: String, default: ''},
+	short_fr      : {type: String, default: ''},
 	description   : {type: String, default: ''},
+	description_fr : {type: String, default: ''},
 	background    : {type: String, default: ''},
+	background_fr : {type: String, default: ''},
 	evaluation    : {type: String, default: ''},
+	evaluation_fr : {type: String, default: ''},
 	criteria      : {type: String, default: ''},
+	criteria_fr   : {type: String, default: ''},
 	github        : {type: String, default: ''},
 	proposalEmail : {type: String, default: ''},
 	views         : {type: Number, default: 1},
 	program       : {type:'ObjectId', ref: 'Program', default: null, required: 'Program cannot be blank'},
 	project       : {type:'ObjectId', ref: 'Project', default: null, required: 'Project cannot be blank'},
 	skills        : [String],
+	skills_fr     : [String],
 	capabilities        : [String],
 	earn          : {type: Number, default: 0},
 	tags          : [String],
@@ -106,9 +113,9 @@ var OpportunitySchema = new Schema({
 	terms                     : {type: String, default: ''}
 });
 
-OpportunitySchema.statics.findUniqueCode = function (title, suffix, callback) {
+OpportunitySchema.statics.findUniqueCode = function (title, title_fr, suffix, callback) {
 	var _this = this;
-	var possible = 'opp-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
+	var possible = 'opp-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + '-poss-' + (title_fr.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
 
 	_this.findOne({
 		code: possible
@@ -117,7 +124,7 @@ OpportunitySchema.statics.findUniqueCode = function (title, suffix, callback) {
 			if (!user) {
 				callback(possible);
 			} else {
-				return _this.findUniqueCode(title, (suffix || 0) + 1, callback);
+				return _this.findUniqueCode(title, title_fr, (suffix || 0) + 1, callback);
 			}
 		} else {
 			callback(null);

@@ -7,6 +7,7 @@
 		isRequired: false,
 		requiredText: '',
 		name: '',
+		class: '',
 		title: '',
 		isTitle: '',
 		id: '',
@@ -24,6 +25,7 @@
 			this.isTitle         = (options.hasOwnProperty('title'));
 			this.title           = (this.isTitle) ? options.title : '';
 			this.name            = options.name;
+			this.class            = options.class;
 			this.titleTransclude = (options.hasOwnProperty('titleTransclude') && options.titleTransclude);
 			this.isRequired      = (options.hasOwnProperty('required'));
 			this.required        = (this.isRequired && typeof (options.required) === 'string') ? options.required : (this.isTitle ? this.title+' is required' : 'This field is required');
@@ -57,7 +59,7 @@
 		label: function () {
 			if (this.isTitle) {
 				var fieldtoggle = 'fieldtoggle'+this.name;
-				this.tmpl += '<label class="" for="' + this.name + '">' + this.title + '</label>';
+				this.tmpl += '<label class="' + this.class + '" for="' + this.name + '">' + this.title + '</label>';
 				if (this.isRequired) {
 					this.tmpl += ' <span class="text-muted" title="This field is required">*</span>';
 				}
@@ -69,7 +71,7 @@
 				}
 			}
 			if (this.titleTransclude) {
-				this.tmpl += '<label class="" for="' + this.name + '" ng-transclude></label>';
+				this.tmpl += '<label class="' + this.class + '" for="' + this.name + '" ng-transclude></label>';
 			}
 			return this;
 		},

@@ -15,11 +15,12 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, $translate, dataService, $filter) {
+	.controller('ProgramViewController', function ($scope, $state, $sce, program, Authentication, ProgramsService, Notification, dataService, $filter, $translate) {
 		var vm                 = this;
 		vm.program             = program;
 		vm.display             = {};
 		vm.display.description = $sce.trustAsHtml(vm.program.description);
+		vm.display.description_fr = $sce.trustAsHtml(vm.program.description_fr);
 		vm.authentication      = Authentication;
 		vm.ProgramsService     = ProgramsService;
 		vm.idString            = 'programId';
@@ -84,8 +85,15 @@
 	// Controller the view of the program page
 	//
 	// =========================================================================
-	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, $translate, dataService, $filter) {
-		var vm            = this;
+	.controller('ProgramEditController', function ($scope, $state, $sce, $window, $timeout, Upload, program, editing, Authentication, Notification, previousState, dataService, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+
+	    var vm            = this;
 		vm.user = Authentication.user;
 		vm.fileSelected = false;
 		vm.progress = 0;
@@ -126,7 +134,7 @@
 		vm.remove = function () {
 			if ($window.confirm('Are you sure you want to delete?')) {
 				vm.program.$remove(function() {
-					$state.go('programs.list');
+					$state.go($translate.use() + '.programs.list');
 					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('TEAM_TEAM') + ' deleted successfully!' });
 				});
 			}
@@ -162,7 +170,7 @@
 				//
 				((vm.fileSelected) ? vm.upload (vm.croppedDataUrl, vm.picFile, vm.program._id) : Promise.resolve ())
 				.then (function () {
-						$state.go('programs.view', {programId:program.code});
+						$state.go($translate.use() + '.programs.view', {programId:program.code});
 				});
 			})
 			//

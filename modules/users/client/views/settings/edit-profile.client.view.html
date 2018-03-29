@@ -60,7 +60,7 @@
 					<label>
 					<input ng-if="!vm.goveditable" type="checkbox"  ng-model="vm.isgov" disabled>
 					<input ng-if="vm.goveditable" type="checkbox"  ng-model="vm.isgov" ng-disabled='vm.user.email === "" || vm.user.email == null'>
-					<span translate="PROFILE_VERIFY_ME">Verify me as a Government of Canada employee so I can publish content on the GCDevExchange</span>
+					<span translate="PROFILE_VERIFY_ME">Verify me as a Government of Canada employee so I can publish content on the GCDevExchange (requires a valid @canada.ca or @gc.ca email address)</span>
 					</label>			
 				</div>
 				<div ng-show='vm.user.email === "" || vm.user.email == null' role="alert">

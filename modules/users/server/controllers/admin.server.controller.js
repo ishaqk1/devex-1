@@ -255,3 +255,14 @@ exports.notifyMeetings = function (req, res) {
       else return res.json (users);
     });
 };
+exports.registrations = function (req, res) {
+    User.find ({}).sort('-created').select ('created')
+    .exec (function (err, users) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      }
+      else return res.json (users);
+    });
+};

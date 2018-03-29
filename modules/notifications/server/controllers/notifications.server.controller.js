@@ -533,20 +533,30 @@ exports.forUser = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.unsubscribeExternal = function (req, res) {
-	var d = 'https://gcdevexchange.org';
+	var d = 'https://gcdevexchange-carrefourproggc.org';
 	if (process.env.DOMAIN) {
 		d = process.env.DOMAIN;
 	}
 
 	var message = '<img src="/modules/core/client/img/logo/canada.png"/><h4>This action has already been performed.</h4>';
-	message += '<p>Please sign in on the ';
-	message += '<a href=\'' + d + '\'>GCDevExchange.org</a> to manage your notifications.</p>';
-	message += '<p>Thanks for using the GCDevExchange!</p>';
+	message += '<p>Please sign in to ';
+	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> to manage your notifications.</p>';
+	message += '<p>Thanks for using the GC Developers Exchange!</p>';
+	message += '<br><hr><br>';
+	message += '<h4>Cette action a déjà été effectuée.</h4>';
+	message += '<p>Veuillez vous vous identifier à ';
+	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> pour gérer ses notifications.</p>';
+	message += '<p>Merci d’utiliser le Carrefour des programmeurs du gouvernement du Canada!</p>';
 	if (!req.subscription) return res.send (message);
 	message = '<img src="/modules/core/client/img/logo/canada.png"/><h4>You are no longer following:</h4><h4>'+req.subscription.notification.name+'</h4>';
-	message += '<p>Please sign in on the ';
-	message += '<a href=\'' + d + '\'>GCDevExchange.org</a> to manage your notifications.</p>';
-	message += '<p>Thanks for using the GCDevExchange!</p>';
+	message += '<p>Please sign in to ';
+	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> to manage your notifications.</p>';
+	message += '<p>Thanks for using the GC Developers Exchange!</p>';
+	message += '<br><hr><br>';
+	message += '<h4>Vous ne suivez plus :</h4><h4>'+req.subscription.notification.name+'</h4>';
+	message += '<p>Veuillez vous vous identifier à ';
+	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> pour gérer ses notifications.</p>';
+	message += '<p>Merci d’utiliser le Carrefour des programmeurs du gouvernement du Canada!</p>';
 	exports.unsubscribe (req.subscription)
 	.then (function () {
 		res.send (message);
@@ -557,15 +567,20 @@ exports.unsubscribeExternal = function (req, res) {
 };
 
 exports.subscribeExternal = function (req, res) {
-	var d = 'https://gcdevexchange.org';
+	var d = 'https://gcdevexchange-carrefourproggc.org';
 	if (process.env.DOMAIN) {
 		d = process.env.DOMAIN;
 	}
 
-	var message = '<img src="/modules/core/client/img/logo/canada.png"/><h4>You are now following this oppoprtunity:</h4><h4>'+req.notification.name+'</h4>';
-	message += '<p>Please sign in on the ';
-	message += '<a href=\'' + d + '\'>GCDevExchange.org</a> to manage your notifications.</p>';
-	message += '<p>Thanks for using the GCDevExchange!</p>';
+	var message = '<img src="/modules/core/client/img/logo/canada.png"/><h4>You are now following this opportunity:</h4><h4>'+req.notification.name+'</h4>';
+	message += '<p>Please sign in to ';
+	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> to manage your notifications.</p>';
+	message += '<p>Thanks for using the GC Developers Exchange!</p>';
+	message += '<br><hr><br>';
+	message += '<h4>Vous suivez maintenant cette possibilité :</h4><h4>'+req.notification.name_fr+'</h4>';
+	message += '<p>Veuillez vous vous identifier à ';
+	message += '<a href=\'' + d + '\'>gcdevexchange-carrefourproggc.org</a> pour gérer ses notifications.</p>';
+	message += '<p>Merci d’utiliser le Carrefour des programmeurs du gouvernement du Canada!</p>';
 	if (!req.subscription) return res.send (message);
 	exports.subscribe (req.notification, req.subscription.user)
 	.then (function () {

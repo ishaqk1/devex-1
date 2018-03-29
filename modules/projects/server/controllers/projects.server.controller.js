@@ -120,7 +120,8 @@ exports.my = function (req, res) {
 	var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
 	var search = me.isAdmin ? {} : { code: { $in: me.projects.member } };
 	Project.find (search)
-	.select ('code name short')
+	.populate ('program', 'code title title_fr short logo')
+	.select ('code name name_fr short program')
 	.exec (function (err, projects) {
 		if (err) {
 			return res.status(422).send ({
@@ -133,8 +134,8 @@ exports.my = function (req, res) {
 };
 exports.myadmin = function (req, res) {
 	Project.find (searchTerm (req))
-	.populate ('program', 'code title short logo')
-	.select ('code name short program')
+	.populate ('program', 'code title title_fr short logo')
+	.select ('code name name_fr short program')
 	.exec (function (err, projects) {
 		if (err) {
 			return res.status(422).send ({
@@ -179,7 +180,7 @@ exports.create = function(req, res) {
 	//
 	// set the code, this is used for setting roles and other stuff
 	//
-	Project.findUniqueCode (project.name, null, function (newcode) {
+	Project.findUniqueCode (project.name, project.name_fr, null, function (newcode) {
 		project.code = newcode;
 		//
 		// set the audit fields so we know who did what when
@@ -318,7 +319,7 @@ exports.list = function (req, res) {
 	Project.find(searchTerm (req)).sort('activity name')
 	.populate('createdBy', 'displayName')
 	.populate('updatedBy', 'displayName')
-	.populate('program', 'code title logo isPublished')
+	.populate('program', 'code title title_fr logo isPublished')
 	.exec(function (err, projects) {
 		if (err) {
 			return res.status(422).send({
@@ -449,7 +450,7 @@ exports.projectByID = function (req, res, next, id) {
 		Project.findOne({code:id})
 		.populate('createdBy', 'displayName')
 		.populate('updatedBy', 'displayName')
-		.populate('program', 'code title logo isPublished')
+		.populate('program', 'code title title_fr logo isPublished')
 		.exec(function (err, project) {
 			if (err) {
 				return next(err);
@@ -472,7 +473,7 @@ exports.projectByID = function (req, res, next, id) {
 		Project.findById(id)
 		.populate('createdBy', 'displayName')
 		.populate('updatedBy', 'displayName')
-		.populate('program', 'code title logo isPublished')
+		.populate('program', 'code title title_fr logo isPublished')
 		.exec(function (err, project) {
 			if (err) {
 				return next(err);

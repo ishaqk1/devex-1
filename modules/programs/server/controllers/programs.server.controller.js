@@ -113,7 +113,7 @@ exports.my = function (req, res) {
 	var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
 	var search = me.isAdmin ? {} : { code: { $in: me.programs.member } };
 	Program.find (search)
-	.select ('code title short')
+	.select ('code title title_fr short')
 	.exec (function (err, programs) {
 		if (err) {
 			return res.status(422).send ({
@@ -128,7 +128,7 @@ exports.myadmin = function (req, res) {
 	var me = helpers.myStuff ((req.user && req.user.roles)? req.user.roles : null );
 	var search = me.isAdmin ? {} : { code: { $in: me.programs.admin } };
 	Program.find (search)
-	.select ('code title short')
+	.select ('code title title_fr short')
 	.exec (function (err, programs) {
 		if (err) {
 			return res.status(422).send ({
@@ -170,7 +170,7 @@ exports.create = function (req, res) {
 	//
 	// set the code, this is used for setting roles and other stuff
 	//
-	Program.findUniqueCode (program.title, null, function (newcode) {
+	Program.findUniqueCode (program.title, program.title_fr, null, function (newcode) {
 		program.code = newcode;
 		//
 		// set the audit fields so we know who did what when
@@ -418,7 +418,7 @@ exports.new = function (req, res) {
 //
 // -------------------------------------------------------------------------
 exports.programByID = function (req, res, next, id) {
-	if (id.substr (0, 3) === 'pro' ) {
+	if (id.substr (0, 4) === 'team' ) {
 		Program.findOne({code:id})
 		.populate('createdBy', 'displayName')
 		.populate('updatedBy', 'displayName')

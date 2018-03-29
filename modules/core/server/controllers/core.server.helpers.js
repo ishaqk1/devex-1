@@ -15,6 +15,9 @@ exports.applyAudit = function (model, user) {
 		model.created   = model.updated;
 		model.createdBy = model.updatedBy;
 	}
+	if (!model.createdBy) {
+		model.createdBy = (user && user._id) ? user._id : null;
+	}
 };
 
 exports.myStuff = function (roles) {
@@ -115,6 +118,16 @@ var c = isNaN(ic = Math.abs(ic)) ? 2 : ic,
     j = (j) > 3 ? j % 3 : 0;
    return '$' +s + (j ? i.substr(0, j) + t : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : '');
  };
+exports.formatMoney_fr = function(n, ic, id, iit){
+var c = isNaN(ic = Math.abs(ic)) ? 2 : ic,
+    d = id === undefined ? ',' : id,
+    t = iit === undefined ? ' ' : iit,
+    s = n < 0 ? '-' : '',
+    i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c)));
+    var j = i.length;
+    j = (j) > 3 ? j % 3 : 0;
+   return s + (j ? i.substr(0, j) + t : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : '') + ' $';
+ };
 
 exports.formatDate = function (d) {
 	  var monthNames = [
@@ -127,9 +140,21 @@ exports.formatDate = function (d) {
   var monthIndex = d.getMonth();
   var year = d.getFullYear();
 
-
-
   return monthNames[monthIndex] + ' ' + day + ', '+ year;
+}
+
+exports.formatDate_fr = function (d) {
+	  var monthNames = [
+    'janvier', 'février', 'mars',
+    'avril', 'mai', 'juin', 'juillet',
+    'août', 'septembre', 'octobre',
+    'novembre', 'décembre'
+  ];
+  var day = d.getDate();
+  var monthIndex = d.getMonth();
+  var year = d.getFullYear();
+
+  return 'le ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
 }
 
 exports.formatTime = function (d) {

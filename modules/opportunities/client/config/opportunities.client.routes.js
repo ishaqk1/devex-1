@@ -14,9 +14,9 @@
 		// contians the ui-view that all other routes get rendered in
 		//
 		// -------------------------------------------------------------------------
-		.state('opportunities', {
+		.state('en.opportunities', {
 			abstract: true,
-			url: '/{lang:(?:en|fr)}/opportunities',
+			url: '/opportunities',
 			template: '<ui-view/>',
 			resolve: {
 				capabilities: function (SkillsService) {
@@ -24,11 +24,20 @@
 				}
 			},
 	        params: {
-	        	lang: {
-            		value: function($translate){
-                		return $translate.use();
-            		}
-        		}
+	        	lang: 'en'
+	        }
+		})
+		.state('fr.opportunities', {
+			abstract: true,
+			url: '/possibilites',
+			template: '<ui-view/>',
+			resolve: {
+				capabilities: function (SkillsService) {
+					return SkillsService.list ();
+				}
+			},
+	        params: {
+	        	lang: 'fr'
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -37,14 +46,34 @@
 		// the scope. listing itself is done through a directive
 		//
 		// -------------------------------------------------------------------------
-		.state('opportunities.list', {
+		.state('en.opportunities.list', {
 			url: '',
 			templateUrl: '/modules/opportunities/client/views/list-opportunities.client.view.html',
 			data: {
-				pageTitle: '{{ "OPP_TITLE" | translate }}'
+				pageTitle: 'Opportunities List'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_TITLE" | translate }}'
+				label: 'Opportunities List'
+			},
+			resolve: {
+				opportunities: function ($stateParams, OpportunitiesService) {
+					return OpportunitiesService.query ();
+				},
+				subscriptions: function (NotificationsService) {
+					return NotificationsService.subscriptions().$promise;
+				}
+			},
+			controller: 'OpportunitiesListController',
+			controllerAs: 'vm'
+		})
+		.state('fr.opportunities.list', {
+			url: '',
+			templateUrl: '/modules/opportunities/client/views/list-opportunities.client.view.html',
+			data: {
+				pageTitle: 'Liste des possibilités'
+			},
+			ncyBreadcrumb: {
+				label: 'Liste des possibilités'
 			},
 			resolve: {
 				opportunities: function ($stateParams, OpportunitiesService) {
@@ -62,11 +91,12 @@
 		// view a opportunity, resolve the opportunity data
 		//
 		// -------------------------------------------------------------------------
-		.state('opportunities.view', {
+		.state('en.opportunities.view', {
 			url: '/:opportunityId',
 			params: {
 				programId: null,
-				projectId: null
+				projectId: null,
+	        	lang: 'en'
 			},
 			templateUrl: '/modules/opportunities/client/views/view-opportunity.client.view.html',
 			controller: 'OpportunityViewController',
@@ -92,7 +122,41 @@
 			},
 			ncyBreadcrumb: {
 				label: '{{vm.opportunity.name}}',
-				parent: 'opportunities.list'
+				parent: 'en.opportunities.list'
+			}
+		})
+		.state('fr.opportunities.view', {
+			url: '/:opportunityId',
+			params: {
+				programId: null,
+				projectId: null,
+	        	lang: 'fr'
+			},
+			templateUrl: '/modules/opportunities/client/views/view-opportunity.client.view.html',
+			controller: 'OpportunityViewController',
+			controllerAs: 'vm',
+			resolve: {
+				opportunity: function ($stateParams, OpportunitiesService) {
+					return OpportunitiesService.get ({
+						opportunityId: $stateParams.opportunityId
+					}).$promise;
+				},
+				subscriptions: function (NotificationsService) {
+					return NotificationsService.subscriptions().$promise;
+				},
+				myproposal: function ($stateParams, ProposalsService, Authentication) {
+					if (!Authentication.user) return {};
+					return ProposalsService.myopp ({
+						opportunityId: $stateParams.opportunityId
+					}).$promise;
+				}
+			},
+			data: {
+				pageTitle: 'Possibilité : {{opportunity.name_fr}}'
+			},
+			ncyBreadcrumb: {
+				label: '{{vm.opportunity.name_fr}}',
+				parent: 'fr.opportunities.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -100,9 +164,9 @@
 		// the base for editing
 		//
 		// -------------------------------------------------------------------------
-		.state('opportunityadmin', {
+		.state('en.opportunityadmin', {
 			abstract: true,
-			url: '/{lang:(?:en|fr)}/opportunityadmin',
+			url: '/opportunityadmin',
 			template: '<ui-view/>',
 			resolve: {
 				capabilities: function (SkillsService) {
@@ -110,11 +174,20 @@
 				}
 			},
 	        params: {
-	        	lang: {
-                	value: function($translate){
-                    	return $translate.use();
-                	}
-            	}
+	        	lang: 'en'
+	        }
+		})
+		.state('fr.opportunityadmin', {
+			abstract: true,
+			url: '/adminpossibilite',
+			template: '<ui-view/>',
+			resolve: {
+				capabilities: function (SkillsService) {
+					return SkillsService.query ();
+				}
+			},
+	        params: {
+	        	lang: 'fr'
 	        }
 		})
 		// -------------------------------------------------------------------------
@@ -122,11 +195,12 @@
 		// edit a opportunity
 		//
 		// -------------------------------------------------------------------------
-		.state('opportunityadmin.edit', {
+		.state('en.opportunityadmin.edit', {
 			url: '/:opportunityId/edit',
 			params: {
 				programId: null,
-				projectId: null
+				projectId: null,
+	        	lang: 'en'
 			},
 			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
 			controller: 'OpportunityEditController',
@@ -141,7 +215,7 @@
 					return ProgramsService.myadmin ().$promise;
 				},
 				projects: function (ProjectsService) {
-					return ProjectsService.myadmin ().$promise;
+					return ProjectsService.my ().$promise;
 				},
 				editing: function () { return true; },
 				previousState: function ($state) {
@@ -158,7 +232,47 @@
 			},
 			ncyBreadcrumb: {
 				label: 'Edit Opportunity',
-				parent: 'opportunities.list'
+				parent: 'en.opportunities.list'
+			}
+		})
+		.state('fr.opportunityadmin.edit', {
+			url: '/:opportunityId/modifier',
+			params: {
+				programId: null,
+				projectId: null,
+	        	lang: 'fr'
+			},
+			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
+			controller: 'OpportunityEditController',
+			controllerAs: 'vm',
+			resolve: {
+				opportunity: function ($stateParams, OpportunitiesService) {
+					return OpportunitiesService.get({
+						opportunityId: $stateParams.opportunityId
+					}).$promise;
+				},
+				programs: function (ProgramsService) {
+					return ProgramsService.myadmin ().$promise;
+				},
+				projects: function (ProjectsService) {
+					return ProjectsService.my ().$promise;
+				},
+				editing: function () { return true; },
+				previousState: function ($state) {
+					return {
+						name: $state.current.name,
+						params: $state.params,
+						url: $state.href($state.current.name, $state.params)
+					};
+				}
+			},
+			data: {
+				roles: ['admin', 'gov'],
+				pageTitle: 'Possibilité : {{ opportunity.name_fr }}'
+			},
+			ncyBreadcrumb: {
+				label: 'Modifier le possibilité',
+				parent: 'fr.opportunities.list'
 			}
 		})
 		// -------------------------------------------------------------------------
@@ -166,14 +280,15 @@
 		// create a new opportunity and edit it
 		//
 		// -------------------------------------------------------------------------
-		.state('opportunityadmin.create', {
+		.state('en.opportunityadmin.create', {
 			url: '/create',
 			params: {
 				programId: null,
 				programTitle: null,
 				projectId: null,
 				projectTitle: null,
-				context: null
+				context: null,
+	        	lang: 'en'
 			},
 			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
 			controller: 'OpportunityEditController',
@@ -183,7 +298,7 @@
 					return new OpportunitiesService();
 				},
 				projects: function (ProjectsService) {
-					return ProjectsService.myadmin ().$promise;
+					return ProjectsService.my ().$promise;
 				},
 				editing: function () { return false; },
 				previousState: function ($state) {
@@ -196,11 +311,49 @@
 			},
 			data: {
 				roles: ['admin', 'gov'],
-				pageTitle: '{{ "OPP_NEW" | translate }}'
+				pageTitle: 'New Opportunity'
 			},
 			ncyBreadcrumb: {
-				label: '{{ "OPP_NEW" | translate }}',
-				parent: 'opportunities.list'
+				label: 'New Opportunity',
+				parent: 'en.opportunities.list'
+			}
+		})
+		.state('fr.opportunityadmin.create', {
+			url: '/creer',
+			params: {
+				programId: null,
+				programTitle: null,
+				projectId: null,
+				projectTitle: null,
+				context: null,
+	        	lang: 'fr'
+			},
+			templateUrl: '/modules/opportunities/client/views/edit-opportunity.client.view.html',
+			controller: 'OpportunityEditController',
+			controllerAs: 'vm',
+			resolve: {
+				opportunity: function (OpportunitiesService) {
+					return new OpportunitiesService();
+				},
+				projects: function (ProjectsService) {
+					return ProjectsService.my ().$promise;
+				},
+				editing: function () { return false; },
+				previousState: function ($state) {
+					return {
+						name: $state.current.name,
+						params: $state.params,
+						url: $state.href($state.current.name, $state.params)
+					};
+				}
+			},
+			data: {
+				roles: ['admin', 'gov'],
+				pageTitle: 'Nouvelle possibilité'
+			},
+			ncyBreadcrumb: {
+				label: 'Nouvelle possibilité',
+				parent: 'fr.opportunities.list'
 			}
 		})
 		;

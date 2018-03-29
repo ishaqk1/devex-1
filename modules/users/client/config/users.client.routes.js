@@ -11,9 +11,9 @@
 	function routeConfig($stateProvider) {
 		// Users state routing
 		$stateProvider
-			.state('settings', {
+			.state('en.settings', {
 				abstract: true,
-				url: '/{lang:(?:en|fr)}/settings',
+				url: '/settings',
 				templateUrl: '/modules/users/client/views/settings/settings.client.view.html',
 				controller: 'SettingsController',
 				controllerAs: 'vm',
@@ -26,14 +26,28 @@
 					}
 				},
         		params: {
-          			lang: {
-                		value: function($translate){
-                    		return $translate.use();
-                		}
-            		}
+          			lang: 'en'
         		}
 			})
-			.state ('settings.skills', {
+			.state('fr.settings', {
+				abstract: true,
+				url: '/parametres',
+				templateUrl: '/modules/users/client/views/settings/settings.client.view.html',
+				controller: 'SettingsController',
+				controllerAs: 'vm',
+				data: {
+					roles: ['user', 'admin', 'gov-request', 'gov']
+				},
+				resolve: {
+					capabilities: function (SkillsService) {
+						return SkillsService.list ();
+					}
+				},
+        		params: {
+          			lang: 'fr'
+        		}
+			})
+			.state ('en.settings.skills', {
 				url: '/skills',
 				templateUrl: '/modules/users/client/views/settings/profile-skills.html',
 				controller: 'ProfileSkillsController',
@@ -42,7 +56,16 @@
 					pageTitle: 'Skills'
 				}
 			})
-			.state ('settings.privacy', {
+			.state ('fr.settings.skills', {
+				url: '/skills',
+				templateUrl: '/modules/users/client/views/settings/profile-skills.html',
+				controller: 'ProfileSkillsController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'Compétences'
+				}
+			})
+			.state ('en.settings.privacy', {
 				url: '/privacy',
 				templateUrl: '/modules/users/client/views/settings/profile-privacy.html',
 				controller: 'ProfilePrivacyController',
@@ -53,13 +76,30 @@
 					}
 				},
 				data: {
-					pageTitle: '{{ "PROFILE_PRIVACY" | translate }}'
+					pageTitle: 'Privacy & Notifications'
 				},
 				ncyBreadcrumb: {
-					label: '{{ "PROFILE_PRIVACY" | translate }}'
+					label: 'Privacy & Notifications'
 				}
 			})
-			.state ('settings.messages', {
+			.state ('fr.settings.privacy', {
+				url: '/confidentialite',
+				templateUrl: '/modules/users/client/views/settings/profile-privacy.html',
+				controller: 'ProfilePrivacyController',
+				controllerAs: 'vm',
+				resolve: {
+					subscriptions: function (NotificationsService) {
+						return NotificationsService.subscriptions().$promise;
+					}
+				},
+				data: {
+					pageTitle: 'Confidentialité et notifications'
+				},
+				ncyBreadcrumb: {
+					label: 'Confidentialité et notifications'
+				}
+			})
+			.state ('en.settings.messages', {
 				url: '/messages',
 				templateUrl: '/modules/users/client/views/settings/profile-messages.html',
 				controller: 'ProfileMessagesController',
@@ -68,19 +108,40 @@
 					pageTitle: 'Messages'
 				}
 			})
-			.state('settings.profile', {
+			.state ('fr.settings.messages', {
+				url: '/messages',
+				templateUrl: '/modules/users/client/views/settings/profile-messages.html',
+				controller: 'ProfileMessagesController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'Messages'
+				}
+			})
+			.state('en.settings.profile', {
 				url: '/profile',
 				templateUrl: '/modules/users/client/views/settings/profile-main.html',
 				controller: 'EditProfileController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: '{{ "PROFILE_SETTINGS" | translate }}'
+					pageTitle: 'Settings'
 				},
 				ncyBreadcrumb: {
-					label: '{{ "PROFILE_SETTINGS" | translate }}'
+					label: 'Settings'
 				}
 			})
-			.state('settings.payment', {
+			.state('fr.settings.profile', {
+				url: '/profil',
+				templateUrl: '/modules/users/client/views/settings/profile-main.html',
+				controller: 'EditProfileController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'Paramètres'
+				},
+				ncyBreadcrumb: {
+					label: 'Paramètres'
+				}
+			})
+			.state('en.settings.payment', {
 				url: '/payment',
 				templateUrl: '/modules/users/client/views/settings/payment-settings.client.view.html',
 				controller: 'EditProfileController',
@@ -89,8 +150,26 @@
 					pageTitle: 'Payment Details'
 				}
 			})
-			.state('settings.password', {
+			.state('fr.settings.payment', {
+				url: '/paiement',
+				templateUrl: '/modules/users/client/views/settings/payment-settings.client.view.html',
+				controller: 'EditProfileController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'Payment Details'
+				}
+			})
+			.state('en.settings.password', {
 				url: '/password',
+				templateUrl: '/modules/users/client/views/settings/change-password.client.view.html',
+				controller: 'ChangePasswordController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'Settings password'
+				}
+			})
+			.state('fr.settings.password', {
+				url: '/motpasse',
 				templateUrl: '/modules/users/client/views/settings/change-password.client.view.html',
 				controller: 'ChangePasswordController',
 				controllerAs: 'vm',
@@ -107,9 +186,9 @@
 			// 		pageTitle: 'Settings picture'
 			// 	}
 			// })
-			.state('authentication', {
+			.state('en.authentication', {
 				abstract: true,
-				url: '/{lang:(?:en|fr)}/authentication',
+				url: '/authentication',
 				templateUrl: '/modules/users/client/views/authentication/authentication.client.view.html',
 				controller: 'AuthenticationController',
 				controllerAs: 'vm',
@@ -119,72 +198,134 @@
 					}
 				},
 		        ncyBreadcrumb: {
-		          label: 'Authentication'
+		          	label: 'Authentication'
 		        },
 		        params: {
-		        	lang: {
-	                	value: function($translate){
-	                    	return $translate.use();
-	                	}
-	            	}
+		        	lang: 'en'
 		        }
 			})
-			.state('authentication.gov', {
-				url: '/government',
+			.state('fr.authentication', {
+				abstract: true,
+				url: '/authentication',
+				templateUrl: '/modules/users/client/views/authentication/authentication.client.view.html',
+				controller: 'AuthenticationController',
+				controllerAs: 'vm',
+				resolve: {
+					usercount: function (UsersService) {
+						return UsersService.countUsers ().then (function (o) {return o.count});
+					}
+				},
+		        ncyBreadcrumb: {
+		          	label: 'Authentification'
+		        },
+		        params: {
+		        	lang: 'fr'
+		        }
+			})
+			.state('en.authentication.gov', {
+				url: '/signup',
 				templateUrl: '/modules/users/client/views/authentication/gov.client.view.html',
 				controller: 'AuthenticationController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: 'Government'
+					pageTitle: 'Sign Up'
 				},
-        ncyBreadcrumb: {
-          label: 'Government'
-        }
+		        ncyBreadcrumb: {
+		          	label: 'Sign Up'
+		        }
 			})
-			.state('authentication.signinadmin', {
+			.state('fr.authentication.gov', {
+				url: '/sinscrire',
+				templateUrl: '/modules/users/client/views/authentication/gov.client.view.html',
+				controller: 'AuthenticationController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'S\'inscrire'
+				},
+		        ncyBreadcrumb: {
+		          	label: 'S\'inscrire'
+		        }
+			})
+			.state('en.authentication.signinadmin', {
 				url: '/signinadmin?err',
 				templateUrl: '/modules/users/client/views/authentication/signin.admin.client.view.html',
 				controller: 'AuthenticationController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: 'Signin'
+					pageTitle: 'Sign In'
 				},
-        ncyBreadcrumb: {
-          label: 'Signin'
-        }
+		        ncyBreadcrumb: {
+		          	label: 'Sign In'
+		        }
 			})
-		 .state('signup', {
-				url: '/signup',
+			.state('fr.authentication.signinadmin', {
+				url: '/seconnecteradmin?err',
+				templateUrl: '/modules/users/client/views/authentication/signin.admin.client.view.html',
+				controller: 'AuthenticationController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'Se connecter'
+				},
+		        ncyBreadcrumb: {
+		          	label: 'Se connecter'
+		        }
+			})
+		 	.state('en.signup', {
+				url: '/signup2',
 				templateUrl: '/modules/users/client/views/authentication/signup.client.view.html',
 				controller: 'AuthenticationController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: 'Signup'
+					pageTitle: 'Sign Up'
 				},
-        ncyBreadcrumb: {
-          label: 'Signup'
-        }
+		        ncyBreadcrumb: {
+		        	label: 'Sign Up'
+		        }
 			})
-			.state('authentication.signin', {
+			.state('fr.signup', {
+				url: '/sinscrire2',
+				templateUrl: '/modules/users/client/views/authentication/signup.client.view.html',
+				controller: 'AuthenticationController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'S\'inscrire'
+				},
+		        ncyBreadcrumb: {
+		        	label: 'S\'inscrire'
+		        }
+			})
+			.state('en.authentication.signin', {
 				url: '/signin?err',
 				templateUrl: '/modules/users/client/views/authentication/signin.client.view.html',
 				controller: 'AuthenticationController',
 				controllerAs: 'vm',
 				data: {
-					pageTitle: 'Signin'
+					pageTitle: 'Sign In'
 				},
-        ncyBreadcrumb: {
-          label: 'Signin'
-        }
+		        ncyBreadcrumb: {
+		          	label: 'Sign In'
+		        }
+			})
+			.state('fr.authentication.signin', {
+				url: '/seconnecter?err',
+				templateUrl: '/modules/users/client/views/authentication/signin.client.view.html',
+				controller: 'AuthenticationController',
+				controllerAs: 'vm',
+				data: {
+					pageTitle: 'Se connecter'
+				},
+		        ncyBreadcrumb: {
+		          	label: 'Se connecter'
+		        }
 			})
 			.state('password', {
 				abstract: true,
-				url: '/{lang:(?:en|fr)}/password',
+				url: '/password',
 				template: '<ui-view autoscroll="true"/>',
 		        params: {
 		        	lang: {
 		            	value: function($translate){
-		                    return $translate.use();
+		                    return $translate.proposedLanguage() || $translate.use();
 		                }
 		            }
 		        }
@@ -200,12 +341,12 @@
 			})
 			.state('password.reset', {
 				abstract: true,
-				url: '/{lang:(?:en|fr)}/reset',
+				url: '/reset',
 				template: '<ui-view autoscroll="true"/>',
         		params: {
 	          		lang: {
 	                	value: function($translate){
-	                    	return $translate.use();
+	                    	return $translate.proposedLanguage() || $translate.use();
 	                	}
 	            	}
         		}

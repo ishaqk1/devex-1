@@ -4,7 +4,8 @@
   <form id="projectForm" warn-on-exit name="vm.form.projectForm" class="form" ng-submit="vm.save(vm.form.projectForm.$valid)" novalidate>
 	<div class="row form-head">
 	<div class="col-sm-7">
-		<h2 ng-if="vm.editing">Editing: {{::vm.project.name}}</h2>
+		<h2 ng-if="vm.editing && isEnglish()">Editing: {{::vm.project.name}}</h2>
+		<h2 ng-if="vm.editing && isFrench()">Editing: {{::vm.project.name_fr}}</h2>
 		<h2 ng-if="!vm.editing" translate="PROJECT_NEW">New Project</h2>
 	</div>
 	<div class="col-sm-5 col-form-buttons text-right">
@@ -24,11 +25,14 @@
 	<div class="row">
 	<div class="col-sm-12">
 			<fieldset>
-				<div class="form-group" ng-if="vm.programLink" >
-					<a  id="programs.view" ui-sref="programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
+				<div class="form-group" ng-if="vm.programLink && isEnglish()">
+					<a  id="programs.view" ui-sref="en.programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
 				</div>
-				<div class="form-group" ng-if="!vm.programLink" >
-					<label class="control-label required" for="program" aria-required="true"><span translate="TEAM_TEAM">Team</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+				<div class="form-group" ng-if="vm.programLink && isFrench()">
+					<a  id="programs.view" ui-sref="fr.programs.view({programId:vm.programId})"><i class="fa fa-university"></i> {{vm.programTitle}}</a>
+				</div>
+				<div class="form-group" ng-if="!vm.programLink && isEnglish()">
+					<label class="control-label required" for="program" aria-required="true"><span translate="TEAM_TEAM">Team</span></label>
 					<!-- <i class="glyphicon glyphicon-question-sign field-tt-source" ng-required="true" uib-tooltip="Program offering this opportunity" tooltip-placement="bottom"></i> -->
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sprogram = !sprogram"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="sprogram" translate="TEAM_SELECT">
@@ -37,8 +41,18 @@
 					<select name="program" ng-model="vm.programId" id="program" class="form-control" ng-options="obj._id as obj.title for obj in vm.programs">
 					</select>
 				</div>
+				<div class="form-group" ng-if="!vm.programLink && isFrench()">
+					<label class="control-label required" for="program" aria-required="true"><span translate="TEAM_TEAM">Team</span></label>
+					<!-- <i class="glyphicon glyphicon-question-sign field-tt-source" ng-required="true" uib-tooltip="Program offering this opportunity" tooltip-placement="bottom"></i> -->
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sprogram = !sprogram"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="sprogram" translate="TEAM_SELECT">
+						Select the team that is the owner/sponsor of this project.
+					</div>
+					<select name="program" ng-model="vm.programId" id="program" class="form-control" ng-options="obj._id as obj.title_fr for obj in vm.programs">
+					</select>
+				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="title" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="title" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> ({{ "ENGLISH" | translate }})</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sname = !sname"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="sname" translate="PROJECT_NAME">
 						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
@@ -47,7 +61,16 @@
 					<div ng-messages="vm.form.projectForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="short" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="title_fr" aria-required="true"><span translate="PROJECT_NAME_LABEL">Name</span> ({{ "FRENCH" | translate }})</label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sname_fr = !sname_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="sname_fr" translate="PROJECT_NAME">
+						Enter a name for your project. It's best if the name matches the name of your GitHub repo.
+					</div>
+					<input name="title_fr" type="text" ng-model="vm.project.name_fr" id="title_fr" class="form-control" placeholder="{{ 'PROJECT_NAME_LABEL' | translate }}" required aria-required="true">
+					<div ng-messages="vm.form.projectForm.title_fr.$error" role="alert"></div>
+				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="short" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> ({{ "ENGLISH" | translate }})</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc = !ssdesc"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc" translate="PROJECT_TEASER">
 						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
@@ -55,7 +78,15 @@
 					<textarea name="short" data-ng-model="vm.project.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="description" aria-required="true">Description <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="short_fr" aria-required="true"><span translate="PROJECT_TEASER_LABEL">Short Description</span> ({{ "FRENCH" | translate }})</label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc_fr = !ssdesc_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="ssdesc_fr" translate="PROJECT_TEASER">
+						This is a teaser to interest developers in contributing to your project. Summarize the goals, end-user benefits and value for Canadians!
+					</div>
+					<textarea name="short_fr" data-ng-model="vm.project.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="{{ 'PROJECT_TEASER_PLACEHOLDER' | translate }}" ng-required="true"></textarea>
+				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="description" aria-required="true">Description ({{ "ENGLISH" | translate }})</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc = !sdesc"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="sdesc" translate="PROJECT_DETAIL">
 						Here’s where you can go into more detail...
@@ -70,6 +101,22 @@
 						ng-model="vm.project.description" required aria-required="true">
 					</textarea>
 				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="description_fr" aria-required="true">Description ({{ "FRENCH" | translate }})</label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc_fr = !sdesc_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="sdesc_fr" translate="PROJECT_DETAIL">
+						Here’s where you can go into more detail...
+					</div>
+					<!-- <textarea name="description" data-ng-model="vm.project.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the project" ng-required="true"></textarea> -->
+					<textarea
+						name="description_fr"
+						id="description_fr"
+						class="form-control input-sm"
+						ui-tinymce="vm.tinymceOptions"
+						placeholder="A full description of the project"
+						ng-model="vm.project.description_fr" required aria-required="true">
+					</textarea>
+				</div>
 				<div class="form-group">
 					<label class="control-label" for="github">GitHub</label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sgit = !sgit"></i>
@@ -80,17 +127,25 @@
 					<input ng-if="!vm.isAdmin && !vm.isProjectAdmin" name="github" type="text" ng-model="vm.project.github" id="github" class="form-control" placeholder="{{ 'PROJECT_GITHUB_PLACEHOLDER' | translate }}" readonly>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="taglist" translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</label>
+					<label class="control-label" for="taglist"><span translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</span> ({{ "ENGLISH" | translate }}) </label>
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stags = !stags"></i>
 					<div class="input-help alert alert-info" data-field="title" ng-show="stags" translate="PROJECT_TAGS">
 						Create tags as quick cues for interested developers. For example, the code language, or other keywords that indicate what’s involved in the work.
 					</div>
 					<input type="text" name="taglist" ng-model="vm.project.taglist" id="taglist" class="form-control" placeholder="{{ 'PROJECT_TAGS_PLACEHOLDER' | translate }}"></input>
 				</div>
-				<div class="form-group" ng-if="vm.isAdmin">
+				<div class="form-group">
+					<label class="control-label" for="taglist_fr"><span translate="PROJECT_TAGS_LABEL">Tags (comma delimited list)</span> ({{ "FRENCH" | translate }}) </label>
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stags_fr = !stags_fr"></i>
+					<div class="input-help alert alert-info" data-field="title" ng-show="stags_fr" translate="PROJECT_TAGS">
+						Create tags as quick cues for interested developers. For example, the code language, or other keywords that indicate what’s involved in the work.
+					</div>
+					<input type="text" name="taglist_fr" ng-model="vm.project.taglist_fr" id="taglist_fr" class="form-control" placeholder="{{ 'PROJECT_TAGS_PLACEHOLDER' | translate }}"></input>
+				</div>
+				<!-- <div class="form-group" ng-if="vm.isAdmin">
 					<label class="control-label" for="activity">Activity Level Indicator</label>
 					<input type="text" name="activity" ng-model="vm.project.activity" id="activity" class="form-control" placeholder="Tag List"></input>
-				</div>
+				</div> -->
 			</fieldset>
 	</div>
 	</div>
@@ -100,13 +155,19 @@
 	  <a class="btn btn-primary" ng-click="vm.saveme()" title="{{ 'SAVE' | translate }}">
 		<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default"  id="projects.view" ui-sref="projects.view({projectId:vm.project.code})" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="vm.editing && isEnglish()" class="btn btn-default"  id="projects.view" ui-sref="en.projects.view({projectId:vm.project.code})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="vm.editing && isFrench()" class="btn btn-default"  id="projects.view" ui-sref="fr.projects.view({projectId:vm.project.code})" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
 	  <a ng-if="!vm.editing && !vm.programId" class="btn btn-default"  id="projects.list" ui-sref="projects.list" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="!vm.editing && vm.programId" class="btn btn-default"  id="programs.view" ui-sref="programs.view({programId:vm.programId})" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="!vm.editing && vm.programId && isEnglish()" class="btn btn-default"  id="programs.view" ui-sref="en.programs.view({programId:vm.programId})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="!vm.editing && vm.programId && isFrench()" class="btn btn-default"  id="programs.view" ui-sref="fr.programs.view({programId:vm.programId})" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
 	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">

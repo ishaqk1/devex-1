@@ -3,7 +3,7 @@
     <h2 class="list-page-hide">Government Partners</h2>
   </div>
   <div class="col-sm-5 col-form-buttons text-right">
-    <button ng-if="vm.userCanAdd" class="btn btn-default" ui-sref="programadmin.create()" title="New">
+    <button ng-if="vm.userCanAdd" class="btn btn-default" ng-click="goTo('programadmin.create')" title="New">
       <i class="glyphicon glyphicon-plus"></i> <span translate="TEAM_NEW">New Team</span>
     </button>
   </div>
@@ -16,16 +16,18 @@
 <table class="wb-tables table table-striped table-hover" ng-if="vm.programs.length">
   <thead>
     <tr class="active">
-      <th translate="TEAMS_TH1">Team Title</th>
-      <th translate="TEAMS_TH2">Description</th>
-      <th translate="TEAMS_TH3">Department</th>
-      <th translate="ACTIONS">Actions</th>
+      <th translate="TEAMS_TH1" style="width: 20%;">Team Title</th>
+      <th translate="TEAMS_TH2" style="width: 55%;">Description</th>
+      <th translate="TEAMS_TH3" style="width: 20%;">Department</th>
+      <th translate="ACTIONS" style="width: 5%;">Actions</th>
     </tr>
   </thead>
   <tbody id="tbodyMain">
     <tr role="row" ng-class="{'card-greyed': !program.isPublished}" ng-repeat="program in vm.programs">
-      <td><a ui-sref="programs.view({ programId: program.code })" ng-bind="program.title"></a></td>
-      <td><p ng-bind="program.short"></p></td>
+      <td ng-if="isEnglish()"><a ui-sref="en.programs.view({ programId: program.code })" ng-bind="program.title"></a></td>
+      <td ng-if="isFrench()"><a ui-sref="fr.programs.view({ programId: program.code })" ng-bind="program.title_fr"></a></td>
+      <td ng-if="isEnglish()"><p ng-bind="program.short"></p></td>
+      <td ng-if="isFrench()"><p ng-bind="program.short_fr"></p></td>
       <td><p ng-bind="program.department | translate"></p></td>
       <td><div ng-if="vm.isAdmin || program.userIs.admin">
         <span ng-if="program.userIs.member && !program.userIs.admin" class="label label-primary">Member</span>
@@ -40,7 +42,8 @@
         &nbsp;
         <a ng-if="vm.isGov && !program.userIs.member && !program.userIs.request" href="javascript:void(0);" ng-click="vm.request(program)" ng-click="$event.stopPropagation()" uib-tooltip="Request Membership"><i class="glyphicon glyphicon-user"></i></a>
         &nbsp;
-        <a ng-if="vm.isAdmin || program.userIs.admin" href="javascript:void(0);"  id="programadmin.edit" ui-sref="programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
+        <a ng-if="(vm.isAdmin || program.userIs.admin) && isEnglish()" href="javascript:void(0);"  id="programadmin.edit" ui-sref="en.programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
+        <a ng-if="(vm.isAdmin || program.userIs.admin) && isFrench()" href="javascript:void(0);"  id="programadmin.edit" ui-sref="fr.programadmin.edit({ programId: program.code })" ng-click="$event.stopPropagation()" uib-tooltip="{{ 'EDIT' | translate }}"><i class="glyphicon glyphicon-edit"></i></a>
       </div></td>
     </tr>
   </tbody>

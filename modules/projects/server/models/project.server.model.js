@@ -17,13 +17,31 @@ var ProjectSchema = new Schema({
     required: 'Please fill the project name',
     trim: true
   },
+  name_fr: {
+    type: String,
+    default: '',
+    required: 'Please fill the project name',
+    trim: true
+  },
   short: {
     type: String,
     default: '',
     required: 'Please complete the project short description',
     trim: true
   },
+  short_fr: {
+    type: String,
+    default: '',
+    required: 'Please complete the project short description',
+    trim: true
+  },
   description: {
+    type: String,
+    default: '',
+    required: 'Please complete the project description',
+    trim: true
+  },
+  description_fr: {
     type: String,
     default: '',
     required: 'Please complete the project description',
@@ -64,12 +82,13 @@ var ProjectSchema = new Schema({
     ref: 'User'
   },
   activity: {type: Number, default:1},
-  tags: [String]
+  tags: [String],
+  tags_fr: [String]
 });
 
-ProjectSchema.statics.findUniqueCode = function (title, suffix, callback) {
+ProjectSchema.statics.findUniqueCode = function (title, title_fr, suffix, callback) {
   var _this = this;
-  var possible = 'prj-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
+  var possible = 'prj-' + (title.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + '-' + (title_fr.toLowerCase().replace(/\W/g,'-').replace(/-+/,'-')) + (suffix || '');
 
   _this.findOne({
     code: possible
@@ -78,7 +97,7 @@ ProjectSchema.statics.findUniqueCode = function (title, suffix, callback) {
       if (!user) {
         callback(possible);
       } else {
-        return _this.findUniqueCode(title, (suffix || 0) + 1, callback);
+        return _this.findUniqueCode(title, title_fr, (suffix || 0) + 1, callback);
       }
     } else {
       callback(null);

@@ -1,10 +1,13 @@
 (function () {
 	'use strict';
 
-	angular.module('proposals').run(['menuService', function (menuService) {
+	angular.module('proposals').run(['menuService', '$location', function (menuService, $location) {
+		var path = $location.path();
+    	var lang = (path.indexOf('/fr') !== -1) ? 'fr' : 'en';
+
 		menuService.addSubMenuItem ('topbar', 'admin', {
 			title: 'Manage Proposals',
-			state: 'proposals.list'
+			state: lang + '.proposals.list'
 		});
 	}]);
 }());

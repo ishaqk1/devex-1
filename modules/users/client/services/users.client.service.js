@@ -111,6 +111,11 @@
         url: '/api/listmeets',
         isArray: true
       },
+      registrations: {
+        method: 'GET',
+        url: '/api/registrations',
+        isArray: true
+      },
       update: {
         method: 'PUT'
       }

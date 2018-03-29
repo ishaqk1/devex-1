@@ -5,7 +5,8 @@
   <form id="programForm" warn-on-exit name="vm.form.programForm" class="form" ng-submit="vm.save(vm.form.programForm.$valid)" novalidate>
 	<div class="row form-head">
 	<div class="col-sm-7">
-		<h2 ng-if="vm.editing">Editing: {{::vm.program.title}}</h2>
+		<h2 ng-if="vm.editing && isEnglish()">Editing: {{::vm.program.title}}</h2>
+		<h2 ng-if="vm.editing && isFrench()">Editing: {{::vm.program.title_fr}}</h2>
 		<h2 ng-if="!vm.editing" translate="TEAM_NEW">New Team</h2>
 	</div>
 	<div class="col-sm-5 col-form-buttons text-right">
@@ -23,7 +24,7 @@
 	<div class="col-sm-12">
 			<fieldset>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="title" aria-required="true"><span translate="OPP_SHORT_TITLE_LABEL">Title</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="title" aria-required="true"><span translate="OPP_SHORT_TITLE_LABEL">Title</span> ({{ "ENGLISH" | translate }})</label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stitle = !stitle"></i>
 					<div class="input-help alert alert-info" ng-show="stitle">
@@ -34,7 +35,18 @@
 					<div ng-messages="vm.form.programForm.title.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="department" aria-required="true"><span translate="TEAM_DEPARTMENT">Department</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="title_fr" aria-required="true"><span translate="OPP_SHORT_TITLE_LABEL">Title</span> ({{ "FRENCH" | translate }})</label>
+
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="stitle_fr = !stitle_fr"></i>
+					<div class="input-help alert alert-info" ng-show="stitle_fr">
+						Help Text
+					</div>
+
+					<input name="title_fr" type="text" ng-model="vm.program.title_fr" id="title_fr" class="form-control" placeholder="{{ 'OPP_SHORT_TITLE_LABEL' | translate }}" required aria-required="true">
+					<div ng-messages="vm.form.programForm.title_fr.$error" role="alert"></div>
+				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="department" aria-required="true"><span translate="TEAM_DEPARTMENT">Department</span></label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdepartment = !sdepartment"></i>
 					<div class="input-help alert alert-info" ng-show="sdepartment">
@@ -47,17 +59,27 @@
 					<div ng-messages="vm.form.programForm.department.$error" role="alert"></div>
 				</div>
 				<div class="form-group" show-errors>
-					<label class="control-label required" for="short" aria-required="true"><span translate="TEAM_SHORT_DESCRIPTION">Short Description</span> <strong class="required" aria-required="true" translate="FORM_REQUIRED">(required)</strong></label>
+					<label class="control-label required" for="short" aria-required="true"><span translate="TEAM_SHORT_DESCRIPTION">Short Description</span> ({{ "ENGLISH" | translate }})</label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc = !ssdesc"></i>
 					<div class="input-help alert alert-info" ng-show="ssdesc">
 						Help Text
 					</div>
 
-					<textarea name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="A short description of the team" required aria-required="true"></textarea>
+					<textarea name="short" data-ng-model="vm.program.short" id="short" class="form-control" cols="30" rows="3" placeholder="{{ 'TEAM_SHORT_DESCRIPTION_PLACEHOLDER' | translate }}" required aria-required="true"></textarea>
+				</div>
+				<div class="form-group" show-errors>
+					<label class="control-label required" for="short_fr" aria-required="true"><span translate="TEAM_SHORT_DESCRIPTION">Short Description</span> ({{ "FRENCH" | translate }})</label>
+
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="ssdesc_fr = !ssdesc_fr"></i>
+					<div class="input-help alert alert-info" ng-show="ssdesc_fr">
+						Help Text
+					</div>
+
+					<textarea name="short_fr" data-ng-model="vm.program.short_fr" id="short_fr" class="form-control" cols="30" rows="3" placeholder="{{ 'TEAM_SHORT_DESCRIPTION_PLACEHOLDER' | translate }}" required aria-required="true"></textarea>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="description">Description</label>
+					<label class="control-label" for="description">Description ({{ "ENGLISH" | translate }})</label>
 
 					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc = !sdesc"></i>
 					<div class="input-help alert alert-info" ng-show="sdesc">
@@ -72,6 +94,24 @@
 						ui-tinymce="vm.tinymceOptions"
 						placeholder="A full description of the team"
 						ng-model="vm.program.description">
+					</textarea>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="description_fr">Description ({{ "FRENCH" | translate }})</label>
+
+					<i class="glyphicon glyphicon-question-sign input-help-source" ng-click="sdesc_fr = !sdesc_fr"></i>
+					<div class="input-help alert alert-info" ng-show="sdesc_fr">
+						Help Text
+					</div>
+
+					<!-- <textarea name="description" data-ng-model="vm.program.description" id="description" class="form-control" cols="30" rows="10" placeholder="A full description of the program"></textarea> -->
+					<textarea
+						name="description_fr"
+						id="description_fr"
+						class="form-control input-sm"
+						ui-tinymce="vm.tinymceOptions"
+						placeholder="A full description of the team"
+						ng-model="vm.program.description_fr">
 					</textarea>
 				</div>
 <!--
@@ -137,10 +177,16 @@
 	  <a class="btn btn-primary" ng-click="vm.saveme(vm.form.programForm.$valid)" title="{{ 'SAVE' | translate }}">
 		<i class="glyphicon glyphicon-save"></i> <span translate="SAVE">Save</span>
 	  </a>
-	  <a ng-if="vm.editing" class="btn btn-default"  id="programs.view" ui-sref="programs.view({programId:vm.program.code})" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="vm.editing && isEnglish()" class="btn btn-default"  id="programs.view" ui-sref="en.programs.view({programId:vm.program.code})" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
-	  <a ng-if="!vm.editing" class="btn btn-default"  id="programs.list" ui-sref="programs.list" title="{{ 'CANCEL' | translate }}">
+	  <a ng-if="vm.editing && isFrench()" class="btn btn-default"  id="programs.view" ui-sref="fr.programs.view({programId:vm.program.code})" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="!vm.editing && isEnglish()" class="btn btn-default"  id="programs.list" ui-sref="en.programs.list" title="{{ 'CANCEL' | translate }}">
+		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
+	  </a>
+	  <a ng-if="!vm.editing && isFrench()" class="btn btn-default"  id="programs.list" ui-sref="fr.programs.list" title="{{ 'CANCEL' | translate }}">
 		<i class="glyphicon glyphicon-fast-backward"></i> <span translate="CANCEL">Cancel</span>
 	  </a>
 	  <a ng-if="vm.editing" class="btn btn-default" ng-click="vm.remove()" title="{{ 'REMOVE' | translate }}">

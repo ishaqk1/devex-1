@@ -77,7 +77,15 @@
 	// Controller the view of the opportunity page
 	//
 	// =========================================================================
-	.controller('OpportunityViewController', function ($scope, capabilities, $state, $stateParams, $sce, opportunity, Authentication, OpportunitiesService, Notification, modalService, $q, ask, subscriptions, myproposal, dataService, NotificationsService, $filter) {
+	.controller('OpportunityViewController', function ($scope, capabilities, $state, $stateParams, $sce, opportunity, Authentication, OpportunitiesService, Notification, modalService, $q, ask, subscriptions, myproposal, dataService, NotificationsService, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+		$translate.use($stateParams.lang);
+
 		var vm                    = this;
 		vm.features = window.features;
 		vm.capabilities     = capabilities;
@@ -90,18 +98,24 @@
 		vm.myproposal             = myproposal;
 		vm.projectId              = $stateParams.projectId;
 		vm.opportunity            = opportunity;
+		vm.opportunity.earn       = (vm.opportunity.earn).toString();
 		vm.pageViews              = opportunity.views;
 		vm.opportunity.deadline   = new Date (vm.opportunity.deadline);
 		vm.opportunity.assignment = new Date (vm.opportunity.assignment);
 		vm.opportunity.start      = new Date (vm.opportunity.start);
 		vm.opportunity.endDate      = new Date (vm.opportunity.endDate);
+		vm.opportunity.created      = new Date (vm.opportunity.created);
+		vm.opportunity.updated      = new Date (vm.opportunity.updated);
 		vm.authentication         = Authentication;
 		vm.OpportunitiesService   = OpportunitiesService;
 		vm.idString               = 'opportunityId';
 		vm.display                = {};
 		vm.display.description    = $sce.trustAsHtml(vm.opportunity.description);
+		vm.display.description_fr = $sce.trustAsHtml(vm.opportunity.description_fr);
 		vm.display.evaluation     = $sce.trustAsHtml(vm.opportunity.evaluation);
+		vm.display.evaluation_fr  = $sce.trustAsHtml(vm.opportunity.evaluation_fr);
 		vm.display.criteria       = $sce.trustAsHtml(vm.opportunity.criteria);
+		vm.display.criteria_fr    = $sce.trustAsHtml(vm.opportunity.criteria_fr);
 		//
 		// prices list
 		//
@@ -150,6 +164,24 @@
 		vm.assignment = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
 		dt = vm.opportunity.start;
 		vm.start = dayNames[dt.getDay()]+', '+monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+		dt = vm.opportunity.created;
+		vm.created = monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+		dt = vm.opportunity.updated;
+		vm.updated = monthNames[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+
+		var monthNames_fr = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+		var dayNames_fr = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+		var dt_fr = vm.opportunity.deadline;
+		vm.deadline_fr = dt_fr.getHours()+':00 PST le '+dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.assignment;
+		vm.assignment_fr = 'le ' + dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.start;
+		vm.start_fr = 'le ' + dayNames_fr[dt_fr.getDay()]+' '+dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.created;
+		vm.created_fr = dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+		dt_fr = vm.opportunity.updated;
+		vm.updated_fr = dt_fr.getDate()+' '+monthNames_fr[dt_fr.getMonth()]+' '+dt_fr.getFullYear();
+
 		// -------------------------------------------------------------------------
 		//
 		// can this be published?
@@ -224,7 +256,7 @@
 		//
 		// -------------------------------------------------------------------------
 		vm.signInAndApply = function () {
-			$state.go('authentication.signin').then(function () {
+			$state.go($translate.use() + '.authentication.signin').then(function () {
 				$state.previous = {
 					state: 'opportunities.view',
 					params: {opportunityId:opportunity.code},
@@ -296,8 +328,16 @@
 	// Controller the view of the opportunity page
 	//
 	// =========================================================================
-	.controller('OpportunityEditController', function ($scope, capabilities, $state, $stateParams, $window, $sce, opportunity, editing, projects, Authentication, Notification, previousState, dataService, modalService, $q, ask, uibButtonConfig, SkillsService, $filter) {
-		uibButtonConfig.activeClass = 'custombuttonbackground';
+	.controller('OpportunityEditController', function ($scope, capabilities, $state, $stateParams, $window, $sce, opportunity, editing, projects, Authentication, Notification, previousState, dataService, modalService, $q, ask, uibButtonConfig, SkillsService, $filter, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+		$translate.use($stateParams.lang);
+
+	    uibButtonConfig.activeClass = 'custombuttonbackground';
 		var vm                                = this;
 		vm.features = window.features;
 		vm.capabilities     = capabilities;
@@ -312,6 +352,9 @@
 		vm.projects                           = projects;
 		vm.editing                            = editing;
 		vm.opportunity                        = opportunity;
+	if (vm.opportunity.earn) {
+		vm.opportunity.earn                   = (vm.opportunity.earn).toString();
+	}
 		vm.opportunity.deadline               = new Date (vm.opportunity.deadline);
 		vm.opportunity.assignment             = new Date (vm.opportunity.assignment);
 		vm.opportunity.start                  = new Date (vm.opportunity.start)		;
@@ -325,8 +368,12 @@
 		vm.authentication                     = Authentication;
 		vm.form                               = {};
 		vm.opportunity.skilllist              = vm.opportunity.skills ? vm.opportunity.skills.join (', ') : '';
+		vm.opportunity.skilllist_fr           = vm.opportunity.skills_fr ? vm.opportunity.skills_fr.join (', ') : '';
 		vm.opportunity.taglist                = vm.opportunity.tags   ? vm.opportunity.tags.join (', ')   : '';
-
+		//
+		// prices list
+		//
+		vm.amounts = dataService.prices;
 		// -------------------------------------------------------------------------
 		//
 		// can this be published?
@@ -337,20 +384,18 @@
 		//
 		// set up the dropdown amounts for code with us earnings
 		//
+		/*
 		var minAmount = 500;
 		var maxAmount = 70000;
 		var step      = 500;
 		vm.amounts = [];
 		var i;
 		for (i = minAmount; i <= maxAmount; i += step) vm.amounts.push (i);
+		*/
 
 
 		if (!vm.opportunity.opportunityTypeCd || vm.opportunity.opportunityTypeCd === '') vm.opportunity.opportunityTypeCd = 'code-with-us';
 		// if (!vm.opportunity.capabilities) vm.opportunity.capabilities = [];
-		//
-		// prices list
-		//
-		vm.amounts = dataService.prices;
 		//
 		// if the user doesn't have the right access then kick them out
 		//
@@ -527,7 +572,7 @@
 		vm.remove = function () {
 			if ($window.confirm($filter('translate')('ARE_YOU_SURE'))) {
 				vm.opportunity.$remove(function() {
-					$state.go('opportunities.list');
+					$state.go($translate.use() + '.opportunities.list');
 					Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> ' + $filter('translate')('OPP_DELETED') });
 				});
 			}
@@ -573,6 +618,11 @@
 			} else {
 				vm.opportunity.skills = [];
 			}
+			if (vm.opportunity.skilllist_fr !== '') {
+				vm.opportunity.skills_fr = vm.opportunity.skilllist_fr.split(/ *, */);
+			} else {
+				vm.opportunity.skills_fr = [];
+			}
 			//
 			// if any context pieces were being set then copy in to the
 			// right place here (only when adding)
@@ -593,15 +643,15 @@
 			//
 			// set the time on the 2 dates that care about it
 			//
-			vm.opportunity.deadline.setHours(16);
-			vm.opportunity.assignment.setHours(16);
-			vm.opportunity.endDate.setHours(16);
-			vm.opportunity.implementationEndDate.setHours(16);
-			vm.opportunity.implementationStartDate.setHours(16);
-			vm.opportunity.inceptionEndDate.setHours(16);
-			vm.opportunity.inceptionStartDate.setHours(16);
-			vm.opportunity.prototypeEndDate.setHours(16);
-			vm.opportunity.prototypeStartDate.setHours(16);
+			vm.opportunity.deadline.setHours(16, 0, 0);
+			vm.opportunity.assignment.setHours(16, 0, 0);
+			vm.opportunity.endDate.setHours(16, 0, 0);
+			vm.opportunity.implementationEndDate.setHours(16, 0, 0);
+			vm.opportunity.implementationStartDate.setHours(16, 0, 0);
+			vm.opportunity.inceptionEndDate.setHours(16, 0, 0);
+			vm.opportunity.inceptionStartDate.setHours(16, 0, 0);
+			vm.opportunity.prototypeEndDate.setHours(16, 0, 0);
+			vm.opportunity.prototypeStartDate.setHours(16, 0, 0);
 
 			vm.opportunity.capabilities = [];
 
@@ -634,7 +684,7 @@
 						message : '<i class="glyphicon glyphicon-ok"></i> opportunity saved successfully!'
 					});
 
-					$state.go('opportunities.view', {opportunityId:opportunity.code});
+					$state.go($translate.use() + '.opportunities.view', {opportunityId:opportunity.code});
 				})
 				//
 				// fail, notify and stay put

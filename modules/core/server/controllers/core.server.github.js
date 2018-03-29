@@ -46,8 +46,8 @@ var funcs = {
 				method  : 'post',
 				headers : headers,
 				body    : JSON.stringify ({
-					title  : opts.title,
-					body   : opts.body,
+					title  : opts.title + ' | ' + opts.title_fr,
+					body   : opts.body + '<br><hr><br>' + opts.body_fr,
 					labels : ['Opportunity']
 				})
 			})
@@ -84,8 +84,8 @@ var funcs = {
 				method  : 'patch',
 				headers : headers,
 				body    : JSON.stringify ({
-					title  : opts.title,
-					body   : opts.body
+					title  : opts.title + ' | ' + opts.title_fr,
+					body   : opts.body + '<br><hr><br>' + opts.body_fr
 				})
 			})
 			.then (function (res) {

@@ -12,7 +12,18 @@
 			controllerAs : 'vm',
 			scope        : {},
 			templateUrl  : '/modules/programs/client/views/list.programs.directive.html',
-			controller   : function ($scope, ProgramsService, Authentication, Notification, $filter) {
+			controller   : function ($scope, $state, ProgramsService, Authentication, Notification, $filter, $translate) {
+				$scope.isEnglish = function() {
+			        return ($translate.use() === 'en');
+			    };
+			    $scope.isFrench = function() {
+			        return ($translate.use() === 'fr');
+			    };
+			    $scope.goTo = function(state){
+			        var lang = $translate.use();
+			        $state.go(lang + '.' + state);
+			    }
+
 				var vm = this;
 				var isAdmin  = Authentication.user && !!~Authentication.user.roles.indexOf ('admin');
 				var isGov    = Authentication.user && !!~Authentication.user.roles.indexOf ('gov');

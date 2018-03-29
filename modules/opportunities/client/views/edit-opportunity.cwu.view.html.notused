@@ -10,7 +10,7 @@
 				Paste the link to your project's GitHub repository.<br/>
 				When you publish this opportunity, a new Issue will be generated in your repository, and people can ask questions in the comments section.
 			</div>
-			<input name="github" type="text" ng-model="vm.opportunity.github" id="github" class="form-control" placeholder="Paste link to GitHub Issue" ng-required="true">
+			<input name="github" type="text" ng-model="vm.opportunity.github" id="github" class="form-control" placeholder="Paste link to GitHub repository" ng-required="true">
 			<div ng-messages="vm.opportunityForm.github.$error" role="alert">
 				<p class="help-block error-text" ng-message="required">A valid github repository is required.</p>
 			</div>
