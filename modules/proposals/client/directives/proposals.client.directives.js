@@ -16,7 +16,18 @@
 				proposal: '='
 			},
 			bindToController: true,
-			controller   : function ($scope, ProposalsService, Authentication) {
+			controller   : function ($scope, $state, ProposalsService, Authentication, $translate) {
+				$scope.isEnglish = function() {
+			        return ($translate.use() === 'en');
+			    };
+			    $scope.isFrench = function() {
+			        return ($translate.use() === 'fr');
+			    };
+			    $scope.goTo = function(state){
+			        var lang = $translate.use();
+			        $state.go(lang + '.' + state);
+			    }
+
 				var qaz = this;
 				//
 				// we need to determine which of several possibilities we have
@@ -34,9 +45,9 @@
 				var isMemberOrWaiting = isUser && (qaz.opportunity.userIs.member || qaz.opportunity.userIs.request);
 				var isProposal        = qaz.proposal && qaz.proposal._id;
 				var canedit           = !(isAdmin || isGov || isMemberOrWaiting);
-				qaz.case               = 'nothing';
+				qaz.case              = 'nothing';
 				if (!isUser) qaz.case = 'guest';
-				else if (canedit) qaz.case = isProposal ? 'canedit' : 'canadd';
+				else if (canedit) qaz.case = isProposal ? 'canedit' : 'canadd'
 			}
 		};
 	})
@@ -56,7 +67,18 @@
 				context: '@'
 			},
 			templateUrl  : '/modules/proposals/client/views/list.proposals.directive.html',
-			controller   : function ($scope, ProposalsService, Authentication, Notification, $filter) {
+			controller   : function ($scope, $state, ProposalsService, Authentication, Notification, $filter, $translate) {
+				$scope.isEnglish = function() {
+			        return ($translate.use() === 'en');
+			    };
+			    $scope.isFrench = function() {
+			        return ($translate.use() === 'fr');
+			    };
+			    $scope.goTo = function(state){
+			        var lang = $translate.use();
+			        $state.go(lang + '.' + state);
+			    }
+
 				var vm     = this;
 				vm.opportunity = $scope.opportunity;
 				vm.context = $scope.context;

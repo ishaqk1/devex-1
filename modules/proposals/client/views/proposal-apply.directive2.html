@@ -5,13 +5,13 @@
 		<!--
 		<div class="row" ng-if="qaz.case === 'guest'">
 			<div class="well well-info">
-				<p>Want <span class="hidden-sm hidden-xs">to </span>apply<span class="hidden-sm hidden-xs"> for this opportunity</span>? &nbsp;
-				<a href ui-sref="authentication.signin"> Sign In</a> or	&nbsp;<a href  id="authentication.gov" ui-sref="authentication.gov"> Sign Up</a>
+				<p>Want <span class="hidden-sm hidden-xs">to</span> apply <span class="hidden-sm hidden-xs">for this opportunity</span>? <a href ng-click="goTo('authentication.signin')"> Sign In</a> or <a href  id="authentication.gov" ng-click="goTo('authentication.gov')"> Sign Up</a>
 				</p>
 			</div>
 		</div>
-
 		<hr>
+		-->
+
 		<br>
 		<div class="row" ng-if="qaz.case === 'canadd'">
 			<div class="col-xs-12 text-center">
@@ -19,7 +19,6 @@
 				<button ng-if="isFrench()" id="proposaladmin.create" ui-sref="fr.proposaladmin.create({opportunityId:qaz.opportunity._id})" class="btn btn-lg btn-warning" translate="PROP_SUBMIT">Submit a proposal</button>
 			</div>
 		</div>
-		-->
 
 		<div class="row" ng-if="qaz.case === 'canedit'">
 			<div class="col-xs-12 text-center">

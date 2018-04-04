@@ -15,7 +15,15 @@
 	// Controller the view of the proposal page
 	//
 	// =========================================================================
-	.controller ('ProposalViewController', function ($scope, capabilities, $sce, $state, $stateParams, proposal, Authentication, ProposalsService, Notification, ask, dataService) {
+	.controller ('ProposalViewController', function ($scope, capabilities, $sce, $state, $stateParams, proposal, Authentication, ProposalsService, Notification, ask, dataService, $translate) {
+		$scope.isEnglish = function() {
+	        return ($translate.use() === 'en');
+	    };
+	    $scope.isFrench = function() {
+	        return ($translate.use() === 'fr');
+	    };
+		$translate.use($stateParams.lang);
+
 		var ppp           = this;
 		ppp.features = window.features;
 		ppp.proposal      = angular.copy (proposal);
