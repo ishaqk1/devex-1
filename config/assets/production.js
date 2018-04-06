@@ -33,6 +33,7 @@ module.exports = {
         'public/lib/angular-translate/angular-translate.min.js',
         'public/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
         'public/lib/promise-polyfill/promise.min.js',
+        'public/lib/highcharts/highcharts.js',
         // endbower
       ]
     },
