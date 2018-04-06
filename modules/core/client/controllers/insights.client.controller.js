@@ -15,7 +15,7 @@
         return ($translate.use() === 'fr');
     };
 
-    var path = $location.path;
+    var path = $location.path();
     var lang = (path.indexOf('/fr') >= 0) ? 'fr' : 'en';
     var usersTitle = (lang === 'fr') ? 'Membres inscrits' : 'Registered Members';
     var programsTitle = (lang === 'fr') ? 'Équipes créées' : 'Teams Created';
