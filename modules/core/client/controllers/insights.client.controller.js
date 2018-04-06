@@ -5,9 +5,9 @@
     .module('core')
     .controller('InsightsController', InsightsController);
 
-  InsightsController.$inject = ['$scope', '$translate', 'AdminService', 'ProgramsService', 'ProjectsService', 'OpportunitiesService'];
+  InsightsController.$inject = ['$scope', '$location', '$translate', 'AdminService', 'ProgramsService', 'ProjectsService', 'OpportunitiesService'];
 
-  function InsightsController($scope, $translate, AdminService, ProgramsService, ProjectsService, OpportunitiesService) {
+  function InsightsController($scope, $location, $translate, AdminService, ProgramsService, ProjectsService, OpportunitiesService) {
     $scope.isEnglish = function() {
         return ($translate.use() === 'en');
     };
@@ -15,7 +15,8 @@
         return ($translate.use() === 'fr');
     };
 
-    var lang = $translate.use();
+    var path = $location.path();
+    var lang = (path.indexOf('/fr') >= 0) ? 'fr' : 'en';
     var usersTitle = (lang === 'fr') ? 'Membres inscrits' : 'Registered Members';
     var programsTitle = (lang === 'fr') ? 'Équipes créées' : 'Teams Created';
     var projectsTitle = (lang === 'fr') ? 'Projets créées' : 'Projects Created';
