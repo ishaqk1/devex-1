@@ -28,12 +28,18 @@
       .state('en', {
         url: '/en',
         abstract: true,
-        template: '<ui-view/>'
+        template: '<ui-view/>',
+        params: {
+          lang: 'en'
+        }
       })
       .state('fr', {
         url: '/fr',
         abstract: true,
-        template: '<ui-view/>'
+        template: '<ui-view/>',
+        params: {
+          lang: 'fr'
+        }
       })
       .state('en.home', {
         url: '',
