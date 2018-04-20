@@ -643,15 +643,15 @@
 			//
 			// set the time on the 2 dates that care about it
 			//
-			vm.opportunity.deadline.setHours(16, 0, 0);
-			vm.opportunity.assignment.setHours(16, 0, 0);
-			vm.opportunity.endDate.setHours(16, 0, 0);
-			vm.opportunity.implementationEndDate.setHours(16, 0, 0);
-			vm.opportunity.implementationStartDate.setHours(16, 0, 0);
-			vm.opportunity.inceptionEndDate.setHours(16, 0, 0);
-			vm.opportunity.inceptionStartDate.setHours(16, 0, 0);
-			vm.opportunity.prototypeEndDate.setHours(16, 0, 0);
-			vm.opportunity.prototypeStartDate.setHours(16, 0, 0);
+			vm.opportunity.deadline.setHours(19, 0, 0);
+			vm.opportunity.assignment.setHours(19, 0, 0);
+			vm.opportunity.endDate.setHours(19, 0, 0);
+			vm.opportunity.implementationEndDate.setHours(19, 0, 0);
+			vm.opportunity.implementationStartDate.setHours(19, 0, 0);
+			vm.opportunity.inceptionEndDate.setHours(19, 0, 0);
+			vm.opportunity.inceptionStartDate.setHours(19, 0, 0);
+			vm.opportunity.prototypeEndDate.setHours(19, 0, 0);
+			vm.opportunity.prototypeStartDate.setHours(19, 0, 0);
 
 			vm.opportunity.capabilities = [];
 
