@@ -18,13 +18,11 @@
       </div>
       <div class="brand col-xs-6 text-right">
         <ul class="list-inline margin-bottom-none" ng-hide="vm.authentication.user">
-          <li><a href="#beta-definition" aria-controls="beta-definition" class="wb-lbx lbx-modal btn btn-primary text-uppercase" role="button" translate="BETA">Beta</a></li>
           <li><a href ng-click="goTo('authentication.gov')" translate="SIGNUP">Sign Up</a></li>
           <li><a href ng-click="goTo('authentication.signinadmin')" translate="SIGNIN">Sign In</a></li>
           <li><a href ng-click="changeLanguage()" translate="CHANGE_LANGUAGE">Français</a></li>
         </ul>
         <ul class="list-inline margin-bottom-none" ng-show="vm.authentication.user">
-          <li><a href="#beta-definition" aria-controls="beta-definition" class="wb-lbx lbx-modal btn btn-primary text-uppercase" role="button" translate="BETA">Beta</a></li>
           <li ng-repeat="item in vm.menu.items | limitTo: 1 | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown', active: isActiveMenu(item)}" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">
             <a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button"><i class="nav-icon" ng-class="item.icon||'fa fa-puzzle-piece'" aria-hidden="true"></i> {{::item.title}}&nbsp;<span class="caret"></span></a>
             <ul ng-switch-when="dropdown" class="dropdown-menu">
@@ -78,12 +76,3 @@
     </div>
   </nav>
 </header>
-
-<section id="beta-definition" class="mfp-hide modal-dialog modal-content overlay-def">
-  <header class="modal-header">
-    <h2 class="modal-title" translate="BETA">Beta</h2>
-  </header>
-  <div class="modal-body">
-    <p translate="BETA_DESC">The term “beta” in software development refers to a development phase within its lifecycle that provides opportunities to conduct proofing and testing often with users from outside of the project team (general public).  This allows the project team to adjust the product according to new test data. The distribution of a beta release can be as limiting or vast as project resources allow. The goal of a beta release is to garner feedback on, but not exclusively to, the design, process, and demand by collecting user experience comments and statistics. A beta is ephemeral in nature, and moves into official production status once the proofing and testing is successful.</p>
-  </div>
-</section>
